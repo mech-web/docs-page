@@ -32,7 +32,7 @@ In the coming sections, I will demonstrate various features of the Mech language
 
 ## 3. Analog Clock
 
-The "Hello World" for reactive languages in certainly an analog clock. This example demonstrates a complete Mech program starting from a data source (in this case a ticking clock), to transforming the ticks into angles, to finally displaying a visualization of the angles in the form of a clock face with hour, minute, and second hands. We'll start our clock by defining a table named `#time/timer` with the fields period, tick, hours, minutes, and seconds. 
+The "Hello World" for reactive languages in certainly an analog clock. This example demonstrates a complete Mech program starting from a data source (in this case a ticking clock), to transforming the ticks into angles, to finally displaying a visualization of the angles in the form of a clock face with hour, minute, and second hands. We'll start our clock by defining a table named `#time/timer` with the fields period, tick, hours, minutes, and seconds. We can report the current value of seconds and watch it update as time goes by: [[#time/timer.seconds]] 
 
   #time/timer = [period: 15, tick: 0, hours: 0, minutes: 0, seconds: 0]
 
@@ -46,7 +46,7 @@ Tables, collections of cells arranged in a 2D grids of rows and columns, are the
 
 By default, rows and columns are referenced by their index, but they can optionally be given a name. A named column is interpreted as an attribute of the table, while a named row is interpreted as an entity in the table. To draw an analogy to object oriented programming, a table is analogous to a class, a column is analogous to a member variable of a class, and a row is analogous to an instance of a class.
 
-Tables with a `#` prefix have a global scope. They can be accessed anywhere in a Mech program. Certain global tables have special meaning, as they refer to values stored in libraries. For instance, the `#time/timer` table refers to the timer table in the <a href="http://docs.mech-lang.org/#/docs/time/index.mec">time library</a>. When it is created, the time library uses the value stored in the "period" column to instantiate a new timer and updates the rest of the row as time advances. We can report the current value of seconds and watch it update as time goes by: [[#time/timer.seconds]]
+Tables with a `#` prefix have a global scope. They can be accessed anywhere in a Mech program. Certain global tables have special meaning, as they refer to values stored in libraries. For instance, the `#time/timer` table refers to the timer table in the <a href="http://docs.mech-lang.org/#/docs/time/index.mec">time library</a>. When it is created, the time library uses the value stored in the "period" column to instantiate a new timer and updates the rest of the row as time advances.
 
 We can define a table with multiple rows:
 
