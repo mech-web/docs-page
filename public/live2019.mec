@@ -115,7 +115,7 @@ In this section we use a new example program to motivate some additional feature
 
   #ball = [x: 20 y: 20 vx: 1 vy: 3]
 
-Using the timer we defined in the previous section, we can update the position of the ball as the timer ticks. This requires the `~` operator, pronounced "whenever". You would read the following block as "whenever #time/timer.tick changes, update #ball.x and #ball.y". This operator ensures that even though this block depends on `#ball`, it will only update on `#time/timer.tick`. 
+Using the timer we defined in the previous section, we can update the position of the ball as the timer ticks. This requires the `~` operator, pronounced "whenever". You would read the following block as "whenever #time/timer.tick changes, update #ball.x and #ball.y". This operator ensures that even though this block depends on `#ball` and updates `#ball` (an infintely recursive definition), it will only update on `#time/timer.tick`. 
 
   ~ #time/timer.tick
   #ball.x := #ball.x + #ball.vx
