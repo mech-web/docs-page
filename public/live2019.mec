@@ -59,10 +59,10 @@ This creates a table called `#clock-hands` with the fields degrees, x, y, and st
 
 We can do more than just define data in a block of code. Blocks can do one or more of the following:
 
-- Create new data
-- Select data in the global scope and bring it into the block's scope
-- Transform data within the scope of the block
-- Write data to the global scope
+- Create new tables in the global or local block scope
+- Select tables from the global scope and bring them into the block's scope
+- Transform tables within the scope of the block
+- Change tables in the global scope
 
 We've already defined two global tables, but we can use those tables to calculate new values:
 
