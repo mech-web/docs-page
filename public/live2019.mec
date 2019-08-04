@@ -141,7 +141,7 @@ Additional tests are performed to bounce the ball off the ceiling and floor
   #ball.vy{#ball.y < 10} := -#ball.vy
   #ball.vx{#ball.x > 390 | #ball.x < 10} := -#ball.vx
 
-These blocks demonstrate the usage of indexing and slicing to perform conditional updates on tables. When used on the left-hand side of an assignment, the slicing operator `{}` select only rows where the index evaluates to true. For example, the statement `#ball.vx{#ball.x > 390 | #ball.x < 10} := -#ball.vx` updates the horizontal velocity of the ball only when its x component is greater than 390 or less than 10.
+These blocks demonstrate the usage of indexing and slicing to perform conditional updates on tables. When used on the left-hand side of an assignment, the slicing operator `{}` updates only rows where the index evaluates to `true`. For example, the statement `#ball.vx{#ball.x > 390 | #ball.x < 10} := -#ball.vx` updates the horizontal velocity of the ball only when its x component is greater than 390 or less than 10.
 
 We can then reset the ball if it reaches the bottom of the game area.
 
