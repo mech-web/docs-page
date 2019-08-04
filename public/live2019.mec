@@ -39,7 +39,7 @@ The "Hello World" for reactive languages in certainly an analog clock. This exam
 Tables, collections of cells arranged in a 2D grids of rows and columns, are the primary data structure in Mech. Other languages that use tables as a fundamental data structure include Excel, Lua, and MATLAB. Everything from a scalar to a vector to a matrix is stored in a table. All operators and functions have one or more tables as an input, and one or more tables as output. Each cell in a table can hold a `Value`, which can have one of the following data types:
 
 - Quantity - either an integer (e.g. `123`), a float (e.g. `12.7`) or a number with a unit (e.g `13.5kg`)
-- String - e.g. `"Hello World"`
+- String - e.g. `Hello World`
 - Bool - `true` or `false`
 - Table Reference - allows for nesting tables
 - Empty - represented by one or more underscores: `_` or `_____` are both valid
