@@ -161,9 +161,9 @@ Just as we defined the clock canvas, we can define a canvas for our game. In the
                      "line"   [x1: start y1: 350 x2: end y2: 350 stroke: "#000000"]]
 
 
-Then we concatenate `#paddle-control` a new table that defines the canvas and incorporates `#game/elements`
+Then we concatenate `#paddle-control` with a new table row that defines the an HTML canvas for the game using the shapes defined in `#game/elements`
 
-  #game/canvas = [|type     class contains    parameters|
+  #game/canvas = [|type     class contains         parameters|
                    #paddle-control
                    "canvas" _     [#game/elements] [width: 400 height: 400]]
 
