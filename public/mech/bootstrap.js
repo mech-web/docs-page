@@ -73,6 +73,9 @@
 /******/ 					"__widl_instanceof_Window": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_instanceof_Window"](p0i32);
 /******/ 					},
+/******/ 					"__widl_f_log_1_": function(p0i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_log_1_"](p0i32);
+/******/ 					},
 /******/ 					"__widl_instanceof_CanvasRenderingContext2D": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_instanceof_CanvasRenderingContext2D"](p0i32);
 /******/ 					},
@@ -250,6 +253,12 @@
 /******/ 					"__widl_f_client_y_MouseEvent": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_client_y_MouseEvent"](p0i32);
 /******/ 					},
+/******/ 					"__widl_f_offset_x_MouseEvent": function(p0i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_offset_x_MouseEvent"](p0i32);
+/******/ 					},
+/******/ 					"__widl_f_offset_y_MouseEvent": function(p0i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_offset_y_MouseEvent"](p0i32);
+/******/ 					},
 /******/ 					"__widl_f_append_child_Node": function(p0i32,p1i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_append_child_Node"](p0i32,p1i32);
 /******/ 					},
@@ -283,26 +292,23 @@
 /******/ 					"__widl_f_document_Window": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_document_Window"](p0i32);
 /******/ 					},
-/******/ 					"__widl_f_log_1_": function(p0i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_log_1_"](p0i32);
+/******/ 					"__wbg_newnoargs_8effd2c0e33a9e83": function(p0i32,p1i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_newnoargs_8effd2c0e33a9e83"](p0i32,p1i32);
 /******/ 					},
-/******/ 					"__wbg_newnoargs_368b05293a3f44de": function(p0i32,p1i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_newnoargs_368b05293a3f44de"](p0i32,p1i32);
+/******/ 					"__wbg_call_11f5c018dea16986": function(p0i32,p1i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_call_11f5c018dea16986"](p0i32,p1i32);
 /******/ 					},
-/******/ 					"__wbg_call_1fc553129cb17c3c": function(p0i32,p1i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_call_1fc553129cb17c3c"](p0i32,p1i32);
+/******/ 					"__wbg_globalThis_b8da724777cacbb6": function() {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_globalThis_b8da724777cacbb6"]();
 /******/ 					},
-/******/ 					"__wbg_globalThis_8df2c73db5eac245": function() {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_globalThis_8df2c73db5eac245"]();
+/******/ 					"__wbg_self_78670bf6333531d2": function() {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_self_78670bf6333531d2"]();
 /******/ 					},
-/******/ 					"__wbg_self_937dd9f384d2384a": function() {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_self_937dd9f384d2384a"]();
+/******/ 					"__wbg_window_b19864ecbde8d123": function() {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_window_b19864ecbde8d123"]();
 /******/ 					},
-/******/ 					"__wbg_window_425d3fa09c43ece4": function() {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_window_425d3fa09c43ece4"]();
-/******/ 					},
-/******/ 					"__wbg_global_2c090b42ef2744b9": function() {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_global_2c090b42ef2744b9"]();
+/******/ 					"__wbg_global_c6db5ff079ba98ed": function() {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbg_global_c6db5ff079ba98ed"]();
 /******/ 					},
 /******/ 					"__wbindgen_is_undefined": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_is_undefined"](p0i32);
@@ -319,23 +325,23 @@
 /******/ 					"__wbindgen_rethrow": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_rethrow"](p0i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper380": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper380"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper405": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper405"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper376": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper376"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper409": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper409"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper382": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper382"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper401": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper401"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper386": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper386"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper399": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper399"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper384": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper384"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper403": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper403"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper378": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper378"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper407": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper407"](p0i32,p1i32,p2i32);
 /******/ 					}
 /******/ 				}
 /******/ 			};
@@ -435,7 +441,7 @@
 /******/ 				promises.push(installedWasmModuleData);
 /******/ 			else {
 /******/ 				var importObject = wasmImportObjects[wasmModuleId]();
-/******/ 				var req = fetch(__webpack_require__.p + "" + {"../wasm/pkg/mech_wasm_bg.wasm":"ae4078a6d3b4d8f747b4"}[wasmModuleId] + ".module.wasm");
+/******/ 				var req = fetch(__webpack_require__.p + "" + {"../wasm/pkg/mech_wasm_bg.wasm":"e2f7455f2ed65f9f166a"}[wasmModuleId] + ".module.wasm");
 /******/ 				var promise;
 /******/ 				if(importObject instanceof Promise && typeof WebAssembly.compileStreaming === 'function') {
 /******/ 					promise = Promise.all([WebAssembly.compileStreaming(req), importObject]).then(function(items) {
