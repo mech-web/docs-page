@@ -66,4 +66,5 @@ We can do or operations as well
   block/view = x < 2 | x > 2
 
 
-Up Next: <a href="#/docs/core/temporal.mec">Temporal Operators</a>
+Next: <a href="#/docs/core/temporal.mec">Temporal Operators</a>
+Previous: <a href="#/docs/core/slicing.mec">Indexing and Slicing</a>
