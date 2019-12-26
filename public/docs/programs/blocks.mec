@@ -76,5 +76,4 @@ Create a timer
 Alias the tick
   #tick = #time/timer.ticks
 
-Next: <a href="#/docs/programs/database.mec">Database</a>
-Previous: <a href="#/docs/programs/tables.mec">Tables</a>
+Up Next: <a href="#/docs/programs/database.mec">Database</a>

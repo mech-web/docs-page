@@ -6,12 +6,8 @@ Define the environment
   #time/timer = [period: 15, tick: 0, hours: 0, minutes: 0, seconds: 0]
   #gravity = 1
   #boundary = [width: 500 height: 500]
-  #html/event/click = [|x y|
-                        0 0]
-  #html/event/mousemove = [|x y|
-                            0 0]
-  #html/event/mousedown = [|x y|
-                            0 0]
+  #launch-point = [x: 0 y: 0]
+  #end-point = [x: 0 y: 0]
 
 On mouse down, set the launch point
   ~ #html/event/mousedown
