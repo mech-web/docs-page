@@ -157,6 +157,9 @@
 /******/ 					"__widl_f_set_inner_html_Element": function(p0i32,p1i32,p2i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_set_inner_html_Element"](p0i32,p1i32,p2i32);
 /******/ 					},
+/******/ 					"__widl_f_children_Element": function(p0i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_children_Element"](p0i32);
+/******/ 					},
 /******/ 					"__widl_f_stop_propagation_Event": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_stop_propagation_Event"](p0i32);
 /******/ 					},
@@ -244,6 +247,9 @@
 /******/ 					"__widl_f_ctrl_key_KeyboardEvent": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_ctrl_key_KeyboardEvent"](p0i32);
 /******/ 					},
+/******/ 					"__widl_f_key_KeyboardEvent": function(p0i32,p1i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_key_KeyboardEvent"](p0i32,p1i32);
+/******/ 					},
 /******/ 					"__widl_f_data_MessageEvent": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_data_MessageEvent"](p0i32);
 /******/ 					},
@@ -270,6 +276,9 @@
 /******/ 					},
 /******/ 					"__widl_f_first_child_Node": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_first_child_Node"](p0i32);
+/******/ 					},
+/******/ 					"__widl_f_last_child_Node": function(p0i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_last_child_Node"](p0i32);
 /******/ 					},
 /******/ 					"__widl_f_new_WebSocket": function(p0i32,p1i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__widl_f_new_WebSocket"](p0i32,p1i32);
@@ -325,23 +334,23 @@
 /******/ 					"__wbindgen_rethrow": function(p0i32) {
 /******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_rethrow"](p0i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper405": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper405"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper404": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper404"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper409": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper409"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper406": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper406"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper401": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper401"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper408": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper408"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper399": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper399"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper398": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper398"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper403": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper403"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper400": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper400"](p0i32,p1i32,p2i32);
 /******/ 					},
-/******/ 					"__wbindgen_closure_wrapper407": function(p0i32,p1i32,p2i32) {
-/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper407"](p0i32,p1i32,p2i32);
+/******/ 					"__wbindgen_closure_wrapper402": function(p0i32,p1i32,p2i32) {
+/******/ 						return installedModules["../wasm/pkg/mech_wasm.js"].exports["__wbindgen_closure_wrapper402"](p0i32,p1i32,p2i32);
 /******/ 					}
 /******/ 				}
 /******/ 			};
@@ -441,7 +450,7 @@
 /******/ 				promises.push(installedWasmModuleData);
 /******/ 			else {
 /******/ 				var importObject = wasmImportObjects[wasmModuleId]();
-/******/ 				var req = fetch(__webpack_require__.p + "" + {"../wasm/pkg/mech_wasm_bg.wasm":"e2f7455f2ed65f9f166a"}[wasmModuleId] + ".module.wasm");
+/******/ 				var req = fetch(__webpack_require__.p + "" + {"../wasm/pkg/mech_wasm_bg.wasm":"16cc2765a0b3653c7c57"}[wasmModuleId] + ".module.wasm");
 /******/ 				var promise;
 /******/ 				if(importObject instanceof Promise && typeof WebAssembly.compileStreaming === 'function') {
 /******/ 					promise = Promise.all([WebAssembly.compileStreaming(req), importObject]).then(function(items) {
