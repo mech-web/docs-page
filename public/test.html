@@ -798,7 +798,6 @@ li p {
     color: #f2ead9; /* Light text color */
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 30px;
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
     overflow-x: auto;
 }
@@ -819,17 +818,13 @@ li p {
             <div class="mech-section-element">
               <div class="mech-fenced-mech-block">
                 <pre class="mech-code-block"><div class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1234</span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:22520672695461197">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span></span></span></span></span></div></pre>
-                <div class="mech-block-output">
-                  x
-                </div>
+                <pre id="41182784233745406:22520672695461197" class="mech-block-output"></pre>
               </div>
             </div>
             <div class="mech-section-element">
               <div class="mech-fenced-mech-block">
                 <pre class="mech-code-block"><div class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1234</span></span></span></div></pre>
-                <div class="mech-block-output">
-                  x
-                </div>
+                <pre id="2947959247911599:22520672695461197" class="mech-block-output"></pre>
               </div>
             </div>
             <div class="mech-section-element">
@@ -860,9 +855,7 @@ li p {
             <div class="mech-section-element">
               <div class="mech-fenced-mech-block">
                 <pre class="mech-code-block"><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="29341039262997047:22520672695461197">y</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">6</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></div><div class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:22520672695461197">x</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29341039262997047:22520672695461197">y</span></span></span></span></span></span></div></pre>
-                <div class="mech-block-output">
-                  x
-                </div>
+                <pre id="46437388401699063:22520672695461197" class="mech-block-output"></pre>
               </div>
             </div>
           </section>
@@ -877,7 +870,7 @@ li p {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G98AAIzUUS27zaCAzf09c2UinV0aaEpmyc1ejFKdHOnllsQBQPO0hLMWIESUx1gen8KBUBhakcUULuu2AxHSyNfYCuTQBJHFxOLUGWR17mJuLl0RyOlT7+F/jb+P3wrpTwWoSspt62Uu4zINjQdY5E4KD3LUSUklfxvYaI8jx/oA`;
+        var code = `G+cAAIzUUS27zaCAzf09c2UinV0aaEpmyc1ejFKdHGlyS+IA4PPShLMWIEQUeAzz6afYgVAYWpHFFC7rtgMR0sjX2Ark0ASRxcTi1Jl0de5ibi5dEcjtU+/hf42/j98K2acy4KpKSgbvZS7jMg0tD7CMnRQc5JiTkkqkDhy0x5FjsQA=`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
