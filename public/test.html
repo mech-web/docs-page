@@ -407,17 +407,31 @@ h4:before{
 .mech-term {
 }
 
+code {
+    margin: 0px;
+    padding: 0px;
+}
+
 .mech-inline-code {
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 2px 2px;
+    padding: 3px;
     margin: 0px;
-    margin-left: 2px;
-    margin-right: 7px;
     border-radius: 5px;
 }
+
+.mech-inline-mech-code {
+    background-color: #171D21;
+    color: #C7DCAE;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 3px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
 
 .mech-formula-operator {
     color: #ffd139;
@@ -800,6 +814,8 @@ li p {
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
     overflow-x: auto;
 }
+
+
         
     </style>
   </head>
@@ -815,16 +831,9 @@ li p {
         <div class="mech-program-body">
           <section class="mech-program-section">
             <div class="mech-section-element">
-              <div class="mech-fenced-mech-block">
-                <pre class="mech-code-block"><div class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1234</span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:22520672695461197">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span></span></span></span></span></div></pre>
-                <pre id="41182784233745406:22520672695461197" class="mech-block-output"></pre>
-              </div>
-            </div>
-            <div class="mech-section-element">
-              <div class="mech-fenced-mech-block">
-                <pre class="mech-code-block"><div class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1234</span></span></span></div></pre>
-                <pre id="2947959247911599:22520672695461197" class="mech-block-output"></pre>
-              </div>
+              <p class="mech-paragraph">
+                This is a test.
+              </p>
             </div>
             <div class="mech-section-element">
               <div class="mech-code-block">
@@ -852,9 +861,82 @@ li p {
               </div>
             </div>
             <div class="mech-section-element">
+              <p class="mech-paragraph">
+                The value of x is 
+                <code id="25789741759146675" class="mech-inline-mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span></span></code>
+                . Isn't that interesting?
+              </p>
+            </div>
+            <div class="mech-section-element">
+              <p class="mech-paragraph">
+                What if we go on to define another number?
+              </p>
+            </div>
+            <div class="mech-section-element">
+              <div class="mech-code-block">
+                <div class="mech-code">
+                  <span class="mech-statement">
+                    <span class="mech-variable-define">
+                      <span class="mech-variable-mutable">
+                      </span>
+                      <span class="mech-var-name mech-clickable" id="29341039262997047:0">
+                        y
+                      </span>
+                      <span class="mech-variable-assign-op">
+                        :=
+                      </span>
+                      <span class="mech-expression">
+                        <span class="mech-structure">
+                          <span class="mech-matrix">
+                            <span class="mech-bracket start">
+                              [
+                            </span>
+                            <div class="mech-matrix-column">
+                              <span class="mech-matrix-element">
+                                <span class="mech-expression">
+                                  <span class="mech-literal">
+                                    <span class="mech-number">
+                                      20
+                                    </span>
+                                  </span>
+                                </span>
+                              </span>
+                            </div>
+                            <div class="mech-matrix-column">
+                              <span class="mech-matrix-element">
+                                <span class="mech-expression">
+                                  <span class="mech-literal">
+                                    <span class="mech-number">
+                                      30
+                                    </span>
+                                  </span>
+                                </span>
+                              </span>
+                            </div>
+                            <span class="mech-bracket end">
+                              ]
+                            </span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="mech-section-element">
+              <p class="mech-paragraph">
+                Let's print that one out too: The value of y is 
+                <code id="39356286329367586" class="mech-inline-mech-code"><span class="mech-expression"><span class="mech-slice"><span id="29341039262997047:0" class="mech-var-name mech-clickable">y</span><span class="mech-subscript"><span class="mech-bracket">[<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span>]</span></span></span></span></code>
+                 and this is 
+                <code class="mech-inline-code">10</code>
+                . Isn't that interesting?
+              </p>
+            </div>
+            <div class="mech-section-element">
               <div class="mech-fenced-mech-block">
-                <pre class="mech-code-block"><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="29341039262997047:22520672695461197">y</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">6</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></div><div class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:22520672695461197">x</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29341039262997047:22520672695461197">y</span></span></span></span></span></span></div></pre>
-                <pre id="46437388401699063:22520672695461197" class="mech-block-output"></pre>
+                <pre class="mech-code-block"><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="47432400571875225:0">z</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></span></div></pre>
+                <pre id="55583637513681289:0" class="mech-block-output"></pre>
               </div>
             </div>
           </section>
@@ -869,7 +951,7 @@ li p {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G+cAAIzUUS27zaCAzf09c2UinV0aaEpmyc1ejFKdHGlyS+IA4PPShLMWIEQUeAzz6afYgVAYWpHFFC7rtgMR0sjX2Ark0ASRxcTi1Jl0de5ibi5dEcjtU+/hf42/j98K2acy4KpKSgbvZS7jMg0tD7CMnRQc5JiTkkqkDhy0x5FjsQA=`;
+        var code = `G34BYIzEOEbxh7aBDKX1K7uvX8+6v6CpC+VQMRTtHJwgOm+WO20JPT4GAhW8tsCiW0FbGEQaeUkBZhrUDZdNes4mKSUKTCCXo44vv8jto3QYQEK9ElXxq6CYbCZ0eblQjvJYkU5dvjzaJ5BfLWzYaVdxsjN2lkgXZ04/wv5nczRCYtvO2fO0YXTjWj81fh49GyZsfJqhiuuaLHLZduGOiejPh58sBlM1q4Xv+r6h1pfAj7BNenHx+Nn/cDK1MuEj8zWbw6//DIEsXe7/ZCVr2FDx91jJRjTpaOM2fBgR/i1bcuBoXi7kUI5rzXIitxY4/QPwoIADjwA=`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
