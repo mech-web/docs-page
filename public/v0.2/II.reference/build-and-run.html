@@ -1,0 +1,1366 @@
+
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+      
+                  @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+html {
+    scroll-behavior: smooth;
+}
+
+.mech-program {
+    counter-reset: h2;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2F353B;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
+.mech-root {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#mech-output {
+    max-width: 700px;
+    min-width: 250px;
+    background-color: #171D21;
+    color: #f2ead9;
+    border-radius: 10px;
+}
+
+.mech-toc {
+    width: 250px;
+    min-width: 250px;
+    counter-reset: h2;
+    background-color: #171D21;
+    color: #f2ead9;
+    overflow-y: auto;
+    margin-right: 20px;
+    padding-right: 15px;
+    padding-left: 10px;
+    position: sticky; 
+    top: 0; 
+    height: 100vh;
+}
+
+.mech-toc h2 {
+    line-height: 23px;
+}
+
+.mech-toc h3 {
+    line-height: 23px;
+}
+
+.mech-toc::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.mech-toc::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.mech-toc::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.7); 
+    border-radius: 10px; 
+}
+
+.mech-toc::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.9); 
+}
+
+/* For Firefox */
+.mech-toc {
+    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
+    scrollbar-width: thin;
+}
+
+.mech-toc h1 {
+    visibility: hidden;
+    font-size: 12pt;
+}
+
+.mech-toc h2 {
+    font-size: 12pt;
+    padding-left: 15px;
+}
+
+h2.toc::before {
+    padding-right: 5px;
+}
+
+h3.toc::before {
+    font-size: 12pt;
+    padding-right: 5px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.mech-toc h2 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h2:hover::before {
+    color: #ee6262;
+}
+
+.mech-toc h2 a:hover {
+    color: #ee6262;
+    text-decoration: none;
+}
+
+.mech-toc h3 {
+    font-size: 12pt;
+    padding-left: 30px;
+}
+
+.mech-toc h3 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h3:hover::before {
+    color: #ee6262;
+}
+
+.mech-toc h3 a:hover {
+    color: #ee6262;
+    text-decoration: none;
+}
+
+.mech-matrix {
+    display: inline-flex;
+}
+
+.mech-bracket.end {
+    align-self: flex-end;
+    margin-left: -10px;
+}
+
+.mech-slice-ref {
+    display: inline-flex;
+}
+
+.mech-matrix-column {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+}
+
+.mech-variable-assign-op {
+    padding-left:  6px;
+    padding-right: 6px;
+    color: #ffd139;
+}
+
+.mech-transition-statement {
+    color: #ffd139;
+}
+
+.mech-transition-output {
+    color: #ffd139;
+}
+
+.mech-fsm-arm-last {
+    color: #ffd139;
+}
+
+.mech-term {
+    display: inline-flex;
+}
+
+.mech-formula-operator {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.mech-program .mech-program-title {
+    width: 900px;
+    font-family: 'FiraCodeRegular', monospace;
+    padding-bottom: 10px;
+    border-bottom: 4px dashed #d19710;
+    color: #f2ead9;
+    letter-spacing: 2px;
+    font-size: 22pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    margin-left: -100px;
+}
+
+.mech-program h2 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h2 {
+    width: 850px;
+    font-family: 'FiraCodeRegular', monospace;
+    padding-bottom: 10px;
+    border-bottom: 3px dashed #d19710;
+    color: #f2ead9;
+    font-size: 16pt;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-left: -75px;
+}
+
+.mech-program h3 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h3 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    margin-left: -48px;
+}
+
+.mech-program h4 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h4 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.mech-program h4 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h4 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+h4.toc {
+    display: none;
+}
+
+.mech-variable-mutable {
+    color: #ada594;
+}
+
+.mech-section-element {
+}
+
+.mech-fsm-specification
+
+.mech-fsm-sigil{
+    display: inline-flex;
+}
+
+.mech-code-block {
+    background-color: #171D21;
+    color: #ada594;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    line-height: 18px;
+    border-radius: 0px;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.mech-code-block::-webkit-scrollbar {
+    height: 8px; /* Horizontal scrollbar height */
+}
+
+.mech-code-block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mech-code-block::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+}
+
+.mech-code-block::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.9);
+}
+
+/* Firefox */
+.mech-code-block {
+    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
+    scrollbar-width: thin;
+}
+
+.mech-grammar {
+    background-color: #171D21;
+    color: #ada594;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    line-height: 18px;
+    border-radius: 0px;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.mech-grammar::-webkit-scrollbar {
+    height: 8px; /* Horizontal scrollbar height */
+}
+
+.mech-grammar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mech-grammar::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+}
+
+.mech-grammar::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.9);
+}
+
+/* Firefox */
+.mech-grammar {
+    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
+    scrollbar-width: thin;
+}
+
+.mech-grammar-identifier {
+    color: #ccbbc2;
+}
+
+.mech-grammar-definition {
+    color: #ccbbc2;
+}
+
+.mech-grammar-definition a {
+    color: #ccbbc2;
+    text-decoration: none;
+}
+
+.mech-grammar-definition a:hover {
+    color: #ccbbc2;
+    text-decoration: underline;
+}
+
+.mech-grammar-choice {
+    margin-left: 20px;
+}
+
+.mech-grammar-sequence {
+    margin-left: 20px;
+}
+
+
+.mech-grammar-terminal {
+    color: #ee6262;
+}
+
+
+.mech-code {
+}
+
+.mech-statement {
+}
+
+.mech-variable-define {
+    display: flex;
+}
+
+.mech-fsm-specification-header {
+    display: inline-flex;
+}
+
+.mech-variable-mutable {
+    color: #ffd139;
+}
+
+.mech-var-name {
+    color: #ccbbc2;
+}
+
+.mech-expression {
+}
+
+.mech-literal {
+}
+
+.mech-number {
+    color: #C7DCAE;
+}
+
+.mech-factor {
+    display: inline-flex;
+}
+
+.mech-term {
+}
+
+code {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mech-inline-code {
+    background-color: #171D21;
+    color: #ada594;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 3px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+.mech-inline-mech-code {
+    background-color: #171D21;
+    color: #C7DCAE;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 3px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+
+.mech-formula-operator {
+    color: #ffd139;
+}
+
+.mech-op-assign-op {
+    color: #ffd139;
+}
+
+.mech-paragraph {
+    color: #f2ead9;
+    line-height: 25px;
+}
+
+.mech-paragraph a {
+    color: #ee6262;
+    text-decoration: none;
+}
+
+.mech-paragraph a:hover {
+    text-decoration: underline;
+}
+
+.mech-all {
+    color: #ffd139;
+}
+
+.mech-transpose-op {
+    color: #ffd139;
+}
+
+.mech-negate-op {
+    color: #ffd139;
+}
+
+.mech-record {
+    display: flex;
+}
+
+.mech-binding {
+    display: inline-flex;
+}
+
+.mech-function-call {
+    display: inline-flex;
+}
+
+.mech-slice {
+    display: inline-flex;
+}
+
+.mech-subscript {
+    display: inline-flex;
+}
+
+.mech-bracket {
+    display: inline-flex;
+    color: #A157B5
+}
+
+.mech-start-brace {
+    color: #a157b5
+}
+
+.mech-clickable:hover {
+    background-color: #2a2b34;
+    cursor: pointer;
+}
+
+.mech-end-brace {
+    color: #a157b5
+}
+
+.mech-dot {
+    color: #9cc7f3;
+}
+
+.mech-binding-colon-op {
+    padding-right: 6px;
+}
+
+.mech-right-paren {
+    color: #a157b5
+}
+
+.mech-left-paren {
+    color: #a157b5
+}
+
+.mech-binding-name {
+    color: #9cc7f3;
+    padding-left: 6px;
+}
+
+.mech-parenthetical {
+    color: #a157b5;
+}
+
+.mech-function-name {
+    color: #d8a5e4;
+}
+
+.mech-kind-annotation {
+    display: inline-flex;
+}
+
+.mech-kind {
+    color: #ec8e8e;
+    display: inline-flex;
+}
+
+.mech-fsm-define-op {
+    padding-left: 6px;
+}
+
+.mech-fsm-output { 
+    padding-left: 6px;
+    color: #ffd139;
+}
+
+.mech-fsm-input {
+    color: #ccbbc2;
+    display: inline-flex;
+}
+
+.mech-fsm-name {
+    color: #d8a5e4;
+}
+
+.mech-kind-annotation {
+    color: #ee6262;
+}
+
+.mech-kind .mech-literal .mech-number {
+    color: #ec8e8e;
+}
+
+.mech-fsm-state {
+    display: inline-flex;
+}
+
+.mech-fsm-states {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.mech-state-definition {
+    display: inline-flex;
+}
+
+.mech-fsm-arms {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mech-fsm-arm {
+    display: inline-flex;
+}
+
+.mech-fsm-implementation-header {
+    display: inline-flex;
+}
+
+.mech-tuple-struct {
+    display: inline-flex;
+    color: #ffd139;
+}
+
+.mech-fsm-sigil {
+    color: #ffd139;
+}
+
+.mech-fsm-state {
+    color: #ffd139;
+}
+
+.mech-tuple-struct-patterns {
+    display: inline-flex;
+}
+
+.mech-fsm-define-op {
+    padding-right: 6px;
+    color: #ffd139;
+}
+
+.mech-matrix.empty .end  {
+    margin-left: 0px;
+}
+
+.mech-fsm-implementation {
+    margin-top: 20px;
+}
+
+.mech-fsm-guards {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.mech-fsm-guard-arm {
+    color: #ffd139;
+    display: inline-flex;
+}
+
+.mech-guard-condition {
+    padding-left: 6px;
+}
+
+.mech-transition-output {
+    padding-left: 0px;
+}
+
+.mech-state-variables {
+    display: inline-flex;
+}
+
+.mech-transition-next {
+    padding-left: 0px;
+    color: #ffd139;
+}
+
+.mech-guard-condition {
+    display: inline-flex;
+    margin: 0px;
+}
+
+.mech-pattern-wildcard {
+    display: inline-flex;
+    color: #ee6262;
+}
+
+.mech-tuple-struct {
+    margin-right: 6px;
+}
+
+.mech-state-name {
+    color: #dbc3a5;
+}
+
+.mech-tuple-struct-name {
+    color: #dbc3a5;
+}
+
+.mech-code-block .mech-code:first-child .mech-comment {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.mech-comment {
+    color: #ef5f90;;
+    font-style: italic;
+    padding-top: 20px;
+}
+
+.mech-string {
+    color: #ee6262;
+}
+
+
+ul {
+    color: #F3B62D;
+    font-weight: bold;
+}
+
+ol {
+    color: #F3B62D;
+    font-weight: bold;
+}
+
+
+.mech-check-list {
+    list-style: none;
+    padding-left: 9px;
+    margin-top: 0.5em;
+}
+
+.mech-check-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+    margin: 0;
+    color: #dcd4c9;
+}
+
+.mech-check-list-item input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    border: 2px solid #777;
+    border-radius: 3px;
+    background-color: #171D21;
+    cursor: pointer;
+    position: relative;
+}
+
+.mech-check-list-item input[type="checkbox"]:checked {
+    background-color: #171D21;
+    border-color: #F3B62D;
+}
+
+.mech-check-list-item input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: #F3B62D;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.mech-list-item-emoji {
+    list-style-type: none;
+    color: #ee6262;
+}
+
+.mech-list-item-emoji {
+    line-height: 0px;
+    color: #ee6262;
+}
+
+.mech-list-item-emoji::before {
+    content: attr(data-bullet); 
+    position: relative;         
+    font-size: 12pt;          
+    color: #ee6262;;    
+    right: 30px;
+    top: 13px;
+}
+
+.mech-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.mech-image {
+    max-width: 110%;
+}
+
+.mech-figure-label {
+    color: #F3B62D; 
+    font-size: 12pt;
+}
+
+.mech-figure-caption {
+    margin-top: 1em;
+    color: #eadec2;
+    font-size: 12pt;
+    text-align: left;;
+    line-height: 1.4;
+    font-style: italic;
+    padding: 1em;
+}
+
+li {
+    padding-left: 5px;
+}
+
+li p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
+
+.mech-table-header {
+    color: #dbc3a5;
+}
+
+.mech-table-rows {
+}
+
+.mech-table-row {
+}
+
+.mech-table {
+    border-collapse: collapse;
+    background-color: #2F353B;
+    color: #f2ead9; 
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.mech-table thead {
+    background-color: #171D21;
+}
+
+.mech-table .mech-table-header-cell {
+    color: #f2ead9; 
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #333; 
+}
+
+.mech-table .mech-table-row-even {
+    background-color: #232A30; 
+}
+
+.mech-table .mech-table-row-odd {
+    background-color: #171D21; 
+}
+
+.mech-table .mech-table-cell {
+    padding: 10px;
+    border-bottom: 1px solid #333; 
+    text-align: left;
+}
+
+.mech-table tbody tr:hover {
+    background-color: #3A4148; 
+}
+
+.mech-table a {
+    color: #ee6262; 
+    text-decoration: none;
+}
+
+.mech-table a:hover {
+    color: #f2ead9;
+}
+
+.mech-block-quote {
+    width: 80%;
+    background-color: #232A30; 
+    border-left: 4px solid #F3B62D;; 
+    padding: 15px 20px;
+    color: #f2ead9; 
+    font-style: italic; 
+    margin: auto;
+    border-radius: 5px;
+}
+
+.mech-block-quote blockquote {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+.mech-thematic-break {
+    border: 0;
+    border-top: 2px solid #7e8892;
+    margin: 30px 0;
+    width: 100%;
+    opacity: 0.7;
+}
+
+.mech-fenced-mech-block {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.mech-fenced-mech-block .mech-code-block {
+    background-color: #171D21;
+    border-radius: 10px 10px 0px 0px;  
+    border-bottom: 2px solid rgb(199, 220, 174);
+    margin-bottom: 0px;
+}
+
+.mech-block-output {
+    margin-top: 0px;
+    background-color: #222A30; 
+    color: #f2ead9;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 20px;
+    border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
+    overflow-x: auto;
+}
+
+.mech-block-output::-webkit-scrollbar {
+    height: 8px; /* Horizontal scrollbar height */
+}
+
+.mech-block-output::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mech-block-output::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+}
+
+.mech-block-output::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.9);
+}
+
+/* Firefox */
+.mech-block-output {
+    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
+    scrollbar-width: thin;
+}
+
+.mech-footnote {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75em;
+    margin-top: 1em;
+    font-size: 0.9em;
+    color: #ada594;
+}
+
+.mech-footnote-id {
+    color: #ee6262;
+    font-weight: bold;
+    min-width: 2em;
+    text-align: right;
+    font-family: monospace;
+}
+
+.mech-footnote .mech-paragraph {
+    margin: 0;
+    line-height: 1.6;
+    color: #f2ead9;
+}
+
+.mech-footnote-reference {
+    font-size: 0.7em;
+    vertical-align: super;
+    text-decoration: none;
+    margin-left: 0.1em;
+    color: #ee6262;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.mech-footnote-reference:hover {
+    color: #f28b82;
+    text-decoration: underline;
+}
+
+.mech-abstract {
+    background-color: #1f252a;
+    border: 1px solid #F3B62D;
+    padding: 2em 2em;
+    margin: 2em 2em;
+    border-radius: 8px;
+    color: #dcd4c9;
+}
+
+.mech-abstract p {
+    line-height: 25pt;
+    margin: 0px;
+    text-align: justify;
+}
+
+h2 {
+    counter-reset: h3;
+}
+
+h3 {
+    counter-reset: h4;
+}
+
+h2::before {
+    color: #F3B62D;
+    counter-increment: h2;
+    content: counter(h2) ". ";
+}
+
+h3::before {
+    color: #F3B62D;
+    counter-increment: h3;
+    content: counter(h2) "." counter(h3) " ";
+}
+
+h4::before {
+    color: #F3B62D;
+    counter-increment: h4;
+    content: counter(h2) "." counter(h3) "." counter(h4) " ";
+}
+        
+    </style>
+  </head>
+  <body>
+    <div class="mech-root">
+      <div class="mech-toc">
+        <h1 class="mech-program-title">
+          Build and Run Mech Programs
+        </h1>
+        <section class="mech-toc-sections">
+          <section class="mech-program-section">
+          </section>
+          <section class="mech-program-section">
+            <h2 id="10274920823479450" class="mech-program-subtitle toc">
+              <a href="#9148887274623244">
+                Basic Usage
+              </a>
+            </h2>
+            <h3 id="49601666764129008" class="mech-program-subtitle toc">
+              <a href="#68730717030946422">
+                Usage
+              </a>
+            </h3>
+            <h3 id="46831151531678568" class="mech-program-subtitle toc">
+              <a href="#662121554906284">
+                Commands
+              </a>
+            </h3>
+            <h3 id="33687232737616969" class="mech-program-subtitle toc">
+              <a href="#51707433060259580">
+                Arguments
+              </a>
+            </h3>
+            <h3 id="301838369530597" class="mech-program-subtitle toc">
+              <a href="#14768238141369347">
+                Options
+              </a>
+            </h3>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="9392949484822145" class="mech-program-subtitle toc">
+              <a href="#1567844077058650">
+                Running a Mech Program
+              </a>
+            </h2>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="33092477156035272" class="mech-program-subtitle toc">
+              <a href="#67853873490704586">
+                Subcommands
+              </a>
+            </h2>
+            <h3 id="54760630664816624" class="mech-program-subtitle toc">
+              <a href="#49199380357969637">
+                format
+              </a>
+            </h3>
+            <h3 id="24427482395799792" class="mech-program-subtitle toc">
+              <a href="#36941501204587806">
+                serve
+              </a>
+            </h3>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="990958044869406" class="mech-program-subtitle toc">
+              <a href="#68565994143118057">
+                Additional Help
+              </a>
+            </h2>
+          </section>
+        </section>
+      </div>
+      <div class="mech-program">
+        <h1 class="mech-program-title">
+          Build and Run Mech Programs
+        </h1>
+        <div class="mech-program-body">
+          <section class="mech-program-section">
+            <p class="mech-paragraph">
+              The 
+              <code class="mech-inline-code">mech</code>
+               command-line tool provides various functionalities for working with Mech programs, including executing scripts, debugging, formatting code, and serving applications over HTTP. Below are the available options and subcommands.
+            </p>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="9148887274623244" class="mech-program-subtitle ">
+              <a href="#9148887274623244">
+                Basic Usage
+              </a>
+            </h2>
+            <h3 id="68730717030946422" class="mech-program-subtitle ">
+              <a href="#68730717030946422">
+                Usage
+              </a>
+            </h3>
+            <pre class="mech-code-block">mech [OPTIONS] [mech_paths]... [COMMAND]
+</pre>
+            <h3 id="662121554906284" class="mech-program-subtitle ">
+              <a href="#662121554906284">
+                Commands
+              </a>
+            </h3>
+            <ul class="mech-unordered-list">
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <em class="mech-em">
+                    format
+                  </em>
+                   - Format Mech source code into standard format.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <em class="mech-em">
+                    serve
+                  </em>
+                   - Serve Mech program over an HTTP server.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <em class="mech-em">
+                    help
+                  </em>
+                   - Print this message or the help of the given subcommand(s)
+                </p>
+              </li>
+            </ul>
+            <h3 id="51707433060259580" class="mech-program-subtitle ">
+              <a href="#51707433060259580">
+                Arguments
+              </a>
+            </h3>
+            <p class="mech-paragraph">
+              Source .mec files and directories. You can specify one or more 
+              <code class="mech-inline-code">.mec</code>
+               files or directories containing Mech scripts. The command will execute the specified files in the order they are provided, and alpha-numeric sorting is applied to the files.
+            </p>
+            <pre class="mech-code-block">  [mech_paths]... 
+</pre>
+            <h3 id="14768238141369347" class="mech-program-subtitle ">
+              <a href="#14768238141369347">
+                Options
+              </a>
+            </h3>
+            <ul class="mech-unordered-list">
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-d</code>
+                  , 
+                  <code class="mech-inline-code">--debug</code>
+                   Prints debug information.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-e</code>
+                  , 
+                  <code class="mech-inline-code">--tree</code>
+                   Prints the parse tree of the Mech program.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-t</code>
+                  , 
+                  <code class="mech-inline-code">--time</code>
+                   Measures execution time of the program.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-r</code>
+                  , 
+                  <code class="mech-inline-code">--repl</code>
+                   Starts the Mech Read-Eval-Print Loop (REPL).
+                </p>
+              </li>
+            </ul>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="1567844077058650" class="mech-program-subtitle ">
+              <a href="#1567844077058650">
+                Running a Mech Program
+              </a>
+            </h2>
+            <p class="mech-paragraph">
+              To execute a Mech script, provide the path to one or more 
+              <code class="mech-inline-code">.mec</code>
+               files or directories containing Mech scripts. The command will execute the specified files in the order they are provided:
+            </p>
+            <pre class="mech-code-block">mech program.mec
+mech script1.mec script2.mec dir1
+</pre>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="67853873490704586" class="mech-program-subtitle ">
+              <a href="#67853873490704586">
+                Subcommands
+              </a>
+            </h2>
+            <h3 id="49199380357969637" class="mech-program-subtitle ">
+              <a href="#49199380357969637">
+                format
+              </a>
+            </h3>
+            <p class="mech-paragraph">
+              Formats Mech source code into a standard format.
+            </p>
+            <pre class="mech-code-block">mech format [OPTIONS] [FILES]
+</pre>
+            <p class="mech-paragraph">
+              <em class="mech-em">
+                Options:
+              </em>
+            </p>
+            <ul class="mech-unordered-list">
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-o</code>
+                  , 
+                  <code class="mech-inline-code">--out <PATH></code>
+                   Specifies the output directory.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-s</code>
+                  , 
+                  <code class="mech-inline-code">--stylesheet <STYLESHEET></code>
+                   Sets the stylesheet for HTML output.
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-t</code>
+                  , 
+                  <code class="mech-inline-code">--html</code>
+                   Outputs formatted code as HTML.
+                </p>
+              </li>
+            </ul>
+            <p class="mech-paragraph">
+              <em class="mech-em">
+                Example:
+              </em>
+            </p>
+            <pre class="mech-code-block">mech format -o formatted/ my_script.mec
+</pre>
+            <h3 id="36941501204587806" class="mech-program-subtitle ">
+              <a href="#36941501204587806">
+                serve
+              </a>
+            </h3>
+            <p class="mech-paragraph">
+              Serves a Mech program over an HTTP server.
+            </p>
+            <pre class="mech-code-block">mech serve [OPTIONS] [FILES]
+</pre>
+            <p class="mech-paragraph">
+              <em class="mech-em">
+                Options:
+              </em>
+            </p>
+            <ul class="mech-unordered-list">
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-p</code>
+                  , 
+                  <code class="mech-inline-code">--port [PORT]</code>
+                   Sets the port for the server (default: 8081).
+                </p>
+              </li>
+              <li class="mech-ul-list-item">
+                <p class="mech-paragraph">
+                  <code class="mech-inline-code">-a</code>
+                  , 
+                  <code class="mech-inline-code">--address [ADDRESS]</code>
+                   Sets the server address (default: 127.0.0.1).
+                </p>
+              </li>
+            </ul>
+            <p class="mech-paragraph">
+              <em class="mech-em">
+                Example:
+              </em>
+            </p>
+            <pre class="mech-code-block">mech serve -p 3000 -a 0.0.0.0 my_script.mec
+</pre>
+          </section>
+          <section class="mech-program-section">
+            <h2 id="68565994143118057" class="mech-program-subtitle ">
+              <a href="#68565994143118057">
+                Additional Help
+              </a>
+            </h2>
+            <p class="mech-paragraph">
+              For more information on a specific command, you can use the 
+              <code class="mech-inline-code">--help</code>
+               option with that command. For example:
+            </p>
+            <pre class="mech-code-block">mech --help
+mech serve --help
+</pre>
+          </section>
+        </div>
+      </div>
+      <div id = "mech-output">
+      </div>
+    </div>
+    <script type="module">
+      
+      import init, {WasmMech} from '/pkg/mech_wasm.js';
+      let wasm_core;
+      async function run() {
+        await init();
+        var code = `GzoKAIyT5TIH9whJOo/aNJZMkG2ISlkiFVq2oboxqCqloqlRM+78+b/n//73vBRg4/X/268Rv+3pg+hqo2Va4755f1CRGVSaSSM0lmjNMyEmkgigx2reIr9XWICKgXPNqFno4s56XeF8fSUb3vW9xuFfI4SKQQ7JAYmBe+8RQBAEBi/HTQcBsMT+NgEpMIxBUsvnc761zDKVxgfPR28DjaS5gfc1Rbf8p1qwAk3C+vy7zUXDrR7oEDRohDsYnYz0DZgftPCTAIXZiUoHcaJpDY0Rfgeci6EH/iEksR4BDdXiGi+AEOFlvKcwuG2BLMqhAB/V/aaanEy/cMMZObkUdEMu6p9RSnm+jCeeKTiEFASjRKro90FEjEQCIhfgeE5iguuWxiCGJVYnhn5n8isZnORqJIf9wGQ/mURjPbEWB6swiP5tcYjLbJ2kYYaPS9+pvHz9FBEUGqJxHB8HUgDY05aAhMRukwQKMRIjUULB5wQzEQXo/rhgwB9MyIkFzs2lcsW0gZSYigaQq8hOoefTdyGpWau142r2fKrdWikM2PkzrT4xgzLTwADE1MxMZkFifyDhIP2rZR7IF3hKdtm6SH1zVW6VRKFOP7CLYlJDTYHfhhc34kYdxuvXl2QTmC0M3uNBIEVQn08zi5n/fDRJUGZQwXlUwJRiMTZrL4ml8P0PwAEw3rhRQRUkxg8TVVRlYKJhEMhUFasxieVDjCqJGNHGkBpXhzk4QU8DTWiiZgmIIdo0rEUFhmisqMg9clgbuDRMtZjWhhv8UoFKckWsgNWICq6UDHSooJKyepJAvUOVWKUR/KxBLbkm1qilnKjhWpGh811ZC1UkC4x6sEUGzkKC/uKAs7C9PkhrsZrFkXRxujrU7kuuN6Ef+vM8/2xtum/IsOsSa/RmzuiXycDKkI70Vrre1qf/6e8lXlOf0eejEy8BlrvhjIJfjC0wt/K6MwqrTjYVbKARxP927DLFOhPMrLDiVOPHxXElIKOPvBzEf+x9eZ04iSZNPqpahjcbDJQG2f3+mYIbqIlkxElMooRos6WFvUDwrQMd0RE7Voh/tEBBe8Dc71gd3ElLjJBdfyvy5+1TTTtSdyfTmcK3oG+BJSzRsnJadmtHe+jl71kWtioSq5FdDwE1tWxIALBxI9SqWisUkmyDnWyLNhJbwsZ2Efld4SV+/Fbp3dwbyaUPcwq1Y7bJ+Yjf6DJOc5afxXx00CdPGG8whkbIy89u8Mqwn7GAFhFGEUTnsrgcCsFC/XJNn1x+Jq+i1SHRXlNp87pBl9MG2hTb/LbHB98dcIQjOpaC3FfByRjMnzhzsJORGPVfaGbDBinpKB5IwrzbJKzOzEHqZJ1Fjw5euuAKV3StBItGik/mSPrxmYvdkjkMmg/WjZhnjk7ROq3T20Nur7seBmKf399p+Eif8U7G6ptEjEtSp481wyF2hI4R2hHJO6OidtcpnCZY0L7tGgUll4ItJkvW/cgyya4u6nawK7v3/N61uvNF/QVVUB/Ps3cA44o9F6V3F7q5pMIwovZTCnYeb+64QjcI`;
+        wasm_core = new WasmMech();
+        var xhr = new XMLHttpRequest();
+        var codeUrl = `/code${window.location.pathname}`;
+        xhr.open('GET', codeUrl, true);
+        xhr.onload = function (e) {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var src = xhr.responseText;
+              wasm_core.run_program(src);
+              wasm_core.init();
+            } else {
+              console.error("Defaulting to included code");
+              wasm_core.run_program(code);
+              wasm_core.init();
+            }
+          }
+        };
+        xhr.onerror = function (e) {
+          console.error("I've been waiting for this error. Look me up in formatter.rs");
+          console.error(xhr.statusText);
+        };
+        xhr.send(null);        
+      }
+      run();
+    
+    </script>
+  </body>
+</html>
