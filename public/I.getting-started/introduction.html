@@ -14,6 +14,7 @@
 
 :root {
   --op-color: #82b89e;
+  --bracket-color: rgb(177, 187, 196);
 }
 
 html {
@@ -99,11 +100,11 @@ body {
 
 .mech-toc h2 {
     font-size: 12pt;
-    padding-left: 15px;
+    padding-left: 13px;
 }
 
 h2.toc::before {
-    padding-right: 5px;
+    padding-right: 3px;
 }
 
 .mech-toc h2 a {
@@ -122,7 +123,7 @@ h2.toc::before {
 
 h3.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h3 {
@@ -150,7 +151,7 @@ h3.toc::before {
 
 h4.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h4 {
@@ -258,7 +259,7 @@ h4.toc::before {
     letter-spacing: 2px;
     margin-bottom: 20px;
     margin-top: 50px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-program h3 a {
@@ -445,6 +446,10 @@ h4.toc {
     color: #ddc0e6;
 }
 
+.mech-output-kind {
+    margin-bottom: 10px;
+}
+
 .mech-boolean {
     color: #C7DCAE;
 }
@@ -491,7 +496,7 @@ code {
     font-size: 12pt;
     padding: 3px;
     margin: 0px;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .mech-inline-mech-code {
@@ -501,7 +506,7 @@ code {
     font-size: 12pt;
     padding: 3px;
     margin: 0px;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 
@@ -515,7 +520,7 @@ code {
 
 .mech-paragraph {
     color: #f2ead9;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 .mech-paragraph a {
@@ -885,7 +890,7 @@ ol {
 }
 
 li {
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 li p {
@@ -955,11 +960,11 @@ li p {
     width: 80%;
     background-color: #232A30; 
     border-left: 4px solid #F3B62D;; 
-    padding: 15px 20px;
+    padding: 13px 20px;
     color: #f2ead9; 
     font-style: italic; 
     margin: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .mech-block-quote blockquote {
@@ -1178,7 +1183,7 @@ mark {
     color: #F3B62D;
     font-family: 'FiraCodeRegular', monospace;
     flex-shrink: 0;
-    padding: 5px 10px 5px 10px;
+    padding: 3px 10px 3px 10px;
 }
 
 .mech-citation-link {
@@ -1211,15 +1216,71 @@ mark {
 .mech-float.left {
     float: left;
     margin-right: 20px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-float.right {
     float: right;
     margin-left: 20px;
-    margin-right: -75px;
+    margin-right: -73px;
 }
 
+.mech-matrix {
+    margin: 5px;
+}
+
+.mech-matrix td {
+    padding: 5px;
+}
+
+.mech-output-value {
+    padding-left: 10px;
+}
+
+.mech-matrix-outer{
+    width: fit-content;
+    position:relative;
+    border-left: 3px solid var(--bracket-color);
+    border-right: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:after{
+    content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    right:0;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:after {
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0; right:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+
+.mech-output-kind {
+    color: #ec8e8e;
+    font-weight: bold;
+    font-family: 'FiraCodeRegular', monospace;
+    margin-bottom: 10px;
+}
         </style>
     </head>
     <body>
@@ -1237,7 +1298,7 @@ mark {
         <span class="mech-assign-op">=</span>
         <span class="mech-expression"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"✨🐝"</span></span></span></span>
       </span></span></div><div class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="21266018636632563:0">out</span></span></div></div>
-        <pre id="22955144195394863:0" class="mech-block-output"></pre>
+        <div id="22955144195394863:0" class="mech-block-output"></div>
       </div><p class="mech-paragraph">This short example demonstrates several key features of the language:</p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">The syntax is concise, expressive and flexible, without the need for keywords and semicolons. In general, Mech programs should be much shorter than equivalent programs in other languages.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Logical indexing manipulates elements of vectors based on conditions, a declarative way to express iteration and choice, which lends to parallel execution.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Operations are broadcast elementwise across vectors without needing to write loops, which allows for more efficient execution and automatic vectorization resulting code.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Type inference is used to determine the types of variables and expressions, so you don't have to specify types explicitly.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Variable updates are expressed declaratively and without side effects, they can be scheduled to run in parallel.</p></li></ul><h3 id="53384671613233531" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53384671613233531">Why Mech?</a></h3><p class="mech-paragraph">As computer systems move into the 21st century, we are witnessesing an explosion of computational power and data availability. With the proliferation of multicore processors, GPUs, robots, sensors, and actuators, computer systems are not just becoming more interconnected, but they are also interacting with and respoding to the physical world in real-time. </p><p class="mech-paragraph">Languages of the past (like C, C++, and Python) were designed for a different era of computing, where the focus was on writing imperative code that ran from start to finish on a single core, on a single machine, with limited memory, and batch input and output. Today's machines are multi-core, multi-processor, with GPUs; a variety of asynchronous input devices like keyboards, touch, and pen; a variety of sensors ranging from cameras, to gyroscopes, to LIDAR; and a variety of actuators ranging from servos, to speakers, to displays, to robot arms and legs. </p><p class="mech-paragraph">These machines are not just running programs, they're interacting with the world in real time and continuously processing vast amounts of data. Traditionally, programming languages have handled this complexity by layering on libraries, frameworks, and middleware. This approach often results in adding significant incidental complexity to your project<a href="#9969322063809408" class="mech-footnote-reference">1</a>. </p><p class="mech-paragraph">Mech takes a different approach. Rather than bolting asynchronous behavior onto an imperative core, Mech is built around a reactive, declarative model where data and events are first-class. Relationships are expressed directly, so the flow of information is clear and automatic. This reduces the need for manual state management or explicit coordination between components, letting you describe what your system should do, not how to orchestrate it step by step.</p><h3 id="45499450649646037" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#45499450649646037">Is Mech for you?</a></h3><p class="mech-paragraph">Mech is for you if:</p><ul class="mech-unordered-list"><li data-bullet="📊" class="mech-list-item-emoji"><p class="mech-paragraph">You'd like to make an interactive visualization of your data and host it on the internet or in a native desktop application.</p></li><li data-bullet="🎮" class="mech-list-item-emoji"><p class="mech-paragraph">You're a game designer who wants to build a game that requires networking and real-time data processing for multiplayer interactions.</p></li><li data-bullet="🧑‍🎨" class="mech-list-item-emoji"><p class="mech-paragraph">You're an artist who is not a programmer, but would like to create interactive installations or generative art.</p></li><li data-bullet="🤖" class="mech-list-item-emoji"><p class="mech-paragraph">You're an engineer who want to build a device or robot that interacts with the real-world via embedded microcontrollers, sensors, and actuators.</p></li><li data-bullet="🧑‍🏫" class="mech-list-item-emoji"><p class="mech-paragraph">You're an educator who doesn't really program, but you'd like to use animations and visualizations to teach concepts in math, science, or art.</p></li><li data-bullet="🧑‍🔬" class="mech-list-item-emoji"><p class="mech-paragraph">You're a researcher and you want to build a simulation or model of a complex system, and you'd like to distribute it on the web, the desktop, or embed it inside of your journal paper.</p></li><li data-bullet="🧑‍💻" class="mech-list-item-emoji"><p class="mech-paragraph">You're a developer who wants to build GPU accelerated applications that work natively across windows, mac, linux, and the web.</p></li></ul></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="69644461241604292" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#69644461241604292">Programming Systems</a></h2><p class="mech-paragraph">Whereas traditional languages provide only syntax and a runtime, Mech comes with integrated tools for data transformation, distribution, monitoring, and optimization. As a result, you can focus on defining system behavior rather than managing infrastructure, enabling faster, more reliable development of complex, interconnected systems.</p><h3 id="1764927717723251" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#1764927717723251">Overview</a></h3><p class="mech-paragraph">The Mech programming system consists of four parts:</p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">A data description language</strong>, which allows you to define the structure of your data and how it can be transformed.</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">A reactive programming model</strong>, based on state machines, which allows authors to write systems that can take advantage of asynchrouns and parallel program execution. (WIP)</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">A distributed execution engine</strong>, which allows you to run Mech programs across multiple machines in a variety of environments, including CPUs, GPUs, embedded devices, and the web. (WIP)</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">A rich set of "machines"</strong>, libraries, tools, and data sources which provide a wide range of functionality, including data visualization, machine learning, simulation, and more. (WIP)</p></li></ol><h3 id="35971184409490380" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#35971184409490380">Tools</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech</code> - the Mech programming language toolchain, which includes:</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">a parser and compiler for the text-based Mech syntax</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">a runtime for executing Mech programs</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">a REPL (Read-Eval-Print Loop) for interactive programming</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">a formatter for formatting Mech code into canonical style or HTML documentation.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">a server for serving Mech programs to a wasm client</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">a Language Server Protocol (LSP) implementation</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech-wasm</code> - a wasm-based client for running Mech programs in the browser or other wasm environments.</p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech-notebook</code> - a notebook editor for Mech that runs natively on Windows, macOS, and Linux, and also supports running in the browser via <code class="mech-inline-code">mech-wasm</code>.</p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="2369943176982500" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2369943176982500">About this Documentation</a></h2><p class="mech-paragraph">This documentation is designed to help you get started with Mech, understand its core concepts, and provide guidance on how to use the language effectively. It is structured as follows:</p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">Getting Started</strong>: an introduction to Mech, how to install it, and how to build and run Mech programs. It also covers the Mech REPL (Read-Eval-Print Loop) for interactive programming.</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">Reference</strong>: a detailed reference for the Mech language, including its data model, programming model, system model, standard library, and Mechdown reference.</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">Guides</strong>: provides practical guides and tutorials for using Mech, including a quick introduction to the language, tutorials for specific use cases, and guides for developers coming from other programming languages.</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <strong class="mech-strong">Design Documents</strong>: information on the design principles behind Mech, including the language specification, design principles, syntax design notes, and the roadmap for future development, as well as the history of the language.</p></li></ol><p class="mech-paragraph"><strong class="mech-strong">Note</strong> - This documentation is written in Mechdown, a lightweight markup language that is compatible with Mech. This means that each document is a valid Mech program that can be executed.</p></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="29010308402598617" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29010308402598617">Getting Involved</a></h2><p class="mech-paragraph">The Mech community stays active at a few places around the Internet:</p><ul class="mech-unordered-list"><li data-bullet="👾" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://discord.gg/asqP25NNTH" class="mech-hyperlink">Discord</a> - for live chat</p></li><li data-bullet="🐙" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://github.com/mech-lang" class="mech-hyperlink">GitHub</a> - for code and issues</p></li><li data-bullet="📺" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://www.youtube.com/@MechLang" class="mech-hyperlink">YouTube</a> - for video tutorials</p></li><li data-bullet="🛸" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://www.reddit.com/r/mechlang/" class="mech-hyperlink">Reddit</a> - for help and general discussion</p></li><li data-bullet="📧" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://groups.google.com/g/mechtalk" class="mech-hyperlink">Mailing List</a> - for dev discussion</p></li></ul><div class="mech-footnote" id="9969322063809408">
         <div class="mech-footnote-id">1:</div>
         <p class="mech-paragraph">A well-known example is "callback hell," where the imperative model struggles to express relationships between data and events. As a result, developers are forced to chain callbacks, promises, and event handlers in convoluted ways, making the code harder to read, reason about, and maintain.</p>
