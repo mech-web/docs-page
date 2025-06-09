@@ -13,7 +13,8 @@
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --op-color: #82b89e;
+  --op-color: #73b997;
+  --bracket-color: rgb(177, 187, 196);
 }
 
 html {
@@ -22,6 +23,7 @@ html {
 
 .mech-program {
     counter-reset: h2;
+    counter-reset: equation;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -99,11 +101,11 @@ body {
 
 .mech-toc h2 {
     font-size: 12pt;
-    padding-left: 15px;
+    padding-left: 13px;
 }
 
 h2.toc::before {
-    padding-right: 5px;
+    padding-right: 3px;
 }
 
 .mech-toc h2 a {
@@ -122,7 +124,7 @@ h2.toc::before {
 
 h3.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h3 {
@@ -150,7 +152,7 @@ h3.toc::before {
 
 h4.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h4 {
@@ -258,7 +260,7 @@ h4.toc::before {
     letter-spacing: 2px;
     margin-bottom: 20px;
     margin-top: 50px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-program h3 a {
@@ -274,20 +276,6 @@ h4.toc::before {
     margin-bottom: 10px;
     letter-spacing: 1px;
     margin-left: -48px;
-}
-
-.mech-program h4 a {
-    color: #f2ead9;
-    text-decoration: none;
-}
-
-.mech-program h4 {
-    font-family: 'FiraCodeRegular', monospace;
-    color: #f2ead9;
-    font-size: 12pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .mech-program h4 a {
@@ -322,15 +310,18 @@ h4.toc {
 }
 
 .mech-code-block {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-code-block::-webkit-scrollbar {
@@ -424,6 +415,20 @@ h4.toc {
 
 
 .mech-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    line-height: 24px;
+}
+
+.mech-code .mech-comment {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mech-code .mech-comment p {
+    line-height: inherit;
 }
 
 .mech-statement {
@@ -442,7 +447,11 @@ h4.toc {
 }
 
 .mech-var-name {
-    color: #ddc0e6;
+    color: #eddaf1;
+}
+
+.mech-output-kind {
+    margin-bottom: 10px;
 }
 
 .mech-boolean {
@@ -459,9 +468,6 @@ h4.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
-}
-
-.mech-expression {
 }
 
 .mech-literal {
@@ -485,23 +491,39 @@ code {
 
 .mech-inline-code {
     background-color: #171D21;
-    border: 1px solid #444;
-    color: #ada594;
+    border: 1px solid #777;
+    color: #eddaf1;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-inline-mech-code-formatted .mech-code-block {
+    display: inline-flex;
+    vertical-align: middle;
+    background-color: #171D21;
+    border: 1px solid #777;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-inline-mech-code {
     background-color: #171D21;
-    color: #C7DCAE;
+    border: 1px solid #777;
+    color: #9ccdf4;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -510,12 +532,14 @@ code {
 }
 
 .mech-op-assign-op {
+    padding-left: 6px;
+    padding-right: 6px;
     color: var(--op-color);
 }
 
 .mech-paragraph {
     color: #f2ead9;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 .mech-paragraph a {
@@ -756,9 +780,21 @@ code {
 }
 
 .mech-comment {
-    color: #ef5f90;;
+    color: #ef5f90;
     font-style: italic;
     padding-top: 20px;
+    display: flex; /* align contents horizontally */
+    gap: 4px;
+}
+
+.mech-comment p {
+    margin: 0;
+    color: #ef5f90;
+    display: inline;
+}
+
+.mech-comment-sigil {
+    white-space: nowrap;
 }
 
 .mech-string {
@@ -867,7 +903,7 @@ ol {
     margin-top: 1em;
     color: #eadec2;
     font-size: 12pt;
-    text-align: left;;
+    text-align: left;
     line-height: 1.4;
     font-style: italic;
     display: flex;
@@ -885,7 +921,7 @@ ol {
 }
 
 li {
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 li p {
@@ -896,6 +932,25 @@ li p {
 
 .mech-table-header {
     color: #dbc3a5;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #888f92;
+}
+
+.mech-table-cell.left {
+    text-align: left;
+}
+
+.mech-table-cell.right {
+    text-align: right;
+}
+
+.mech-table-cell.center {
+    text-align: center;
+}
+
+.mech-table .mech-table-header-cell {
+    text-align: center;
 }
 
 .mech-table-rows {
@@ -905,11 +960,14 @@ li p {
 }
 
 .mech-table {
-    border-collapse: collapse;
     background-color: #2F353B;
     color: #f2ead9; 
     margin: auto;
     margin-bottom: 20px;
+    padding: 0px;
+    border-collapse: collapse;
+    border: 1px solid #888f92;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-table thead {
@@ -917,11 +975,7 @@ li p {
 }
 
 .mech-table .mech-table-header-cell {
-    color: #f2ead9; 
     padding: 10px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #333; 
 }
 
 .mech-table .mech-table-row-even {
@@ -933,9 +987,8 @@ li p {
 }
 
 .mech-table .mech-table-cell {
-    padding: 10px;
-    border-bottom: 1px solid #333; 
-    text-align: left;
+    padding: 20px 10px 20px 10px;
+    border-bottom: 1px solid #888f92; 
 }
 
 .mech-table tbody tr:hover {
@@ -955,11 +1008,11 @@ li p {
     width: 80%;
     background-color: #232A30; 
     border-left: 4px solid #F3B62D;; 
-    padding: 15px 20px;
+    padding: 13px 20px;
     color: #f2ead9; 
     font-style: italic; 
     margin: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .mech-block-quote blockquote {
@@ -995,6 +1048,7 @@ li p {
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     padding: 20px;
+    border: 1px solid #888f92;
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
     overflow-x: auto;
 }
@@ -1142,13 +1196,25 @@ h4:hover a {
 }
 
 .mech-equation {
+    counter-increment: equation;
     text-align: center;
-    color: #f2ead9;
+    color: #efd5cd;
+}
+
+.mech-equation::after {
+    content: "Eq. " counter(equation); 
+    font-style: italic;
+    float: right;
+    color: #F8D07A;
+    font-size: 10pt;
+    line-height: 1.4;
+    font-style: italic;
+    gap: 0.5em;
 }
 
 .mech-inline-equation {
     font-size: 10pt;
-    color: #efe4cd;
+    color: #efd5cd;
 }
 
 mark {
@@ -1178,7 +1244,7 @@ mark {
     color: #F3B62D;
     font-family: 'FiraCodeRegular', monospace;
     flex-shrink: 0;
-    padding: 5px 10px 5px 10px;
+    padding: 3px 10px 3px 10px;
 }
 
 .mech-citation-link {
@@ -1211,19 +1277,82 @@ mark {
 .mech-float.left {
     float: left;
     margin-right: 20px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-float.right {
     float: right;
     margin-left: 20px;
-    margin-right: -75px;
+    margin-right: -73px;
 }
 
+.mech-output-value .mech-matrix {
+    margin: 5px;
+}
+
+.mech-output-value .mech-matrix td {
+    max-width: 150px;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+}
+
+.mech-output-value {
+    padding-left: 10px;
+}
+
+.mech-matrix-outer{
+    width: fit-content;
+    position:relative;
+    border-left: 3px solid var(--bracket-color);
+    border-right: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:after{
+    content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    right:0;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:after {
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0; right:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+
+.mech-output-kind {
+    color: #ec8e8e;
+    font-weight: bold;
+    font-family: 'FiraCodeRegular', monospace;
+    margin-bottom: 10px;
+}
+
+.mech-table-cell .mech-paragraph {
+    margin: 0;
+    padding: 0;
+}
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Mech Project Roadmap</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="23342020852818338" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#55726320102457853">Project Status</a></h2><h3 id="63932003932013027" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#13188856647885974">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><h3 id="28377364658887902" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44722100086985535">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><h3 id="44360669736205348" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#20679967259619774">Stage 3 - Stable v1.0.0</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="63137504817992347" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#1417947788189848">Feature Status</a></h2><h3 id="64834215668258609" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53464187446028720">Data Specification</a></h3><h3 id="63447801636378869" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#40439562193912650">Program Specification</a></h3><h3 id="37741200390647986" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68626226521907898">System specification</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="33299953130760253" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#46899790960016638">Nearterm Goals</a></h2><h3 id="44839967140127388" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64581980196652879">Version 0.2.0</a></h3><h3 id="62895073410129723" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59662555458129564">Version 0.3.0 (Summer 2025)</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="55524200916205501" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29329577746558329">Project History</a></h2><h3 id="32504097193411926" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65710878523441719">Version 0.0.6 Alpha (unreleased)</a></h3><h3 id="5122830774169628" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30479083299780721">Version 0.1.0 (December 2022)</a></h3><h3 id="47316039102501307" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50492808446312206">Version 0.1.1 (Spring 2023)</a></h3></section></section></div><div class="mech-program"><h1 class="mech-program-title">Mech Project Roadmap</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="55726320102457853" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#55726320102457853">Project Status</a></h2><h3 id="13188856647885974" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#13188856647885974">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><p class="mech-paragraph">Conception: started 2014</p><p class="mech-paragraph">Implementation: started 2018</p><h3 id="44722100086985535" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#44722100086985535">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><p class="mech-paragraph">Started: December 2022</p><p class="mech-paragraph">Currently: v0.2.40 (Spring 2025)</p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">v0.2 (data specification)    (Wrapping Up)</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">v0.3 (program specification) (Starting in 2025)</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">v0.4 (system specification)</p></li></ul><h3 id="20679967259619774" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#20679967259619774">Stage 3 - Stable v1.0.0</a></h3><p class="mech-paragraph">Target release date: ???</p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="1417947788189848" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#1417947788189848">Feature Status</a></h2><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph">concept</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">proof of concept implementation</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">alpha implementation</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">beta implementation</p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph">feature complete</p></li><li data-bullet="🍗" class="mech-list-item-emoji"><p class="mech-paragraph">deprecated</p></li></ul><h3 id="53464187446028720" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53464187446028720">Data Specification</a></h3><ul class="mech-unordered-list"><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">imaginary and scientific numbers</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">typed tables for heterogeneous data</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">sets</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">maps</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">enums</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">strings</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">atoms</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">bools</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">matrix slicing</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">operator broadcasting</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">builtin linear algebra tools</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">logical indexing</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">matrix builder notation</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">variable type and size checking</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">variable type inference</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">standard library functions</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">multiple dynamic dispatch</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">value semantics</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">Mutable value semantics</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">data notation</p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph">variety of numerical datatypes</p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph">flexible matrix type with fixed and dynamic sizes for homogeneous data</p></li></ul><h3 id="40439562193912650" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#40439562193912650">Program Specification</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph">state machines</p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph">automatic differentiation</p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph">introspection</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">physical units with dimension checking</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">file/parameter server</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">self-contained binary executables</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">time travel debugging</p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph">language server</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">user defined functions</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">tests</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">profiler</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">gui</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">live coding</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">repl</p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph">literate programming</p></li></ul><h3 id="68626226521907898" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#68626226521907898">System specification</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph">gpgpu</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">capability permissions</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">distributed programs</p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph">concurrent programming</p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="46899790960016638" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#46899790960016638">Nearterm Goals</a></h2><h3 id="64581980196652879" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64581980196652879">Version 0.2.0</a></h3><p class="mech-paragraph">Current work is focused on reimplementing the core of the Mech language to reorient programs around state machines. Version 0.2 will be focused on dataspecification - entering data into the system, slicing, remixing, and reshaping it for use in program logic.</p><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Monorepo</p></li></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">New Literals</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Enums</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Atoms</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Specifying units</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Scientific notation</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Table redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Different kinds: Table, Matrix, Record, Set, Tuple</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Simplify indexing</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> HashTable/HashSet support</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Stdlib Redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Math</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Compare</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Logic</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Range</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Access</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Convert</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Parser Redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Mechdown</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Statements</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Expressions</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Structures</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Formatter</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Mechdown Redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Headers</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Paragraphs</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Code Block</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Ordered List</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Expression</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Var  </p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Range</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Slice</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Forumula</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Struct</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Literal</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Function call</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Statement</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> VarDefine</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> VarAssign</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Kind Define</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Enum Define</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Matrix</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Multiply</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Transpose</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Docs</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Language Spec</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Learn Mech in 15 Minutes</p></li></ul></ul><h3 id="59662555458129564" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59662555458129564">Version 0.3.0 (Summer 2025)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Dec64</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Currency</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Autograd syntax</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> History syntax</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Database redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> ACID</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Persistence</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Time travel debugging</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Capabilities</p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Distributed runtime redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Core syntax</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> CAP</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> QOS</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Inbox</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Capabilities</p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Machines revamp</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Packaging</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Reuse</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Composition</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Explicit importing</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Remapping</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Specifying versions  </p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Editor</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Start and stop cores</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Save and load programs</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Workspace explorer</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> API endpoint server</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Syntax highlighting</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Embed programs</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Display errors</p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Machines</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> json</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> sockets</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> serial</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> bluetooth</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> audio</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> maps</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> plot</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> gpgpu</p></li></ul></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">State machines</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Specification</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Definition</p></li></ul></ul><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Split </p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Flatten </p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Solve linear system</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> FSM Pipe</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Tutorials</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> How-Tos</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Mech for X</p></li></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Website</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Homepage</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Blog</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Docs</p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"> Try</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Function Redo</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> FXN Call</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> FXN Defintiion</p></li></ul></ul></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="29329577746558329" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29329577746558329">Project History</a></h2><h3 id="65710878523441719" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65710878523441719">Version 0.0.6 Alpha (unreleased)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Testing</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Machines </p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph">HTML</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Mouse</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Keyboard</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Canvas Drawing</p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> File I/O</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Standard Streams</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Strings</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Number Literals</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> HTTP</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Math</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Stats</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Random</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Time</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Set</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> System</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Input Arguments</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Exit</p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Mech Compiler</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Table</p></li></ul></ul><h3 id="30479083299780721" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30479083299780721">Version 0.1.0 (December 2022)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> User defined functions</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Errors</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Distribution</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Paralell operators</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Async blocks</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Units</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Type checking</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Multiple dispatch</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> JIT Block Compiler</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Native executables</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> REPL</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Machines</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Matrix</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> GUI</p></li></ul></ul><h3 id="50492808446312206" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50492808446312206">Version 0.1.1 (Spring 2023)</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Core</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Automatic differentiation</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Capability system</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> New parser</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Language Server</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Syntax Highlighter</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Autocomplete</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Goto Definition</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Goto Docs</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Hover inspector</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Workspace support</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Database watcher</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Editor</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Compile programs</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Database Explorer</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Docs</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Mech platform references</p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> User Guide</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Ecosystem</p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"> Architecture</p></li></ul></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Machines</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">More gui</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">ai</p></li></ul></ul></section></div></div>
+      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Mech Project Roadmap</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="23342020852818338" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#55726320102457853">Project Status</a></h2><h3 id="63932003932013027" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#13188856647885974">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><h3 id="28377364658887902" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44722100086985535">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><h3 id="44360669736205348" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#20679967259619774">Stage 3 - Stable v1.0.0</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="63137504817992347" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#1417947788189848">Feature Status</a></h2><h3 id="64834215668258609" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53464187446028720">Data Specification</a></h3><h3 id="63447801636378869" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#40439562193912650">Program Specification</a></h3><h3 id="37741200390647986" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68626226521907898">System specification</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="33299953130760253" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#46899790960016638">Nearterm Goals</a></h2><h3 id="44839967140127388" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64581980196652879">Version 0.2.0</a></h3><h3 id="62895073410129723" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59662555458129564">Version 0.3.0 (Summer 2025)</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="55524200916205501" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29329577746558329">Project History</a></h2><h3 id="32504097193411926" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65710878523441719">Version 0.0.6 Alpha (unreleased)</a></h3><h3 id="5122830774169628" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30479083299780721">Version 0.1.0 (December 2022)</a></h3><h3 id="47316039102501307" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50492808446312206">Version 0.1.1 (Spring 2023)</a></h3></section></section></div><div class="mech-program"><h1 class="mech-program-title">Mech Project Roadmap</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="55726320102457853" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#55726320102457853">Project Status</a></h2><h3 id="13188856647885974" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#13188856647885974">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><p class="mech-paragraph"><span class="mech-text">Conception: started 2014</span></p><p class="mech-paragraph"><span class="mech-text">Implementation: started 2018</span></p><h3 id="44722100086985535" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#44722100086985535">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><p class="mech-paragraph"><span class="mech-text">Started: December 2022</span></p><p class="mech-paragraph"><span class="mech-text">Currently: v0.2.40 (Spring 2025)</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">v0.2 (data specification)    (Wrapping Up)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">v0.3 (program specification) (Starting in 2025)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">v0.4 (system specification)</span></p></li></ul><h3 id="20679967259619774" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#20679967259619774">Stage 3 - Stable v1.0.0</a></h3><p class="mech-paragraph"><span class="mech-text">Target release date: ???</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="1417947788189848" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#1417947788189848">Feature Status</a></h2><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concept</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">proof of concept implementation</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">alpha implementation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">beta implementation</span></p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">feature complete</span></p></li><li data-bullet="🍗" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">deprecated</span></p></li></ul><h3 id="53464187446028720" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53464187446028720">Data Specification</a></h3><ul class="mech-unordered-list"><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">imaginary and scientific numbers</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">typed tables for heterogeneous data</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">sets</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">maps</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">enums</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">strings</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">atoms</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">bools</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix slicing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">operator broadcasting</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">builtin linear algebra tools</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">logical indexing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix builder notation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variable type and size checking</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variable type inference</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">standard library functions</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">multiple dynamic dispatch</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">value semantics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Mutable value semantics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">data notation</span></p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variety of numerical datatypes</span></p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">flexible matrix type with fixed and dynamic sizes for homogeneous data</span></p></li></ul><h3 id="40439562193912650" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#40439562193912650">Program Specification</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">state machines</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">automatic differentiation</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">introspection</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">physical units with dimension checking</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">file/parameter server</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">self-contained binary executables</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">time travel debugging</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">language server</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">user defined functions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tests</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">profiler</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gui</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">live coding</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">repl</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">literate programming</span></p></li></ul><h3 id="68626226521907898" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#68626226521907898">System specification</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gpgpu</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">capability permissions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">distributed programs</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concurrent programming</span></p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="46899790960016638" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#46899790960016638">Nearterm Goals</a></h2><h3 id="64581980196652879" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64581980196652879">Version 0.2.0</a></h3><p class="mech-paragraph"><span class="mech-text">Current work is focused on reimplementing the core of the Mech language to reorient programs around state machines. Version 0.2 will be focused on dataspecification - entering data into the system, slicing, remixing, and reshaping it for use in program logic.</span></p><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Monorepo</span></p></li></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">New Literals</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Enums</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Atoms</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Specifying units</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Scientific notation</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Table redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Different kinds: Table, Matrix, Record, Set, Tuple</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Simplify indexing</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> HashTable/HashSet support</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Stdlib Redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Math</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Compare</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Logic</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Range</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Access</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Convert</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Parser Redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mechdown</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Statements</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Expressions</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Structures</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Formatter</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mechdown Redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Headers</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Paragraphs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Code Block</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Ordered List</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Expression</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Var  </span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Range</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Slice</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Forumula</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Struct</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Literal</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Function call</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Statement</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> VarDefine</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> VarAssign</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Kind Define</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Enum Define</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Matrix</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Multiply</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Transpose</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Docs</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Language Spec</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Learn Mech in 15 Minutes</span></p></li></ul></ul><h3 id="59662555458129564" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59662555458129564">Version 0.3.0 (Summer 2025)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Dec64</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Currency</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Autograd syntax</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> History syntax</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Database redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> ACID</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Persistence</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Time travel debugging</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Capabilities</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Distributed runtime redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Core syntax</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> CAP</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> QOS</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Inbox</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Capabilities</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Machines revamp</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Packaging</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Reuse</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Composition</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Explicit importing</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Remapping</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Specifying versions  </span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Editor</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Start and stop cores</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Save and load programs</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Workspace explorer</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> API endpoint server</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Syntax highlighting</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Embed programs</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Display errors</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Machines</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> json</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> sockets</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> serial</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> bluetooth</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> audio</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> maps</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> plot</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> gpgpu</span></p></li></ul></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">State machines</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Specification</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Definition</span></p></li></ul></ul><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Split </span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Flatten </span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Solve linear system</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> FSM Pipe</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Tutorials</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> How-Tos</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Mech for X</span></p></li></ul><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Website</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Homepage</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Blog</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Docs</span></p></li><li class="mech-check-list-item"><input type="checkbox" ><p class="mech-paragraph"><span class="mech-text"> Try</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Function Redo</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> FXN Call</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> FXN Defintiion</span></p></li></ul></ul></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="29329577746558329" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29329577746558329">Project History</a></h2><h3 id="65710878523441719" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65710878523441719">Version 0.0.6 Alpha (unreleased)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Testing</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines </span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text">HTML</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mouse</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Keyboard</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Canvas Drawing</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> File I/O</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Standard Streams</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Strings</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Number Literals</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> HTTP</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Math</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Stats</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Random</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Time</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Set</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> System</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Input Arguments</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Exit</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mech Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Table</span></p></li></ul></ul><h3 id="30479083299780721" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30479083299780721">Version 0.1.0 (December 2022)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User defined functions</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Errors</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Distribution</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Paralell operators</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Async blocks</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Units</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Type checking</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Multiple dispatch</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> JIT Block Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Native executables</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> REPL</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Matrix</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> GUI</span></p></li></ul></ul><h3 id="50492808446312206" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50492808446312206">Version 0.1.1 (Spring 2023)</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Core</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Automatic differentiation</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Capability system</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> New parser</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Language Server</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Syntax Highlighter</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Autocomplete</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Definition</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Docs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Hover inspector</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Workspace support</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database watcher</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Editor</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Compile programs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database Explorer</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Docs</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech platform references</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User Guide</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Ecosystem</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Architecture</span></p></li></ul></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Machines</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">More gui</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">ai</span></p></li></ul></ul></section></div></div>
       <div id = "mech-output"></div>
     </div>
     <script>
@@ -1509,7 +1638,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `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`;
+        var code = `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`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
@@ -1520,10 +1649,14 @@ window.addEventListener("scroll", () => {
               var src = xhr.responseText;
               wasm_core.run_program(src);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             } else {
-              console.error("Defaulting to included code");
+              console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             }
           }
         };

@@ -13,7 +13,8 @@
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --op-color: #82b89e;
+  --op-color: #73b997;
+  --bracket-color: rgb(177, 187, 196);
 }
 
 html {
@@ -22,6 +23,7 @@ html {
 
 .mech-program {
     counter-reset: h2;
+    counter-reset: equation;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -99,11 +101,11 @@ body {
 
 .mech-toc h2 {
     font-size: 12pt;
-    padding-left: 15px;
+    padding-left: 13px;
 }
 
 h2.toc::before {
-    padding-right: 5px;
+    padding-right: 3px;
 }
 
 .mech-toc h2 a {
@@ -122,7 +124,7 @@ h2.toc::before {
 
 h3.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h3 {
@@ -150,7 +152,7 @@ h3.toc::before {
 
 h4.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h4 {
@@ -258,7 +260,7 @@ h4.toc::before {
     letter-spacing: 2px;
     margin-bottom: 20px;
     margin-top: 50px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-program h3 a {
@@ -274,20 +276,6 @@ h4.toc::before {
     margin-bottom: 10px;
     letter-spacing: 1px;
     margin-left: -48px;
-}
-
-.mech-program h4 a {
-    color: #f2ead9;
-    text-decoration: none;
-}
-
-.mech-program h4 {
-    font-family: 'FiraCodeRegular', monospace;
-    color: #f2ead9;
-    font-size: 12pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .mech-program h4 a {
@@ -322,15 +310,18 @@ h4.toc {
 }
 
 .mech-code-block {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-code-block::-webkit-scrollbar {
@@ -424,6 +415,20 @@ h4.toc {
 
 
 .mech-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    line-height: 24px;
+}
+
+.mech-code .mech-comment {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mech-code .mech-comment p {
+    line-height: inherit;
 }
 
 .mech-statement {
@@ -442,7 +447,11 @@ h4.toc {
 }
 
 .mech-var-name {
-    color: #ddc0e6;
+    color: #eddaf1;
+}
+
+.mech-output-kind {
+    margin-bottom: 10px;
 }
 
 .mech-boolean {
@@ -459,9 +468,6 @@ h4.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
-}
-
-.mech-expression {
 }
 
 .mech-literal {
@@ -485,23 +491,39 @@ code {
 
 .mech-inline-code {
     background-color: #171D21;
-    border: 1px solid #444;
-    color: #ada594;
+    border: 1px solid #777;
+    color: #eddaf1;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-inline-mech-code-formatted .mech-code-block {
+    display: inline-flex;
+    vertical-align: middle;
+    background-color: #171D21;
+    border: 1px solid #777;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-inline-mech-code {
     background-color: #171D21;
-    color: #C7DCAE;
+    border: 1px solid #777;
+    color: #9ccdf4;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -510,12 +532,14 @@ code {
 }
 
 .mech-op-assign-op {
+    padding-left: 6px;
+    padding-right: 6px;
     color: var(--op-color);
 }
 
 .mech-paragraph {
     color: #f2ead9;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 .mech-paragraph a {
@@ -756,9 +780,21 @@ code {
 }
 
 .mech-comment {
-    color: #ef5f90;;
+    color: #ef5f90;
     font-style: italic;
     padding-top: 20px;
+    display: flex; /* align contents horizontally */
+    gap: 4px;
+}
+
+.mech-comment p {
+    margin: 0;
+    color: #ef5f90;
+    display: inline;
+}
+
+.mech-comment-sigil {
+    white-space: nowrap;
 }
 
 .mech-string {
@@ -867,7 +903,7 @@ ol {
     margin-top: 1em;
     color: #eadec2;
     font-size: 12pt;
-    text-align: left;;
+    text-align: left;
     line-height: 1.4;
     font-style: italic;
     display: flex;
@@ -885,7 +921,7 @@ ol {
 }
 
 li {
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 li p {
@@ -896,6 +932,25 @@ li p {
 
 .mech-table-header {
     color: #dbc3a5;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #888f92;
+}
+
+.mech-table-cell.left {
+    text-align: left;
+}
+
+.mech-table-cell.right {
+    text-align: right;
+}
+
+.mech-table-cell.center {
+    text-align: center;
+}
+
+.mech-table .mech-table-header-cell {
+    text-align: center;
 }
 
 .mech-table-rows {
@@ -905,11 +960,14 @@ li p {
 }
 
 .mech-table {
-    border-collapse: collapse;
     background-color: #2F353B;
     color: #f2ead9; 
     margin: auto;
     margin-bottom: 20px;
+    padding: 0px;
+    border-collapse: collapse;
+    border: 1px solid #888f92;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-table thead {
@@ -917,11 +975,7 @@ li p {
 }
 
 .mech-table .mech-table-header-cell {
-    color: #f2ead9; 
     padding: 10px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #333; 
 }
 
 .mech-table .mech-table-row-even {
@@ -933,9 +987,8 @@ li p {
 }
 
 .mech-table .mech-table-cell {
-    padding: 10px;
-    border-bottom: 1px solid #333; 
-    text-align: left;
+    padding: 20px 10px 20px 10px;
+    border-bottom: 1px solid #888f92; 
 }
 
 .mech-table tbody tr:hover {
@@ -955,11 +1008,11 @@ li p {
     width: 80%;
     background-color: #232A30; 
     border-left: 4px solid #F3B62D;; 
-    padding: 15px 20px;
+    padding: 13px 20px;
     color: #f2ead9; 
     font-style: italic; 
     margin: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .mech-block-quote blockquote {
@@ -995,6 +1048,7 @@ li p {
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     padding: 20px;
+    border: 1px solid #888f92;
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
     overflow-x: auto;
 }
@@ -1142,13 +1196,25 @@ h4:hover a {
 }
 
 .mech-equation {
+    counter-increment: equation;
     text-align: center;
-    color: #f2ead9;
+    color: #efd5cd;
+}
+
+.mech-equation::after {
+    content: "Eq. " counter(equation); 
+    font-style: italic;
+    float: right;
+    color: #F8D07A;
+    font-size: 10pt;
+    line-height: 1.4;
+    font-style: italic;
+    gap: 0.5em;
 }
 
 .mech-inline-equation {
     font-size: 10pt;
-    color: #efe4cd;
+    color: #efd5cd;
 }
 
 mark {
@@ -1178,7 +1244,7 @@ mark {
     color: #F3B62D;
     font-family: 'FiraCodeRegular', monospace;
     flex-shrink: 0;
-    padding: 5px 10px 5px 10px;
+    padding: 3px 10px 3px 10px;
 }
 
 .mech-citation-link {
@@ -1211,37 +1277,100 @@ mark {
 .mech-float.left {
     float: left;
     margin-right: 20px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-float.right {
     float: right;
     margin-left: 20px;
-    margin-right: -75px;
+    margin-right: -73px;
 }
 
+.mech-output-value .mech-matrix {
+    margin: 5px;
+}
+
+.mech-output-value .mech-matrix td {
+    max-width: 150px;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+}
+
+.mech-output-value {
+    padding-left: 10px;
+}
+
+.mech-matrix-outer{
+    width: fit-content;
+    position:relative;
+    border-left: 3px solid var(--bracket-color);
+    border-right: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:after{
+    content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    right:0;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:after {
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0; right:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+
+.mech-output-kind {
+    color: #ec8e8e;
+    font-weight: bold;
+    font-family: 'FiraCodeRegular', monospace;
+    margin-bottom: 10px;
+}
+
+.mech-table-cell .mech-paragraph {
+    margin: 0;
+    padding: 0;
+}
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Using the Mech REPL</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="48576315069692778" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4016604308879711">Starting the REPL</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="25583487790708595" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39989981217595373">Commands</a></h2><h3 id="50909675261749279" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5108139711275160">:help (:h)</a></h3><h3 id="31891450278014698" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53448773141888059">:quit (:q)</a></h3><h3 id="71799209120238657" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2322566134256070">:symbols (:s)</a></h3><h3 id="30844315760083935" section="2.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65712214521139996">:plan (:p)</a></h3><h3 id="59223110050670042" section="2.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#37329989915126529">:whos (:w)</a></h3><h3 id="948288980848529" section="2.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#8942451595429135">:clc (:c)</a></h3><h3 id="70997789559297705" section="2.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#54864169704492494">:clear</a></h3><h3 id="867420218043841" section="2.8" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68768209684329077">:load</a></h3><h3 id="23378782530310054" section="2.9" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30651751686203022">:ls [PATH]</a></h3><h3 id="10462415761012285" section="2.10" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50885138022548148">:cd PATH</a></h3><h3 id="52596868522423958" section="2.11" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52163969273584785">:step [N]</a></h3></section></section></div><div class="mech-program"><h1 class="mech-program-title">Using the Mech REPL</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph">The Mech Read-Eval-Print Loop (REPL) provides an interactive environment for executing Mech commands, inspecting symbols, and debugging programs. Below are the available REPL commands.</p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="4016604308879711" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4016604308879711">Starting the REPL</a></h2><p class="mech-paragraph">To start the REPL, run:</p><pre class="mech-code-block">mech
-</pre><p class="mech-paragraph">You can load a script into the REPL by running with the <code class="mech-inline-code">--repl</code> option:</p><pre class="mech-code-block">mech --repl my_script.mec
-</pre><p class="mech-paragraph">Once inside, you can enter commands prefixed with <code class="mech-inline-code">:</code>, otherwise the REPL will interpret the input as a Mech expression and evaluate it, and print the result and the associated type.</p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="39989981217595373" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#39989981217595373">Commands</a></h2><h3 id="5108139711275160" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#5108139711275160">:help (:h)</a></h3><p class="mech-paragraph">Displays this help message with a list of available commands.</p><pre class="mech-code-block">:help
-</pre><h3 id="53448773141888059" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53448773141888059">:quit (:q)</a></h3><p class="mech-paragraph">Exits the REPL.</p><pre class="mech-code-block">:quit
-</pre><h3 id="2322566134256070" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2322566134256070">:symbols (:s)</a></h3><p class="mech-paragraph">Searches for symbols in the current session. You can provide an optional search pattern to filter results.</p><pre class="mech-code-block">:s
+      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Using the Mech REPL</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="48576315069692778" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4016604308879711">Starting the REPL</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="25583487790708595" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39989981217595373">Commands</a></h2><h3 id="50909675261749279" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5108139711275160">:help (:h)</a></h3><h3 id="31891450278014698" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53448773141888059">:quit (:q)</a></h3><h3 id="71799209120238657" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2322566134256070">:symbols (:s)</a></h3><h3 id="30844315760083935" section="2.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65712214521139996">:plan (:p)</a></h3><h3 id="59223110050670042" section="2.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#37329989915126529">:whos (:w)</a></h3><h3 id="948288980848529" section="2.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#8942451595429135">:clc (:c)</a></h3><h3 id="70997789559297705" section="2.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#54864169704492494">:clear</a></h3><h3 id="867420218043841" section="2.8" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68768209684329077">:load</a></h3><h3 id="23378782530310054" section="2.9" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30651751686203022">:ls [PATH]</a></h3><h3 id="10462415761012285" section="2.10" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50885138022548148">:cd PATH</a></h3><h3 id="52596868522423958" section="2.11" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52163969273584785">:step [N]</a></h3></section></section></div><div class="mech-program"><h1 class="mech-program-title">Using the Mech REPL</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">The Mech Read-Eval-Print Loop (REPL) provides an interactive environment for executing Mech commands, inspecting symbols, and debugging programs. Below are the available REPL commands.</span></p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="4016604308879711" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4016604308879711">Starting the REPL</a></h2><p class="mech-paragraph"><span class="mech-text">To start the REPL, run:</span></p><pre class="mech-code-block">mech
+</pre><p class="mech-paragraph"><span class="mech-text">You can load a script into the REPL by running with the </span><code class="mech-inline-code">--repl</code><span class="mech-text"> option:</span></p><pre class="mech-code-block">mech --repl my_script.mec
+</pre><p class="mech-paragraph"><span class="mech-text">Once inside, you can enter commands prefixed with </span><code class="mech-inline-code">:</code><span class="mech-text">, otherwise the REPL will interpret the input as a Mech expression and evaluate it, and print the result and the associated type.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="39989981217595373" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#39989981217595373">Commands</a></h2><h3 id="5108139711275160" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#5108139711275160">:help (:h)</a></h3><p class="mech-paragraph"><span class="mech-text">Displays this help message with a list of available commands.</span></p><pre class="mech-code-block">:help
+</pre><h3 id="53448773141888059" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53448773141888059">:quit (:q)</a></h3><p class="mech-paragraph"><span class="mech-text">Exits the REPL.</span></p><pre class="mech-code-block">:quit
+</pre><h3 id="2322566134256070" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2322566134256070">:symbols (:s)</a></h3><p class="mech-paragraph"><span class="mech-text">Searches for symbols in the current session. You can provide an optional search pattern to filter results.</span></p><pre class="mech-code-block">:s
 :s velocity
-</pre><h3 id="65712214521139996" section="2.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65712214521139996">:plan (:p)</a></h3><p class="mech-paragraph">Displays the execution plan.</p><pre class="mech-code-block">:plan
-</pre><h3 id="37329989915126529" section="2.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#37329989915126529">:whos (:w)</a></h3><p class="mech-paragraph">Searches the symbol directory. Optionally, provide a search pattern to filter results.</p><pre class="mech-code-block">:whos
+</pre><h3 id="65712214521139996" section="2.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65712214521139996">:plan (:p)</a></h3><p class="mech-paragraph"><span class="mech-text">Displays the execution plan.</span></p><pre class="mech-code-block">:plan
+</pre><h3 id="37329989915126529" section="2.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#37329989915126529">:whos (:w)</a></h3><p class="mech-paragraph"><span class="mech-text">Searches the symbol directory. Optionally, provide a search pattern to filter results.</span></p><pre class="mech-code-block">:whos
 :whos position
-</pre><h3 id="8942451595429135" section="2.6" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#8942451595429135">:clc (:c)</a></h3><p class="mech-paragraph">Clears the screen, resets the cursor position. </p><pre class="mech-code-block">:clc
-</pre><h3 id="54864169704492494" section="2.7" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#54864169704492494">:clear</a></h3><p class="mech-paragraph">Clears the interpreter state. If a target variable is provided, only that variable is cleared.</p><pre class="mech-code-block">:clear
+</pre><h3 id="8942451595429135" section="2.6" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#8942451595429135">:clc (:c)</a></h3><p class="mech-paragraph"><span class="mech-text">Clears the screen, resets the cursor position. </span></p><pre class="mech-code-block">:clc
+</pre><h3 id="54864169704492494" section="2.7" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#54864169704492494">:clear</a></h3><p class="mech-paragraph"><span class="mech-text">Clears the interpreter state. If a target variable is provided, only that variable is cleared.</span></p><pre class="mech-code-block">:clear
 :clear x
-</pre><h3 id="68768209684329077" section="2.8" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#68768209684329077">:load</a></h3><p class="mech-paragraph">Loads and executes the supplied a Mech file(s) into the session.</p><pre class="mech-code-block">:load my_script.mec
+</pre><h3 id="68768209684329077" section="2.8" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#68768209684329077">:load</a></h3><p class="mech-paragraph"><span class="mech-text">Loads and executes the supplied a Mech file(s) into the session.</span></p><pre class="mech-code-block">:load my_script.mec
 :load my_script.mec my_other_script.mec
 :load my_directory
-</pre><h3 id="30651751686203022" section="2.9" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30651751686203022">:ls [PATH]</a></h3><p class="mech-paragraph">Lists contents of working directory. Optionally, provide a target path.</p><pre class="mech-code-block">>: :ls
+</pre><h3 id="30651751686203022" section="2.9" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30651751686203022">:ls [PATH]</a></h3><p class="mech-paragraph"><span class="mech-text">Lists contents of working directory. Optionally, provide a target path.</span></p><pre class="mech-code-block">>: :ls
 >: :ls /my/directory
-</pre><h3 id="50885138022548148" section="2.10" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50885138022548148">:cd PATH</a></h3><p class="mech-paragraph">Changes the current working directory.</p><pre class="mech-code-block">>: :cd /my/directory
-</pre><h3 id="52163969273584785" section="2.11" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#52163969273584785">:step [N]</a></h3><p class="mech-paragraph">Iterates the execution plan by the specified number of steps. If N is not provided, defaults to 1 step.</p><pre class="mech-code-block">>: ~x := 10
+</pre><h3 id="50885138022548148" section="2.10" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50885138022548148">:cd PATH</a></h3><p class="mech-paragraph"><span class="mech-text">Changes the current working directory.</span></p><pre class="mech-code-block">>: :cd /my/directory
+</pre><h3 id="52163969273584785" section="2.11" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#52163969273584785">:step [N]</a></h3><p class="mech-paragraph"><span class="mech-text">Iterates the execution plan by the specified number of steps. If N is not provided, defaults to 1 step.</span></p><pre class="mech-code-block">>: ~x := 10
 >: x += 1
 >: :step 10
 >: x == 21  -- true
@@ -1531,7 +1660,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G2EIAIyUrppvP76b3SMlB6Uhofg0Eyt4p+ksE7XSrRMNZ/b7JaHw/9+rmgK/320hKhfpnTsz9rD/SztjYTGAFSyV1qKA9iGb2s9gOBlnUbcO03FHoT+ueq7Pt2Y3VgAggd4BAV3+23mz5V3WCuHLwgWXCHCZCvV+JdYn2ty/fJJVJrMb4a1kgWAlmqud2urFc98ljWMTiEQeutlJNujoBsI2Al0WxF7BPlHUQPsPoMuYA0ym7n/OhTWcDAQXsJzeeRaQ5P2d8vztw5MIQziDGH70XJ8YQIAgXQ4HsoDsGplH62pHFLJXX9xZwKH2KgU6oklcKMTvuUYFndRliBPOJUElXUSsUbUI/1CHP345Bx8svjMmJsRRCFWdi4iyOLsnJE2xLdAWrcLprSQkbU2CSPYnB3T5J1KZIA3y5mwPexyw6OiRyzU1EfhU+Al7CKDDNKUxCS9NSBuQwmYrOZj8u1qyoen+X9Ja2gi0RTVNBoXvPbw04IaILgO8t8FoiGoyIPwG2hDTJfQ1mA1xRECXY+6TYDJAuuV/tEa53CR1KGF4m6BpHLH3Cl4grcABAYwE5LTjdtNutJ++ttN2p91sD9EwnXGlgaNiJ3QykADCtqYHerMhQcZtC1vR64lFrZhfWaaVOLWSVipyx5TSnjIiXAyKSY7E2wWJqVCMHAzCQclFkIscQ+I+l/txlzzk7xGLCUWE4h+9h2f3tv6FlKCiE8C0HBvbxjbs0xeb2o5t2ptNq0HTowMQo+IADDRrC7xg2+owjMDH+GaOgx3jGM7pJ4c6jmM6sb0LtNxqBbEkwOjWw5e8Tiy5/EdjMLYfSmMCV3go3p/2aiZh6qom3Ad3Bs/ow8lMZIb43ZnoDDudic2Y4VJQS+opY1X8vQ2r0svG39S4XORzMFdGDE+PkEVYgiho8iVk2O0VvGIAPns2GcEu/FZ7q+7iNb907xGxdDIpBsjXeeozqJA9XCuuwdo5YqbCGfLYyz+TTdjGKRUUvK29i3cjh9BkoNSwMs4s2sRUgWCFQUDFV/OqjxUqwXr3YV8itgV5Jl+b9wa8gixqgQ8rGYzJEZwi7dNLih8XjHt8eo7PGebheY8FCYbIP4fLERJrMLTP+8VLuFxArGVccPGgyOOHvPT4pYSMqcH1KCTcGh/aPvajQ7Q7QOCkSZ7Xu+/grgexlArnujXzCE+psLDUeI/XTl/wCx3bN4t1T+qZZwg5bqnarSbkGpTSkJxCa+Sx/fRcJyEWCELKBIUrH/9K8Q3efMTEuOA/P3Mxxitl7bDP93I4EH76nm/MVa1wXigEQ7C71gf4Ag==`;
+        var code = `G2EIAIyUrppvP+bm75ESpErxaSZW8E7TWSZqxTx8s+tJQuH/v1c1BX6/20JULtI7d2bsYf+XdsbCYgArWCqtRQHtQza1n8FwMs6ibh02/I5CfzzK2yVyvnV6CAAB1AMyiOzf5Zut/FsuEb4snHCJAJep0NRXYtOizf23hqwymd0IbyULBCvRXO3U5q28/S5pHJtAJPJQcSfZoKMbCNsIdFkQewX7RFIA4T+AyHwOMJlu6XMuLOCgw7mA5fBlU0CS93eKk86HBvWAJ4I0XM/bJVkCGWQksoVAFpBdI/NoXe2IQvb9izsLONReVUFdFBhOJOL3XFOpuiYyNyGcS1Rl6h7S+lSLkA91SP3LC/hGsp63e6ODP5R1LiLK4uyekDTFtkBbtAqnt4IQNAUGNDgTnBXZn0hlgjTIm7M97HHAoqNH3tbUROBT4SfsIYAO05TGJLw0IW1ACput4Fzw72rJujf6fwkLYckxrAgCc9JSvtbqxb2iyBxkqlfqVQTmoKVetdcnMpju1Xv9SAaRLbtPgskA6Zb/0RrlcpPUoYTh7Yf+FaS5FLwgDwEBBDASkDOCR8yINHLaHlFHnBF9JKSG6YxzDRwlx2BMAwkgbGsmYSrrpmTcNrChXE8M1fD5uaEbgVMjaIQiFaaUznMjwsWgmORIvF2QmArFyMEgHJRcBLnIMSTuc7kfd4lDvIo0H+Uy5eRjvta0y90vcgoyOgFMyzGxaUzJPG2ZqumYurnZvxo0PToAMUrOwuyAtsALtq0uwCJ8jG/mWNgylmSdfrJUy7F0K3Z9gZZbrSCWBBjdqn2J68SSy3+0DMs3oTAmcIWH4v1pr2YN1q8K1K7Zm3jTO5xsipuy395UNrXTTd+mHk4FtaSeMlbF39swL71svKPG5STZhu000vD0iLwH+6CAwF5Cht0+xIcS4LPPkxHswp3aW3X3CuTNvUfE0smkGCBf56nPoEL2cC15DMcvSNMVzsiPveSzfAYXOKWclLe1r/CVeAitBUoNc+PMok2MFwhWGARUfDXPp1mhEqz3Bm4Y0s4hz+Rr896AV5BFLfBhJYOxfA9PSPu8JU4eCsY9fnrBLxrm4R2PBQmGyD+HyxESazC0z5eSb/C2i7TBFUpojcuPH5JU/UsKGZODwshN7RwZ2iVcUoboRIDASZM8r3dXoDKJtJAK59o5U4dGykMtNd6H46cWbqlju7jXzUs98wwhxy1Vu9WEXINSGpJT6Jg8thvNLgmxQBDiJiic+fhXkh3olJBGVyj5+ZnQZZJJa4d9vhfDgfDT93zLrmyGkEQiGILdtT7AFwA=`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
@@ -1542,10 +1671,14 @@ window.addEventListener("scroll", () => {
               var src = xhr.responseText;
               wasm_core.run_program(src);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             } else {
-              console.error("Defaulting to included code");
+              console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             }
           }
         };

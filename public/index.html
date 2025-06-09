@@ -13,7 +13,8 @@
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --op-color: #82b89e;
+  --op-color: #73b997;
+  --bracket-color: rgb(177, 187, 196);
 }
 
 html {
@@ -22,6 +23,7 @@ html {
 
 .mech-program {
     counter-reset: h2;
+    counter-reset: equation;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -99,11 +101,11 @@ body {
 
 .mech-toc h2 {
     font-size: 12pt;
-    padding-left: 15px;
+    padding-left: 13px;
 }
 
 h2.toc::before {
-    padding-right: 5px;
+    padding-right: 3px;
 }
 
 .mech-toc h2 a {
@@ -122,7 +124,7 @@ h2.toc::before {
 
 h3.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h3 {
@@ -150,7 +152,7 @@ h3.toc::before {
 
 h4.toc::before {
     font-size: 12pt;
-    padding-right: 5px;
+    padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h4 {
@@ -258,7 +260,7 @@ h4.toc::before {
     letter-spacing: 2px;
     margin-bottom: 20px;
     margin-top: 50px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-program h3 a {
@@ -274,20 +276,6 @@ h4.toc::before {
     margin-bottom: 10px;
     letter-spacing: 1px;
     margin-left: -48px;
-}
-
-.mech-program h4 a {
-    color: #f2ead9;
-    text-decoration: none;
-}
-
-.mech-program h4 {
-    font-family: 'FiraCodeRegular', monospace;
-    color: #f2ead9;
-    font-size: 12pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .mech-program h4 a {
@@ -322,15 +310,18 @@ h4.toc {
 }
 
 .mech-code-block {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-code-block::-webkit-scrollbar {
@@ -424,6 +415,20 @@ h4.toc {
 
 
 .mech-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    line-height: 24px;
+}
+
+.mech-code .mech-comment {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mech-code .mech-comment p {
+    line-height: inherit;
 }
 
 .mech-statement {
@@ -442,7 +447,11 @@ h4.toc {
 }
 
 .mech-var-name {
-    color: #ddc0e6;
+    color: #eddaf1;
+}
+
+.mech-output-kind {
+    margin-bottom: 10px;
 }
 
 .mech-boolean {
@@ -459,9 +468,6 @@ h4.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
-}
-
-.mech-expression {
 }
 
 .mech-literal {
@@ -485,23 +491,39 @@ code {
 
 .mech-inline-code {
     background-color: #171D21;
-    border: 1px solid #444;
-    color: #ada594;
+    border: 1px solid #777;
+    color: #eddaf1;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-inline-mech-code-formatted .mech-code-block {
+    display: inline-flex;
+    vertical-align: middle;
+    background-color: #171D21;
+    border: 1px solid #777;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 12pt;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-inline-mech-code {
     background-color: #171D21;
-    color: #C7DCAE;
+    border: 1px solid #777;
+    color: #9ccdf4;
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
-    padding: 3px;
-    margin: 0px;
-    border-radius: 5px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -510,12 +532,14 @@ code {
 }
 
 .mech-op-assign-op {
+    padding-left: 6px;
+    padding-right: 6px;
     color: var(--op-color);
 }
 
 .mech-paragraph {
     color: #f2ead9;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 .mech-paragraph a {
@@ -756,9 +780,21 @@ code {
 }
 
 .mech-comment {
-    color: #ef5f90;;
+    color: #ef5f90;
     font-style: italic;
     padding-top: 20px;
+    display: flex; /* align contents horizontally */
+    gap: 4px;
+}
+
+.mech-comment p {
+    margin: 0;
+    color: #ef5f90;
+    display: inline;
+}
+
+.mech-comment-sigil {
+    white-space: nowrap;
 }
 
 .mech-string {
@@ -867,7 +903,7 @@ ol {
     margin-top: 1em;
     color: #eadec2;
     font-size: 12pt;
-    text-align: left;;
+    text-align: left;
     line-height: 1.4;
     font-style: italic;
     display: flex;
@@ -885,7 +921,7 @@ ol {
 }
 
 li {
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 li p {
@@ -896,6 +932,25 @@ li p {
 
 .mech-table-header {
     color: #dbc3a5;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #888f92;
+}
+
+.mech-table-cell.left {
+    text-align: left;
+}
+
+.mech-table-cell.right {
+    text-align: right;
+}
+
+.mech-table-cell.center {
+    text-align: center;
+}
+
+.mech-table .mech-table-header-cell {
+    text-align: center;
 }
 
 .mech-table-rows {
@@ -905,11 +960,14 @@ li p {
 }
 
 .mech-table {
-    border-collapse: collapse;
     background-color: #2F353B;
     color: #f2ead9; 
     margin: auto;
     margin-bottom: 20px;
+    padding: 0px;
+    border-collapse: collapse;
+    border: 1px solid #888f92;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-table thead {
@@ -917,11 +975,7 @@ li p {
 }
 
 .mech-table .mech-table-header-cell {
-    color: #f2ead9; 
     padding: 10px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #333; 
 }
 
 .mech-table .mech-table-row-even {
@@ -933,9 +987,8 @@ li p {
 }
 
 .mech-table .mech-table-cell {
-    padding: 10px;
-    border-bottom: 1px solid #333; 
-    text-align: left;
+    padding: 20px 10px 20px 10px;
+    border-bottom: 1px solid #888f92; 
 }
 
 .mech-table tbody tr:hover {
@@ -955,11 +1008,11 @@ li p {
     width: 80%;
     background-color: #232A30; 
     border-left: 4px solid #F3B62D;; 
-    padding: 15px 20px;
+    padding: 13px 20px;
     color: #f2ead9; 
     font-style: italic; 
     margin: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .mech-block-quote blockquote {
@@ -995,6 +1048,7 @@ li p {
     font-family: 'FiraCodeLight', monospace;
     font-size: 12pt;
     padding: 20px;
+    border: 1px solid #888f92;
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
     overflow-x: auto;
 }
@@ -1142,13 +1196,25 @@ h4:hover a {
 }
 
 .mech-equation {
+    counter-increment: equation;
     text-align: center;
-    color: #f2ead9;
+    color: #efd5cd;
+}
+
+.mech-equation::after {
+    content: "Eq. " counter(equation); 
+    font-style: italic;
+    float: right;
+    color: #F8D07A;
+    font-size: 10pt;
+    line-height: 1.4;
+    font-style: italic;
+    gap: 0.5em;
 }
 
 .mech-inline-equation {
     font-size: 10pt;
-    color: #efe4cd;
+    color: #efd5cd;
 }
 
 mark {
@@ -1178,7 +1244,7 @@ mark {
     color: #F3B62D;
     font-family: 'FiraCodeRegular', monospace;
     flex-shrink: 0;
-    padding: 5px 10px 5px 10px;
+    padding: 3px 10px 3px 10px;
 }
 
 .mech-citation-link {
@@ -1211,19 +1277,82 @@ mark {
 .mech-float.left {
     float: left;
     margin-right: 20px;
-    margin-left: -75px;
+    margin-left: -73px;
 }
 
 .mech-float.right {
     float: right;
     margin-left: 20px;
-    margin-right: -75px;
+    margin-right: -73px;
 }
 
+.mech-output-value .mech-matrix {
+    margin: 5px;
+}
+
+.mech-output-value .mech-matrix td {
+    max-width: 150px;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+}
+
+.mech-output-value {
+    padding-left: 10px;
+}
+
+.mech-matrix-outer{
+    width: fit-content;
+    position:relative;
+    border-left: 3px solid var(--bracket-color);
+    border-right: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:after{
+    content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    right:0;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-outer:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    border-top: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:before{
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+.mech-matrix-inner:after {
+      content:'';
+    position:absolute;
+    height:3px;
+    width: 3px;
+    bottom:0; right:0;
+    border-bottom: 3px solid var(--bracket-color);
+}
+
+.mech-output-kind {
+    color: #ec8e8e;
+    font-weight: bold;
+    font-family: 'FiraCodeRegular', monospace;
+    margin-bottom: 10px;
+}
+
+.mech-table-cell .mech-paragraph {
+    margin: 0;
+    padding: 0;
+}
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="42328850253569083" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24134377951317609">Getting Started</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="35846171059878525" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2751233922357202">Language Reference</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="60575854389412536" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3765169886919721">Guides</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="68762142986189592" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#67329377393119676">Language Design Documents</a></h2></section></section></div><div class="mech-program"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="24134377951317609" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24134377951317609">Getting Started</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="I.getting-started/introduction.html" class="mech-hyperlink">Introduction</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="I.getting-started/install.html" class="mech-hyperlink">Installing Mech</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="I.getting-started/build-and-run.html" class="mech-hyperlink">Building and Running Mech Programs</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="I.getting-started/repl.html" class="mech-hyperlink">Mech REPL</a> </p></li></ol></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="2751233922357202" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2751233922357202">Language Reference</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> Data Model</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Variables and Values</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Data Structures</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Matrix - a ND array of values</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Map - a key-value store</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Set - a collection of unique values</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Tuple - an ordered collection of values</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Record - a collection of named values</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Table - a collection of Records</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Operators and Expressions</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Broadcasting</p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph">Indexing</p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"> Programming Model</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">State Machines</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Functions</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Machines</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Mech Programs</p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"> System Model</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Capabilities</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Distributed Computation</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Concurrency and Parallelism</p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"> Standard Library</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> Mechdown Reference</p></li></ol></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="3765169886919721" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#3765169886919721">Guides</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="III.guides/mech-in-fifteen-minutes.html" class="mech-hyperlink">Mech in Fifteen Minutes</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> Tutorials</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> Mech for X</p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph">Mech for Game Devs</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Mech for Web Devs</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Mech for ROS Devs</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Mech for Matlab Devs</p></li><li class="mech-ul-list-item"><p class="mech-paragraph">Mech for Python Devs</p></li></ul></ol></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="67329377393119676" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#67329377393119676">Language Design Documents</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="IV.design/specification.html" class="mech-hyperlink">Language Specification</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> Language Design Principles</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> Syntax Design Notes</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> History</p></li><li class="mech-ol-list-item"><p class="mech-paragraph"> <a href="IV.design/roadmap.html" class="mech-hyperlink">Roadmap</a></p></li></ol></section></div></div>
+      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="42328850253569083" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24134377951317609">Getting Started</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="35846171059878525" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2751233922357202">Language Reference</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="60575854389412536" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3765169886919721">Guides</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="68762142986189592" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#67329377393119676">Language Design Documents</a></h2></section></section></div><div class="mech-program"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="24134377951317609" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24134377951317609">Getting Started</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="I.getting-started/introduction.html" class="mech-hyperlink">Introduction</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="I.getting-started/install.html" class="mech-hyperlink">Installing Mech</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="I.getting-started/build-and-run.html" class="mech-hyperlink">Building and Running Mech Programs</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="I.getting-started/repl.html" class="mech-hyperlink">Mech REPL</a><span class="mech-text"> </span></p></li></ol></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="2751233922357202" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2751233922357202">Language Reference</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Data Model</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Variables and Values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Data Structures</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Matrix - a ND array of values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Map - a key-value store</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Set - a collection of unique values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Tuple - an ordered collection of values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Record - a collection of named values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Table - a collection of Records</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Operators and Expressions</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Broadcasting</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Indexing</span></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Programming Model</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">State Machines</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Functions</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Machines</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech Programs</span></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> System Model</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Capabilities</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Distributed Computation</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Concurrency and Parallelism</span></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Standard Library</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Mechdown Reference</span></p></li></ol></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="3765169886919721" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#3765169886919721">Guides</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="III.guides/mech-in-fifteen-minutes.html" class="mech-hyperlink">Mech in Fifteen Minutes</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Tutorials</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Mech for X</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech for Game Devs</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech for Web Devs</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech for ROS Devs</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech for Matlab Devs</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech for Python Devs</span></p></li></ul></ol></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="67329377393119676" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#67329377393119676">Language Design Documents</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="IV.design/specification.html" class="mech-hyperlink">Language Specification</a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Language Design Principles</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Syntax Design Notes</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> History</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="IV.design/roadmap.html" class="mech-hyperlink">Roadmap</a></p></li></ol></section></div></div>
       <div id = "mech-output"></div>
     </div>
     <script>
@@ -1509,7 +1638,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `Gx0HAJwD7s4GoY7x5tYZX/BymGvMY9gZrK0YMDEwA3W7f1f1Pci28WzPhUXhm/Zos3jg3z5JlzTXCH2sD1AGQE3Z595m72g9OXo+M6dBOpQjm3xK2qBLe6FVe6WpWIREqFI9Fo/TDDrEubsBNVna3Z7Gy/BGYHTuNZfc2tS47C7MvMOfBMhB9yP0C5+VkMICUdbY69Cpsv8T5U+QQaYrDLa/qAm27mP42liXAx0lC8uCC50Hl34hIrODAYOFmOFEz15SL9IQrwy1EaGRClIIFKExTtnRhMnCzPR9TckOIuLTSW6xm9doYb85xUgNuOM6sA7Ah0oiPDZvi04cnDIWYdyYQv/hfe2Xq9xFKRDtfyCHIim+ZD5ccSD2HgJ3WY1+TmK2k8uNgKDqo0PwJ6uNN0Bhp0kJF/N18lKIgHUwrupY6jyFVxIKI/iasHD7afyEuUvbr/8QfVVpt0AirftFwmSU16RMgpkUSv8QmY44woHXMYaLsgn7sxgm9DYBQ3llLVHkEm3uTb+GzBMbJ1bLtfJqJpFPfLBj4EsHRRAu9VIUkuxMC4rrxKHTIComXRD7HOaorK4ZD3m/RCbdBISJHQlQOXnKbgzI3sqzsUIhvHO5REmRBgEPrrVQVRkbt9ouRyZSjSqWGUxMX6xTe8rkhKJBI1LH/1KTNlJ9/ihJ51RMQeHZllemulhiYxNjmy502Oaax3wijOiwsUTfHJcvkgh6lmDW73ie4BlN6DL0Gpg/jYy83/mAjpG3exrpcf48NjZh+JMRVJOXp77GExys9o+42vOUB4GbhQVljxC62YQtTGoZO4zYQjDqXtNuT3pRYfp1pb5eh83Foy3ACNwReAiRcXIWb67Hl5Y/cfk1dEllEF6baunYL1/Vylj6RxJ++j/Tyj12qSF4RVbjVlwIUwPWuRUG//WtPwJdLjdnUyq9H08u2PZHlzdE5xHmx5bsysuSp6PTkjixYl+Ez6MUVeW+CiA92fhYW+3NxYWqjzBje3YJiYzWMTFV+76UqL7+v5WGdJFMwzqz/b7c+dX1wVJqpwnLGw+6NvbLb251kfw4oo7Y5EDXxqNuqSfjd3dnNMiLJ90tv7X9qIcR2Jk9NnSM71cCIp/Vh41Ez/a/BN2en93HiAA=`;
+        var code = `Gx0HAOSwzWII7ESgqqmI/nbP9VsRs8+9zd7RenL0fGZOg3QoRzb5lLRBl/ZCq/ZKU7EIiVCleiwepxl0iHN3A2qytLs9Da8yXyajee41l9za1LgMAFltRzxbQQ66H6FfaJrmVEGAopWghoCqtv+TKp5BIkGNgOEvalBHOyQ+lK3LlXSUVCwLLnSOTmwrIrM6Bcoooc7as5fUizTEK6lOXRCRClIIFNRDm1mDAWOMMB+vKdkZbMfTSW6xm9ecmM4ykFQD7rheYh0oHaGSYDn2ZVGTA1cJ44QbJvQffr75/pnr3AJBgWj/AznEbbzAfFjkJcXeg8NdVqOfE0MzPJcbK1hV/dEhiGfRxhugsFMrsVpgvq68FFzAOhhXdSx1bkNbUKEwVr4mLNy+He0e5q6n/fCXwXlVeZclOZBfX0uYjPKa5BCOrBTyfhns6Wg1eZRexxgucgpn/CwSvybnNgFDeWUtUbiEq3wv8/uyX082blst18qrmYRbuOs2BXzpoAjCpV4Kj/BUTRQU14lDp0HkFd48sffDHJXVNeMh7/vQJ0EBwsSIBMgv/F52QyF7K8/GAAas3rkchKAKqSPgwbUWgiToNpZquxyZSCEMuWUGhumLYQzblMkJRQQj1tT0vxTFqEv1+YYE6cyKKSg8K4m0dZHEwCbGGMacDttc85hPhBEdNpYwHjkOvtptQc8SzPrdej1ZL06bBCbiGphvJiHp7Z0P6Bh5O0mSepxvpSBlnOFPRlBNXp5SJOUJDvbpH3G1p2V4ELjJQ14ljxC6WZ7kjdcydhZbiWDUvabdzuv5EGQ+XKmv12GzsqEtlEZK05HSBiEy5iP5N67HC1D4icvfl/PuuBisTwVSMO2XF6FohP6RhJ/+L5Ki5dilB8crshq34vXkeiphyW+Fwf761r/JcLlcGcu+0s9vvyYrWOl3XX4ZnNcD5seqWA1elnx/nOe77UQNa0Xw/ihFVbmvAkhPGlojbLU3bWir+iPMWJu0g0dG65iYqrbeDkLow99vpSGtJNOwzqwdbvd4BzoPBqV2mrC8sUM6EfvlXejWueSvx/Y8uJMDXRu7pOv1ZLwHPUcb5MUe6Qm/td2HvhFYn/Q3EOP71Waw7+t9Azx6tseXoNvzvqWfVAA=`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
@@ -1520,10 +1649,14 @@ window.addEventListener("scroll", () => {
               var src = xhr.responseText;
               wasm_core.run_program(src);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             } else {
-              console.error("Defaulting to included code");
+              console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
+              wasm_core.render_inline_values();
+              wasm_core.render_codeblock_output_values();
             }
           }
         };
