@@ -6,7 +6,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
 
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <style>
@@ -21,21 +21,12 @@ html {
     scroll-behavior: auto;
 }
 
-.mech-program {
-    counter-reset: h2;
-    counter-reset: equation;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 700px;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #2F353B;
     margin: 0;
     padding: 0;
-    font-size: 12pt;
+    font-size: 1rem;
 }
 
 .mech-root {
@@ -44,27 +35,33 @@ body {
     flex-direction: row;
 }
 
-#mech-output {
+.mech-content {
+    min-width: 800px;
+    counter-reset: h2 equation;
+    flex: 2;
+}
+
+.mech-program {
     max-width: 700px;
-    min-width: 250px;
+    margin: auto;
+}
+
+#mech-output {
     background-color: #171D21;
     color: #f2ead9;
-    border-radius: 10px;
+    flex: 1;
 }
 
 .mech-toc {
     width: 250px;
-    min-width: 250px;
     counter-reset: h2;
     background-color: #171D21;
     color: #f2ead9;
     overflow-y: auto;
-    margin-right: 20px;
-    padding-right: 0px;
-    padding-left: 0px;
     position: sticky; 
     top: 0; 
     height: 100vh;
+    flex-shrink: 0;
 }
 
 .mech-toc h2 {
@@ -96,11 +93,11 @@ body {
 
 .mech-toc h1 {
     visibility: hidden;
-    font-size: 12pt;
+    font-size: 1rem;
 }
 
 .mech-toc h2 {
-    font-size: 12pt;
+    font-size: 1rem;
     padding-left: 13px;
 }
 
@@ -123,7 +120,7 @@ h2.toc::before {
 }
 
 h3.toc::before {
-    font-size: 12pt;
+    font-size: 1rem;
     padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
@@ -132,7 +129,7 @@ h3.toc::before {
 }
 
 .mech-toc h3 {
-    font-size: 12pt;
+    font-size: 1rem;
     padding-left: 30px;
 }
 
@@ -151,13 +148,13 @@ h3.toc::before {
 }
 
 h4.toc::before {
-    font-size: 12pt;
+    font-size: 1rem;
     padding-right: 3px;
     color: rgba(255, 255, 255, 0.55);
 }
 .mech-toc h4 {
     line-height: 23px;
-    font-size: 12pt;
+    font-size: 1rem;
     padding-left: 60px;
     margin: 10px;
 }
@@ -230,14 +227,14 @@ h4.toc::before {
     padding-right: 6px;
 }
 
-.mech-program .mech-program-title {
+.mech-program-title {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
     border-bottom: 4px dashed #d19710;
     color: #f2ead9;
     letter-spacing: 2px;
-    font-size: 22pt;
+    font-size: 1.83rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 16px;
@@ -255,7 +252,7 @@ h4.toc::before {
     padding-bottom: 10px;
     border-bottom: 3px dashed #d19710;
     color: #f2ead9;
-    font-size: 16pt;
+    font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -271,7 +268,7 @@ h4.toc::before {
 .mech-program h3 {
     font-family: 'FiraCodeRegular', monospace;
     color: #f2ead9;
-    font-size: 14pt;
+    font-size: 1.17rem;
     font-weight: bold;
     margin-bottom: 10px;
     letter-spacing: 1px;
@@ -286,7 +283,7 @@ h4.toc::before {
 .mech-program h4 {
     font-family: 'FiraCodeRegular', monospace;
     color: #f2ead9;
-    font-size: 12pt;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 10px;
     letter-spacing: 1px;
@@ -314,7 +311,7 @@ h4.toc {
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     line-height: 18px;
     padding: 20px;
     border-radius: 10px;
@@ -351,7 +348,7 @@ h4.toc {
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     line-height: 18px;
     border-radius: 0px;
     padding: 30px;
@@ -494,7 +491,7 @@ code {
     border: 1px solid #777;
     color: #eddaf1;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     padding: 0px 6px 0px 6px;
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
@@ -507,7 +504,7 @@ code {
     background-color: #171D21;
     border: 1px solid #777;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     padding: 0px 6px 0px 6px;
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
@@ -519,7 +516,7 @@ code {
     border: 1px solid #777;
     color: #9ccdf4;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     padding: 0px 6px 0px 6px;
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
@@ -867,7 +864,7 @@ ol {
 .mech-list-item-emoji::before {
     content: attr(data-bullet); 
     position: relative;         
-    font-size: 12pt;          
+    font-size: 1rem;          
     color: #ee6262;;    
     right: 30px;
     top: 13px;
@@ -886,7 +883,7 @@ ol {
 
 .mech-figure-label {
     color: #F3B62D; 
-    font-size: 12pt;
+    font-size: 1rem;
     min-width: 60px;
     text-align: right;
 }
@@ -902,7 +899,7 @@ ol {
 .mech-figure-caption {
     margin-top: 1em;
     color: #eadec2;
-    font-size: 12pt;
+    font-size: 1rem;
     text-align: left;
     line-height: 1.4;
     font-style: italic;
@@ -1046,7 +1043,7 @@ li p {
     background-color: #222A30; 
     color: #f2ead9;
     font-family: 'FiraCodeLight', monospace;
-    font-size: 12pt;
+    font-size: 1rem;
     padding: 20px;
     border: 1px solid #888f92;
     border-radius: 0px 0px 10px 10px; /* Only bottom corners rounded */
@@ -1349,10 +1346,72 @@ mark {
     margin: 0;
     padding: 0;
 }
+
+@media (max-width: 1650px) {
+    .mech-program-title {
+        width: 700px;
+        margin-left: 0px;
+    }
+    .mech-program h2 {
+        width: 700px;
+        margin-left: -10px;
+    }
+    .mech-program h3 {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #mech-output {
+        display: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .mech-toc {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .mech-content {
+        max-width: 100%;
+        min-width: 300px;
+        margin: 10px;
+    }
+
+    .mech-program {
+        max-width: 100%;
+        min-width: 0px;
+    }
+
+    .mech-program-title {
+        width: 100%;
+        margin-left: 0px;
+    }
+    .mech-program h2 {
+        width: 100%;
+        margin-left: 0px;
+    }
+    .mech-program h3 {
+        margin-left: 0px;
+    }
+    
+    .mech-program-section {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .mech-table {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+}
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Introduction</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="64078670799505921" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3374596106769832">Welcome to Mech!</a></h2><h3 id="51586788817194411" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#32998032678749059">An Example: FizzBuzz</a></h3><h3 id="62634259935713664" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53384671613233531">Why Mech?</a></h3><h3 id="63086781642390988" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#45499450649646037">Is Mech for you?</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="59657895532228604" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12977887469267540">Programming System</a></h2><h3 id="19291135710223451" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#1764927717723251">Overview</a></h3><h3 id="35141165474540695" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#35971184409490380">Tools</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="21285673769444525" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2369943176982500">About this Documentation</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="23386650446521708" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29010308402598617">Getting Involved</a></h2></section></section></div><div class="mech-program"><h1 class="mech-program-title">Introduction</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="3374596106769832" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#3374596106769832">Welcome to Mech!</a></h2><p class="mech-paragraph"><span class="mech-text">Hello and welcome to the documentation for Mech, a programming language and system for developing data-driven, reactive systems. Mech authors build programs by defining data dependencies, transformations, and state machines. This makes Mech particularly well-suited for applications that require real-time data processing, such as simulations, visualizations, and interactive systems.</span></p><h3 id="32998032678749059" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#32998032678749059">An Example: FizzBuzz</a></h3><p class="mech-paragraph"><span class="mech-text">Let's get right to it, here's some code:</span></p><div class="mech-fenced-mech-block">
+      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Introduction</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="64078670799505921" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3374596106769832">Welcome to Mech!</a></h2><h3 id="51586788817194411" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#32998032678749059">An Example: FizzBuzz</a></h3><h3 id="62634259935713664" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53384671613233531">Why Mech?</a></h3><h3 id="63086781642390988" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#45499450649646037">Is Mech for you?</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="59657895532228604" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12977887469267540">Programming System</a></h2><h3 id="19291135710223451" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#1764927717723251">Overview</a></h3><h3 id="35141165474540695" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#35971184409490380">Tools</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="21285673769444525" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2369943176982500">About this Documentation</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="23386650446521708" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29010308402598617">Getting Involved</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Introduction</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="3374596106769832" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#3374596106769832">Welcome to Mech!</a></h2><p class="mech-paragraph"><span class="mech-text">Hello and welcome to the documentation for Mech, a programming language and system for developing data-driven, reactive systems. Mech authors build programs by defining data dependencies, transformations, and state machines. This makes Mech particularly well-suited for applications that require real-time data processing, such as simulations, visualizations, and interactive systems.</span></p><h3 id="32998032678749059" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#32998032678749059">An Example: FizzBuzz</a></h3><p class="mech-paragraph"><span class="mech-text">Let's get right to it, here's some code:</span></p><div class="mech-fenced-mech-block">
         <div class="mech-code-block"><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-range-expression"><span class="mech-range-start"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span><span class="mech-range-operator">..</span><span class="mech-range-terminal"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span></span></span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="21266018636632563:0">out</span><span class="mech-kind-annotation"><<span class="mech-kind">[<span class="mech-kind">string</span>]</span>></span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span></span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="15003672544428797:0">ix2</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-parenthetical">(<span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span></span></span><span class="mech-formula-operator">%</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span></span>)</span></span><span class="mech-formula-operator">⩵</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span></span></span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="46037382612136349:0">ix3</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-parenthetical">(<span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span></span></span><span class="mech-formula-operator">%</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></span></span>)</span></span><span class="mech-formula-operator">⩵</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span></span></span></span></span></div><div class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
         <span class="mech-target"><span class="mech-slice-ref"><span id="21266018636632563:0" class="mech-var-name mech-clickable">out</span><span class="mech-subscript"><span class="mech-bracket">[<span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="15003672544428797:0">ix2</span></span></span>]</span></span></span></span>
         <span class="mech-assign-op">=</span>
@@ -1370,7 +1429,7 @@ mark {
       </div><p class="mech-paragraph"><span class="mech-text">This short example demonstrates several key features of the language:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The syntax is concise, expressive and flexible, without the need for keywords and semicolons. In general, Mech programs should be much shorter than equivalent programs in other languages.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Logical indexing manipulates elements of vectors based on conditions, a declarative way to express iteration and choice, which lends to parallel execution.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Operations are broadcast elementwise across vectors without needing to write loops, which allows for more efficient execution and automatic vectorization resulting code.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Type inference is used to determine the types of variables and expressions, so you don't have to specify types explicitly.</span></p></li></ul><h3 id="53384671613233531" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53384671613233531">Why Mech?</a></h3><blockquote class="mech-block-quote"><p class="mech-paragraph"><span class="mech-text">"To invent the future, instead of innovating out from the present, what you want to do is invent the future </span><strong class="mech-strong">from</strong><span class="mech-text"> the future, and bring it back." - Alan Kay</span></p></blockquote><p class="mech-paragraph"><span class="mech-text">The world of computing has changed dramatically in the last few decades. We have moved from simple, single-core machines to complex, heterogeneous systems that can process vast amounts of data in real-time. These systems are no longer just about executing instructions sequentially, but about managing and processing data from a variety of sources, often in parallel and asynchronously and in large quantities. Not only that, but they are also expected to be interactive, responsive, and even move and manipulate the physical world.</span></p><p class="mech-paragraph"><span class="mech-text">Despite the evolution of hardware and the increasing complexity of applications, our programming languages have largely remained rooted in the past. Languages that are popular today, like Python, Java, and C++, languages were shaped around these assumptions: linear control flow, centralized memory, and a deterministic, step-by-step execution model. These abstractions, while effective for their time, struggle to cleanly model the kinds of computation we expect from heterogeneous, distributed, and interactive systems of the future.</span></p><p class="mech-paragraph"><span class="mech-text">Yet our programming models remain predominantly rooted in sequential imperative thinking. Traditionally, programming languages have tried to work around this limitation by layering on libraries, frameworks, and middleware. This approach often results in significant </span><em class="mech-em">incidental complexity</em><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">, because it doesn't address the impedence mismatch between the data-driven nature of modern applications and the imperative programming model that most languages use. This mismatch usually manifests as extra marshalling data between different representations, managing state and side effects, and dealing with concurrency and parallelism through managed locks and queues, all of which make reasoning about concurrent, distrubted systems difficult and error-prone.</span></p><p class="mech-paragraph"><span class="mech-text">This is where Mech comes in. Mech is designed to be a programming language that embraces the complexity of modern systems, rather than trying to work around or paper over it. It provides a data-driven, reactive programming model that allows you to define how your system should behave in response to changes in data or user input. This makes it easy to build interactive applications that can process and respond to real-time data.</span></p><p class="mech-paragraph"><span class="mech-text">How does Mech do this? That's what this documentation is about. </span></p><h3 id="45499450649646037" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#45499450649646037">Is Mech for you?</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is for you if:</span></p><ul class="mech-unordered-list"><li data-bullet="📊" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You'd like to make an interactive visualization of your data and host it on the internet or in a native desktop application.</span></p></li><li data-bullet="🎮" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're a game designer who wants to build a game that requires networking and real-time data processing for multiplayer interactions.</span></p></li><li data-bullet="🧑‍🎨" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're an artist who is not a programmer, but would like to create interactive installations or generative art.</span></p></li><li data-bullet="🤖" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're an engineer who wants to build a device or robot that interacts with the real-world via embedded microcontrollers, sensors, and actuators.</span></p></li><li data-bullet="🧑‍🏫" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're an educator who'd like to use animations and visualizations to teach concepts in math, science, or art.</span></p></li><li data-bullet="🧑‍🔬" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're a researcher and you want to build a simulation or model of a complex system, and you'd like to distribute it on the web, the desktop, or embed it inside of your journal paper.</span></p></li><li data-bullet="🧑‍💻" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're a developer who wants to build GPU accelerated applications that work natively across windows, mac, linux, and the web.</span></p></li><li data-bullet="🕴️" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're a business owner who wants to go beyond spreadsheets for your business management system, to something that can scale to automate business processes as well.</span></p></li><li data-bullet="🧙" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">You're a programming language enthusiast who wants to get involved in a project that is researching new directions in language design and tooling.</span></p></li></ul></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="12977887469267540" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#12977887469267540">Programming System</a></h2><p class="mech-paragraph"><span class="mech-text">Whereas traditional languages provide only syntax and a runtime, Mech comes with integrated tools for data transformation, distribution, monitoring, and optimization. As a result, you can focus on defining system behavior rather than managing infrastructure, enabling faster, more reliable development of complex, interconnected systems.</span></p><h3 id="1764927717723251" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#1764927717723251">Overview</a></h3><p class="mech-paragraph"><span class="mech-text">The Mech programming system consists of four parts:</span></p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">A data description language</strong><span class="mech-text">, which allows you to define the structure of your data and how it can be transformed.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">A reactive programming model</strong><span class="mech-text">, based on state machines, which allows authors to write systems that can take advantage of asynchrouns and parallel program execution. (WIP)</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">A distributed execution engine</strong><span class="mech-text">, which allows you to run Mech programs across multiple machines in a variety of environments, including CPUs, GPUs, embedded devices, and the web. (WIP)</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">A rich set of "machines"</strong><span class="mech-text">, libraries, tools, and data sources which provide a wide range of functionality, including data visualization, machine learning, simulation, and more. (WIP)</span></p></li></ol><h3 id="35971184409490380" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#35971184409490380">Tools</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech</code><span class="mech-text"> - the Mech programming language toolchain, which includes:</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a parser and compiler for the text-based Mech syntax</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a runtime for executing Mech programs</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a REPL (Read-Eval-Print Loop) for interactive programming</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a formatter for formatting Mech code into canonical style or HTML documentation.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a server for serving Mech programs to a wasm client</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">a Language Server Protocol (LSP) implementation</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech-wasm</code><span class="mech-text"> - a wasm-based client for running Mech programs in the browser or other wasm environments.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">mech-notebook</code><span class="mech-text"> - a notebook editor for Mech that runs natively on Windows, macOS, and Linux, and also supports running in the browser via </span><code class="mech-inline-code">mech-wasm</code><span class="mech-text">.</span></p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="2369943176982500" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2369943176982500">About this Documentation</a></h2><p class="mech-paragraph"><span class="mech-text">This documentation is designed to help you get started with Mech, understand its core concepts, and provide guidance on how to use the language effectively. It is structured as follows:</span></p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Getting Started</strong><span class="mech-text">: an introduction to Mech, how to install it, and how to build and run Mech programs. It also covers the Mech REPL (Read-Eval-Print Loop) for interactive programming.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Reference</strong><span class="mech-text">: a detailed reference for the Mech language, including its data model, programming model, system model, standard library, and Mechdown reference.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Guides</strong><span class="mech-text">: provides practical guides and tutorials for using Mech, including a quick introduction to the language, tutorials for specific use cases, and guides for developers coming from other programming languages.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Design Documents</strong><span class="mech-text">: information on the design principles behind Mech, including the language specification, design principles, syntax design notes, and the roadmap for future development, as well as the history of the language.</span></p></li></ol><p class="mech-paragraph"><strong class="mech-strong">Note</strong><span class="mech-text"> - This documentation is written in Mechdown, a lightweight markup language that is compatible with Mech. This means that each document is a valid Mech program that can be executed.</span></p></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="29010308402598617" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29010308402598617">Getting Involved</a></h2><p class="mech-paragraph"><span class="mech-text">The Mech community stays active at a few places around the Internet:</span></p><ul class="mech-unordered-list"><li data-bullet="👾" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://discord.gg/asqP25NNTH" class="mech-hyperlink">Discord</a><span class="mech-text"> - for live chat</span></p></li><li data-bullet="🐙" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://github.com/mech-lang" class="mech-hyperlink">GitHub</a><span class="mech-text"> - for code and issues</span></p></li><li data-bullet="📺" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://www.youtube.com/@MechLang" class="mech-hyperlink">YouTube</a><span class="mech-text"> - for video tutorials</span></p></li><li data-bullet="🛸" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://www.reddit.com/r/mechlang/" class="mech-hyperlink">Reddit</a><span class="mech-text"> - for help and general discussion</span></p></li><li data-bullet="📧" class="mech-list-item-emoji"><p class="mech-paragraph"><a href="https://groups.google.com/g/mechtalk" class="mech-hyperlink">Mailing List</a><span class="mech-text"> - for dev discussion</span></p></li></ul><div class="mech-footnote" id="9969322063809408">
         <div class="mech-footnote-id">1:</div>
         <p class="mech-paragraph"><span class="mech-text">A well-known example is "callback hell," where the imperative model struggles to express relationships between data and events. As a result, developers are forced to chain callbacks, promises, and event handlers in convoluted ways, making the code harder to read, reason about, and maintain.</span></p>
-      </div></section></div></div>
+      </div></section></div></div></div>
       <div id = "mech-output"></div>
     </div>
     <script>
