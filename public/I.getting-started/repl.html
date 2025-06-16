@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="https://gitlab.com/mech-lang/assets/-/raw/main/images/favicon.ico" type="image/x-icon" />
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
@@ -23,7 +26,7 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #2F353B;
+    background-color: #0d1013;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -49,7 +52,7 @@ body {
 }
 
 #mech-output {
-    background-color: #171D21;
+    background-color: #040608;
     color: #f2ead9;
     flex: 1;
 }
@@ -71,27 +74,14 @@ body {
     line-height: 23px;
 }
 
-.mech-toc::-webkit-scrollbar {
-    width: 8px; 
-}
-
-.mech-toc::-webkit-scrollbar-track {
-    background: transparent; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.7); 
-    border-radius: 10px; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb:hover {
-    background: rgba(128, 128, 128, 0.9); 
-}
-
-/* For Firefox */
 .mech-toc {
-    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
-    scrollbar-width: thin;
+  overflow: auto;              /* Enables scrolling */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.mech-toc::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge */
 }
 
 .mech-toc h1 {
@@ -312,7 +302,7 @@ h4.toc {
 .mech-code-block {
     display: block;
     background-color: #171D21;
-    color: #ada594;
+    color: #e6dac2;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -348,15 +338,18 @@ h4.toc {
 }
 
 .mech-grammar {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -1007,19 +1000,21 @@ li p {
 
 .mech-block-quote {
     width: 80%;
-    background-color: #232A30; 
+    background-color: #1d2227; 
     border-left: 4px solid #F3B62D;; 
-    padding: 13px 20px;
+    padding: 40px 30px 40px 30px;
+    margin: 40px auto;
     color: #f2ead9; 
-    font-style: italic; 
-    margin: auto;
     border-radius: 3px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    /* optional visual tweaks */
 }
 
-.mech-block-quote blockquote {
+.mech-block-quote p {
     margin: 0;
-    padding: 0;
-    font-size: 1.2em;
+    line-height: 1.6;
+    font-size: 14pt;
 }
 
 .mech-thematic-break {
@@ -1349,6 +1344,68 @@ mark {
 .mech-table-cell .mech-paragraph {
     margin: 0;
     padding: 0;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #d0e6f7 !important;
+  stroke: #219900 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
 }
 
 @media (max-width: 1650px) {
@@ -1723,7 +1780,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G2EIAIyUrppvP+bm75ESpErxaSZW8E7TWSZqxTx8s+tJQuH/v1c1BX6/20JULtI7d2bsYf+XdsbCYgArWCqtRQHtQza1n8FwMs6ibh02/I5CfzzK2yVyvnV6CAAB1AMyiOzf5Zut/FsuEb4snHCJAJep0NRXYtOizf23hqwymd0IbyULBCvRXO3U5q28/S5pHJtAJPJQcSfZoKMbCNsIdFkQewX7RFIA4T+AyHwOMJlu6XMuLOCgw7mA5fBlU0CS93eKk86HBvWAJ4I0XM/bJVkCGWQksoVAFpBdI/NoXe2IQvb9izsLONReVUFdFBhOJOL3XFOpuiYyNyGcS1Rl6h7S+lSLkA91SP3LC/hGsp63e6ODP5R1LiLK4uyekDTFtkBbtAqnt4IQNAUGNDgTnBXZn0hlgjTIm7M97HHAoqNH3tbUROBT4SfsIYAO05TGJLw0IW1ACput4Fzw72rJujf6fwkLYckxrAgCc9JSvtbqxb2iyBxkqlfqVQTmoKVetdcnMpju1Xv9SAaRLbtPgskA6Zb/0RrlcpPUoYTh7Yf+FaS5FLwgDwEBBDASkDOCR8yINHLaHlFHnBF9JKSG6YxzDRwlx2BMAwkgbGsmYSrrpmTcNrChXE8M1fD5uaEbgVMjaIQiFaaUznMjwsWgmORIvF2QmArFyMEgHJRcBLnIMSTuc7kfd4lDvIo0H+Uy5eRjvta0y90vcgoyOgFMyzGxaUzJPG2ZqumYurnZvxo0PToAMUrOwuyAtsALtq0uwCJ8jG/mWNgylmSdfrJUy7F0K3Z9gZZbrSCWBBjdqn2J68SSy3+0DMs3oTAmcIWH4v1pr2YN1q8K1K7Zm3jTO5xsipuy395UNrXTTd+mHk4FtaSeMlbF39swL71svKPG5STZhu000vD0iLwH+6CAwF5Cht0+xIcS4LPPkxHswp3aW3X3CuTNvUfE0smkGCBf56nPoEL2cC15DMcvSNMVzsiPveSzfAYXOKWclLe1r/CVeAitBUoNc+PMok2MFwhWGARUfDXPp1mhEqz3Bm4Y0s4hz+Rr896AV5BFLfBhJYOxfA9PSPu8JU4eCsY9fnrBLxrm4R2PBQmGyD+HyxESazC0z5eSb/C2i7TBFUpojcuPH5JU/UsKGZODwshN7RwZ2iVcUoboRIDASZM8r3dXoDKJtJAK59o5U4dGykMtNd6H46cWbqlju7jXzUs98wwhxy1Vu9WEXINSGpJT6Jg8thvNLgmxQBDiJiic+fhXkh3olJBGVyj5+ZnQZZJJa4d9vhfDgfDT93zLrmyGkEQiGILdtT7AFwA=`;
+        var code = `G2EIAIyUrppvP+bm75ESYJWEziwTK3in6SwTtWIevtn1JKFwtaY2Efqu7KJUdaW6WboAg8tXcYBkZYSskWVFpGL7kE3tZzCcjLOoW4GNNkehPx6l3Rw73zo9BIB21AIGqOLf5Zv19FsqEr4sEHGJAJcp/9RXwtOizdW3iqwymt0IbyULBCvRXM3UkLW0+y5pHJtAJHJ/difZoKMbCNsI7LIg9hbsE1EFlP8Aqgg6wCSbuc8NYQV3eLwLWOi6rApI8v5GYdb4UOEBCHQjistpN6droIOBVLEQyAKya2QebVc7opB6/+LOAg61pwmQRUXgSCR+zxnCyZoq/IxwTnAiyB6ifaoF2YearPzlBXw1Wk67vTKhzZ90LiLK4uyekDTFtkBbtAqntzqgw1YE8I6ZjllV/IlUJkiDvDnZwx4HLDp68G1NjQQ+FX7CHgLoME1pTMJLI9IGpLBZ75jr+LtaUv6N/s4upUvzDBNFEV5OqP/Si3tVVXjYVK/WayjCw3O9pDeoCpjuNXvbkAGqWHafBJMB0i3/ozWWy41ShyUMZz/0ryDqU/CYPgQMEMBIQHoEj6gRbeSgPkJG9Ig54idhOiNSA/vRMRijIAGEadUkTKX8nIwbFraM675FrKBHWqbVfmB1WJ3BAlNKpKUR4WJQjHIk3i5ITIVi5GAQDkouglzkGBL3udyPm4QhXEQ0yKXOJfuYLlXdfPOLHoOETgDT0ja2la3ZBzWb2No27dX+1WDTowMQ/egszA5oC7xg2tICLMLH+GbawY5yNOfgk0Mc7ZhO+PoCLbe2glgSYHSt9CWsE3Mu/+4yLN/4uzCBKzwU709zVWuwflrhbsndxJutw/6muql73E1jkx5sBjfNQCyoJfWUsSr+3gZk6WUjDTVORtk2bMcRxdMN+h7sAwFFvIQMu3GIDzXAh59HI9gFGrW3au1l2Jt7j4ilo0kxQL7OY59BhczhTPQYjl8QNRVO6o+d7LN+Bhc4xb2ctzWu8JV68K8FSg1I48yiTVgWCFYYBFR8NSOnWaElWOcN3AhEzyFP5GvT3oBXkEXN8GFLBgP9Hp6QdrXmJXsoGPfg6QW/UMwDOx4LEgyRfw7nIyTWYGifz0Xf4G0X0cEVznhJ6o+vs1j5SwwZlYJM38/dFBsaOZwzhtBEgMBRkzytHy5AYRLRThWOdFOqDJV4gFtqnA/HTzVcI2Mju9dMSz3TDCHHLbV2qxG5BqU0JCf/MXmsV6pNEmKBwC9NUCDx8a9EG9DIIcpXOPv5mfFllohrh3nuDuFA+Nn3XMtDyQRjkUgwBLOrf4AvAA==`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;

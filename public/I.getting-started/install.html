@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="https://gitlab.com/mech-lang/assets/-/raw/main/images/favicon.ico" type="image/x-icon" />
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
@@ -23,7 +26,7 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #2F353B;
+    background-color: #0d1013;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -49,7 +52,7 @@ body {
 }
 
 #mech-output {
-    background-color: #171D21;
+    background-color: #040608;
     color: #f2ead9;
     flex: 1;
 }
@@ -71,27 +74,14 @@ body {
     line-height: 23px;
 }
 
-.mech-toc::-webkit-scrollbar {
-    width: 8px; 
-}
-
-.mech-toc::-webkit-scrollbar-track {
-    background: transparent; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.7); 
-    border-radius: 10px; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb:hover {
-    background: rgba(128, 128, 128, 0.9); 
-}
-
-/* For Firefox */
 .mech-toc {
-    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
-    scrollbar-width: thin;
+  overflow: auto;              /* Enables scrolling */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.mech-toc::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge */
 }
 
 .mech-toc h1 {
@@ -312,7 +302,7 @@ h4.toc {
 .mech-code-block {
     display: block;
     background-color: #171D21;
-    color: #ada594;
+    color: #e6dac2;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -348,15 +338,18 @@ h4.toc {
 }
 
 .mech-grammar {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -1007,19 +1000,21 @@ li p {
 
 .mech-block-quote {
     width: 80%;
-    background-color: #232A30; 
+    background-color: #1d2227; 
     border-left: 4px solid #F3B62D;; 
-    padding: 13px 20px;
+    padding: 40px 30px 40px 30px;
+    margin: 40px auto;
     color: #f2ead9; 
-    font-style: italic; 
-    margin: auto;
     border-radius: 3px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    /* optional visual tweaks */
 }
 
-.mech-block-quote blockquote {
+.mech-block-quote p {
     margin: 0;
-    padding: 0;
-    font-size: 1.2em;
+    line-height: 1.6;
+    font-size: 14pt;
 }
 
 .mech-thematic-break {
@@ -1351,6 +1346,68 @@ mark {
     padding: 0;
 }
 
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #d0e6f7 !important;
+  stroke: #219900 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
 @media (max-width: 1650px) {
     .mech-program-title {
         width: 700px;
@@ -1415,17 +1472,17 @@ mark {
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Download and Install Mech</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="57849574893042302" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#27939215888310487">Installing from Binary</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="45358222969040473" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41185595120492871">Installing from Source</a></h2><h3 id="39479193167611819" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41988931170089606">Install Rust and Cargo</a></h3><h3 id="28313014644703505" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#54370861878409459">Download and Build Mech</a></h3><h3 id="54602011187332400" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#35644304362713965">Build the Wasm Target</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="33283402257741389" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#70601683292392214">Installing from Cargo</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="65054839109467459" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#45785235896456201">Verifying Installation</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Download and Install Mech</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="27939215888310487" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#27939215888310487">Installing from Binary</a></h2><p class="mech-paragraph"><span class="mech-text">Precompiled binaries are available for the following platforms:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.40-beta/mech-v0.2.40-beta-win-x86-64.7z" class="mech-hyperlink">Wndows</a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.40-beta/mech-v0.2.40-beta-win-x86-64.7z" class="mech-hyperlink">Linux</a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.40-beta/mech-v0.2.40-beta-mac-aarch64.7z" class="mech-hyperlink">macOS</a></p></li></ul><p class="mech-paragraph"><span class="mech-text">You can find previous releases and release notes at </span><a href="https://github.com/mech-lang/mech/releases" class="mech-hyperlink">/mech-lang/mech/releases</a><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">To install, download the appropriate binary for your operating system and extract it to a directory of your choice. The Mech toolchain is distributed as a singular executable file and doesn't require an installer.</span></p><p class="mech-paragraph"><span class="mech-text">See the toolchain documation for more information on how this program works.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="41185595120492871" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41185595120492871">Installing from Source</a></h2><p class="mech-paragraph"><span class="mech-text">If mech is not available for your platform, or if you want to build it from source, follow these steps:</span></p><h3 id="41988931170089606" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41988931170089606">Install Rust and Cargo</a></h3><p class="mech-paragraph"><span class="mech-text">First you will need </span><a href="https://www.rust-lang.org/learn/get-started" class="mech-hyperlink">Rust</a><span class="mech-text">. Make sure to install a recent version on the nightly release channel, currently </span><code class="mech-inline-code">nightly-2025-01-15</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">In Bash:</span></p><pre class="mech-code-block">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal --default-toolchain nightly-2025-01-15
+      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Download and Install Mech</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="61643430991232392" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7018574624483094">Installer</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="2640126789879240" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12851858335707097">Binary</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="1374365037693835" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#9696821553302238">Source</a></h2><h3 id="31391472122525133" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29298551826141467">Install Rust and Cargo</a></h3><h3 id="18387026238198421" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4352394938014643">Download and Build Mech</a></h3><h3 id="61828462828809025" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29339698434666247">Build the Wasm Target</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21028595471821346" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47006710804698713">Cargo</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="56095059431426052" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7845982287476219">Verifying Installation</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Download and Install Mech</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="7018574624483094" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#7018574624483094">Installer</a></h2><p class="mech-paragraph"><span class="mech-text">The easiest way to install Mech is to use the installer provided for your platform. The installer includes the </span><code class="mech-inline-code">mech</code><span class="mech-text"> command-line tool, which is a standalone executable that includes everything you need to get started with Mech.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Windows</strong><span class="mech-text"> - </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.46-beta/mech-installer.exe" class="mech-hyperlink">x86-64</a></p></li></ul><p class="mech-paragraph"><span class="mech-text">Right now, the installer is only available for Windows, but we are working on providing installers for other platforms in the future.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="12851858335707097" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#12851858335707097">Binary</a></h2><p class="mech-paragraph"><span class="mech-text">Mech is easy to install without the installer -- the whole toolchain is just a single binary executable file.</span></p><p class="mech-paragraph"><span class="mech-text">Precompiled binaries are available for the following platforms:</span></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> OS         </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Architecture                                                                                                 </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Wndows</strong><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.45-beta/mech-v0.2.45-beta-win-x86-64.7z" class="mech-hyperlink">x86-64</a><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Linux</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.45-beta/mech-v0.2.45-beta-win-x86-64.7z" class="mech-hyperlink">x864-64</a><span class="mech-text">  </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">macOS</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.45-beta/mech-v0.2.45-beta-mac-aarch64.7z" class="mech-hyperlink">aarch64</a><span class="mech-text"> </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Web</strong><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.45-beta/mech_wasm_bg.wasm.br" class="mech-hyperlink">wasm</a><span class="mech-text">                </span></p></td></tr></tbody></table><p class="mech-paragraph"><span class="mech-text">You can find previous releases and release notes at </span><a href="https://github.com/mech-lang/mech/releases" class="mech-hyperlink">/mech-lang/mech/releases</a><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">To install, download the appropriate binary for your operating system and extract it to a directory of your choice. The Mech toolchain is distributed as a singular executable file and doesn't require an installer.</span></p><p class="mech-paragraph"><span class="mech-text">See the toolchain documation for more information on how this program works.</span></p></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="9696821553302238" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#9696821553302238">Source</a></h2><p class="mech-paragraph"><span class="mech-text">If mech is not available for your platform, or if you want to build it from source, follow these steps:</span></p><h3 id="29298551826141467" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29298551826141467">Install Rust and Cargo</a></h3><p class="mech-paragraph"><span class="mech-text">First you will need </span><a href="https://www.rust-lang.org/learn/get-started" class="mech-hyperlink">Rust</a><span class="mech-text">. Make sure to install a recent version on the nightly release channel, currently </span><code class="mech-inline-code">nightly-2025-01-15</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">In Bash:</span></p><pre class="mech-code-block">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal --default-toolchain nightly-2025-01-15
 </pre><p class="mech-paragraph"><span class="mech-text">This command will download and install the Rust toolchain, including Cargo, the Rust package manager. Rustup is a tool for managing Rust versions and associated tools.</span></p><p class="mech-paragraph"><span class="mech-text">In PowerShell:</span></p><pre class="mech-code-block">irm https://win.rustup.rs -OutFile rustup-init.exe; Start-Process -Wait -FilePath .\rustup-init.exe -ArgumentList "-y --default-toolchain nightly-2025-01-15"; Remove-Item .\rustup-init.exe
 </pre><p class="mech-paragraph"><span class="mech-text">This command will: </span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Download Rustup for Windows (rustup-init.exe)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Run the installer with </span><code class="mech-inline-code">-y</code><span class="mech-text"> ("yes" to all, no prompts) and set the correct nightly toolchain</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Delete the installer after completion</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">You may need to allow scripts by running the following before executing the above command:</span></p><pre class="mech-code-block">Set-ExecutionPolicy Bypass -Scope Process -Force
-</pre><h3 id="54370861878409459" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#54370861878409459">Download and Build Mech</a></h3><pre class="mech-code-block">git clone https://gitlab.com/mech-lang/mech
+</pre><h3 id="4352394938014643" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4352394938014643">Download and Build Mech</a></h3><pre class="mech-code-block">git clone https://gitlab.com/mech-lang/mech
 cd mech
 cargo build --bin mech --release
-</pre><h3 id="35644304362713965" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#35644304362713965">Build the Wasm Target</a></h3><p class="mech-paragraph"><span class="mech-text">If you want to build the WebAssembly target, you will need to install the </span><code class="mech-inline-code">wasm-pack</code><span class="mech-text"> tool. You can do this using Cargo:</span></p><pre class="mech-code-block">cargo install wasm-pack
+</pre><h3 id="29339698434666247" section="3.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29339698434666247">Build the Wasm Target</a></h3><p class="mech-paragraph"><span class="mech-text">If you want to build the WebAssembly target, you will need to install the </span><code class="mech-inline-code">wasm-pack</code><span class="mech-text"> tool. You can do this using Cargo:</span></p><pre class="mech-code-block">cargo install wasm-pack
 </pre><p class="mech-paragraph"><span class="mech-text">Then, navigate to the </span><code class="mech-inline-code">wasm</code><span class="mech-text"> directory and build the target:</span></p><pre class="mech-code-block">cd mech\src\wasm
 wasm-pack build --target web
-</pre></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="70601683292392214" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#70601683292392214">Installing from Cargo</a></h2><p class="mech-paragraph"><span class="mech-text">If you prefer to install Mech using Rust's Cargo package manager, you can use the following commands, first install Rust as described above. Then run:</span></p><pre class="mech-code-block">cargo install mech
-</pre><p class="mech-paragraph"><span class="mech-text">This will download the lasted version of Mech published to the cargo package manager, found here: </span><a href="https://crates.io/crates/mech." class="mech-hyperlink">https://crates.io/crates/mech.</a></p></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="45785235896456201" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#45785235896456201">Verifying Installation</a></h2><p class="mech-paragraph"><span class="mech-text">After installation, confirm that Mech is installed correctly by running:</span></p><pre class="mech-code-block">mech --version
+</pre></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="47006710804698713" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#47006710804698713">Cargo</a></h2><p class="mech-paragraph"><span class="mech-text">If you prefer to install Mech using Rust's Cargo package manager, you can use the following commands, first install Rust as described above. Then run:</span></p><pre class="mech-code-block">cargo install mech
+</pre><p class="mech-paragraph"><span class="mech-text">This will download the lasted version of Mech published to the cargo package manager, found here: </span><a href="https://crates.io/crates/mech." class="mech-hyperlink">https://crates.io/crates/mech.</a></p></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="7845982287476219" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#7845982287476219">Verifying Installation</a></h2><p class="mech-paragraph"><span class="mech-text">After installation, confirm that Mech is installed correctly by running:</span></p><pre class="mech-code-block">mech --version
 </pre></section></div></div></div>
       <div id = "mech-output"></div>
     </div>
@@ -1712,7 +1769,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G9kMAIzCttlzMUbkNgZPiQRB/qct3bdfR9IRyrSGhHVGlIF4fQbCpglOD1h0abrEPr9N03zV7NVkMQkVt3DccEECkwRr63+OZb5CVXdqxApdW2k6/+UlBSIFlBJls0VJgJaPwZpaeUbexyj/v48TKtVsxWhL2TfSYCbwcs3xmgHJioSO/ydfqqx68aJ7W0roRhtj0nT4IHTzjV7zuL7czVA6wGrpGpq/4gFGF+1NhrvgahEGGSA4p6rkaaabeTiWTyBqkw1pvUoa0Y4jhfE4iPgt2U9jyX5UdPafB3xl6YoSULmKEfTXL8GFVLhMxBCr8FVfe7yeXSPnBIdJ3H/ew7jnLpILvhOwZzvXY71M/Gv2Vdc94cC2teNdx4ovLXcNHwldYSsiEsKwF22sSyUW7itfFIOvkhpGynWFWJVvEK/hyGXDvg9bI+37Y/80VPRv/OCc2tCd2i7FKuJKaBAT6pNXvLOJ1EdasgckyLoIUdX5eiukLgOEcETAPZXtzwkyWypbKQhNGwGAnsXal7KBHYHZQsFiu9oXQOA/hEn9mqKbmd4TAFpPyCEn7uuSJGf6YhXP9UMIDdRLxejC+1kkLFK+0bNuIV4Am60ObG0kEvXc4IqSJokidqCCQbHPX/EQta8YdC04fbQzjvimv1DVdHdm7BtMexuOuJI55HO8JETtDZGPMDlp2thjkDECi3bKWFxKvBEJccf/AQGB1YOv1vo3XAv+1WksW3YJPepbCkEWdKLHn0q0sDvUs8ULvCLXZE6GaaZXthzrlp+YDoeOhzJxBwKlCFaOfZa/SDdC/pZ/ftTds2/t2cbj2cj2UPAhc6YLBLUBQwEtNcLz4SWCOi2YatBXZuHkft2CMuPEu3tnpew7NvRvmU3CCUGlASJjB00WFLMeBiIKUUCL8TxYKFrCF1FJ4awQrg3FOSkCB8wk7R02g2PGJiAb0/Q5P+EOAiGxdEGbbKlL/gPxtN2/0/bAArXlBc0FX8tc4O/ZH8+Pv/ch6pkiFAUo+HdLF/E180Kq+3IMndn+dvXneCwRXLF26abG/ZNg6haPbv54BJfu87F885GyCTa20s2+FLPqCt+ZsykvuuMxKOBPvJrxF3h5PKKONOHWKl5HJV6x0EoAE6PAo/bf1pdywMpbehswDIpNxFAUbRiO9Ar8DUhJpk11hSyVI7Sm5dmGa2bJHhB7TVcHHKW6WLZm5bCwGcmRA0LrEEUVctWSUdjEZ/aPnozREnEWkC6n9EsD9PhZQVNUtBvDMGiD8WywozriUwuUzkR2yyDoCCEen+UlKJmjYNmYa2EMr+wf0/eumlwJGL4xpABbaYvxclSAWY1MKD0wxMbDC8Y6q3KJgtMbW5ac3ZJySahFWxC1jGdW6RepMuSc1VArUv2viKCYTTXjtWgoQ0IsW0BX+Wybon/mVVuupgmS0eP2njJjxMheSxuOc+d3D0t1eCAi3bmDlr427bmwTRFV2N7p33kUutAjNq0LZGYOZE1OxVT9brxlcqfRGkwBppM1aVmMt6EdBY6P+8Xs7DEjTBgf9hE6E0yzSH2Okp3ZQls0y8cARmB68M7JzkYKlqC06uNEOx8p5DCescGviqVP/rPFeA/6IBGjjAEU65INpEx6SXqHWLPBDnFllF2Ar9hW5pKJ7mV53GCTDT+XcHVjDRPqR0phONrQqv9w6U0QJ5XgVj7cPPyeglFUk6a6jmEcPlPoFSYSzMh53tK6jSVAY1YFRPUODRG6FMV7sF7WEyYzhFyKT8gsqJ61dfAbqP3Qvkln8ikc9BO1sqzcBU2hyH1lM9dhZkL3EGbQ+ip0uRoApUhjT1686Q4H6cHnMd9DwWB1I0JirsuXsAw=`;
+        var code = `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`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;

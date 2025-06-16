@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="https://gitlab.com/mech-lang/assets/-/raw/main/images/favicon.ico" type="image/x-icon" />
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
@@ -23,7 +26,7 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #2F353B;
+    background-color: #0d1013;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -49,7 +52,7 @@ body {
 }
 
 #mech-output {
-    background-color: #171D21;
+    background-color: #040608;
     color: #f2ead9;
     flex: 1;
 }
@@ -71,27 +74,14 @@ body {
     line-height: 23px;
 }
 
-.mech-toc::-webkit-scrollbar {
-    width: 8px; 
-}
-
-.mech-toc::-webkit-scrollbar-track {
-    background: transparent; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.7); 
-    border-radius: 10px; 
-}
-
-.mech-toc::-webkit-scrollbar-thumb:hover {
-    background: rgba(128, 128, 128, 0.9); 
-}
-
-/* For Firefox */
 .mech-toc {
-    scrollbar-color: rgba(128, 128, 128, 0.7) transparent;
-    scrollbar-width: thin;
+  overflow: auto;              /* Enables scrolling */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.mech-toc::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge */
 }
 
 .mech-toc h1 {
@@ -312,7 +302,7 @@ h4.toc {
 .mech-code-block {
     display: block;
     background-color: #171D21;
-    color: #ada594;
+    color: #e6dac2;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -348,15 +338,18 @@ h4.toc {
 }
 
 .mech-grammar {
+    display: block;
     background-color: #171D21;
     color: #ada594;
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
-    border-radius: 0px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid #888f92;
+    margin-bottom: 20px;
     overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -1007,19 +1000,21 @@ li p {
 
 .mech-block-quote {
     width: 80%;
-    background-color: #232A30; 
+    background-color: #1d2227; 
     border-left: 4px solid #F3B62D;; 
-    padding: 13px 20px;
+    padding: 40px 30px 40px 30px;
+    margin: 40px auto;
     color: #f2ead9; 
-    font-style: italic; 
-    margin: auto;
     border-radius: 3px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    /* optional visual tweaks */
 }
 
-.mech-block-quote blockquote {
+.mech-block-quote p {
     margin: 0;
-    padding: 0;
-    font-size: 1.2em;
+    line-height: 1.6;
+    font-size: 14pt;
 }
 
 .mech-thematic-break {
@@ -1349,6 +1344,68 @@ mark {
 .mech-table-cell .mech-paragraph {
     margin: 0;
     padding: 0;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #d0e6f7 !important;
+  stroke: #219900 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
 }
 
 @media (max-width: 1650px) {
@@ -1711,7 +1768,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `GzoKAIyU7jLDEZJ0HrZlBGY33WRZrThhpUKbdKk40FSFUlFq1Iw7f/7v+b//PS8H2Hj9//ZrxG97+iC62miZ1rhv3h9UZAaVZtIIjSVa80yIiSQCaNFNJvpiqcWohXXNaK6tizvrdYX/9ZVtRNf3Fod/jRBqTyhI16iE4D5igCABEl62mw5JIFT+bQJSwJ2BquXzOd9bZplK40MUo7eBRtLdwPuaWbf8p1qwAU3C+vy7xUX9rR5oEzRoRDgYnQz9BswPVvgpA4XZidKDWGlaw2KE3wHnYqDwDyEqaQYN1eIan4RkVk1l1hQmli1I4VRa03JW3FSzk+EXbjhjJ5eCMOWi8ZkQgsfLeOKZTtJIRzBK6ir6fZDF2axGFU1RFSqToVuahzyhssa4fWeKK5mcFGqow35icpxMEnman1JgFSbQv60AhRTbotwwI8Zl7FRevn6KGAoNiQIpDAMpAOxpK0Kxjj1NOVCQSIxECQWfA8xEFKDH44KeuLeYKi4oYS5NVUwbaMANOQ25ijwNPV+8C1nNWq0dV3MUC+vWymDAzp+6+sQm1DQDEkBMbZJNC1T+gYSN9K928ECxwEOyy96F9s1VuZWKQp1+YBVJUsNMgd+GFzfiRh389euL2gRmC4f3eMiQIqjPF02LTf+1XD1DmUGdtKI2TCnG0qy9A3dk7n8ABUCq/MYAI0ml2s8MbKRAYs4JZKpBjDyVrSlGlUQMsTFkFIx+BU4wMsEUJjatJCREm0nMnEAfnSsqjh45rQ1cGhZm3pyGG/xShnJyGZfBakSZlEt6OlRQqqyuEqh3qJwvTwQ/q1BNruIqtZQTVVIt4jbflbdQRbKA14Mt4jiLHPQXe/yF7fVeUc1XXYWkixurQ+2+5HoTuqG7VVWfrZPBGzLsusQavZkz+mUysDJkIWsq3Zq2Zv7p7ynepCWttdzIS4LlLjijkxdnC+ylPO8MwquTbZ1wNID4345dplhng52VUZxq/DAe1jUdfeTlIPFj78vrxFE0ams5wzO82GCgdJLd75/pZAJNIh0pVNZRQnRySp0inhZ8c8ARDnasNP9ogYLpE+Z+x3WI00glY7vxVhSP26cadqRup8kZw7dg7IIrXOxaLdrh1o7pUy9/z3WJW6ayynYjBNTMskEBYOdGhFtxVygk2QMv2cMelC3hEa+I/a7wkli+VUY390Z2GcOcIry8Zysx4je6jDM5q84SLdcbkyf4G4yhAfbyM0xemfaNC2iRsUgB0bmMl9MpWGhdrhmzy8/kVbTaJ9fpKi1eN+ly2kCbYlvd9tTguw++8LFv6Tj6Kjg5B/MnznziN1Ep4heW2bBA5nQU96gw706y8dq43Sv8Zn8xooOXAQQiwIFV5KyR4pMxkn58FpCgwx0GzRvrTsyzB8dETdTE7aGgM1hPA7Gv7u/kMdLH39lQbZMYv2Q18VgzHWJH6BihHdljZ1TU7jqF0yIL2ne6RkHJZcYWkyXbfuQ8ya4QhQ52ZY+e30M3nC/qLqiC+XgevQM4VxyFKD1cCHNZBeei/ZROgseLO67QDQI=`;
+        var code = `GzoKADwHN8YIItXyQYjbJ5xEFr1UKJSNu3ULGcab+RrTP8VaQs8jOjgcIUnnxVpbOxH/d0RskRZlOrETO51RncoFwqTATgnR0zwiD4/3H4XbGBx7EKzB1FW39cND3xGDZaF9hmKS1/WAghQV2Bg7geA48Ts/mMhtgaWpHvgF0pIDbLygg4sTCqKBZll2St9uc3Jju8RFikrB/OSBxU0HuADk9f/brxG/7emD6GqjZVrjvnl/UJEZVJpJIzSWaM0zISaSCKBFN5noi6UWoxbWNeObuYs7y4rZF2qId2dx+NdgsDcAQ/ZUFnenOCiGqDxvN52z4or1rwlIAXQGqpbP53xvmWUqjfeYoLeBRtLdwNuaWbf8p1qwAU3C+vzbxUWhVg+0CRo0IhyMToZ+A+YHK/yUgcLsROlBrDStYTHC74BzMUcs/wB46mXQUC2u8TxmRI58TaGxbIEQR8Ic78VNNbUffuEGY38pOKdclByPlMfLeKIzJBgAGCV2Rb8P5EUR+8BA4KkZuqVKiSvWk1n7zhRXMjkp1FCH/cTkOJnEKMXJPcAqNNC/TSV12HuUG2bEuIydSuRTBBQaYlQi1QWQAsGeNrXMZj9QDhQkEiNRQsEHmIkoQI/HBb78mVD9AWEudSqmDWgrYkauomcNPZ95F1I1a7V2XM2YMNatlcGAnX+6+kQ9Vi+cqoCYqn9V06v+QsJG+lc7eKBY4CHZZe9C++aq3EpFoU4/sIokqWGmwG/Dixtxow749fWsNoHZwuE97jOkCOrzGX1L/89W5DOUGZSKTNhhSrElzdqtDeH9DwIiSvDabjI9pdDMbk0ORy0ICWSq/dgTT9sUo0oihtgYsqumA4ATxCW0oPm0ZUJCtNFuKQT26VxRcfTIaW3g0jBDJ3QBbvDTKc5kJ98JViOc7irZ6VBBqbK6SqDeIWfizAY/3HEnu3FTSznhdhcd2nxX3kIVyQJYD7YI4ixy0F/09aF3iO4HSReX1aF2I643wcsbi56td38jwy6ENXozZ/TLZGBlKAAC+fTAAy//9GeKl0OZHV9+JljugjNSn50tiC7leScGr06OXiEIA/63Y84U66KiWaHiVOMTJQJC/MjLQchjb3SdmJI6ZcXkGV5sMFA6ye73nZHFHMoQPLUpIZob8q7HwddWFEVFy+cfLVBQOGHud9R2Yp1ZvBWRcftUw47UXWxxfAuSkpREiZLVaIdbOwqnXv6elJpXXZtjBNTMskEBYOdGmFI/HYUkl6WcXOaXoWyJsnuLZr8rvITIt0p8fW+kUDCncFKOLkb8Rpdxcks1EfFuTJ6ArzCGwrPnn5NXpn1jE1uMRQqIzk4dSQoW7l2uSSj0mdzDXpBidJUWr5t0OQ3BSIgmHgXfZmZixp9ZAY6+CvbnYP6Ev5terEfxC8tsWCBzOop9Ksy7ucqc3JzusnrWiuggGgux4C+sjLNGivdjJP3Y4251h0HzxroT86Jn10fS7aHHxSANxNNq52GM9ME3Kn6ySbMIkaPHmukQ24IdADuiY2dU1O46yEHNgvZ9qFFQgjK2mCzZ9iPnSXadwbmIXdnx09v5ye9F24IqmI/n0TuAc8U4ROn+cO6sAkLRfkpq8Hhxx5UP`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
