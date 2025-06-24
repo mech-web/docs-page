@@ -11,7 +11,9 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        </style>
         <style>
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #0d1013;
     margin: 0;
     padding: 0;
@@ -43,6 +45,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     counter-reset: h2 equation;
+    margin-right: clamp(300px, 30vw, 800px);
     flex: 2;
 }
 
@@ -52,11 +55,69 @@ body {
 }
 
 #mech-output {
-    background-color: #040608;
-    color: #f2ead9;
-    flex: 1;
+  background-color: #040608;
+  color: #f2ead9;
+  font-family: 'FiraCodeLight', monospace;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: clamp(300px, 30vw, 800px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 10; 
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
 }
 
+#mech-output::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-line {
+    margin-top: 10px;
+}
+
+.repl-prompt {
+    color: #F3B62D;
+}
+
+.repl-result .mech-output-value {
+    margin-top: 10px;
+}
+
+.repl-result .mech-output-value {
+    overflow-x: auto;
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.repl-result .mech-output-value::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-result {
+    margin-top: 10px;
+}
+
+.repl-input,
+.repl-code {
+  display: inline-block;       
+  font-family: 'FiraCodeLight', monospace;     
+  font-size: 1em;
+  line-height: 1.2em;
+  color: #f2ead9;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
 .mech-toc {
     width: 250px;
     counter-reset: h2;
@@ -220,7 +281,7 @@ h4.toc::before {
     padding-right: 6px;
 }
 
-.mech-program-title {
+.mech-program h1 {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
@@ -426,6 +487,10 @@ h4.toc {
 
 .mech-statement {
     min-width: 225px;
+}
+
+.mech-inline-mech-code-formatted  .mech-statement {
+    min-width:fit-content;
 }
 
 .mech-variable-define {
@@ -1129,11 +1194,24 @@ a.mech-footnote-reference {
     text-align: justify;
 }
 
-h2 {
+#mech-output {
+    counter-reset: h2;
+}
+
+#mech-output h2 {
     counter-reset: h3;
 }
 
-h3 {
+#mech-output h2 {
+    counter-reset: h3;
+}
+
+
+.mech-content h2 {
+    counter-reset: h3;
+}
+
+.mech-content h3 {
     counter-reset: h4;
 }
 
@@ -1408,6 +1486,162 @@ mark {
   stroke-width: 2.5px !important;
 }
 
+#mech-output li {
+    color: #f2ead9;
+}
+
+#mech-output li::marker {
+    color: #F3B62D;
+    font-weight: bold;
+}
+
+.mech-help th {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.mech-help tr {
+    vertical-align: top;
+}
+
+.mech-help td {
+    padding-bottom: 10px;
+}
+
+
+.repl-result .mech-table td { 
+    padding: 10px;
+}
+
+.repl-result .mech-table th { 
+    padding: 10px;
+}
+
+.mech-text-logo {
+    white-space: pre;
+    color: rgb(246,192,78);
+    text-align: center;
+    margin: 20px auto;
+}
+
+#mech-output a {
+    color: #F8D07A;
+    text-decoration: underline;
+}
+
+#mech-output a:hover {
+    color: #f18181;
+    text-decoration: underline;
+}
+
+.mech-command {
+    background-color: #171D21;
+    border: 1px solid #777;
+    color: #eddaf1;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 1rem;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-version {
+    text-align: center;
+}
+
+#mech-output .mech-content {
+    max-width: 100%;
+    min-width: 300px;
+    margin: 10px;
+}
+
+#mech-output .mech-abstract {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#mech-output .mech-abstract p {
+    line-height: 25pt;
+    margin: 0px;
+    text-align: justify;
+}
+
+#mech-output h1 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h3 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#mech-output h4 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 a {
+    text-decoration: none;
+}
+
+#mech-output h3 a {
+    text-decoration: none;
+}
+
+#mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#mech-output .mech-code-block {
+    padding: 10px;
+}
+
+#mech-output td {
+    padding: 10px;
+}
+
+#mech-output .mech-equation {
+    margin-bottom: 10px;
+}
+
+#mech-output th p {
+    margin-bottom: 0px;
+}
+
 @media (max-width: 1650px) {
     .mech-program-title {
         width: 700px;
@@ -1422,14 +1656,17 @@ mark {
     }
 }
 
-@media (max-width: 1200px) {
-    #mech-output {
+@media (max-width: 1470px) {
+    .mech-toc {
         display: none;
     }
 }
 
 @media (max-width: 1100px) {
-    .mech-toc {
+    .mech-content {
+        margin: auto;
+    }
+    #mech-output {
         display: none;
     }
 }
@@ -1468,11 +1705,15 @@ mark {
         overflow-x: auto;
     }
 
+    .mech-statement {
+        min-width: fit-content;
+    }
+
 }
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="5407532075017277" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30569171213053591">Comments </a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="33801839355830932" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4758597260034320">Identifiers</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="63397133179156084" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44415268297767330">Kinds </a></h2><h3 id="42033366120713074" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#63713189723337693">Kind Annotations</a></h3><h3 id="48042350841897534" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#57201762610350286">Collections</a></h3><h3 id="13361148021891681" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65185750830186196">Custom Kinds</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="29885072344566466" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#32914037235648527">Literals</a></h2><h3 id="6112126809380072" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64492142716486566">Numbers</a></h3><h3 id="27521265588441742" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5630542905746384">Strings</a></h3><h3 id="55993259050293462" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56751470665067267">Boolean</a></h3><h3 id="41571079246756580" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44919288058708636">Atoms</a></h3><h3 id="22585472341317472" section="4.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#13621568638551805">Empty</a></h3></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="8432555838461109" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29410062474404646">Variables</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="52032065445709585" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#10313183988521582">Collections</a></h2><h3 id="9905306017254712" section="6.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#48079200332644285">Vector</a></h3><h3 id="31959132155237486" section="6.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#69539486100415555">Matrix</a></h3><h3 id="19338169039129172" section="6.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56033041737758581">Tuple</a></h3><h3 id="36807866363939866" section="6.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#31995491544508258">Record</a></h3><h3 id="17252054951081078" section="6.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56833272329427878">Table </a></h3><h3 id="15359616418197795" section="6.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#33868748680105959">Set</a></h3><h3 id="20313063608758524" section="6.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3292489563748938">Map</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">Table of Contents:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">1. Comments</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">2. Identifiers</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">3. Kinds </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">4. Literals</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">5. Variables</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">6. Collections</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">7. Functions (todo)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">8. State Machines (todo)</span></p></li></ul></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="30569171213053591" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30569171213053591">Comments </a></h2><pre class="mech-code-block">-- Single line comment.
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="5407532075017277" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30569171213053591">Comments </a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="33801839355830932" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4758597260034320">Identifiers</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="63397133179156084" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44415268297767330">Kinds </a></h2><h3 id="42033366120713074" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#63713189723337693">Kind Annotations</a></h3><h3 id="48042350841897534" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#57201762610350286">Collections</a></h3><h3 id="13361148021891681" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65185750830186196">Custom Kinds</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="29885072344566466" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#32914037235648527">Literals</a></h2><h3 id="6112126809380072" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64492142716486566">Numbers</a></h3><h3 id="27521265588441742" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5630542905746384">Strings</a></h3><h3 id="55993259050293462" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56751470665067267">Boolean</a></h3><h3 id="41571079246756580" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44919288058708636">Atoms</a></h3><h3 id="22585472341317472" section="4.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#13621568638551805">Empty</a></h3></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="8432555838461109" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29410062474404646">Variables</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="52032065445709585" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#10313183988521582">Collections</a></h2><h3 id="9905306017254712" section="6.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#48079200332644285">Vector</a></h3><h3 id="31959132155237486" section="6.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#69539486100415555">Matrix</a></h3><h3 id="19338169039129172" section="6.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56033041737758581">Tuple</a></h3><h3 id="36807866363939866" section="6.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#31995491544508258">Record</a></h3><h3 id="17252054951081078" section="6.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56833272329427878">Table </a></h3><h3 id="15359616418197795" section="6.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#33868748680105959">Set</a></h3><h3 id="20313063608758524" section="6.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#3292489563748938">Map</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">Table of Contents:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">1. Comments</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">2. Identifiers</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">3. Kinds </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">4. Literals</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">5. Variables</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">6. Collections</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">7. Functions (todo)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">8. State Machines (todo)</span></p></li></ul></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="30569171213053591" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30569171213053591">Comments </a></h2><pre class="mech-code-block">-- Single line comment.
 
 // Also a single line comment.
 </pre><p class="mech-paragraph"><span class="mech-text">Mech does not support multiline comments. Instead, Mech encourages literate programming through a Markdown-esque syntax</span></p><p class="mech-paragraph"><span class="mech-text">called Mechdown, exemplified by this document.</span></p><p class="mech-paragraph"><span class="mech-text">Comments are therefore to be used primarily inside of code blocks.</span></p><p class="mech-paragraph"><span class="mech-text">Comments support formatting, such as bold, underline, links, etc. For example:</span></p><pre class="mech-code-block"> -- **bold** and __underline__ and [links](https://mech-lang.org) are supported in comments.
@@ -1797,21 +2038,50 @@ entries
 
 window.addEventListener("DOMContentLoaded", () => {
   createObserver("0px 0px 0px 0px");
-  const elements = document.querySelectorAll(".mech-equation");
-  elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
+
+  function renderEquations(root = document) {
+    const blockElements = root.querySelectorAll(".mech-equation");
+    blockElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+
+    const inlineElements = root.querySelectorAll(".mech-inline-equation");
+    inlineElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+  }
+
+  renderEquations();
+
+  // Set up a MutationObserver to watch for new elements
+  const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          renderEquations(node);
+        }
+      }
     }
   });
-  const inline_elements = document.querySelectorAll(".mech-inline-equation");
-  inline_elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
-    }
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
   });
 });
+
 
 let lastScrollY = window.scrollY;
 let scrolling_down = true;
@@ -1883,12 +2153,14 @@ window.addEventListener("scroll", () => {
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             } else {
               console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             }
           }
         };

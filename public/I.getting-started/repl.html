@@ -11,7 +11,9 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        </style>
         <style>
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #0d1013;
     margin: 0;
     padding: 0;
@@ -43,6 +45,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     counter-reset: h2 equation;
+    margin-right: clamp(300px, 30vw, 800px);
     flex: 2;
 }
 
@@ -52,11 +55,69 @@ body {
 }
 
 #mech-output {
-    background-color: #040608;
-    color: #f2ead9;
-    flex: 1;
+  background-color: #040608;
+  color: #f2ead9;
+  font-family: 'FiraCodeLight', monospace;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: clamp(300px, 30vw, 800px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 10; 
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
 }
 
+#mech-output::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-line {
+    margin-top: 10px;
+}
+
+.repl-prompt {
+    color: #F3B62D;
+}
+
+.repl-result .mech-output-value {
+    margin-top: 10px;
+}
+
+.repl-result .mech-output-value {
+    overflow-x: auto;
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.repl-result .mech-output-value::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-result {
+    margin-top: 10px;
+}
+
+.repl-input,
+.repl-code {
+  display: inline-block;       
+  font-family: 'FiraCodeLight', monospace;     
+  font-size: 1em;
+  line-height: 1.2em;
+  color: #f2ead9;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
 .mech-toc {
     width: 250px;
     counter-reset: h2;
@@ -220,7 +281,7 @@ h4.toc::before {
     padding-right: 6px;
 }
 
-.mech-program-title {
+.mech-program h1 {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
@@ -426,6 +487,10 @@ h4.toc {
 
 .mech-statement {
     min-width: 225px;
+}
+
+.mech-inline-mech-code-formatted  .mech-statement {
+    min-width:fit-content;
 }
 
 .mech-variable-define {
@@ -1129,11 +1194,24 @@ a.mech-footnote-reference {
     text-align: justify;
 }
 
-h2 {
+#mech-output {
+    counter-reset: h2;
+}
+
+#mech-output h2 {
     counter-reset: h3;
 }
 
-h3 {
+#mech-output h2 {
+    counter-reset: h3;
+}
+
+
+.mech-content h2 {
+    counter-reset: h3;
+}
+
+.mech-content h3 {
     counter-reset: h4;
 }
 
@@ -1408,6 +1486,162 @@ mark {
   stroke-width: 2.5px !important;
 }
 
+#mech-output li {
+    color: #f2ead9;
+}
+
+#mech-output li::marker {
+    color: #F3B62D;
+    font-weight: bold;
+}
+
+.mech-help th {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.mech-help tr {
+    vertical-align: top;
+}
+
+.mech-help td {
+    padding-bottom: 10px;
+}
+
+
+.repl-result .mech-table td { 
+    padding: 10px;
+}
+
+.repl-result .mech-table th { 
+    padding: 10px;
+}
+
+.mech-text-logo {
+    white-space: pre;
+    color: rgb(246,192,78);
+    text-align: center;
+    margin: 20px auto;
+}
+
+#mech-output a {
+    color: #F8D07A;
+    text-decoration: underline;
+}
+
+#mech-output a:hover {
+    color: #f18181;
+    text-decoration: underline;
+}
+
+.mech-command {
+    background-color: #171D21;
+    border: 1px solid #777;
+    color: #eddaf1;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 1rem;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-version {
+    text-align: center;
+}
+
+#mech-output .mech-content {
+    max-width: 100%;
+    min-width: 300px;
+    margin: 10px;
+}
+
+#mech-output .mech-abstract {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#mech-output .mech-abstract p {
+    line-height: 25pt;
+    margin: 0px;
+    text-align: justify;
+}
+
+#mech-output h1 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h3 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#mech-output h4 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 a {
+    text-decoration: none;
+}
+
+#mech-output h3 a {
+    text-decoration: none;
+}
+
+#mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#mech-output .mech-code-block {
+    padding: 10px;
+}
+
+#mech-output td {
+    padding: 10px;
+}
+
+#mech-output .mech-equation {
+    margin-bottom: 10px;
+}
+
+#mech-output th p {
+    margin-bottom: 0px;
+}
+
 @media (max-width: 1650px) {
     .mech-program-title {
         width: 700px;
@@ -1422,14 +1656,17 @@ mark {
     }
 }
 
-@media (max-width: 1200px) {
-    #mech-output {
+@media (max-width: 1470px) {
+    .mech-toc {
         display: none;
     }
 }
 
 @media (max-width: 1100px) {
-    .mech-toc {
+    .mech-content {
+        margin: auto;
+    }
+    #mech-output {
         display: none;
     }
 }
@@ -1468,11 +1705,15 @@ mark {
         overflow-x: auto;
     }
 
+    .mech-statement {
+        min-width: fit-content;
+    }
+
 }
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><h1 class="mech-program-title">Using the Mech REPL</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="48576315069692778" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4016604308879711">Starting the REPL</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="25583487790708595" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39989981217595373">Commands</a></h2><h3 id="50909675261749279" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5108139711275160">:help (:h)</a></h3><h3 id="31891450278014698" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53448773141888059">:quit (:q)</a></h3><h3 id="71799209120238657" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2322566134256070">:symbols (:s)</a></h3><h3 id="30844315760083935" section="2.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65712214521139996">:plan (:p)</a></h3><h3 id="59223110050670042" section="2.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#37329989915126529">:whos (:w)</a></h3><h3 id="948288980848529" section="2.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#8942451595429135">:clc (:c)</a></h3><h3 id="70997789559297705" section="2.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#54864169704492494">:clear</a></h3><h3 id="867420218043841" section="2.8" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68768209684329077">:load</a></h3><h3 id="23378782530310054" section="2.9" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30651751686203022">:ls [PATH]</a></h3><h3 id="10462415761012285" section="2.10" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50885138022548148">:cd PATH</a></h3><h3 id="52596868522423958" section="2.11" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52163969273584785">:step [N]</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Using the Mech REPL</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">The Mech Read-Eval-Print Loop (REPL) provides an interactive environment for executing Mech commands, inspecting symbols, and debugging programs. Below are the available REPL commands.</span></p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="4016604308879711" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4016604308879711">Starting the REPL</a></h2><p class="mech-paragraph"><span class="mech-text">To start the REPL, run:</span></p><pre class="mech-code-block">mech
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Using the Mech REPL</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="48576315069692778" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4016604308879711">Starting the REPL</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="25583487790708595" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39989981217595373">Commands</a></h2><h3 id="50909675261749279" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#5108139711275160">:help (:h)</a></h3><h3 id="31891450278014698" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#53448773141888059">:quit (:q)</a></h3><h3 id="71799209120238657" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2322566134256070">:symbols (:s)</a></h3><h3 id="30844315760083935" section="2.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65712214521139996">:plan (:p)</a></h3><h3 id="59223110050670042" section="2.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#37329989915126529">:whos (:w)</a></h3><h3 id="948288980848529" section="2.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#8942451595429135">:clc (:c)</a></h3><h3 id="70997789559297705" section="2.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#54864169704492494">:clear</a></h3><h3 id="867420218043841" section="2.8" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68768209684329077">:load</a></h3><h3 id="23378782530310054" section="2.9" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30651751686203022">:ls [PATH]</a></h3><h3 id="10462415761012285" section="2.10" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50885138022548148">:cd PATH</a></h3><h3 id="52596868522423958" section="2.11" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52163969273584785">:step [N]</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Using the Mech REPL</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">The Mech Read-Eval-Print Loop (REPL) provides an interactive environment for executing Mech commands, inspecting symbols, and debugging programs. Below are the available REPL commands.</span></p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="4016604308879711" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4016604308879711">Starting the REPL</a></h2><p class="mech-paragraph"><span class="mech-text">To start the REPL, run:</span></p><pre class="mech-code-block">mech
 </pre><p class="mech-paragraph"><span class="mech-text">You can load a script into the REPL by running with the </span><code class="mech-inline-code">--repl</code><span class="mech-text"> option:</span></p><pre class="mech-code-block">mech --repl my_script.mec
 </pre><p class="mech-paragraph"><span class="mech-text">Once inside, you can enter commands prefixed with </span><code class="mech-inline-code">:</code><span class="mech-text">, otherwise the REPL will interpret the input as a Mech expression and evaluate it, and print the result and the associated type.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="39989981217595373" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#39989981217595373">Commands</a></h2><h3 id="5108139711275160" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#5108139711275160">:help (:h)</a></h3><p class="mech-paragraph"><span class="mech-text">Displays this help message with a list of available commands.</span></p><pre class="mech-code-block">:help
 </pre><h3 id="53448773141888059" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#53448773141888059">:quit (:q)</a></h3><p class="mech-paragraph"><span class="mech-text">Exits the REPL.</span></p><pre class="mech-code-block">:quit
@@ -1707,21 +1948,50 @@ entries
 
 window.addEventListener("DOMContentLoaded", () => {
   createObserver("0px 0px 0px 0px");
-  const elements = document.querySelectorAll(".mech-equation");
-  elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
+
+  function renderEquations(root = document) {
+    const blockElements = root.querySelectorAll(".mech-equation");
+    blockElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+
+    const inlineElements = root.querySelectorAll(".mech-inline-equation");
+    inlineElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+  }
+
+  renderEquations();
+
+  // Set up a MutationObserver to watch for new elements
+  const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          renderEquations(node);
+        }
+      }
     }
   });
-  const inline_elements = document.querySelectorAll(".mech-inline-equation");
-  inline_elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
-    }
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
   });
 });
+
 
 let lastScrollY = window.scrollY;
 let scrolling_down = true;
@@ -1793,12 +2063,14 @@ window.addEventListener("scroll", () => {
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             } else {
               console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             }
           }
         };

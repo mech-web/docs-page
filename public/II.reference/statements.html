@@ -11,7 +11,9 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        </style>
         <style>
                   @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #0d1013;
     margin: 0;
     padding: 0;
@@ -43,6 +45,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     counter-reset: h2 equation;
+    margin-right: clamp(300px, 30vw, 800px);
     flex: 2;
 }
 
@@ -52,11 +55,69 @@ body {
 }
 
 #mech-output {
-    background-color: #040608;
-    color: #f2ead9;
-    flex: 1;
+  background-color: #040608;
+  color: #f2ead9;
+  font-family: 'FiraCodeLight', monospace;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: clamp(300px, 30vw, 800px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 10; 
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
 }
 
+#mech-output::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-line {
+    margin-top: 10px;
+}
+
+.repl-prompt {
+    color: #F3B62D;
+}
+
+.repl-result .mech-output-value {
+    margin-top: 10px;
+}
+
+.repl-result .mech-output-value {
+    overflow-x: auto;
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.repl-result .mech-output-value::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Edge */
+}
+
+.repl-result {
+    margin-top: 10px;
+}
+
+.repl-input,
+.repl-code {
+  display: inline-block;       
+  font-family: 'FiraCodeLight', monospace;     
+  font-size: 1em;
+  line-height: 1.2em;
+  color: #f2ead9;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
 .mech-toc {
     width: 250px;
     counter-reset: h2;
@@ -220,7 +281,7 @@ h4.toc::before {
     padding-right: 6px;
 }
 
-.mech-program-title {
+.mech-program h1 {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
@@ -426,6 +487,10 @@ h4.toc {
 
 .mech-statement {
     min-width: 225px;
+}
+
+.mech-inline-mech-code-formatted  .mech-statement {
+    min-width:fit-content;
 }
 
 .mech-variable-define {
@@ -1129,11 +1194,24 @@ a.mech-footnote-reference {
     text-align: justify;
 }
 
-h2 {
+#mech-output {
+    counter-reset: h2;
+}
+
+#mech-output h2 {
     counter-reset: h3;
 }
 
-h3 {
+#mech-output h2 {
+    counter-reset: h3;
+}
+
+
+.mech-content h2 {
+    counter-reset: h3;
+}
+
+.mech-content h3 {
     counter-reset: h4;
 }
 
@@ -1408,6 +1486,162 @@ mark {
   stroke-width: 2.5px !important;
 }
 
+#mech-output li {
+    color: #f2ead9;
+}
+
+#mech-output li::marker {
+    color: #F3B62D;
+    font-weight: bold;
+}
+
+.mech-help th {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.mech-help tr {
+    vertical-align: top;
+}
+
+.mech-help td {
+    padding-bottom: 10px;
+}
+
+
+.repl-result .mech-table td { 
+    padding: 10px;
+}
+
+.repl-result .mech-table th { 
+    padding: 10px;
+}
+
+.mech-text-logo {
+    white-space: pre;
+    color: rgb(246,192,78);
+    text-align: center;
+    margin: 20px auto;
+}
+
+#mech-output a {
+    color: #F8D07A;
+    text-decoration: underline;
+}
+
+#mech-output a:hover {
+    color: #f18181;
+    text-decoration: underline;
+}
+
+.mech-command {
+    background-color: #171D21;
+    border: 1px solid #777;
+    color: #eddaf1;
+    font-family: 'FiraCodeLight', monospace;
+    font-size: 1rem;
+    padding: 0px 6px 0px 6px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+.mech-version {
+    text-align: center;
+}
+
+#mech-output .mech-content {
+    max-width: 100%;
+    min-width: 300px;
+    margin: 10px;
+}
+
+#mech-output .mech-abstract {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#mech-output .mech-abstract p {
+    line-height: 25pt;
+    margin: 0px;
+    text-align: justify;
+}
+
+#mech-output h1 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h3 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#mech-output h4 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h2 a {
+    text-decoration: none;
+}
+
+#mech-output h3 a {
+    text-decoration: none;
+}
+
+#mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#mech-output .mech-code-block {
+    padding: 10px;
+}
+
+#mech-output td {
+    padding: 10px;
+}
+
+#mech-output .mech-equation {
+    margin-bottom: 10px;
+}
+
+#mech-output th p {
+    margin-bottom: 0px;
+}
+
 @media (max-width: 1650px) {
     .mech-program-title {
         width: 700px;
@@ -1422,14 +1656,17 @@ mark {
     }
 }
 
-@media (max-width: 1200px) {
-    #mech-output {
+@media (max-width: 1470px) {
+    .mech-toc {
         display: none;
     }
 }
 
 @media (max-width: 1100px) {
-    .mech-toc {
+    .mech-content {
+        margin: auto;
+    }
+    #mech-output {
         display: none;
     }
 }
@@ -1468,11 +1705,15 @@ mark {
         overflow-x: auto;
     }
 
+    .mech-statement {
+        min-width: fit-content;
+    }
+
 }
         </style>
     </head>
     <body>
-      <div class="mech-root"><div class="mech-toc"><section class="mech-toc-sections"></section></div><div class="mech-content"><div class="mech-program"><div class="mech-program-body"></div></div></div>
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><section class="mech-toc-sections"></section></div><div class="mech-content"><div class="mech-program"><div class="mech-program-body"></div></div></div>
       <div id = "mech-output"></div>
     </div>
     <script>
@@ -1685,21 +1926,50 @@ entries
 
 window.addEventListener("DOMContentLoaded", () => {
   createObserver("0px 0px 0px 0px");
-  const elements = document.querySelectorAll(".mech-equation");
-  elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
+
+  function renderEquations(root = document) {
+    const blockElements = root.querySelectorAll(".mech-equation");
+    blockElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+
+    const inlineElements = root.querySelectorAll(".mech-inline-equation");
+    inlineElements.forEach(el => {
+      if (!el.getAttribute("data-rendered")) {
+        const eq = el.getAttribute("equation");
+        if (eq) {
+          katex.render(eq, el, { throwOnError: false });
+          el.setAttribute("data-rendered", "true");
+        }
+      }
+    });
+  }
+
+  renderEquations();
+
+  // Set up a MutationObserver to watch for new elements
+  const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          renderEquations(node);
+        }
+      }
     }
   });
-  const inline_elements = document.querySelectorAll(".mech-inline-equation");
-  inline_elements.forEach(el => {
-    const eq = el.getAttribute("equation");
-    if (eq) {
-      katex.render(eq, el, { throwOnError: false });
-    }
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
   });
 });
+
 
 let lastScrollY = window.scrollY;
 let scrolling_down = true;
@@ -1771,12 +2041,14 @@ window.addEventListener("scroll", () => {
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             } else {
               console.error("Defaulting to included program");
               wasm_core.run_program(code);
               wasm_core.init();
               wasm_core.render_inline_values();
               wasm_core.render_codeblock_output_values();
+              wasm_core.attach_repl("mech-output");
             }
           }
         };
