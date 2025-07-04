@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #0d1013;
+    font-weight:300;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -227,6 +228,32 @@ h4.toc::before {
     text-decoration: none;
 }
 
+h5.toc::before {
+    font-size: 1rem;
+    padding-right: 3px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.mech-toc h5 {
+    line-height: 23px;
+    font-size: 1rem;
+    padding-left: 90px;
+    margin: 10px;
+}
+
+.mech-toc h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h5:hover::before {
+    color: #f18181;
+}
+
+.mech-toc h5 a:hover {
+    color: #f18181;
+    text-decoration: none;
+}
+
 .mech-matrix {
     display: inline-flex;
 }
@@ -343,7 +370,26 @@ h4.toc::before {
     letter-spacing: 1px;
 }
 
+.mech-program h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h5 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+
 h4.toc {
+    display: none;
+}
+
+h5.toc {
     display: none;
 }
 
@@ -507,6 +553,7 @@ h4.toc {
 
 .mech-var-name {
     color: #eddaf1;
+    font-style: bold;
 }
 
 .mech-output-kind {
@@ -597,8 +644,8 @@ code {
 }
 
 .mech-paragraph {
-    color: #f2ead9;
-    line-height: 23px;
+    color: #fffbf3;
+    line-height: 25px;
 }
 
 .mech-paragraph a {
@@ -863,12 +910,10 @@ code {
 
 ul {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 ol {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 
@@ -986,7 +1031,6 @@ li {
 li p {
     margin-top: 2px;
     margin-bottom: 2px;
-    font-weight: normal;
 }
 
 .mech-table-header {
@@ -1215,6 +1259,23 @@ a.mech-footnote-reference {
     counter-reset: h4;
 }
 
+.mech-content h4 {
+    counter-reset: h5;
+}
+
+.mech-toc h2 {
+    counter-reset: h3;
+}
+
+.mech-toc h3 {
+    counter-reset: h4;
+}
+
+.mech-toc h4 {
+    counter-reset: h5;
+}
+
+
 h2::before {
     color: #F3B62D;
     counter-increment: h2;
@@ -1232,6 +1293,13 @@ h4::before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
+
+h5::before {
+    color: #F3B62D;
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
 
 .mech-program-subtitle.toc.active::before{
     color: #d65858;
@@ -1256,6 +1324,14 @@ h3:hover a {
 }
 
 h4:hover a {
+    color: #f18181;
+}
+
+h5:hover a {
+    color: #f18181;
+}
+
+h6:hover a {
     color: #f18181;
 }
 
@@ -1293,10 +1369,13 @@ h4:hover a {
 
 mark {
     background-color: #F3B62D;
+    border: 1px solid #ffe4a4;
     color: #2F353B;
+    font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     margin: 0px 7px 0px 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-works-cited {
@@ -1424,68 +1503,6 @@ mark {
     padding: 0;
 }
 
-.mech-diagram {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.mech-diagram .node rect {
-  fill: #d0e6f7 !important;
-  stroke: #219900 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #0077cc !important;
-  stroke-width: 2px !important;
-}
-
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #34c510 !important; 
-}
-
-.mech-diagram .edgeLabel {
-  background-color: transparent !important;
-  color: #ebdede !important;
-  fill: #dc9f9f !important;
-  font-size: 14px !important;
-}
-
-.mech-diagram .edgeLabel p {
-    background-color: transparent !important;
-}
-
-.mech-diagram .edgeLabel rect {
-  fill: transparent !important;
-  fill-opacity: 0 !important;
-  stroke: none !important;
-}
-
-.mech-diagram .labelBkg {
-  text-shadow: 0px 0px 4px #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-  fill: none !important;
-}
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #00bfa5 !important;
-  stroke: #00bfa5 !important;
-}
-
-.mech-diagram .flowchart-link {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-}
-
 #mech-output li {
     color: #f2ead9;
 }
@@ -1609,6 +1626,26 @@ mark {
     font-size: 1rem;
 }
 
+#mech-output h5 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h6 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
 #mech-output h2 a {
     text-decoration: none;
 }
@@ -1618,6 +1655,14 @@ mark {
 }
 
 #mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output h5 a {
+    text-decoration: none;
+}
+
+#mech-output h6 a {
     text-decoration: none;
 }
 
@@ -1710,10 +1755,108 @@ mark {
     }
 
 }
+
+.mech-strong {
+    font-weight: 900;
+    color: #fef2d4;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #ef5f90 !important;
+  stroke: #ef5f90 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
+
+/* Style the nodes (bars) */
+.mermaid .node rect {
+}
+
+/* Style the links (paths) */
+.mermaid .link path {
+  stroke-opacity: 1 !important;
+  stroke: #37252e !important; /* Default link stroke color */
+}
+
+.mermaid .link {
+    mix-blend-mode: normal !important;
+}
+
+/* Style labels */
+.mermaid text {
+  font-weight: 600;
+  fill: #ffffff;
+  opacity: 1 !important;
+}
+
+/* Change colors per node by their position or content */
+.mermaid .node:nth-child(6) rect { fill: #44d627 !important; stroke: #44d627 !important; }  /* Site Visit Qualified */
+.mermaid .node:nth-child(7) rect { fill: #d62728 !important; stroke: #d62728 !important; }  /* Semifinalists */
+
+.mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
+
+
+
         </style>
     </head>
     <body>
-      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Download and Install Mech</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="61643430991232392" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7018574624483094">Installer</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="2640126789879240" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12851858335707097">Binary</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="1374365037693835" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#9696821553302238">Source</a></h2><h3 id="31391472122525133" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29298551826141467">Install Rust and Cargo</a></h3><h3 id="18387026238198421" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4352394938014643">Download and Build Mech</a></h3><h3 id="61828462828809025" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29339698434666247">Build the Wasm Target</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21028595471821346" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47006710804698713">Cargo</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="56095059431426052" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7845982287476219">Verifying Installation</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Download and Install Mech</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="7018574624483094" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#7018574624483094">Installer</a></h2><p class="mech-paragraph"><span class="mech-text">The easiest way to install Mech is to use the installer provided for your platform. The installer includes the </span><code class="mech-inline-code">mech</code><span class="mech-text"> command-line tool, which is a standalone executable that includes everything you need to get started with Mech.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Windows</strong><span class="mech-text"> - </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.47-beta/mech-installer-v0.2.47-beta-win-x86-64.exe" class="mech-hyperlink">x86-64</a></p></li></ul><p class="mech-paragraph"><span class="mech-text">Right now, the installer is only available for Windows, but we are working on providing installers for other platforms in the future.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="12851858335707097" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#12851858335707097">Binary</a></h2><p class="mech-paragraph"><span class="mech-text">Mech is easy to install without the installer -- the whole toolchain is just a single binary executable file.</span></p><p class="mech-paragraph"><span class="mech-text">Precompiled binaries are available for the following platforms:</span></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> OS         </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Architecture                                                                                                 </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Wndows</strong><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.47-beta/mech-v0.2.47-beta-win-x86-64.7z" class="mech-hyperlink">x86-64</a><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Linux</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.47-beta/mech-v0.2.47-beta-win-x86-64.7z" class="mech-hyperlink">x86-64</a><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">macOS</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.47-beta/mech-v0.2.47-beta-mac-aarch64.zip" class="mech-hyperlink">aarch64</a><span class="mech-text"> </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Web</strong><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.47-beta/mech_wasm_bg.wasm.br" class="mech-hyperlink">wasm</a><span class="mech-text">                </span></p></td></tr></tbody></table><p class="mech-paragraph"><span class="mech-text">You can find previous releases and release notes at </span><a href="https://github.com/mech-lang/mech/releases" class="mech-hyperlink">/mech-lang/mech/releases</a><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">To install, download the appropriate binary for your operating system and extract it to a directory of your choice. The Mech toolchain is distributed as a singular executable file and doesn't require an installer.</span></p><p class="mech-paragraph"><span class="mech-text">See the toolchain documation for more information on how this program works.</span></p></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="9696821553302238" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#9696821553302238">Source</a></h2><p class="mech-paragraph"><span class="mech-text">If mech is not available for your platform, or if you want to build it from source, follow these steps:</span></p><h3 id="29298551826141467" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29298551826141467">Install Rust and Cargo</a></h3><p class="mech-paragraph"><span class="mech-text">First you will need </span><a href="https://www.rust-lang.org/learn/get-started" class="mech-hyperlink">Rust</a><span class="mech-text">. Make sure to install a recent version on the nightly release channel, currently </span><code class="mech-inline-code">nightly-2025-01-15</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">In Bash:</span></p><pre class="mech-code-block">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal --default-toolchain nightly-2025-01-15
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Download and Install Mech</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="61643430991232392" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7018574624483094">Installer</a></h2><h3 id="5922332537163012" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#30849942397320918">Desktop App</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="2640126789879240" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12851858335707097">Binary</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="1374365037693835" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#9696821553302238">Source</a></h2><h3 id="31391472122525133" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29298551826141467">Install Rust and Cargo</a></h3><h3 id="18387026238198421" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4352394938014643">Download and Build Mech</a></h3><h3 id="61828462828809025" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29339698434666247">Build the Wasm Target</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21028595471821346" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47006710804698713">Cargo</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="56095059431426052" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7845982287476219">Verifying Installation</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Download and Install Mech</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="7018574624483094" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#7018574624483094">Installer</a></h2><p class="mech-paragraph"><span class="mech-text">The easiest way to install Mech is to use the installer provided for your platform. The installer includes the </span><code class="mech-inline-code">mech</code><span class="mech-text"> command-line tool, which is a standalone executable that includes everything you need to get started with Mech.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Windows</strong><span class="mech-text"> - </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech-installer-v0.2.48-beta-win-x86-64.exe" class="mech-hyperlink">x86-64</a></p></li></ul><p class="mech-paragraph"><span class="mech-text">Right now, the installer is only available for Windows, but we are working on providing installers for other platforms in the future.</span></p><h3 id="30849942397320918" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#30849942397320918">Desktop App</a></h3><p class="mech-paragraph"><span class="mech-text">We're experimenting with a Tauri-based app for Mech as well, which is kind of like Electron but Rust's version; it uses the system's webview to render the UI, which makes it much more lightweight and efficient. Right now all it does is wrap the Mech REPL, and it works, but it's not clear if this is the right direction for the project. If you want to try it out, you can </span><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech-app_0.2.48_x86-64-setup.exe" class="mech-hyperlink">download the Mech Tauri app for Windows</a><span class="mech-text">.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="12851858335707097" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#12851858335707097">Binary</a></h2><p class="mech-paragraph"><span class="mech-text">Mech is easy to install without the installer -- the whole toolchain is just a single binary executable file.</span></p><p class="mech-paragraph"><span class="mech-text">Precompiled binaries are available for the following platforms:</span></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> OS         </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Architecture                                                                                                 </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong">Wndows</strong><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech-v0.2.48-beta-win-x86-64.7z" class="mech-hyperlink">x86-64</a><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong">Linux</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech-v0.2.48-beta-win-x86-64.7z" class="mech-hyperlink">x86-64</a><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong">macOS</strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech-v0.2.48-beta-mac-aarch64.zip" class="mech-hyperlink">aarch64</a><span class="mech-text"> </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong">Web</strong><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><a href="https://github.com/mech-lang/mech/releases/download/v0.2.48-beta/mech_wasm_bg.wasm.br" class="mech-hyperlink">wasm</a><span class="mech-text">                </span></p></td></tr></tbody></table><p class="mech-paragraph"><span class="mech-text">You can find previous releases and release notes at </span><a href="https://github.com/mech-lang/mech/releases" class="mech-hyperlink">/mech-lang/mech/releases</a><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">To install, download the appropriate binary for your operating system and extract it to a directory of your choice. The Mech toolchain is distributed as a singular executable file and doesn't require an installer.</span></p><p class="mech-paragraph"><span class="mech-text">See the toolchain documation for more information on how this program works.</span></p></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="9696821553302238" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#9696821553302238">Source</a></h2><p class="mech-paragraph"><span class="mech-text">If mech is not available for your platform, or if you want to build it from source, follow these steps:</span></p><h3 id="29298551826141467" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29298551826141467">Install Rust and Cargo</a></h3><p class="mech-paragraph"><span class="mech-text">First you will need </span><a href="https://www.rust-lang.org/learn/get-started" class="mech-hyperlink">Rust</a><span class="mech-text">. Make sure to install a recent version on the nightly release channel, currently </span><code class="mech-inline-code">nightly-2025-01-15</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">In Bash:</span></p><pre class="mech-code-block">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal --default-toolchain nightly-2025-01-15
 </pre><p class="mech-paragraph"><span class="mech-text">This command will download and install the Rust toolchain, including Cargo, the Rust package manager. Rustup is a tool for managing Rust versions and associated tools.</span></p><p class="mech-paragraph"><span class="mech-text">In PowerShell:</span></p><pre class="mech-code-block">irm https://win.rustup.rs -OutFile rustup-init.exe; Start-Process -Wait -FilePath .\rustup-init.exe -ArgumentList "-y --default-toolchain nightly-2025-01-15"; Remove-Item .\rustup-init.exe
 </pre><p class="mech-paragraph"><span class="mech-text">This command will: </span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Download Rustup for Windows (rustup-init.exe)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Run the installer with </span><code class="mech-inline-code">-y</code><span class="mech-text"> ("yes" to all, no prompts) and set the correct nightly toolchain</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Delete the installer after completion</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">You may need to allow scripts by running the following before executing the above command:</span></p><pre class="mech-code-block">Set-ExecutionPolicy Bypass -Scope Process -Force
 </pre><h3 id="4352394938014643" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4352394938014643">Download and Build Mech</a></h3><pre class="mech-code-block">git clone https://gitlab.com/mech-lang/mech
@@ -1773,8 +1916,18 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
 
       // Now grab the h2, h3, and h4 elements within that section
       const h3s = Array.from(section.querySelectorAll('h3'));
+      const h4s = Array.from(section.querySelectorAll('h4'));
 
-      if (tag === "H4") {
+      if (tag === "H5") {
+        const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
+        const H4Nav = Array.from(navItems).find(item => {
+            const link = item.querySelector("a[href]");
+            return link && link.getAttribute("href") === `#${closestH4.id}`;
+        });
+        closestH4.classList.add("active");
+      }
+
+      if (tag === "H4" || tag === "H5") {
         const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
         const H3Nav = Array.from(navItems).find(item => {
             const link = item.querySelector("a[href]");
@@ -1788,7 +1941,7 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
         const h3_id = entry.getAttribute("section");
         all_the_headers.forEach(item => {
           const item_id = item.getAttribute("section");
-          if (item_id === h3_id) {
+          if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
             item.classList.add("visible");
           } else {
             item.classList.remove("visible");
@@ -1817,7 +1970,6 @@ function createObserver(rootMarginValue,scrolling_down) {
   const all_the_headers = Array.from(document.querySelectorAll('[section]'));
   observer = new IntersectionObserver((entries) => {
 
-
 entries
   .slice() // Create a shallow copy to avoid mutating the original entries array
   .sort((a, b) => {
@@ -1827,7 +1979,7 @@ entries
       : b.boundingClientRect.top - a.boundingClientRect.top; // Descending for scrolling up
   })
   .forEach(entry => {
-      if (entry.isIntersecting) {
+    if (entry.isIntersecting) {
         const id = entry.target.id;
         const tag = entry.target.tagName; // H1, H2, H3, etc.
 
@@ -1875,10 +2027,32 @@ entries
             }
           }
 
-          // Now grab the h2, h3, and h4 elements within that section
+          // Now grab the h3, h4, h5 elements within that section
           const h3s = Array.from(section.querySelectorAll('h3'));
+          const h4s = Array.from(section.querySelectorAll('h4'));
+          const h5s = Array.from(section.querySelectorAll('h5'));
 
-          if (tag === "H4") {
+          if (tag === "H5") {
+            const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
+            const H4Nav = Array.from(navItems).find(item => {
+                const link = item.querySelector("a[href]");
+                return link && link.getAttribute("href") === `#${closestH4.id}`;
+            });
+            if (H4Nav) {
+              H4Nav.classList.add("active");
+              const h4_id = H4Nav.getAttribute("section");
+              all_the_headers.forEach(item => {
+                const item_id = item.getAttribute("section");
+                if (item_id && item_id.startsWith(h4_id) && item.tagName === "H4") {
+                } else {
+                  item.classList.remove("visible");
+                }
+              });
+            }
+          }
+
+          if (tag === "H4" || tag == "H5") {
+            const entry_section = entry.target.getAttribute("section");
             const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
             const H3Nav = Array.from(navItems).find(item => {
               const link = item.querySelector("a[href]");
@@ -1889,7 +2063,8 @@ entries
               const h3_id = H3Nav.getAttribute("section");
               all_the_headers.forEach(item => {
                 const item_id = item.getAttribute("section");
-                if (item_id === h3_id) {
+                // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+                if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                   item.classList.add("visible");
                 } else {
                   item.classList.remove("visible");
@@ -1903,7 +2078,8 @@ entries
             const h3_id = entry.target.getAttribute("section");
             all_the_headers.forEach(item => {
               const item_id = item.getAttribute("section");
-              if (item_id === h3_id) {
+              // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+              if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                 item.classList.add("visible");
               } else {
                 item.classList.remove("visible");
@@ -1958,6 +2134,13 @@ window.addEventListener("DOMContentLoaded", () => {
           katex.render(eq, el, { throwOnError: false });
           el.setAttribute("data-rendered", "true");
         }
+      }
+    });
+
+    document.querySelectorAll(".mermaid svg").forEach(svg => {
+      const labels = svg.querySelector(".node-labels");
+      if (labels && svg.lastElementChild !== labels) {
+        svg.appendChild(labels); // Move labels to end = on top
       }
     });
   }
@@ -2039,7 +2222,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `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`;
+        var code = `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`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;

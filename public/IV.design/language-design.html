@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #0d1013;
+    font-weight:300;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -227,6 +228,32 @@ h4.toc::before {
     text-decoration: none;
 }
 
+h5.toc::before {
+    font-size: 1rem;
+    padding-right: 3px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.mech-toc h5 {
+    line-height: 23px;
+    font-size: 1rem;
+    padding-left: 90px;
+    margin: 10px;
+}
+
+.mech-toc h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h5:hover::before {
+    color: #f18181;
+}
+
+.mech-toc h5 a:hover {
+    color: #f18181;
+    text-decoration: none;
+}
+
 .mech-matrix {
     display: inline-flex;
 }
@@ -343,7 +370,26 @@ h4.toc::before {
     letter-spacing: 1px;
 }
 
+.mech-program h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h5 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+
 h4.toc {
+    display: none;
+}
+
+h5.toc {
     display: none;
 }
 
@@ -507,6 +553,7 @@ h4.toc {
 
 .mech-var-name {
     color: #eddaf1;
+    font-style: bold;
 }
 
 .mech-output-kind {
@@ -597,8 +644,8 @@ code {
 }
 
 .mech-paragraph {
-    color: #f2ead9;
-    line-height: 23px;
+    color: #fffbf3;
+    line-height: 25px;
 }
 
 .mech-paragraph a {
@@ -863,12 +910,10 @@ code {
 
 ul {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 ol {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 
@@ -986,7 +1031,6 @@ li {
 li p {
     margin-top: 2px;
     margin-bottom: 2px;
-    font-weight: normal;
 }
 
 .mech-table-header {
@@ -1215,6 +1259,23 @@ a.mech-footnote-reference {
     counter-reset: h4;
 }
 
+.mech-content h4 {
+    counter-reset: h5;
+}
+
+.mech-toc h2 {
+    counter-reset: h3;
+}
+
+.mech-toc h3 {
+    counter-reset: h4;
+}
+
+.mech-toc h4 {
+    counter-reset: h5;
+}
+
+
 h2::before {
     color: #F3B62D;
     counter-increment: h2;
@@ -1232,6 +1293,13 @@ h4::before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
+
+h5::before {
+    color: #F3B62D;
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
 
 .mech-program-subtitle.toc.active::before{
     color: #d65858;
@@ -1256,6 +1324,14 @@ h3:hover a {
 }
 
 h4:hover a {
+    color: #f18181;
+}
+
+h5:hover a {
+    color: #f18181;
+}
+
+h6:hover a {
     color: #f18181;
 }
 
@@ -1293,10 +1369,13 @@ h4:hover a {
 
 mark {
     background-color: #F3B62D;
+    border: 1px solid #ffe4a4;
     color: #2F353B;
+    font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     margin: 0px 7px 0px 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-works-cited {
@@ -1424,68 +1503,6 @@ mark {
     padding: 0;
 }
 
-.mech-diagram {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.mech-diagram .node rect {
-  fill: #d0e6f7 !important;
-  stroke: #219900 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #0077cc !important;
-  stroke-width: 2px !important;
-}
-
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #34c510 !important; 
-}
-
-.mech-diagram .edgeLabel {
-  background-color: transparent !important;
-  color: #ebdede !important;
-  fill: #dc9f9f !important;
-  font-size: 14px !important;
-}
-
-.mech-diagram .edgeLabel p {
-    background-color: transparent !important;
-}
-
-.mech-diagram .edgeLabel rect {
-  fill: transparent !important;
-  fill-opacity: 0 !important;
-  stroke: none !important;
-}
-
-.mech-diagram .labelBkg {
-  text-shadow: 0px 0px 4px #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-  fill: none !important;
-}
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #00bfa5 !important;
-  stroke: #00bfa5 !important;
-}
-
-.mech-diagram .flowchart-link {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-}
-
 #mech-output li {
     color: #f2ead9;
 }
@@ -1609,6 +1626,26 @@ mark {
     font-size: 1rem;
 }
 
+#mech-output h5 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h6 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
 #mech-output h2 a {
     text-decoration: none;
 }
@@ -1618,6 +1655,14 @@ mark {
 }
 
 #mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output h5 a {
+    text-decoration: none;
+}
+
+#mech-output h6 a {
     text-decoration: none;
 }
 
@@ -1710,10 +1755,108 @@ mark {
     }
 
 }
+
+.mech-strong {
+    font-weight: 900;
+    color: #fef2d4;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #ef5f90 !important;
+  stroke: #ef5f90 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
+
+/* Style the nodes (bars) */
+.mermaid .node rect {
+}
+
+/* Style the links (paths) */
+.mermaid .link path {
+  stroke-opacity: 1 !important;
+  stroke: #37252e !important; /* Default link stroke color */
+}
+
+.mermaid .link {
+    mix-blend-mode: normal !important;
+}
+
+/* Style labels */
+.mermaid text {
+  font-weight: 600;
+  fill: #ffffff;
+  opacity: 1 !important;
+}
+
+/* Change colors per node by their position or content */
+.mermaid .node:nth-child(6) rect { fill: #44d627 !important; stroke: #44d627 !important; }  /* Site Visit Qualified */
+.mermaid .node:nth-child(7) rect { fill: #d62728 !important; stroke: #d62728 !important; }  /* Semifinalists */
+
+.mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
+
+
+
         </style>
     </head>
     <body>
-      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Language Design</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="52947080258052594" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#33725943353319822">Introduction</a></h2><h3 id="22849411942488141" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#31780377578991577">Elevator Pitch</a></h3><h3 id="67648361356672967" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64952518514136887">Philosophy</a></h3><h4 id="16430193961899328" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29941476038430593">Languages are fossilized theories of computation</a></h4><h4 id="49823628680474487" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58222064442664577">AI</a></h4><h3 id="53036395896814851" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28131497550113345">Design Goals</a></h3><h3 id="3858307890122575" section="1.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#70260397823972168">Family Tree</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Language Design</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">Sometimes it feels like there are already too many programming languages out there, but still, the amount of unexplored territory in the programming language design space remains vast. What's more, many of the existing and popular languages out there are clustered around well-explored and researched paradigms, such as imperative programming, object-oriented programming, and functional programming </span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">. New langauges in this space often focus on incremental imprements -- taking what has worked and advancing it one delta. This is a perfectly valid approach, but it often leads to languages that are more of the same, and potentially a local maximum in the design space </span><a href="#47765531206544500" class="mech-footnote-reference">2</a><span class="mech-text">. </span></p><p class="mech-paragraph"><span class="mech-text">Mech is not a language looking to make incremental improvements; we are not trying to make a better C++, Python, or Rust. Instead, we looking back at some of the best ideas from the past that have been overlooked or underexplored, and combining them with modern programming techniques to create a new language that exists orthogonally to many existing langauges.</span></p><p class="mech-paragraph"><span class="mech-text">Today's machines have variety of computational cores ranging from massively-multi-core CPUs, to Graphhical Processing Units (GPUs), to Neural Processing Units (NPUs); asynchronous input devices ranging from keyboards and mice, to touch, pen, and audio; sensors ranging from cameras, to gyroscopes, to LIDAR; form factors ranging from a phone that can fit in your pocket, to a cloud cluster that takes up an entire warehouse; actuators ranging from simple servos, to motors, lights, and even robot arms and legs.</span></p><p class="mech-paragraph"><span class="mech-text">They consume and process vast amounts of data from all kinds of sources, from users themselves, or the myraid sensors equipped to most devices. And with AI, the sum of the entire world's digital knowledge - art, books, movies, music, games is the scope of what these machines aim to process and analyze.</span></p><p class="mech-paragraph"><span class="mech-text">Donald Knuth:</span></p><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"The most important thing in the programming language is the name. A language will not succeed without a good name. I have recently invented a very good name and now I am looking for a suitable language."</span></span></span></span></span></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="33725943353319822" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#33725943353319822">Introduction</a></h2><h3 id="31780377578991577" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#31780377578991577">Elevator Pitch</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is a language for developing data-drive, reactive systems like animations, games, and robots. </span></p><p class="mech-paragraph"><span class="mech-text">It makes composing, transforming, and distributing data easy, allowing you to focus on the essential complexity of your project.</span></p><p class="mech-paragraph"><span class="mech-text">Let's deconstruct this elevator pitch:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Data-driven</strong><span class="mech-text"> - This is to make it clear that Mech is not about writing imperative code that runs from start to finish, but rather about defining how your system should behave in response to changes in data or user input. Data drives a Mech program, not the other way around.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Reactive systems</strong><span class="mech-text">: Mech is built for systems that respond to changes in data or user input. It provides a programming model that allows you to define how your system should react to changes in data, making it easy to build interactive applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Animations, games, and robots</strong><span class="mech-text">: Mech is particularly well-suited for applications that involve real-time data processing and interaction. It provides a set of tools and libraries that make it easy to build animations, games, and robotic systems.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Composing, transforming, and distributing data</strong><span class="mech-text">: Mech provides a rich set of operators that make it easy to compose and transform data. It also provides a distributed programming model that allows you to build systems that can run on multiple devices or machines, making it easy to scale your applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Focus on essential complexity</strong><span class="mech-text"> - The phrase "essential complexity" is a reference to the famous idea from computer science that there is a difference between the complexity that is inherent to the problem you are trying to solve (essential complexity) and the complexity that is introduced by the tools and techniques you use to solve it (accidental complexity). Mech aims to minimize accidental complexity, allowing you to focus on the essential complexity of your project. This comes from the paper "Out of the Tar Pit" by Peter J. Landin, which discusses the challenges of programming languages and how they can be designed to minimize accidental complexity.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Project</strong><span class="mech-text"> - Mech isn't just for programs, it's for any kind of project.</span></p></li></ul><h3 id="64952518514136887" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64952518514136887">Philosophy</a></h3><p class="mech-paragraph"><span class="mech-text">Mech subscribes to a simple philosophy:</span></p><blockquote class="mech-block-quote"><p class="mech-paragraph"><span class="mech-text">"Make simple things simple and complex things possible." - Alan Kay</span></p></blockquote><p class="mech-paragraph"><span class="mech-text">This means that Mech should be easy to use for simple tasks, but also powerful enough to handle complex problems. The language is designed to be expressive and flexible, allowing programmers to work with data in a way that feels natural and intuitive.</span></p><p class="mech-paragraph"><span class="mech-text">Why can't it just be a library? Or a framework? Or a DSL? You are building not just a language but a whole system??? What's next, an Operating System... oh wait, you've done that too.... Holy Temple OS batman!</span></p><p class="mech-paragraph"><span class="mech-text">Solves and HCI problem, not just a semantics problem.</span></p><p class="mech-paragraph"><span class="mech-text">ideas that need implementing and problems that need solving, we could still use more. Ineed, there was a period of time in the mid 70s when the world of programming seemed to be complete unexplored. No one had done programming before, and so there wasn't any expectation or idea of what programming was or could be. </span></p><h4 id="29941476038430593" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29941476038430593">Languages are fossilized theories of computation</a></h4><p class="mech-paragraph"><span class="mech-text">The theory of computation is changing, and old languages can't keep up.</span></p><h4 id="58222064442664577" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58222064442664577">AI</a></h4><p class="mech-paragraph"><span class="mech-text">How does mech work well with AI?</span></p><p class="mech-paragraph"><span class="mech-text">Local scope, don't need to look globally to fiture out things.</span></p><p class="mech-paragraph"><span class="mech-text">Typed so that the AI can understand the data and how to manipulate it.</span></p><p class="mech-paragraph"><span class="mech-text">Simple data model that is easy to understand and manipulate.</span></p><h3 id="28131497550113345" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28131497550113345">Design Goals</a></h3><p class="mech-paragraph"><span class="mech-text">Some design goals of Mech include:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Working with data should feel like a clay that Mech programmers can shape and mold via the rich set of default operators that are included.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language must be fast, efficient, and scalable. Mech programs should be able to run on a wide range of hardware, from embedded devices to high-performance computing clusters.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The development cycles should be as short as possible to support live programming and rapid prototyping.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Battries should be included for common tasks, such as data visualization, machine learning, and simulation, to make it easy to get started with Mech.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The platform should be extensible and support a wide variety of interfaces beyond text, including graphical interfaces, audio, and VR, pen, and touch.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Programs should be safe and secure, with a focus on preventing common programming errors</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language should be learnable by a wide range of people, from beginners to experienced programmers, from students to professionals, and from artists to scientists.</span></p></li></ul><h3 id="70260397823972168" section="1.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#70260397823972168">Family Tree</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is inspired by the following programming languages:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Matlab</strong><span class="mech-text"> - the primary influence for Mech'd data model and syntax.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Eve</strong><span class="mech-text"> - the primary influence for Mech's programming model, which is built on a database.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Rust</strong><span class="mech-text"> - Mech is implemented in Rust, and so adopts some of the design principles and expressions of Rust, like pattern matching.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Smalltalk</strong><span class="mech-text"> - Mech is a programming system like Smalltalk, with a focus on interactive programming and live coding.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Logo</strong><span class="mech-text"> - the design principle of Logo which make it a language accessible to children have </span></p></li></ul><div class="mech-footnote" id="9969322063809408">
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Language Design</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="52947080258052594" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#33725943353319822">Introduction</a></h2><h3 id="22849411942488141" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#31780377578991577">Elevator Pitch</a></h3><h3 id="67648361356672967" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64952518514136887">Philosophy</a></h3><h4 id="16430193961899328" section="1.2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29941476038430593">Languages are fossilized theories of computation</a></h4><h4 id="49823628680474487" section="1.2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58222064442664577">AI</a></h4><h3 id="53036395896814851" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28131497550113345">Design Goals</a></h3><h3 id="3858307890122575" section="1.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#70260397823972168">Family Tree</a></h3></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Language Design</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">Sometimes it feels like there are already too many programming languages out there, but still, the amount of unexplored territory in the programming language design space remains vast. What's more, many of the existing and popular languages out there are clustered around well-explored and researched paradigms, such as imperative programming, object-oriented programming, and functional programming </span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">. New langauges in this space often focus on incremental imprements -- taking what has worked and advancing it one delta. This is a perfectly valid approach, but it often leads to languages that are more of the same, and potentially a local maximum in the design space </span><a href="#47765531206544500" class="mech-footnote-reference">2</a><span class="mech-text">. </span></p><p class="mech-paragraph"><span class="mech-text">Mech is not a language looking to make incremental improvements; we are not trying to make a better C++, Python, or Rust. Instead, we looking back at some of the best ideas from the past that have been overlooked or underexplored, and combining them with modern programming techniques to create a new language that exists orthogonally to many existing langauges.</span></p><p class="mech-paragraph"><span class="mech-text">Today's machines have variety of computational cores ranging from massively-multi-core CPUs, to Graphhical Processing Units (GPUs), to Neural Processing Units (NPUs); asynchronous input devices ranging from keyboards and mice, to touch, pen, and audio; sensors ranging from cameras, to gyroscopes, to LIDAR; form factors ranging from a phone that can fit in your pocket, to a cloud cluster that takes up an entire warehouse; actuators ranging from simple servos, to motors, lights, and even robot arms and legs.</span></p><p class="mech-paragraph"><span class="mech-text">They consume and process vast amounts of data from all kinds of sources, from users themselves, or the myraid sensors equipped to most devices. And with AI, the sum of the entire world's digital knowledge - art, books, movies, music, games is the scope of what these machines aim to process and analyze.</span></p><p class="mech-paragraph"><span class="mech-text">Donald Knuth:</span></p><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"The most important thing in the programming language is the name. A language will not succeed without a good name. I have recently invented a very good name and now I am looking for a suitable language."</span></span></span></span></span></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="33725943353319822" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#33725943353319822">Introduction</a></h2><h3 id="31780377578991577" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#31780377578991577">Elevator Pitch</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is a language for developing data-drive, reactive systems like animations, games, and robots. </span></p><p class="mech-paragraph"><span class="mech-text">It makes composing, transforming, and distributing data easy, allowing you to focus on the essential complexity of your project.</span></p><p class="mech-paragraph"><span class="mech-text">Let's deconstruct this elevator pitch:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Data-driven</strong><span class="mech-text"> - This is to make it clear that Mech is not about writing imperative code that runs from start to finish, but rather about defining how your system should behave in response to changes in data or user input. Data drives a Mech program, not the other way around.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Reactive systems</strong><span class="mech-text">: Mech is built for systems that respond to changes in data or user input. It provides a programming model that allows you to define how your system should react to changes in data, making it easy to build interactive applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Animations, games, and robots</strong><span class="mech-text">: Mech is particularly well-suited for applications that involve real-time data processing and interaction. It provides a set of tools and libraries that make it easy to build animations, games, and robotic systems.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Composing, transforming, and distributing data</strong><span class="mech-text">: Mech provides a rich set of operators that make it easy to compose and transform data. It also provides a distributed programming model that allows you to build systems that can run on multiple devices or machines, making it easy to scale your applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Focus on essential complexity</strong><span class="mech-text"> - The phrase "essential complexity" is a reference to the famous idea from computer science that there is a difference between the complexity that is inherent to the problem you are trying to solve (essential complexity) and the complexity that is introduced by the tools and techniques you use to solve it (accidental complexity). Mech aims to minimize accidental complexity, allowing you to focus on the essential complexity of your project. This comes from the paper "Out of the Tar Pit" by Peter J. Landin, which discusses the challenges of programming languages and how they can be designed to minimize accidental complexity.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Project</strong><span class="mech-text"> - Mech isn't just for programs, it's for any kind of project.</span></p></li></ul><h3 id="64952518514136887" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64952518514136887">Philosophy</a></h3><p class="mech-paragraph"><span class="mech-text">Mech subscribes to a simple philosophy:</span></p><blockquote class="mech-block-quote"><p class="mech-paragraph"><span class="mech-text">"Make simple things simple and complex things possible." - Alan Kay</span></p></blockquote><p class="mech-paragraph"><span class="mech-text">This means that Mech should be easy to use for simple tasks, but also powerful enough to handle complex problems. The language is designed to be expressive and flexible, allowing programmers to work with data in a way that feels natural and intuitive.</span></p><p class="mech-paragraph"><span class="mech-text">Why can't it just be a library? Or a framework? Or a DSL? You are building not just a language but a whole system??? What's next, an Operating System... oh wait, you've done that too.... Holy Temple OS batman!</span></p><p class="mech-paragraph"><span class="mech-text">Solves and HCI problem, not just a semantics problem.</span></p><p class="mech-paragraph"><span class="mech-text">ideas that need implementing and problems that need solving, we could still use more. Ineed, there was a period of time in the mid 70s when the world of programming seemed to be complete unexplored. No one had done programming before, and so there wasn't any expectation or idea of what programming was or could be. </span></p><h4 id="29941476038430593" section="1.2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29941476038430593">Languages are fossilized theories of computation</a></h4><p class="mech-paragraph"><span class="mech-text">The theory of computation is changing, and old languages can't keep up.</span></p><h4 id="58222064442664577" section="1.2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58222064442664577">AI</a></h4><p class="mech-paragraph"><span class="mech-text">How does mech work well with AI?</span></p><p class="mech-paragraph"><span class="mech-text">Local scope, don't need to look globally to fiture out things.</span></p><p class="mech-paragraph"><span class="mech-text">Typed so that the AI can understand the data and how to manipulate it.</span></p><p class="mech-paragraph"><span class="mech-text">Simple data model that is easy to understand and manipulate.</span></p><h3 id="28131497550113345" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28131497550113345">Design Goals</a></h3><p class="mech-paragraph"><span class="mech-text">Some design goals of Mech include:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Working with data should feel like a clay that Mech programmers can shape and mold via the rich set of default operators that are included.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language must be fast, efficient, and scalable. Mech programs should be able to run on a wide range of hardware, from embedded devices to high-performance computing clusters.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The development cycles should be as short as possible to support live programming and rapid prototyping.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Battries should be included for common tasks, such as data visualization, machine learning, and simulation, to make it easy to get started with Mech.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The platform should be extensible and support a wide variety of interfaces beyond text, including graphical interfaces, audio, and VR, pen, and touch.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Programs should be safe and secure, with a focus on preventing common programming errors</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language should be learnable by a wide range of people, from beginners to experienced programmers, from students to professionals, and from artists to scientists.</span></p></li></ul><h3 id="70260397823972168" section="1.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#70260397823972168">Family Tree</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is inspired by the following programming languages:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Matlab</strong><span class="mech-text"> - the primary influence for Mech'd data model and syntax.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Eve</strong><span class="mech-text"> - the primary influence for Mech's programming model, which is built on a database.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Rust</strong><span class="mech-text"> - Mech is implemented in Rust, and so adopts some of the design principles and expressions of Rust, like pattern matching.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Smalltalk</strong><span class="mech-text"> - Mech is a programming system like Smalltalk, with a focus on interactive programming and live coding.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Logo</strong><span class="mech-text"> - the design principle of Logo which make it a language accessible to children have </span></p></li></ul><div class="mech-footnote" id="9969322063809408">
         <div class="mech-footnote-id">1:</div>
         <p class="mech-paragraph"><span class="mech-text">If you squit (and not especially hard) C++, Java, Python, Javascript, are all the same programming language.  Jakubovic, Edwards and Petricek have referred to this as a </span><a href="https://tomasp.net/techdims/#footer=index,navigation;left=catalogue,list;top=catalogue,index" class="mech-hyperlink">"Hornets Nest" of programming languages</a><span class="mech-text">. This is not to say that these languages are not distinct, but rather that they are all variations on a well-studied theme. There is still a lot of unexplored territory in the programming language design space.</span></p>
       </div><div class="mech-footnote" id="47765531206544500">
@@ -1768,8 +1911,18 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
 
       // Now grab the h2, h3, and h4 elements within that section
       const h3s = Array.from(section.querySelectorAll('h3'));
+      const h4s = Array.from(section.querySelectorAll('h4'));
 
-      if (tag === "H4") {
+      if (tag === "H5") {
+        const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
+        const H4Nav = Array.from(navItems).find(item => {
+            const link = item.querySelector("a[href]");
+            return link && link.getAttribute("href") === `#${closestH4.id}`;
+        });
+        closestH4.classList.add("active");
+      }
+
+      if (tag === "H4" || tag === "H5") {
         const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
         const H3Nav = Array.from(navItems).find(item => {
             const link = item.querySelector("a[href]");
@@ -1783,7 +1936,7 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
         const h3_id = entry.getAttribute("section");
         all_the_headers.forEach(item => {
           const item_id = item.getAttribute("section");
-          if (item_id === h3_id) {
+          if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
             item.classList.add("visible");
           } else {
             item.classList.remove("visible");
@@ -1812,7 +1965,6 @@ function createObserver(rootMarginValue,scrolling_down) {
   const all_the_headers = Array.from(document.querySelectorAll('[section]'));
   observer = new IntersectionObserver((entries) => {
 
-
 entries
   .slice() // Create a shallow copy to avoid mutating the original entries array
   .sort((a, b) => {
@@ -1822,7 +1974,7 @@ entries
       : b.boundingClientRect.top - a.boundingClientRect.top; // Descending for scrolling up
   })
   .forEach(entry => {
-      if (entry.isIntersecting) {
+    if (entry.isIntersecting) {
         const id = entry.target.id;
         const tag = entry.target.tagName; // H1, H2, H3, etc.
 
@@ -1870,10 +2022,32 @@ entries
             }
           }
 
-          // Now grab the h2, h3, and h4 elements within that section
+          // Now grab the h3, h4, h5 elements within that section
           const h3s = Array.from(section.querySelectorAll('h3'));
+          const h4s = Array.from(section.querySelectorAll('h4'));
+          const h5s = Array.from(section.querySelectorAll('h5'));
 
-          if (tag === "H4") {
+          if (tag === "H5") {
+            const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
+            const H4Nav = Array.from(navItems).find(item => {
+                const link = item.querySelector("a[href]");
+                return link && link.getAttribute("href") === `#${closestH4.id}`;
+            });
+            if (H4Nav) {
+              H4Nav.classList.add("active");
+              const h4_id = H4Nav.getAttribute("section");
+              all_the_headers.forEach(item => {
+                const item_id = item.getAttribute("section");
+                if (item_id && item_id.startsWith(h4_id) && item.tagName === "H4") {
+                } else {
+                  item.classList.remove("visible");
+                }
+              });
+            }
+          }
+
+          if (tag === "H4" || tag == "H5") {
+            const entry_section = entry.target.getAttribute("section");
             const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
             const H3Nav = Array.from(navItems).find(item => {
               const link = item.querySelector("a[href]");
@@ -1884,7 +2058,8 @@ entries
               const h3_id = H3Nav.getAttribute("section");
               all_the_headers.forEach(item => {
                 const item_id = item.getAttribute("section");
-                if (item_id === h3_id) {
+                // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+                if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                   item.classList.add("visible");
                 } else {
                   item.classList.remove("visible");
@@ -1898,7 +2073,8 @@ entries
             const h3_id = entry.target.getAttribute("section");
             all_the_headers.forEach(item => {
               const item_id = item.getAttribute("section");
-              if (item_id === h3_id) {
+              // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+              if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                 item.classList.add("visible");
               } else {
                 item.classList.remove("visible");
@@ -1953,6 +2129,13 @@ window.addEventListener("DOMContentLoaded", () => {
           katex.render(eq, el, { throwOnError: false });
           el.setAttribute("data-rendered", "true");
         }
+      }
+    });
+
+    document.querySelectorAll(".mermaid svg").forEach(svg => {
+      const labels = svg.querySelector(".node-labels");
+      if (labels && svg.lastElementChild !== labels) {
+        svg.appendChild(labels); // Move labels to end = on top
       }
     });
   }

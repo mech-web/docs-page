@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #0d1013;
+    font-weight:300;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -227,6 +228,32 @@ h4.toc::before {
     text-decoration: none;
 }
 
+h5.toc::before {
+    font-size: 1rem;
+    padding-right: 3px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.mech-toc h5 {
+    line-height: 23px;
+    font-size: 1rem;
+    padding-left: 90px;
+    margin: 10px;
+}
+
+.mech-toc h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h5:hover::before {
+    color: #f18181;
+}
+
+.mech-toc h5 a:hover {
+    color: #f18181;
+    text-decoration: none;
+}
+
 .mech-matrix {
     display: inline-flex;
 }
@@ -343,7 +370,26 @@ h4.toc::before {
     letter-spacing: 1px;
 }
 
+.mech-program h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h5 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+
 h4.toc {
+    display: none;
+}
+
+h5.toc {
     display: none;
 }
 
@@ -507,6 +553,7 @@ h4.toc {
 
 .mech-var-name {
     color: #eddaf1;
+    font-style: bold;
 }
 
 .mech-output-kind {
@@ -597,8 +644,8 @@ code {
 }
 
 .mech-paragraph {
-    color: #f2ead9;
-    line-height: 23px;
+    color: #fffbf3;
+    line-height: 25px;
 }
 
 .mech-paragraph a {
@@ -863,12 +910,10 @@ code {
 
 ul {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 ol {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 
@@ -986,7 +1031,6 @@ li {
 li p {
     margin-top: 2px;
     margin-bottom: 2px;
-    font-weight: normal;
 }
 
 .mech-table-header {
@@ -1215,6 +1259,23 @@ a.mech-footnote-reference {
     counter-reset: h4;
 }
 
+.mech-content h4 {
+    counter-reset: h5;
+}
+
+.mech-toc h2 {
+    counter-reset: h3;
+}
+
+.mech-toc h3 {
+    counter-reset: h4;
+}
+
+.mech-toc h4 {
+    counter-reset: h5;
+}
+
+
 h2::before {
     color: #F3B62D;
     counter-increment: h2;
@@ -1232,6 +1293,13 @@ h4::before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
+
+h5::before {
+    color: #F3B62D;
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
 
 .mech-program-subtitle.toc.active::before{
     color: #d65858;
@@ -1256,6 +1324,14 @@ h3:hover a {
 }
 
 h4:hover a {
+    color: #f18181;
+}
+
+h5:hover a {
+    color: #f18181;
+}
+
+h6:hover a {
     color: #f18181;
 }
 
@@ -1293,10 +1369,13 @@ h4:hover a {
 
 mark {
     background-color: #F3B62D;
+    border: 1px solid #ffe4a4;
     color: #2F353B;
+    font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     margin: 0px 7px 0px 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-works-cited {
@@ -1424,68 +1503,6 @@ mark {
     padding: 0;
 }
 
-.mech-diagram {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.mech-diagram .node rect {
-  fill: #d0e6f7 !important;
-  stroke: #219900 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #0077cc !important;
-  stroke-width: 2px !important;
-}
-
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #34c510 !important; 
-}
-
-.mech-diagram .edgeLabel {
-  background-color: transparent !important;
-  color: #ebdede !important;
-  fill: #dc9f9f !important;
-  font-size: 14px !important;
-}
-
-.mech-diagram .edgeLabel p {
-    background-color: transparent !important;
-}
-
-.mech-diagram .edgeLabel rect {
-  fill: transparent !important;
-  fill-opacity: 0 !important;
-  stroke: none !important;
-}
-
-.mech-diagram .labelBkg {
-  text-shadow: 0px 0px 4px #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-  fill: none !important;
-}
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #00bfa5 !important;
-  stroke: #00bfa5 !important;
-}
-
-.mech-diagram .flowchart-link {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-}
-
 #mech-output li {
     color: #f2ead9;
 }
@@ -1609,6 +1626,26 @@ mark {
     font-size: 1rem;
 }
 
+#mech-output h5 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h6 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
 #mech-output h2 a {
     text-decoration: none;
 }
@@ -1618,6 +1655,14 @@ mark {
 }
 
 #mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output h5 a {
+    text-decoration: none;
+}
+
+#mech-output h6 a {
     text-decoration: none;
 }
 
@@ -1710,6 +1755,104 @@ mark {
     }
 
 }
+
+.mech-strong {
+    font-weight: 900;
+    color: #fef2d4;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #ef5f90 !important;
+  stroke: #ef5f90 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
+
+/* Style the nodes (bars) */
+.mermaid .node rect {
+}
+
+/* Style the links (paths) */
+.mermaid .link path {
+  stroke-opacity: 1 !important;
+  stroke: #37252e !important; /* Default link stroke color */
+}
+
+.mermaid .link {
+    mix-blend-mode: normal !important;
+}
+
+/* Style labels */
+.mermaid text {
+  font-weight: 600;
+  fill: #ffffff;
+  opacity: 1 !important;
+}
+
+/* Change colors per node by their position or content */
+.mermaid .node:nth-child(6) rect { fill: #44d627 !important; stroke: #44d627 !important; }  /* Site Visit Qualified */
+.mermaid .node:nth-child(7) rect { fill: #d62728 !important; stroke: #d62728 !important; }  /* Semifinalists */
+
+.mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
+
+
+
         </style>
     </head>
     <body>
@@ -1874,8 +2017,18 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
 
       // Now grab the h2, h3, and h4 elements within that section
       const h3s = Array.from(section.querySelectorAll('h3'));
+      const h4s = Array.from(section.querySelectorAll('h4'));
 
-      if (tag === "H4") {
+      if (tag === "H5") {
+        const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
+        const H4Nav = Array.from(navItems).find(item => {
+            const link = item.querySelector("a[href]");
+            return link && link.getAttribute("href") === `#${closestH4.id}`;
+        });
+        closestH4.classList.add("active");
+      }
+
+      if (tag === "H4" || tag === "H5") {
         const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
         const H3Nav = Array.from(navItems).find(item => {
             const link = item.querySelector("a[href]");
@@ -1889,7 +2042,7 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
         const h3_id = entry.getAttribute("section");
         all_the_headers.forEach(item => {
           const item_id = item.getAttribute("section");
-          if (item_id === h3_id) {
+          if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
             item.classList.add("visible");
           } else {
             item.classList.remove("visible");
@@ -1918,7 +2071,6 @@ function createObserver(rootMarginValue,scrolling_down) {
   const all_the_headers = Array.from(document.querySelectorAll('[section]'));
   observer = new IntersectionObserver((entries) => {
 
-
 entries
   .slice() // Create a shallow copy to avoid mutating the original entries array
   .sort((a, b) => {
@@ -1928,7 +2080,7 @@ entries
       : b.boundingClientRect.top - a.boundingClientRect.top; // Descending for scrolling up
   })
   .forEach(entry => {
-      if (entry.isIntersecting) {
+    if (entry.isIntersecting) {
         const id = entry.target.id;
         const tag = entry.target.tagName; // H1, H2, H3, etc.
 
@@ -1976,10 +2128,32 @@ entries
             }
           }
 
-          // Now grab the h2, h3, and h4 elements within that section
+          // Now grab the h3, h4, h5 elements within that section
           const h3s = Array.from(section.querySelectorAll('h3'));
+          const h4s = Array.from(section.querySelectorAll('h4'));
+          const h5s = Array.from(section.querySelectorAll('h5'));
 
-          if (tag === "H4") {
+          if (tag === "H5") {
+            const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
+            const H4Nav = Array.from(navItems).find(item => {
+                const link = item.querySelector("a[href]");
+                return link && link.getAttribute("href") === `#${closestH4.id}`;
+            });
+            if (H4Nav) {
+              H4Nav.classList.add("active");
+              const h4_id = H4Nav.getAttribute("section");
+              all_the_headers.forEach(item => {
+                const item_id = item.getAttribute("section");
+                if (item_id && item_id.startsWith(h4_id) && item.tagName === "H4") {
+                } else {
+                  item.classList.remove("visible");
+                }
+              });
+            }
+          }
+
+          if (tag === "H4" || tag == "H5") {
+            const entry_section = entry.target.getAttribute("section");
             const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
             const H3Nav = Array.from(navItems).find(item => {
               const link = item.querySelector("a[href]");
@@ -1990,7 +2164,8 @@ entries
               const h3_id = H3Nav.getAttribute("section");
               all_the_headers.forEach(item => {
                 const item_id = item.getAttribute("section");
-                if (item_id === h3_id) {
+                // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+                if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                   item.classList.add("visible");
                 } else {
                   item.classList.remove("visible");
@@ -2004,7 +2179,8 @@ entries
             const h3_id = entry.target.getAttribute("section");
             all_the_headers.forEach(item => {
               const item_id = item.getAttribute("section");
-              if (item_id === h3_id) {
+              // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+              if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                 item.classList.add("visible");
               } else {
                 item.classList.remove("visible");
@@ -2059,6 +2235,13 @@ window.addEventListener("DOMContentLoaded", () => {
           katex.render(eq, el, { throwOnError: false });
           el.setAttribute("data-rendered", "true");
         }
+      }
+    });
+
+    document.querySelectorAll(".mermaid svg").forEach(svg => {
+      const labels = svg.querySelector(".node-labels");
+      if (labels && svg.lastElementChild !== labels) {
+        svg.appendChild(labels); // Move labels to end = on top
       }
     });
   }

@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #0d1013;
+    font-weight:300;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -227,6 +228,32 @@ h4.toc::before {
     text-decoration: none;
 }
 
+h5.toc::before {
+    font-size: 1rem;
+    padding-right: 3px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.mech-toc h5 {
+    line-height: 23px;
+    font-size: 1rem;
+    padding-left: 90px;
+    margin: 10px;
+}
+
+.mech-toc h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h5:hover::before {
+    color: #f18181;
+}
+
+.mech-toc h5 a:hover {
+    color: #f18181;
+    text-decoration: none;
+}
+
 .mech-matrix {
     display: inline-flex;
 }
@@ -343,7 +370,26 @@ h4.toc::before {
     letter-spacing: 1px;
 }
 
+.mech-program h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h5 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+
 h4.toc {
+    display: none;
+}
+
+h5.toc {
     display: none;
 }
 
@@ -507,6 +553,7 @@ h4.toc {
 
 .mech-var-name {
     color: #eddaf1;
+    font-style: bold;
 }
 
 .mech-output-kind {
@@ -597,8 +644,8 @@ code {
 }
 
 .mech-paragraph {
-    color: #f2ead9;
-    line-height: 23px;
+    color: #fffbf3;
+    line-height: 25px;
 }
 
 .mech-paragraph a {
@@ -863,12 +910,10 @@ code {
 
 ul {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 ol {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 
@@ -986,7 +1031,6 @@ li {
 li p {
     margin-top: 2px;
     margin-bottom: 2px;
-    font-weight: normal;
 }
 
 .mech-table-header {
@@ -1215,6 +1259,23 @@ a.mech-footnote-reference {
     counter-reset: h4;
 }
 
+.mech-content h4 {
+    counter-reset: h5;
+}
+
+.mech-toc h2 {
+    counter-reset: h3;
+}
+
+.mech-toc h3 {
+    counter-reset: h4;
+}
+
+.mech-toc h4 {
+    counter-reset: h5;
+}
+
+
 h2::before {
     color: #F3B62D;
     counter-increment: h2;
@@ -1232,6 +1293,13 @@ h4::before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
+
+h5::before {
+    color: #F3B62D;
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
 
 .mech-program-subtitle.toc.active::before{
     color: #d65858;
@@ -1256,6 +1324,14 @@ h3:hover a {
 }
 
 h4:hover a {
+    color: #f18181;
+}
+
+h5:hover a {
+    color: #f18181;
+}
+
+h6:hover a {
     color: #f18181;
 }
 
@@ -1293,10 +1369,13 @@ h4:hover a {
 
 mark {
     background-color: #F3B62D;
+    border: 1px solid #ffe4a4;
     color: #2F353B;
+    font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     margin: 0px 7px 0px 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-works-cited {
@@ -1424,68 +1503,6 @@ mark {
     padding: 0;
 }
 
-.mech-diagram {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.mech-diagram .node rect {
-  fill: #d0e6f7 !important;
-  stroke: #219900 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #0077cc !important;
-  stroke-width: 2px !important;
-}
-
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #34c510 !important; 
-}
-
-.mech-diagram .edgeLabel {
-  background-color: transparent !important;
-  color: #ebdede !important;
-  fill: #dc9f9f !important;
-  font-size: 14px !important;
-}
-
-.mech-diagram .edgeLabel p {
-    background-color: transparent !important;
-}
-
-.mech-diagram .edgeLabel rect {
-  fill: transparent !important;
-  fill-opacity: 0 !important;
-  stroke: none !important;
-}
-
-.mech-diagram .labelBkg {
-  text-shadow: 0px 0px 4px #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-  fill: none !important;
-}
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #00bfa5 !important;
-  stroke: #00bfa5 !important;
-}
-
-.mech-diagram .flowchart-link {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-}
-
 #mech-output li {
     color: #f2ead9;
 }
@@ -1609,6 +1626,26 @@ mark {
     font-size: 1rem;
 }
 
+#mech-output h5 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h6 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
 #mech-output h2 a {
     text-decoration: none;
 }
@@ -1618,6 +1655,14 @@ mark {
 }
 
 #mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output h5 a {
+    text-decoration: none;
+}
+
+#mech-output h6 a {
     text-decoration: none;
 }
 
@@ -1710,17 +1755,115 @@ mark {
     }
 
 }
+
+.mech-strong {
+    font-weight: 900;
+    color: #fef2d4;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #ef5f90 !important;
+  stroke: #ef5f90 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
+
+/* Style the nodes (bars) */
+.mermaid .node rect {
+}
+
+/* Style the links (paths) */
+.mermaid .link path {
+  stroke-opacity: 1 !important;
+  stroke: #37252e !important; /* Default link stroke color */
+}
+
+.mermaid .link {
+    mix-blend-mode: normal !important;
+}
+
+/* Style labels */
+.mermaid text {
+  font-weight: 600;
+  fill: #ffffff;
+  opacity: 1 !important;
+}
+
+/* Change colors per node by their position or content */
+.mermaid .node:nth-child(6) rect { fill: #44d627 !important; stroke: #44d627 !important; }  /* Site Visit Qualified */
+.mermaid .node:nth-child(7) rect { fill: #d62728 !important; stroke: #d62728 !important; }  /* Semifinalists */
+
+.mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
+
+
+
         </style>
     </head>
     <body>
       <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Build and Run Mech Programs</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34855627453754182" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#4727546802116332">Basic Usage</a></h2><h3 id="47209872676978835" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#71262077495680997">Usage</a></h3><h3 id="39661139927023571" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59753553005414588">Commands</a></h3><h3 id="49679102170491632" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#13499876002385826">Arguments</a></h3><h3 id="55613905542261204" section="1.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#45651896486001650">Options</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="69393888157766498" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58223533528643752">Running a Mech Program</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="31317125182022992" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#61736674734608634">Subcommands</a></h2><h3 id="21460358321530007" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#57362460444726725">format</a></h3><h3 id="3515194389275115" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#12791816625140374">serve</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="51218049831073583" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#67302080908161642">Additional Help</a></h2></section></section></div><div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Build and Run Mech Programs</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">The </span><code class="mech-inline-code">mech</code><span class="mech-text"> command-line tool provides various functionalities for working with Mech programs, including executing scripts, debugging, formatting code, and serving applications over HTTP. Below are the available options and subcommands.</span></p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="4727546802116332" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#4727546802116332">Basic Usage</a></h2><h3 id="71262077495680997" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#71262077495680997">Usage</a></h3><pre class="mech-code-block">mech [OPTIONS] [mech_paths]... [COMMAND]
-</pre><h3 id="59753553005414588" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59753553005414588">Commands</a></h3><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Command   </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                   </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">format</code><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Format Mech source code into standard format. </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">serve</code><span class="mech-text">   </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Serve Mech program over an HTTP server.       </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">help</code><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Print help message.                           </span></p></td></tr></tbody></table><h3 id="13499876002385826" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#13499876002385826">Arguments</a></h3><p class="mech-paragraph"><span class="mech-text">Source .mec files and directories. You can specify one or more </span><code class="mech-inline-code">.mec</code><span class="mech-text"> files or directories containing Mech scripts. The command will execute the specified files in the order they are provided, and alpha-numeric sorting is applied to the files.</span></p><pre class="mech-code-block">  [mech_paths]... 
-</pre><h3 id="45651896486001650" section="1.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#45651896486001650">Options</a></h3><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option                </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                      </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-d</code><span class="mech-text">, </span><code class="mech-inline-code">--debug</code><span class="mech-text">       </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Prints debug information.                        </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-e</code><span class="mech-text">, </span><code class="mech-inline-code">--tree</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Prints the parse tree of the Mech program.       </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-t</code><span class="mech-text">, </span><code class="mech-inline-code">--time</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Measures execution time of the program.          </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-r</code><span class="mech-text">, </span><code class="mech-inline-code">--repl</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Starts the Mech Read-Eval-Print Loop (REPL).     </span></p></td></tr></tbody></table></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="58223533528643752" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58223533528643752">Running a Mech Program</a></h2><p class="mech-paragraph"><span class="mech-text">To execute a Mech script, provide the path to one or more </span><code class="mech-inline-code">.mec</code><span class="mech-text"> files or directories containing Mech scripts. The command will execute the specified files in the order they are provided:</span></p><pre class="mech-code-block">mech program.mec
+</pre><h3 id="59753553005414588" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59753553005414588">Commands</a></h3><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Command   </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                   </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">format</code><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Format Mech source code into standard format. </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">serve</code><span class="mech-text">   </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Serve Mech program over an HTTP server.       </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">help</code><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Print help message.                           </span></p></td></tr></tbody></table><h3 id="13499876002385826" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#13499876002385826">Arguments</a></h3><p class="mech-paragraph"><span class="mech-text">Source .mec files and directories. You can specify one or more </span><code class="mech-inline-code">.mec</code><span class="mech-text"> files or directories containing Mech scripts. The command will execute the specified files in the order they are provided, and alpha-numeric sorting is applied to the files.</span></p><pre class="mech-code-block">  [mech_paths]... 
+</pre><h3 id="45651896486001650" section="1.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#45651896486001650">Options</a></h3><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option                </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                      </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-d</code><span class="mech-text">, </span><code class="mech-inline-code">--debug</code><span class="mech-text">       </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Prints debug information.                        </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-e</code><span class="mech-text">, </span><code class="mech-inline-code">--tree</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Prints the parse tree of the Mech program.       </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-t</code><span class="mech-text">, </span><code class="mech-inline-code">--time</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Measures execution time of the program.          </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-r</code><span class="mech-text">, </span><code class="mech-inline-code">--repl</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Starts the Mech Read-Eval-Print Loop (REPL).     </span></p></td></tr></tbody></table></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="58223533528643752" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58223533528643752">Running a Mech Program</a></h2><p class="mech-paragraph"><span class="mech-text">To execute a Mech script, provide the path to one or more </span><code class="mech-inline-code">.mec</code><span class="mech-text"> files or directories containing Mech scripts. The command will execute the specified files in the order they are provided:</span></p><pre class="mech-code-block">mech program.mec
 mech script1.mec script2.mec dir1
 </pre></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="61736674734608634" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#61736674734608634">Subcommands</a></h2><h3 id="57362460444726725" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#57362460444726725">format</a></h3><p class="mech-paragraph"><span class="mech-text">Formats Mech source code into a standard format.</span></p><pre class="mech-code-block">mech format [OPTIONS] [FILES]
-</pre><p class="mech-paragraph"><em class="mech-em">Options:</em></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option               </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Value               </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                          </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-o</code><span class="mech-text">, </span><code class="mech-inline-code">--out</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">PATH</code><span class="mech-text">              </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Specifies the output directory.      </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-s</code><span class="mech-text">, </span><code class="mech-inline-code">--stylesheet</code><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">STYLESHEET</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Sets the stylesheet for HTML output. </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-t</code><span class="mech-text">, </span><code class="mech-inline-code">--html</code><span class="mech-text">       </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">                     </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Outputs formatted code as HTML.      </span></p></td></tr></tbody></table><p class="mech-paragraph"><em class="mech-em">Example:</em></p><pre class="mech-code-block">mech format -o formatted/ my_script.mec
+</pre><p class="mech-paragraph"><em class="mech-em">Options:</em></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option               </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Value               </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                          </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-o</code><span class="mech-text">, </span><code class="mech-inline-code">--out</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">PATH</code><span class="mech-text">              </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Specifies the output directory.      </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-s</code><span class="mech-text">, </span><code class="mech-inline-code">--stylesheet</code><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">STYLESHEET</code><span class="mech-text">        </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Sets the stylesheet for HTML output. </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-t</code><span class="mech-text">, </span><code class="mech-inline-code">--html</code><span class="mech-text">       </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Outputs formatted code as HTML.      </span></p></td></tr></tbody></table><p class="mech-paragraph"><em class="mech-em">Example:</em></p><pre class="mech-code-block">mech format -o formatted/ my_script.mec
 </pre><h3 id="12791816625140374" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#12791816625140374">serve</a></h3><p class="mech-paragraph"><span class="mech-text">Serves a Mech program over an HTTP server.</span></p><pre class="mech-code-block">mech serve [OPTIONS] [FILES]
-</pre><p class="mech-paragraph"><em class="mech-em">Options:</em></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option            </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Value      </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                   </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-p</code><span class="mech-text">, </span><code class="mech-inline-code">--port</code><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">PORT</code><span class="mech-text">     </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Sets the port for the server (default: 8081). </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">-a</code><span class="mech-text">, </span><code class="mech-inline-code">--address</code><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> </span><code class="mech-inline-code">ADDRESS</code><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text"> Sets the server address (default: 127.0.0.1). </span></p></td></tr></tbody></table><p class="mech-paragraph"><em class="mech-em">Example:</em></p><pre class="mech-code-block">mech serve -p 3000 -a 0.0.0.0 my_script.mec
+</pre><p class="mech-paragraph"><em class="mech-em">Options:</em></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Option            </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Value      </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text"> Description                                   </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-p</code><span class="mech-text">, </span><code class="mech-inline-code">--port</code><span class="mech-text">    </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">PORT</code><span class="mech-text">     </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Sets the port for the server (default: 8081). </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">-a</code><span class="mech-text">, </span><code class="mech-inline-code">--address</code><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><code class="mech-inline-code">ADDRESS</code><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-text">Sets the server address (default: 127.0.0.1). </span></p></td></tr></tbody></table><p class="mech-paragraph"><em class="mech-em">Example:</em></p><pre class="mech-code-block">mech serve -p 3000 -a 0.0.0.0 my_script.mec
 </pre></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="67302080908161642" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#67302080908161642">Additional Help</a></h2><p class="mech-paragraph"><span class="mech-text">For more information on a specific command, you can use the </span><code class="mech-inline-code">--help</code><span class="mech-text"> option with that command. For example:</span></p><pre class="mech-code-block">mech --help
 mech serve --help
 </pre></section></div></div></div>
@@ -1772,8 +1915,18 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
 
       // Now grab the h2, h3, and h4 elements within that section
       const h3s = Array.from(section.querySelectorAll('h3'));
+      const h4s = Array.from(section.querySelectorAll('h4'));
 
-      if (tag === "H4") {
+      if (tag === "H5") {
+        const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
+        const H4Nav = Array.from(navItems).find(item => {
+            const link = item.querySelector("a[href]");
+            return link && link.getAttribute("href") === `#${closestH4.id}`;
+        });
+        closestH4.classList.add("active");
+      }
+
+      if (tag === "H4" || tag === "H5") {
         const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
         const H3Nav = Array.from(navItems).find(item => {
             const link = item.querySelector("a[href]");
@@ -1787,7 +1940,7 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
         const h3_id = entry.getAttribute("section");
         all_the_headers.forEach(item => {
           const item_id = item.getAttribute("section");
-          if (item_id === h3_id) {
+          if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
             item.classList.add("visible");
           } else {
             item.classList.remove("visible");
@@ -1816,7 +1969,6 @@ function createObserver(rootMarginValue,scrolling_down) {
   const all_the_headers = Array.from(document.querySelectorAll('[section]'));
   observer = new IntersectionObserver((entries) => {
 
-
 entries
   .slice() // Create a shallow copy to avoid mutating the original entries array
   .sort((a, b) => {
@@ -1826,7 +1978,7 @@ entries
       : b.boundingClientRect.top - a.boundingClientRect.top; // Descending for scrolling up
   })
   .forEach(entry => {
-      if (entry.isIntersecting) {
+    if (entry.isIntersecting) {
         const id = entry.target.id;
         const tag = entry.target.tagName; // H1, H2, H3, etc.
 
@@ -1874,10 +2026,32 @@ entries
             }
           }
 
-          // Now grab the h2, h3, and h4 elements within that section
+          // Now grab the h3, h4, h5 elements within that section
           const h3s = Array.from(section.querySelectorAll('h3'));
+          const h4s = Array.from(section.querySelectorAll('h4'));
+          const h5s = Array.from(section.querySelectorAll('h5'));
 
-          if (tag === "H4") {
+          if (tag === "H5") {
+            const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
+            const H4Nav = Array.from(navItems).find(item => {
+                const link = item.querySelector("a[href]");
+                return link && link.getAttribute("href") === `#${closestH4.id}`;
+            });
+            if (H4Nav) {
+              H4Nav.classList.add("active");
+              const h4_id = H4Nav.getAttribute("section");
+              all_the_headers.forEach(item => {
+                const item_id = item.getAttribute("section");
+                if (item_id && item_id.startsWith(h4_id) && item.tagName === "H4") {
+                } else {
+                  item.classList.remove("visible");
+                }
+              });
+            }
+          }
+
+          if (tag === "H4" || tag == "H5") {
+            const entry_section = entry.target.getAttribute("section");
             const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
             const H3Nav = Array.from(navItems).find(item => {
               const link = item.querySelector("a[href]");
@@ -1888,7 +2062,8 @@ entries
               const h3_id = H3Nav.getAttribute("section");
               all_the_headers.forEach(item => {
                 const item_id = item.getAttribute("section");
-                if (item_id === h3_id) {
+                // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+                if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                   item.classList.add("visible");
                 } else {
                   item.classList.remove("visible");
@@ -1902,7 +2077,8 @@ entries
             const h3_id = entry.target.getAttribute("section");
             all_the_headers.forEach(item => {
               const item_id = item.getAttribute("section");
-              if (item_id === h3_id) {
+              // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+              if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                 item.classList.add("visible");
               } else {
                 item.classList.remove("visible");
@@ -1957,6 +2133,13 @@ window.addEventListener("DOMContentLoaded", () => {
           katex.render(eq, el, { throwOnError: false });
           el.setAttribute("data-rendered", "true");
         }
+      }
+    });
+
+    document.querySelectorAll(".mermaid svg").forEach(svg => {
+      const labels = svg.querySelector(".node-labels");
+      if (labels && svg.lastElementChild !== labels) {
+        svg.appendChild(labels); // Move labels to end = on top
       }
     });
   }
@@ -2038,7 +2221,7 @@ window.addEventListener("scroll", () => {
       let wasm_core;
       async function run() {
         await init();
-        var code = `G2YNAJwHtu1k66SKA6NG/Zk3Q7nNsQy0/MSUeysn/aSf359t+ZvALCsir1iFkqolqSqTtM5Q1/P9X4+/FQgOxjaBAgjP+19rdbF+/+3ipw2av26hHK0x82f3RARR2b+YN9FEpkKGkCBUQguYjKU87vnbjimgHBBjEKd5/NZ3cSc979j7eobNq+C2x+G/QAgbGjDFUdTB7RWoqLQS9XQV3KphFeLyBxjwuMEAqaWWc2q0xG0q2burD3gLMOLhVrwasm7polpQB5qIeveNc6wXZhtHgQaNMB8EJ4G+gcIPeuFHBgoVJxodRESTQY8R6g44N6tx9Y9QlMigQSmu+WHVpMmn/+LVbhui8wnmzGzZxOH49AtnTuFYe85Tzv5xSgih82W88DQZS2AS+RFwgn4L01o6zRkKjNjc8wCylE2+Hl8Thwe8+UU2lX0qmKMg5CnPSszi+jKv5kNcCCAf835zyRFMBI4TXJxAZ6so4ZeXaCifyj+9ZgUqeHX2alJQCz4uDEohFJDtJiQtT4ao//zGL1URv8kXUgWvWZGKHoXZZkW16KIoUIq+iBwwGIOuYdE+TaqYKppICBZ10MvDTZS1coYx7XuvGLjJqxcEenXNx/JXH6RTba2fguN/qwgLq1j9qEx5sbzKqouR/fp04+V90K2z4DKhM8FLSAOinyTItZKRPDZqF48VuNA7gtp0GCwWggG314TIXbCJFwI+5Y4Phr5+nlSXqv+VTKGD1MlkrIFNgPptJTrU1tqp4eEybOOwvwN3VEe5tB1WaeoFtY4NFesfZmDjZ+ReGoxwXKgXDM2IqmJdN+OPGRnZuAvZnJEzgkVgoCyMUDvuSw8ZNWNjkE1smq9MJjM1UzJQT7YzMzNxceBkZk08glYPCNWBqwD8AJk6XjOtbGHL/GllKZZmQXHsZLEUK2upXGiN/NeTUeIrmXjNMrKNbfO7zVZszcbmhk52tmJnbS5Jp80VyJ16XOFin5sRYbPE0q69xZ2NbmJDNdtGQlBc+kuiZif9GmVBl64apufi7eAF8Sf8rKFvQg77vBKynsVBzlSNc4f+0x/10aTDnH9K5viU7L0Ot5KegvUMuNLvpYMQ1cUDyRhB/ahuObZf4aQG1UFdmqJCe96INpJUUm7+jWD8Pkrr0/2XhWNobEDJtCNDzkLlhAcw/v1pMjaJplAKIYrL7o0np/F0LMPdKPXP4tnK4C0yd4xGYNVZcgmjomDRbN+spyhAlSmm5heKMqpRSb//8vVJo+lhkGZopcaopVVag0Mjr6F12r6ZgpscBRol/37S+j5O26j2X6ehNtE+ioPMiJk/WIwxy6SEjvQeZFhpgliZacaq7Fg4OPfXrM6GUc+zEdP+q8yl68cPKEZ+XanybM20zDE3f/I44xqXDFDprzieKRlzPMuTaM+bHK9yzfdeGfggoqJXl0MW/I940DIx8T7uCt1wjKhNfD+YXMSLQclMsXXNffFsqm9Pf+fpz3NDdgWt1iecXBhc33oC054ZlQDV7gF/Fm+iTUfJtEJF5z3B3NMO2lX28X5X+X6PvOJrh8RbeyWvR29NeX1vD2tZYGF+FQkmNCEZWLMYFkSGqhkUWVH8rhUlUYYDj68RFdEo0znRFPHR8AJdE4IDZ/X5u67h0Zcw3j8+0E1AGGLPyhJLsy+TTGpS8rSOMCjJ/NixgowOkyXpt6cQu19WZHtaCW6C1FoMyC99TDYMDI6RftJPrEka0hhB7AgfHV+m55j7CkP9N4vA9aGf3BqiyHGKzhA6luYzQaOGoQsX+SrlzIf0TcBnAlMxS/2kEv9+KEDBTIZqePX4GswGC77xRl041AI60w0QnP9qjmqCxT+WdSKuS5reSJo9ch64RrcI`;
+        var code = `G74MAIyTpXaKs//Tqb7Tty8+meEiCkqGEOkHWU8KtdVzQ+imOO4dpm5L945NF5CGv19r9bTfInraoPl0m87RGu/99/dEBFHZv5g30USmQrSSGEIMPIfa3e868SAyvLF5slSu4k7ztO3w/UnsXHZuWhx2keOfK8EAiUkywvHNpQACQUB4vOzcQAi4jH8FDnhMMMBqcTrHjSWmqWRvL7voLaARg2t8URXd0kK1oAY0Eevd18q+4VIPOAsUaAR7EDoJ/A0QP2iFHwUoRE5kPoiYJpUWI3gFnBtBhn+EyCgLaDAX19wQhOI0HP/GG1RbF2bhiCQlBt0mLs6GXzhz8dnK89Hn7N0LCxov4/kX8QiJEj0CPRn9euMsHj94KDASc88RIkmT0ePRBnO4z6dvkrHknEQpYMiZPk1DmstIhUjLaT19VoYRdHuGHuiKwF5z5GBLlag/HU/P6egNhqYGGciEZZREaYZnUMgmeCRz9Kj/dGILpog9ZTPxjI4ewMxGWcj2yAiiNBvOopgLZqAFVbTHdSobz64jgYB7BsOZ3sbzLJ+QENe3wP27raNX5NpVlBHLX3atlrPlxgiO/vgfML9IijYgaLG0iMUVGX/rdO35bav4Y4JOQcO9S+gEnD1lE5fZH6xQBL7CWFpoAoGXD4YNUrp+8+n9kSUDQg6AT7gVdqGuH7eKq8X/UiIj0HEiyiukioV+FlMO1lk9tr0/L/aQra+X9hZnubA2QtKvf1fq3QYKgNT8rIIakpEOC5WpYUBmmqF6qcrVpIxslVFTKjhvCx8wn4sQ8+1pNaiW1e29+VIDTdKYpglB3NdK41pCxh7RVUtq2ClWj8gnB6oCdnPoea2sbcxfdNDLdKYDZXXSuV6qJ3UuT5YZeSVDJBxpVa6XdfObAUaZwQwsMOhkcKPUSBosK5xsB8g46jFzB3tN+0K1Igv7D1f2twesTUbZiAQC9M6fyyt23I8S5vVDf4nSfXH6+Bmbj/lorywDDpVWCcHKMkSGZqqGZofsf/prem96CIf+SImxR0/uUbgR5Y9gPS1V+qxrg1EXtqLcIk0SORw5ijFSbWivdDGivnPG2FhUiqn5mznb90B3T/YPCyfIREtK1A3DlIXYBXsg/vNFfJrMkBgJyNgTlOtPz9JZnpA6keubp/OFrTcrnVGbQSrOWxdgBPMF8415ByT8ND/bYEs2szXBt5/fv9jcjm/77YRdIP7Ql/Equ2zXr8fEU8YWthHi+pFP+rrDLCqPEhNbDdpN29mbuwgoIUNNRMEif4YcczISgXmcjvDOs7/EMuomzKGBK/9l0FE0swcMHVvsU5PYRIeQgNJFWDSLRbYIzLO0yBeNzLGYXCyQqL6nR6DLvkQvP2+zwu+CINuZFpuLrsAT81xeuPad6RW6wqXEAFJcMZ81m2yIxx8fPY6hcWadbBB5irkHtthWBBm9gzH2I7vCPy3cITtDUqIGFZV3xcLu9slB2RE96ijd51Ane2wTeW0n5yiczqSjOod0ZX5xwZVc5mpCwMsPutxNcBjjwk262Tt08b3KLbgVfTDjVl34QcvnoQ1AUGAyNX//wjL6Vkw2J1sDdjX3cGP2PfAkj3maMDHh/R730sdqL+Nl/Wxsrvu8glf/jUZcFx50DpC0UAJe12pPWE2raW1Mnuap44d0Sk+Pmr41ar6IkebTAmH6omk9q+KI44J8IORIXH4DhQUGP8GnNKU/dTZXS8AXrhL1o/ZHSS4+2CGduRBR9/LhpTPfWfb1JZZCFwZoBBkAnP/SRlWdlc6DXkRMkxu8FuXWI+X+K3JDAA==`;
         wasm_core = new WasmMech();
         var xhr = new XMLHttpRequest();
         var codeUrl = `/code${window.location.pathname}`;
