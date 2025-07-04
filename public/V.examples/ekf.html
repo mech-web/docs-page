@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #0d1013;
+    font-weight:300;
     margin: 0;
     padding: 0;
     font-size: 1rem;
@@ -227,6 +228,32 @@ h4.toc::before {
     text-decoration: none;
 }
 
+h5.toc::before {
+    font-size: 1rem;
+    padding-right: 3px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.mech-toc h5 {
+    line-height: 23px;
+    font-size: 1rem;
+    padding-left: 90px;
+    margin: 10px;
+}
+
+.mech-toc h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-toc h5:hover::before {
+    color: #f18181;
+}
+
+.mech-toc h5 a:hover {
+    color: #f18181;
+    text-decoration: none;
+}
+
 .mech-matrix {
     display: inline-flex;
 }
@@ -343,7 +370,26 @@ h4.toc::before {
     letter-spacing: 1px;
 }
 
+.mech-program h5 a {
+    color: #f2ead9;
+    text-decoration: none;
+}
+
+.mech-program h5 {
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+
 h4.toc {
+    display: none;
+}
+
+h5.toc {
     display: none;
 }
 
@@ -507,6 +553,7 @@ h4.toc {
 
 .mech-var-name {
     color: #eddaf1;
+    font-style: bold;
 }
 
 .mech-output-kind {
@@ -597,8 +644,8 @@ code {
 }
 
 .mech-paragraph {
-    color: #f2ead9;
-    line-height: 23px;
+    color: #fffbf3;
+    line-height: 25px;
 }
 
 .mech-paragraph a {
@@ -863,12 +910,10 @@ code {
 
 ul {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 ol {
     color: #F3B62D;
-    font-weight: bold;
 }
 
 
@@ -986,7 +1031,6 @@ li {
 li p {
     margin-top: 2px;
     margin-bottom: 2px;
-    font-weight: normal;
 }
 
 .mech-table-header {
@@ -1215,6 +1259,23 @@ a.mech-footnote-reference {
     counter-reset: h4;
 }
 
+.mech-content h4 {
+    counter-reset: h5;
+}
+
+.mech-toc h2 {
+    counter-reset: h3;
+}
+
+.mech-toc h3 {
+    counter-reset: h4;
+}
+
+.mech-toc h4 {
+    counter-reset: h5;
+}
+
+
 h2::before {
     color: #F3B62D;
     counter-increment: h2;
@@ -1232,6 +1293,13 @@ h4::before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
+
+h5::before {
+    color: #F3B62D;
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
 
 .mech-program-subtitle.toc.active::before{
     color: #d65858;
@@ -1256,6 +1324,14 @@ h3:hover a {
 }
 
 h4:hover a {
+    color: #f18181;
+}
+
+h5:hover a {
+    color: #f18181;
+}
+
+h6:hover a {
     color: #f18181;
 }
 
@@ -1293,10 +1369,13 @@ h4:hover a {
 
 mark {
     background-color: #F3B62D;
+    border: 1px solid #ffe4a4;
     color: #2F353B;
+    font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     margin: 0px 7px 0px 3px;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 .mech-works-cited {
@@ -1424,68 +1503,6 @@ mark {
     padding: 0;
 }
 
-.mech-diagram {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.mech-diagram .node rect {
-  fill: #d0e6f7 !important;
-  stroke: #219900 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #0077cc !important;
-  stroke-width: 2px !important;
-}
-
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #34c510 !important; 
-}
-
-.mech-diagram .edgeLabel {
-  background-color: transparent !important;
-  color: #ebdede !important;
-  fill: #dc9f9f !important;
-  font-size: 14px !important;
-}
-
-.mech-diagram .edgeLabel p {
-    background-color: transparent !important;
-}
-
-.mech-diagram .edgeLabel rect {
-  fill: transparent !important;
-  fill-opacity: 0 !important;
-  stroke: none !important;
-}
-
-.mech-diagram .labelBkg {
-  text-shadow: 0px 0px 4px #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mech-diagram .edgePath path {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-  fill: none !important;
-}
-.mech-diagram .edgePath marker,
-.mech-diagram marker {
-  fill: #00bfa5 !important;
-  stroke: #00bfa5 !important;
-}
-
-.mech-diagram .flowchart-link {
-  stroke: #00bfa5 !important;
-  stroke-width: 2.5px !important;
-}
-
 #mech-output li {
     color: #f2ead9;
 }
@@ -1609,6 +1626,26 @@ mark {
     font-size: 1rem;
 }
 
+#mech-output h5 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+#mech-output h6 {
+    width: 100%;
+    margin: auto;
+    font-family: 'FiraCodeRegular', monospace;
+    color: #f2ead9;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
 #mech-output h2 a {
     text-decoration: none;
 }
@@ -1618,6 +1655,14 @@ mark {
 }
 
 #mech-output h4 a {
+    text-decoration: none;
+}
+
+#mech-output h5 a {
+    text-decoration: none;
+}
+
+#mech-output h6 a {
     text-decoration: none;
 }
 
@@ -1710,10 +1755,108 @@ mark {
     }
 
 }
+
+.mech-strong {
+    font-weight: 900;
+    color: #fef2d4;
+}
+
+.mech-diagram {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.mech-diagram .node rect {
+  fill: #ef5f90 !important;
+  stroke: #ef5f90 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #0077cc !important;
+  stroke-width: 2px !important;
+}
+
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #34c510 !important; 
+}
+
+.mech-diagram .edgeLabel {
+  background-color: transparent !important;
+  color: #ebdede !important;
+  fill: #dc9f9f !important;
+  font-size: 14px !important;
+}
+
+.mech-diagram .edgeLabel p {
+    background-color: transparent !important;
+}
+
+.mech-diagram .edgeLabel rect {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  stroke: none !important;
+}
+
+.mech-diagram .labelBkg {
+  text-shadow: 0px 0px 4px #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mech-diagram .edgePath path {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+  fill: none !important;
+}
+.mech-diagram .edgePath marker,
+.mech-diagram marker {
+  fill: #00bfa5 !important;
+  stroke: #00bfa5 !important;
+}
+
+.mech-diagram .flowchart-link {
+  stroke: #00bfa5 !important;
+  stroke-width: 2.5px !important;
+}
+
+
+/* Style the nodes (bars) */
+.mermaid .node rect {
+}
+
+/* Style the links (paths) */
+.mermaid .link path {
+  stroke-opacity: 1 !important;
+  stroke: #37252e !important; /* Default link stroke color */
+}
+
+.mermaid .link {
+    mix-blend-mode: normal !important;
+}
+
+/* Style labels */
+.mermaid text {
+  font-weight: 600;
+  fill: #ffffff;
+  opacity: 1 !important;
+}
+
+/* Change colors per node by their position or content */
+.mermaid .node:nth-child(6) rect { fill: #44d627 !important; stroke: #44d627 !important; }  /* Site Visit Qualified */
+.mermaid .node:nth-child(7) rect { fill: #d62728 !important; stroke: #d62728 !important; }  /* Semifinalists */
+
+.mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
+
+
+
         </style>
     </head>
     <body>
-      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Extended Kalman Filter State Estimation</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="32654120579863358" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#62758183329167312">State Estimation</a></h2><h3 id="40160494772020654" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39955242422339327">General Bayesian State Estimation</a></h3><h3 id="35924630208118097" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52235221401698521">Bayesian Filtrs</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="47481172757051919" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28186371734792161">Kalman Filter</a></h2><h3 id="37959832883930874" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22253570911915396">Assumptions: Linear, Gaussian, Continuous</a></h3><h3 id="65328069660902367" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#6663292223230077">Derivation</a></h3><h3 id="60148984933263041" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#27230699876127508">Complexity Analysis</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="39236887088263694" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41156002168978887">Extended Kalman Filter (EKF)</a></h2><h3 id="72039293483123832" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22037900403191009">Linearization</a></h3><h4 id="38155831856679508" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59033564565129913">Taylor Expansion</a></h4><h4 id="11508298564239508" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28477626658398035">Jacobian Matrix</a></h4></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="5701044528914034" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#62186661710073362">Example - EKF for Mobile Robot Localization</a></h2><h3 id="16388400430291304" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#10703063449017934">Problem Statement</a></h3><h3 id="18805984444410722" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64212442389872479">System Model</a></h3><h3 id="18602722880373840" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41396594644963267">Time Update</a></h3><h3 id="70589450339252293" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64913263600390302">Measurement Update</a></h3></section></section><section id="" section="21148124512303696" class="mech-program-section toc">
+      <div class="mech-root" mech-interpreter-id=0><div class="mech-toc"><h1 class="mech-program-title">Extended Kalman Filter State Estimation</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="32654120579863358" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#62758183329167312">State Estimation</a></h2><h3 id="40160494772020654" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39955242422339327">General Bayesian State Estimation</a></h3><h3 id="35924630208118097" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#52235221401698521">Bayesian Filtrs</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="47481172757051919" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28186371734792161">Kalman Filter</a></h2><h3 id="37959832883930874" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22253570911915396">Assumptions: Linear, Gaussian, Continuous</a></h3><h3 id="65328069660902367" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#6663292223230077">Derivation</a></h3><h3 id="60148984933263041" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#27230699876127508">Complexity Analysis</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="39236887088263694" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41156002168978887">Extended Kalman Filter (EKF)</a></h2><h3 id="72039293483123832" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22037900403191009">Linearization</a></h3><h4 id="38155831856679508" section="3.1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59033564565129913">Taylor Expansion</a></h4><h4 id="11508298564239508" section="3.1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28477626658398035">Jacobian Matrix</a></h4></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="5701044528914034" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#62186661710073362">Example - EKF for Mobile Robot Localization</a></h2><h3 id="16388400430291304" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#10703063449017934">Problem Statement</a></h3><h3 id="18805984444410722" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64212442389872479">System Model</a></h3><h3 id="18602722880373840" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#41396594644963267">Time Update</a></h3><h3 id="70589450339252293" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64913263600390302">Measurement Update</a></h3></section></section><section id="" section="21148124512303696" class="mech-program-section toc">
   <h2 id="" section="5" class="mech-program-subtitle toc active">
     <a class="mech-program-subtitle-link toc" href="#67320967384727436">Works Cited</a>
   </h2>
@@ -1740,7 +1883,7 @@ P(\text{Positive} \mid \text{No Disease}) \cdot P(\text{No Disease})
           <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="47612833525852565:0">P-Disease-Pos</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="23804412363935275:0">P-Pos-Disease</span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="3482193849249655:0">P-Disease</span></span></span><span class="mech-formula-operator">/</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="8438199611253061:0">P-Pos</span></span></span></span></span></span></span></span></span></div>
           <div class="mech-block-output" id="8985764230138404:0"></div>
         </div><p class="mech-paragraph"><span class="mech-text">Despite a very accurate test, the probability that someone who tests positive </span><em class="mech-em">actually</em><span class="mech-text"> has the disease is only about </span><strong class="mech-strong">16.7%</strong><span class="mech-text">. This is due to the low base rate (prior probability) of the disease in the general population.</span></p><p class="mech-paragraph"><span class="mech-text">This example illustrates the power of Bayesian reasoning, which updates our belief </span><span id="59425951818853933" equation="P(\text{Disease})" class="mech-inline-equation"></span><span class="mech-text"> based on observed evidence (a positive test).</span></p><h3 id="52235221401698521" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#52235221401698521">Bayesian Filtrs</a></h3><p class="mech-paragraph"><span class="mech-text">Bayesian filters use Bayes' law to estimate the unobservable state, meaning we cannot mesaure it directly, of a system from observable data, typically from sensors. They achieve this by recursively updating a posterior probability distribution over the system's state using a transition model of the system's dynamics, and incoming observations. </span></p><p class="mech-paragraph"><span class="mech-text">Let's call the systems </span><strong class="mech-strong">state</strong><span class="mech-text"> </span><span id="71315070839543708" equation="s_t" class="mech-inline-equation"></span><span class="mech-text">. You can think of the state as the pose of a robot in its environment, or the configuration of joints in an actuator.</span></p><p class="mech-paragraph"><span class="mech-text">The observable data consists of:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">A </span><strong class="mech-strong">control input</strong><span class="mech-text"> </span><span id="44760410612450515" equation="u_t" class="mech-inline-equation"></span><span class="mech-text">, which directs the robot's motion (such as velocity commands to wheels or desired joint angles)  </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">An </span><strong class="mech-strong">observation</strong><span class="mech-text"> </span><span id="61421207726569278" equation="z_t" class="mech-inline-equation"></span><span class="mech-text">, which represents sensor measurements (such as range and bearing to an obstacle).</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Using Bayes' law and the Markov assumption</span><a href="#47765531206544500" class="mech-footnote-reference">2</a><span class="mech-text"> — that the current state depends only on the immediately preceding state — we can express the Bayesian filter recursion as:</span></p><div id="5006643293842222" equation="p(s_t \mid z_{1:t}, u_{1:t}) = \eta \cdot p(z_t \mid s_t) \int p(s_t \mid s_{t-1}, u_t) \cdot p(s_{t-1} \mid z_{1:t-1}, u_{1:t-1}) \, ds_{t-1}
-" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">This equation consists of two steps:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Prediction</strong><span class="mech-text">: The transition model </span><span id="52836496649797056" equation="p(s_t \mid s_{t-1}, u_t)" class="mech-inline-equation"></span><span class="mech-text"> propagates the previous belief based on the control input.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Update</strong><span class="mech-text">: The observation model </span><span id="147940636996372" equation="p(z_t \mid s_t)" class="mech-inline-equation"></span><span class="mech-text"> corrects the predicted belief using sensor data.</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Here, </span><span id="65518080839626947" equation="\eta" class="mech-inline-equation"></span><span class="mech-text"> is a normalization constant ensuring the result is a valid probability distribution.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="28186371734792161" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28186371734792161">Kalman Filter</a></h2><p class="mech-paragraph"><span class="mech-text">As a Bayesian state estimator, the Kalman Filter can be derived from the principles of Bayesian inference. The key steps in the derivation are as follows:</span></p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">State Representation</strong><span class="mech-text">: The state of the system is represented as a random variable </span><span id="17346687287405347" equation="\mathbf{x}" class="mech-inline-equation"></span><span class="mech-text">, which follows a Gaussian distribution with mean </span><span id="33630613780935798" equation="\boldsymbol{\mu}" class="mech-inline-equation"></span><span class="mech-text"> and covariance </span><span id="53812578389591866" equation="\Sigma" class="mech-inline-equation"></span><span class="mech-text">.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Prediction Step</strong><span class="mech-text">: The state at the next time step is predicted based on the current state and control inputs. This is done using a linear motion model:</span></p></li></ol><div id="14261769486207599" equation=" \mathbf{x}_{k+1} = \mathbf{F} \mathbf{x}_k + \mathbf{B} \mathbf{u}_k + \mathbf{w}_k" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">where:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="1534255661309110" equation="\mathbf{F}" class="mech-inline-equation"></span><span class="mech-text"> is the state transition matrix,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="54195130992248297" equation="\mathbf{B}" class="mech-inline-equation"></span><span class="mech-text"> is the control input matrix,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="69769259249020486" equation="\mathbf{u}_k" class="mech-inline-equation"></span><span class="mech-text"> is the control input,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="31266066695751773" equation="\mathbf{w}_k" class="mech-inline-equation"></span><span class="mech-text"> is the process noise, assumed to be Gaussian with zero mean and covariance </span><span id="20067480361114134" equation="\mathbf{Q}" class="mech-inline-equation"></span><span class="mech-text">.</span></p></li></ul><h3 id="22253570911915396" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22253570911915396">Assumptions: Linear, Gaussian, Continuous</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Linear Dynamics: </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Gaussian Process Noise</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Continuous System </span></p></li></ul><h3 id="6663292223230077" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#6663292223230077">Derivation</a></h3><h3 id="27230699876127508" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#27230699876127508">Complexity Analysis</a></h3></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="41156002168978887" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41156002168978887">Extended Kalman Filter (EKF)</a></h2><p class="mech-paragraph"><span class="mech-text">Under these assumptions, the Kalman Filter provides an optimal estimate of the state of a system given noisy measurements, which is quite a thing, as optimal guarantees are hard to come by </span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">. But this restriction tends to limit the usefulness of the Kalman Filter in practice, as many real-world systems are non-linear and have non-Gaussian noise characteristics.</span></p><p class="mech-paragraph"><span class="mech-text">For example, consider a simple robot that moves on a 2D plane and can change its orientation. Its state is represented by </span><span id="13485835469326310" equation="\mathbf{x} = [x, y, \theta]^T " class="mech-inline-equation"></span><span class="mech-text">, where </span><span id="20750505972746469" equation="x" class="mech-inline-equation"></span><span class="mech-text"> and </span><span id="10195012071532606" equation="y" class="mech-inline-equation"></span><span class="mech-text"> denote its position and </span><span id="27756979317521863" equation="\theta" class="mech-inline-equation"></span><span class="mech-text"> its orientation. Suppose the robot receives control inputs </span><span id="62061646824736981" equation="\mathbf{u} = [v, \omega]^T" class="mech-inline-equation"></span><span class="mech-text">, where </span><span id="63698560074905926" equation="v" class="mech-inline-equation"></span><span class="mech-text"> is the linear velocity and </span><span id="24443829019344348" equation="\omega" class="mech-inline-equation"></span><span class="mech-text"> is the angular velocity. The continuous-time motion model is:</span></p><div id="30271257739795513" equation=" \dot{x} = v \cos(\theta)" class="mech-equation"></div><div id="20050375366818718" equation=" \dot{y} = v \sin(\theta)" class="mech-equation"></div><div id="58662358047784769" equation=" \dot{\theta} = \omega" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">To apply the Kalman Filter, we typically discretize this model using a time step </span><span id="23912866625901558" equation="\Delta t" class="mech-inline-equation"></span><span class="mech-text">:</span></p><div id="60070398181448234" equation=" x_{k+1} = x_k + v_k \cos(\theta_k) \Delta t" class="mech-equation"></div><div id="65794206620214248" equation=" y_{k+1} = y_k + v_k \sin(\theta_k) \Delta t" class="mech-equation"></div><div id="38707298714290848" equation=" \theta_{k+1} = \theta_k + \omega_k \Delta t" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">This is a nonlinear system due to the sine and cosine functions of </span><span id="27756979317521863" equation="\theta" class="mech-inline-equation"></span><span class="mech-text">, which violates the assumptions of the Kalman Filter. So it would seem the Kalman Filter cannot be used even on the simplest of robots. </span></p><p class="mech-paragraph"><span class="mech-text">This is where the EKF comes in. The EKF linearizes the system around the current estimate of the state, allowing it to handle non-linear dynamics by treating them as linear, and not projecting out too far.</span></p><h3 id="22037900403191009" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22037900403191009">Linearization</a></h3><h4 id="59033564565129913" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59033564565129913">Taylor Expansion</a></h4><h4 id="28477626658398035" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28477626658398035">Jacobian Matrix</a></h4></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="62186661710073362" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#62186661710073362">Example - EKF for Mobile Robot Localization</a></h2><h3 id="10703063449017934" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#10703063449017934">Problem Statement</a></h3><p class="mech-paragraph"><span class="mech-text">We will implement an Extended Kalman Filter (EKF) to estimate the state of a simple mobile robot moving on a 2D plane, using noisy measurements from a camera. The robot's state is represented by its position and orientation, and the camera provides range and bearing measurements to a landmark.</span></p><h3 id="64212442389872479" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64212442389872479">System Model</a></h3><p class="mech-paragraph"><span class="mech-text">Initialize the simulation</span></p><span class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="52249408919215420:0">robot</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">x</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">45</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">y</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">15</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">θ</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="50537932872247847:0">μ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">55</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">25</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.4</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="51993392641953862:0">u</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">v</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">ω</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="60708958617116482:0">camera</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">x</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">140</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">y</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">12</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="24072211428707449:0">Σ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">100</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">100</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.15</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="50418548789296328:0">Q</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.01</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.0025</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="49220090571149072:0">R</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.25</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span></span><h3 id="41396594644963267" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41396594644963267">Time Update</a></h3><span class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-slice"><span id="50537932872247847:0" class="mech-var-name mech-clickable">μ</span><span class="mech-subscript"><span class="mech-bracket">[<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span>]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="15827559157903026:0">Gt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="70728374541475572:0" class="mech-function-name mech-clickable">math/sin</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="35785950466663863:0" class="mech-function-name mech-clickable">math/cos</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="7533334650510910:0">Vt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="35785950466663863:0" class="mech-function-name mech-clickable">math/cos</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="70728374541475572:0" class="mech-function-name mech-clickable">math/sin</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
+" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">This equation consists of two steps:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Prediction</strong><span class="mech-text">: The transition model </span><span id="52836496649797056" equation="p(s_t \mid s_{t-1}, u_t)" class="mech-inline-equation"></span><span class="mech-text"> propagates the previous belief based on the control input.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong">Update</strong><span class="mech-text">: The observation model </span><span id="147940636996372" equation="p(z_t \mid s_t)" class="mech-inline-equation"></span><span class="mech-text"> corrects the predicted belief using sensor data.</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Here, </span><span id="65518080839626947" equation="\eta" class="mech-inline-equation"></span><span class="mech-text"> is a normalization constant ensuring the result is a valid probability distribution.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="28186371734792161" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28186371734792161">Kalman Filter</a></h2><p class="mech-paragraph"><span class="mech-text">As a Bayesian state estimator, the Kalman Filter can be derived from the principles of Bayesian inference. The key steps in the derivation are as follows:</span></p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">State Representation</strong><span class="mech-text">: The state of the system is represented as a random variable </span><span id="17346687287405347" equation="\mathbf{x}" class="mech-inline-equation"></span><span class="mech-text">, which follows a Gaussian distribution with mean </span><span id="33630613780935798" equation="\boldsymbol{\mu}" class="mech-inline-equation"></span><span class="mech-text"> and covariance </span><span id="53812578389591866" equation="\Sigma" class="mech-inline-equation"></span><span class="mech-text">.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><strong class="mech-strong">Prediction Step</strong><span class="mech-text">: The state at the next time step is predicted based on the current state and control inputs. This is done using a linear motion model:</span></p></li></ol><div id="14261769486207599" equation=" \mathbf{x}_{k+1} = \mathbf{F} \mathbf{x}_k + \mathbf{B} \mathbf{u}_k + \mathbf{w}_k" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">where:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="1534255661309110" equation="\mathbf{F}" class="mech-inline-equation"></span><span class="mech-text"> is the state transition matrix,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="54195130992248297" equation="\mathbf{B}" class="mech-inline-equation"></span><span class="mech-text"> is the control input matrix,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="69769259249020486" equation="\mathbf{u}_k" class="mech-inline-equation"></span><span class="mech-text"> is the control input,</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span id="31266066695751773" equation="\mathbf{w}_k" class="mech-inline-equation"></span><span class="mech-text"> is the process noise, assumed to be Gaussian with zero mean and covariance </span><span id="20067480361114134" equation="\mathbf{Q}" class="mech-inline-equation"></span><span class="mech-text">.</span></p></li></ul><h3 id="22253570911915396" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22253570911915396">Assumptions: Linear, Gaussian, Continuous</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Linear Dynamics: </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Gaussian Process Noise</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Continuous System </span></p></li></ul><h3 id="6663292223230077" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#6663292223230077">Derivation</a></h3><h3 id="27230699876127508" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#27230699876127508">Complexity Analysis</a></h3></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="41156002168978887" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41156002168978887">Extended Kalman Filter (EKF)</a></h2><p class="mech-paragraph"><span class="mech-text">Under these assumptions, the Kalman Filter provides an optimal estimate of the state of a system given noisy measurements, which is quite a thing, as optimal guarantees are hard to come by </span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">. But this restriction tends to limit the usefulness of the Kalman Filter in practice, as many real-world systems are non-linear and have non-Gaussian noise characteristics.</span></p><p class="mech-paragraph"><span class="mech-text">For example, consider a simple robot that moves on a 2D plane and can change its orientation. Its state is represented by </span><span id="13485835469326310" equation="\mathbf{x} = [x, y, \theta]^T " class="mech-inline-equation"></span><span class="mech-text">, where </span><span id="20750505972746469" equation="x" class="mech-inline-equation"></span><span class="mech-text"> and </span><span id="10195012071532606" equation="y" class="mech-inline-equation"></span><span class="mech-text"> denote its position and </span><span id="27756979317521863" equation="\theta" class="mech-inline-equation"></span><span class="mech-text"> its orientation. Suppose the robot receives control inputs </span><span id="62061646824736981" equation="\mathbf{u} = [v, \omega]^T" class="mech-inline-equation"></span><span class="mech-text">, where </span><span id="63698560074905926" equation="v" class="mech-inline-equation"></span><span class="mech-text"> is the linear velocity and </span><span id="24443829019344348" equation="\omega" class="mech-inline-equation"></span><span class="mech-text"> is the angular velocity. The continuous-time motion model is:</span></p><div id="30271257739795513" equation=" \dot{x} = v \cos(\theta)" class="mech-equation"></div><div id="20050375366818718" equation=" \dot{y} = v \sin(\theta)" class="mech-equation"></div><div id="58662358047784769" equation=" \dot{\theta} = \omega" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">To apply the Kalman Filter, we typically discretize this model using a time step </span><span id="23912866625901558" equation="\Delta t" class="mech-inline-equation"></span><span class="mech-text">:</span></p><div id="60070398181448234" equation=" x_{k+1} = x_k + v_k \cos(\theta_k) \Delta t" class="mech-equation"></div><div id="65794206620214248" equation=" y_{k+1} = y_k + v_k \sin(\theta_k) \Delta t" class="mech-equation"></div><div id="38707298714290848" equation=" \theta_{k+1} = \theta_k + \omega_k \Delta t" class="mech-equation"></div><p class="mech-paragraph"><span class="mech-text">This is a nonlinear system due to the sine and cosine functions of </span><span id="27756979317521863" equation="\theta" class="mech-inline-equation"></span><span class="mech-text">, which violates the assumptions of the Kalman Filter. So it would seem the Kalman Filter cannot be used even on the simplest of robots. </span></p><p class="mech-paragraph"><span class="mech-text">This is where the EKF comes in. The EKF linearizes the system around the current estimate of the state, allowing it to handle non-linear dynamics by treating them as linear, and not projecting out too far.</span></p><h3 id="22037900403191009" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22037900403191009">Linearization</a></h3><h4 id="59033564565129913" section="3.1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59033564565129913">Taylor Expansion</a></h4><h4 id="28477626658398035" section="3.1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28477626658398035">Jacobian Matrix</a></h4></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="62186661710073362" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#62186661710073362">Example - EKF for Mobile Robot Localization</a></h2><h3 id="10703063449017934" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#10703063449017934">Problem Statement</a></h3><p class="mech-paragraph"><span class="mech-text">We will implement an Extended Kalman Filter (EKF) to estimate the state of a simple mobile robot moving on a 2D plane, using noisy measurements from a camera. The robot's state is represented by its position and orientation, and the camera provides range and bearing measurements to a landmark.</span></p><h3 id="64212442389872479" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64212442389872479">System Model</a></h3><p class="mech-paragraph"><span class="mech-text">Initialize the simulation</span></p><span class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="52249408919215420:0">robot</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">x</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">45</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">y</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">15</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">θ</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="50537932872247847:0">μ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">55</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">25</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.4</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="51993392641953862:0">u</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">v</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">ω</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="60708958617116482:0">camera</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">x</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">140</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">y</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">12</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="24072211428707449:0">Σ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">100</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">100</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.15</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="50418548789296328:0">Q</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.01</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.0025</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="49220090571149072:0">R</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.25</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span></span><h3 id="41396594644963267" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#41396594644963267">Time Update</a></h3><span class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-slice"><span id="50537932872247847:0" class="mech-var-name mech-clickable">μ</span><span class="mech-subscript"><span class="mech-bracket">[<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span>]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="15827559157903026:0">Gt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="70728374541475572:0" class="mech-function-name mech-clickable">math/sin</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="35785950466663863:0" class="mech-function-name mech-clickable">math/cos</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="7533334650510910:0">Vt</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="35785950466663863:0" class="mech-function-name mech-clickable">math/cos</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-function-call"><span id="70728374541475572:0" class="mech-function-name mech-clickable">math/sin</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
         <span class="mech-target"><span class="mech-slice-ref"><span id="50537932872247847:0" class="mech-var-name mech-clickable">μ</span><span class="mech-subscript"></span></span></span>
         <span class="mech-assign-op">=</span>
         <span class="mech-expression"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="50537932872247847:0">μ</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">v</span></span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-slice"><span id="51993392641953862:0" class="mech-var-name mech-clickable">u</span><span class="mech-subscript">.<span class="mech-dot">ω</span></span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-function-call"><span id="35785950466663863:0" class="mech-function-name mech-clickable">math/cos</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-function-call"><span id="70728374541475572:0" class="mech-function-name mech-clickable">math/sin</span><span class="mech-left-paren">(</span><span class="mech-argument-list"><span class="mech-argument"><span class="mech-argument-name"></span><span class="mech-argument-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="62371407634597663:0">θ</span></span></span></span></span><span class="mech-right-paren">)</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-formula-operator">*</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="35613668762228277:0">Δt</span></span></span></span></span></span></span></span></span>
@@ -1815,8 +1958,18 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
 
       // Now grab the h2, h3, and h4 elements within that section
       const h3s = Array.from(section.querySelectorAll('h3'));
+      const h4s = Array.from(section.querySelectorAll('h4'));
 
-      if (tag === "H4") {
+      if (tag === "H5") {
+        const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
+        const H4Nav = Array.from(navItems).find(item => {
+            const link = item.querySelector("a[href]");
+            return link && link.getAttribute("href") === `#${closestH4.id}`;
+        });
+        closestH4.classList.add("active");
+      }
+
+      if (tag === "H4" || tag === "H5") {
         const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry) & Node.DOCUMENT_POSITION_FOLLOWING);
         const H3Nav = Array.from(navItems).find(item => {
             const link = item.querySelector("a[href]");
@@ -1830,7 +1983,7 @@ document.querySelectorAll('.mech-program-subtitle.toc').forEach(entry => {
         const h3_id = entry.getAttribute("section");
         all_the_headers.forEach(item => {
           const item_id = item.getAttribute("section");
-          if (item_id === h3_id) {
+          if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
             item.classList.add("visible");
           } else {
             item.classList.remove("visible");
@@ -1859,7 +2012,6 @@ function createObserver(rootMarginValue,scrolling_down) {
   const all_the_headers = Array.from(document.querySelectorAll('[section]'));
   observer = new IntersectionObserver((entries) => {
 
-
 entries
   .slice() // Create a shallow copy to avoid mutating the original entries array
   .sort((a, b) => {
@@ -1869,7 +2021,7 @@ entries
       : b.boundingClientRect.top - a.boundingClientRect.top; // Descending for scrolling up
   })
   .forEach(entry => {
-      if (entry.isIntersecting) {
+    if (entry.isIntersecting) {
         const id = entry.target.id;
         const tag = entry.target.tagName; // H1, H2, H3, etc.
 
@@ -1917,10 +2069,32 @@ entries
             }
           }
 
-          // Now grab the h2, h3, and h4 elements within that section
+          // Now grab the h3, h4, h5 elements within that section
           const h3s = Array.from(section.querySelectorAll('h3'));
+          const h4s = Array.from(section.querySelectorAll('h4'));
+          const h5s = Array.from(section.querySelectorAll('h5'));
 
-          if (tag === "H4") {
+          if (tag === "H5") {
+            const closestH4 = h4s.reverse().find(h4 => h4.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
+            const H4Nav = Array.from(navItems).find(item => {
+                const link = item.querySelector("a[href]");
+                return link && link.getAttribute("href") === `#${closestH4.id}`;
+            });
+            if (H4Nav) {
+              H4Nav.classList.add("active");
+              const h4_id = H4Nav.getAttribute("section");
+              all_the_headers.forEach(item => {
+                const item_id = item.getAttribute("section");
+                if (item_id && item_id.startsWith(h4_id) && item.tagName === "H4") {
+                } else {
+                  item.classList.remove("visible");
+                }
+              });
+            }
+          }
+
+          if (tag === "H4" || tag == "H5") {
+            const entry_section = entry.target.getAttribute("section");
             const closestH3 = h3s.reverse().find(h3 => h3.compareDocumentPosition(entry.target) & Node.DOCUMENT_POSITION_FOLLOWING);
             const H3Nav = Array.from(navItems).find(item => {
               const link = item.querySelector("a[href]");
@@ -1931,7 +2105,8 @@ entries
               const h3_id = H3Nav.getAttribute("section");
               all_the_headers.forEach(item => {
                 const item_id = item.getAttribute("section");
-                if (item_id === h3_id) {
+                // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+                if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                   item.classList.add("visible");
                 } else {
                   item.classList.remove("visible");
@@ -1945,7 +2120,8 @@ entries
             const h3_id = entry.target.getAttribute("section");
             all_the_headers.forEach(item => {
               const item_id = item.getAttribute("section");
-              if (item_id === h3_id) {
+              // Check if the item_id starts with the h3_id and is an H4, if so, add "visible", if not, remove "visible"
+              if (item_id && item_id.startsWith(h3_id) && item.tagName === "H4") {
                 item.classList.add("visible");
               } else {
                 item.classList.remove("visible");
@@ -2000,6 +2176,13 @@ window.addEventListener("DOMContentLoaded", () => {
           katex.render(eq, el, { throwOnError: false });
           el.setAttribute("data-rendered", "true");
         }
+      }
+    });
+
+    document.querySelectorAll(".mermaid svg").forEach(svg => {
+      const labels = svg.querySelector(".node-labels");
+      if (labels && svg.lastElementChild !== labels) {
+        svg.appendChild(labels); // Move labels to end = on top
       }
     });
   }
