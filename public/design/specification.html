@@ -2507,9 +2507,16 @@ The syntax for defining a variable in Mech is {{var-name := value}}.
       // Handle TOC links
       tocLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          
+          // If it's a REPL command (starts with #:), don't prevent default
+          if (href && href.startsWith('#:')) {
+            return; // Let the browser handle it normally, will trigger hashchange
+          }
+          
           e.preventDefault();
           
-          const targetId = link.getAttribute('href').substring(1);
+          const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           
           if (targetElement && contentPane.contains(targetElement)) {
@@ -2525,9 +2532,16 @@ The syntax for defining a variable in Mech is {{var-name := value}}.
       // Handle content links
       contentLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          
+          // If it's a REPL command (starts with #:), don't prevent default
+          if (href && href.startsWith('#:')) {
+            return; // Let the browser handle it normally, will trigger hashchange
+          }
+          
           e.preventDefault();
           
-          const targetId = link.getAttribute('href').substring(1);
+          const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           
           if (targetElement && contentPane.contains(targetElement)) {
