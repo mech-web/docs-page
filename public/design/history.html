@@ -26,12 +26,12 @@
   --bracket-color: #c19dca;
   --op-color: #c19dca;
   --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(284, 49%, 80%);
-  --contrast-color-mid: hsl(284, 49%, 75%);
-  --contrast-color-low: hsl(284, 49%, 65%);
-  --main-color-mid: #F3B62D;
-  --main-color-high: #F8D07A;
-  --main-color-low: #d19710;
+  --contrast-color-high: hsl(264, 54%, 80%);
+  --contrast-color-mid:  hsl(264, 54%, 70%);
+  --contrast-color-low:  hsl(264, 54%, 60%);
+  --main-color-high: hsl(42, 89%, 80%);
+  --main-color-mid:  hsl(42, 89%, 70%);
+  --main-color-low:  hsl(42, 89%, 60%);
   --out-bracket-color: rgb(177, 187, 196);
   --sidebar-width: 300px;
   --text-color: #f2ead9;
@@ -48,7 +48,7 @@
   --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
-  --mechdown-table-row-hover-background-color: hsl(222, 25%, 20%);
+  --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
 }
 
 html {
@@ -786,6 +786,27 @@ code {
     color: var(--main-color-low);
     text-decoration: underline;
     text-underline-offset: 3px;
+}
+
+/*Hover style for this thing: */
+/*mech-program-subtitle toc*/
+.mech-program-subtitle:hover {
+    color: var(--contrast-color-low);
+    cursor: pointer;
+}
+
+a.mech-hyperlink .mech-inline-code {
+    display: inline-block;          /* isolates from parent text-decoration */
+    text-decoration: none !important;  /* remove inherited underline */
+    border: 1px dashed var(--main-color-mid);      /* yellow dotted border */
+    padding: 0 3px;                 /* optional spacing */
+    border-radius: 3px;             /* optional rounded corners */
+    color: var(--main-color-mid);                 /* match link color */
+}
+
+a.mech-hyperlink:hover .mech-inline-code {
+    color: var(--main-color-high);
+    border-color: var(--main-color-high);
 }
 
 .mech-all {
@@ -1586,20 +1607,40 @@ h2:hover a {
     color: var(--main-color-low);
 }
 
+.toc h2:hover a {
+    color: var(--contrast-color-low);
+}
+
 h3:hover a {
     color: var(--main-color-low);
+}
+
+.toc h3:hover a {
+    color: var(--contrast-color-low);
 }
 
 h4:hover a {
     color: var(--main-color-low);
 }
 
+.toc h4:hover a {
+    color: var(--contrast-color-low);
+}
+
 h5:hover a {
     color: var(--main-color-low);
 }
 
+.toc h5:hover a {
+    color: var(--contrast-color-low);
+}
+
 h6:hover a {
     color: var(--main-color-low);
+}
+
+.toc h6:hover a {
+    color: var(--contrast-color-low);
 }
 
 .mech-program-section {
@@ -1675,7 +1716,7 @@ mark {
 }
 
 .mech-citation-link:hover {
-    color: #f18181;
+    color: var(--main-color-low);
     text-decoration: underline;
 }
 
@@ -2457,46 +2498,46 @@ Track B Finalists,Did Not Finish,3
         <p class="mech-paragraph"><span class="mech-text">The Ben Franklin Racing Team was a partnership between University of Pennsylvania, Lehigh University, and Lockheed Martin. Lehigh University is the author's graduate alma mater.</span></p>
       </div></section></div><section id="67320967384727436" class="mech-works-cited"><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Works Cited</a></h2><div id="46815569692759329" class="mech-citation">
       <div class="mech-citation-id">[1]:</div>
-      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="http://www.tartanracing.org/team.html" class="mech-hyperlink">http://www.tartanracing.org/team.html</a></p>
+      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="http://www.tartanracing.org/team.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">http://www.tartanracing.org/team.html</span></span></a></p>
     </div><div id="52146159523481570" class="mech-citation">
       <div class="mech-citation-id">[2]:</div>
-      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="https://www.ri.cmu.edu/pub_files/2007/4/Tartan_Racing.pdf" class="mech-hyperlink">https://www.ri.cmu.edu/pub_files/2007/4/Tartan_Racing.pdf</a></p>
+      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="https://www.ri.cmu.edu/pub_files/2007/4/Tartan_Racing.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://www.ri.cmu.edu/pub_files/2007/4/Tartan_Racing.pdf</span></span></a></p>
     </div><div id="34264109641916178" class="mech-citation">
       <div class="mech-citation-id">[3]:</div>
-      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="https://www.cs.cmu.edu/~aldrich/courses/654/tools/coverity-on-boss.pdf" class="mech-hyperlink">https://www.cs.cmu.edu/~aldrich/courses/654/tools/coverity-on-boss.pdf</a></p>
+      <p class="mech-paragraph"><span class="mech-text">CMU: </span><a href="https://www.cs.cmu.edu/~aldrich/courses/654/tools/coverity-on-boss.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://www.cs.cmu.edu/~aldrich/courses/654/tools/coverity-on-boss.pdf</span></span></a></p>
     </div><div id="46343634604415658" class="mech-citation">
       <div class="mech-citation-id">[4]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Stanford: </span><a href="https://cs.stanford.edu/group/roadrunner/team.html" class="mech-hyperlink">https://cs.stanford.edu/group/roadrunner/team.html</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Stanford: </span><a href="https://cs.stanford.edu/group/roadrunner/team.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://cs.stanford.edu/group/roadrunner/team.html</span></span></a></p>
     </div><div id="71304989515709273" class="mech-citation">
       <div class="mech-citation-id">[5]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Stanford: </span><a href="https://robots.stanford.edu/papers/junior08.pdf" class="mech-hyperlink">https://robots.stanford.edu/papers/junior08.pdf</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Stanford: </span><a href="https://robots.stanford.edu/papers/junior08.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://robots.stanford.edu/papers/junior08.pdf</span></span></a></p>
     </div><div id="18363320205482727" class="mech-citation">
       <div class="mech-citation-id">[6]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://www.romela.org/wp-content/uploads/2015/05/Odin-Team-VictorTango’s-Entry-in-the-DARPA-Urban-Challenge.pdf" class="mech-hyperlink">https://www.romela.org/wp-content/uploads/2015/05/Odin-Team-VictorTango’s-Entry-in-the-DARPA-Urban-Challenge.pdf</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://www.romela.org/wp-content/uploads/2015/05/Odin-Team-VictorTango’s-Entry-in-the-DARPA-Urban-Challenge.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://www.romela.org/wp-content/uploads/2015/05/Odin-Team-VictorTango’s-Entry-in-the-DARPA-Urban-Challenge.pdf</span></span></a></p>
     </div><div id="1036314616950465" class="mech-citation">
       <div class="mech-citation-id">[7]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://web.archive.org/web/20080524000738/http://www.victortango.org/" class="mech-hyperlink">https://web.archive.org/web/20080524000738/http://www.victortango.org/</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://web.archive.org/web/20080524000738/http://www.victortango.org/" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://web.archive.org/web/20080524000738/http://www.victortango.org/</span></span></a></p>
     </div><div id="70295090575288527" class="mech-citation">
       <div class="mech-citation-id">[8]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://news.vt.edu/articles/2007/08/2007-429.html" class="mech-hyperlink">https://news.vt.edu/articles/2007/08/2007-429.html</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Virginia Tech: </span><a href="https://news.vt.edu/articles/2007/08/2007-429.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://news.vt.edu/articles/2007/08/2007-429.html</span></span></a></p>
     </div><div id="15230571026221700" class="mech-citation">
       <div class="mech-citation-id">[9]:</div>
-      <p class="mech-paragraph"><span class="mech-text">MIT: </span><a href="https://grandchallenge.mit.edu/index.shtml" class="mech-hyperlink">https://grandchallenge.mit.edu/index.shtml</a></p>
+      <p class="mech-paragraph"><span class="mech-text">MIT: </span><a href="https://grandchallenge.mit.edu/index.shtml" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://grandchallenge.mit.edu/index.shtml</span></span></a></p>
     </div><div id="39133320175790644" class="mech-citation">
       <div class="mech-citation-id">[10]:</div>
-      <p class="mech-paragraph"><span class="mech-text">MIT: </span><a href="https://dspace.mit.edu/handle/1721.1/39822" class="mech-hyperlink">https://dspace.mit.edu/handle/1721.1/39822</a></p>
+      <p class="mech-paragraph"><span class="mech-text">MIT: </span><a href="https://dspace.mit.edu/handle/1721.1/39822" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://dspace.mit.edu/handle/1721.1/39822</span></span></a></p>
     </div><div id="68543309088502142" class="mech-citation">
       <div class="mech-citation-id">[11]:</div>
-      <p class="mech-paragraph"><span class="mech-text">BFRT: </span><a href="https://vaderlab.wordpress.com/the-ben-franklin-racing-team/" class="mech-hyperlink">https://vaderlab.wordpress.com/the-ben-franklin-racing-team/</a></p>
+      <p class="mech-paragraph"><span class="mech-text">BFRT: </span><a href="https://vaderlab.wordpress.com/the-ben-franklin-racing-team/" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://vaderlab.wordpress.com/the-ben-franklin-racing-team/</span></span></a></p>
     </div><div id="53327064670903872" class="mech-citation">
       <div class="mech-citation-id">[12]:</div>
-      <p class="mech-paragraph"><span class="mech-text">BFRT: </span><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20260" class="mech-hyperlink">https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20260</a></p>
+      <p class="mech-paragraph"><span class="mech-text">BFRT: </span><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20260" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20260</span></span></a></p>
     </div><div id="62217887427352041" class="mech-citation">
       <div class="mech-citation-id">[13]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Cornell: </span><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20253" class="mech-hyperlink">https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20253</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Cornell: </span><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20253" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20253</span></span></a></p>
     </div><div id="52684555777928182" class="mech-citation">
       <div class="mech-citation-id">[14]:</div>
-      <p class="mech-paragraph"><span class="mech-text">Corenell: </span><a href="http://www.coep.ufrj.br/~ramon/COE-841/robotics/book%202009%20-%20The%20DARPA%20Urban%20Challenge%20-%20Buehler,%20Iagnemma%20&%20Singh.pdf" class="mech-hyperlink">http://www.coep.ufrj.br/~ramon/COE-841/robotics/book%202009%20-%20The%20DARPA%20Urban%20Challenge%20-%20Buehler,%20Iagnemma%20&%20Singh.pdf</a></p>
+      <p class="mech-paragraph"><span class="mech-text">Corenell: </span><a href="http://www.coep.ufrj.br/~ramon/COE-841/robotics/book%202009%20-%20The%20DARPA%20Urban%20Challenge%20-%20Buehler,%20Iagnemma%20&%20Singh.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">http://www.coep.ufrj.br/~ramon/COE-841/robotics/book%202009%20-%20The%20DARPA%20Urban%20Challenge%20-%20Buehler,%20Iagnemma%20&%20Singh.pdf</span></span></a></p>
     </div></section>
 </div></div>
     </div>
@@ -3177,7 +3218,7 @@ Track B Finalists,Did Not Finish,3
     let wasm_core;
     async function run() {
       await init();
-      var code = `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`;
+      var code = `G4EeICwH7MbH++JJynarihh+ReiLuOGr4yPYdB4hyeyPc595KVAOIfB7hMkRtt3Prp/IDYiEQqFRyDmxGc2qf3+r9+f9KbpPoQK66QLJSm9rPNT2JF3RZi91KjuZaBhlvVSC59DGNCy9qrrJWwRwErKuLQh5oR5/jEJwy2YuW3h3/mWVwHER0+cB/jvKWtvozpEytlKgZthQwV0gMf5/+5UFgLsTdsBGoFDAyvx5972qM1X9h6C7wj0h+CF69YO8pCJXjltAUmvX6JwVTmVXd5rJs3RImo2h0hjDKhoXhwpN/j8NAaK9BtHd6UMzOv7guehWiyqAHhgECX3QT3S29yeXVRAW0RkgJ3bfQtwaLh6rI0+9FW9G1BiSVDfQKHpFW6IWLS8TYH9Fmy2rK7Q9T5ghri4QU7EnlSQ15zMrJ9Irk4aIALQR2ATollqNerpmR4a2BObTJswdZzI1v6YigNKlOBwqauZG+xJlb/RF48h+PwxAdgJyerOjWllxE52jVJPM5wF/lP/0cp8SGTsgd7zfccwunCvrVHBbXlb+G+hwfvDbuSFpQoNwRDl23t+GiUfZfP22+t9PXnwBvj+y/3ltjTxifBr0L7bdivSXdzF0tXS5PMsPqlZ0Bc/NIfS4kzuw3rDDROZmheUwXslygH5FG4agF4j+UWckZB7J5lSjIvc1m95zQe0h9GnXAma2LkuojlbsoUpScp7O4hAb+nMugz1dphSzd/iUesk7rh0Fr42aFS7w2V8jMPITVQXprzUKn9/fgnnTwHaTrVLCgkPkGK7AcbS4lYLuj/038UfhuOXgt7+iXJU+X5tB1AAhd6nVAC2dpPQojng2EhOaSe23Ym9CcavrGrSolOg4OL98wkp5QzTph8iisp7GWf7QJBn7TQZBjf21/hEd68UUrtSaz1sOIUeZSbF3OdZevBkCB9CB8Z1s15P/rSyuUL8NRNto675pY8ILGzcXJhj+q/1ILJOCCeUJCI7bZD9pc+LU+/4Q9rtzOp4ovbhxOL3pz/MY5/o2qTJxO3WH6/0z03enpx5jY1PjKRlNahONBcOhXrADorseV5JhIv3eWS6OEw0iJil1wUzKbY6Mhj/NkThN579H4yJdpQ1Bxhol/1D8KGf4CLFJL9t9/bcNMUUDxvHXunydoCpV5weSpa/ZGr1Ae4/FuETDtDz+rnp3duo9zVKNySbAYQOtxp4miafg1xlzXDM5DYzxL7CaregkG4GZH89TzRyWacvzgBVGPA997F3EJhtnmwExS/hbtp/iyzdAhb1Nwd25WRvJ5CEd/rQ36NwZmRr+9n+/znNp9HZajvOJ84xOS6ZJzn+YrVKOT1+ykWb5Au0GGXKRU7+nep3l94/d5OkeMuZXT3UiPt4gK/xySt6dn7UJVAQWkebezZDZb+lDcLCRPo1VHLXm8qAES8RP70pBIC6iu4NruQXhc1tXouYimxhnssgu2uVmmrtl23n+hdobq1UAhriYwgmztnI7F+TkLu80UCHsXJjIIg7TFGppuxXrRnTl54WNHw+o/LWw46RFZsKFGyHfqqDNfDlO1rcqVh7nh3cuR49SNMtddDlZlxamK6f9FN1dmLVdaFh0CT/VSR4loRgXubIS9B3ew+qCkbS5mOH5w7uV4oUkuk98BGvxeonmvRche0O3Qnxw9+UdT+5wuQoPT/RczCAEALilLGdDX/RFvXmZqQQuFKyt41ZAQRyaC2jmhFLRHBcBukTtOG0XdKpiRksjCLZ7np4PBgBjza1LrBKL+4we42nMMYi0Fut+dQyiY/gtLaihc0UmoYAK3MYMlXEueQGnqoBb6THwKmUW8Bg5ppxAckAPisp5xXJ/Ohv7kPCtFxnGnkHIlhhMYMXfSmeV1R/dbgoMEiwRsxyZJ85Bm9QBJ9bCI5khcxzufKyRd5iCxRvAiXIUscJBzBApsDNdPCYudsFiu6KFPcsaSk9Ukyrku0UTnPUpQagjq0ZkJW5CUIhDknyjITmKw9aED3TXz43rFBBSYDwdZaNnSQy6EvDZLsSSY19NKxpnkFRXG/Ulb2vmR9BtLL7/xav92ewBqBcHRE9uSuEg3Lc2HmjZC7MU6zgfEJ19iQQACFsrZyXFrWyiYOoORuZ8Uzqky3EGwuzqVJF1PMBEMlfrch41e6xANOiZ3htNJyNQSTiMPfBMQSEWAHLBZrMVAcIjpz3LzLXud2Uhi4IvEfFuOIN2SaYhkKyXkIc4m4vsNoctDAK1uGxes5ZgSFrQsBo9Rc6YJC7LxaZYFq4IbFEhQHXymDuCfwLS1FbMHJyP1u9f8fVfI2ywQIUgdtOgJX426IkAvOMbFG67+Ou7386mSAhCDOyGr1MTpJSSNQIcDUZpE0kOKtV5sAiL31A36szuH70a8TXqBJnqRMtst5ZDyJVn7C1oxfxHBbNU3XAl57Y0B3/QA+p2BTQZDBOaFsJwdSca1F1HYzarfrjW97ebJsFvhY/INqvu4Dp3GSaeEjwSb0Xgp9VdQ7Knrty/im4Fo7fth7vKKEDqxLihPVTTYd/2voeak9+yjxtX9Xv8E7C79OEli5GNKS/OQp7zgA3r8sABbh5CVildr1lFio2EjhBui7IItKCXjZG9SGdXjlXm41S3YftGo3KeBc1H8FS/lMed15DebNVb1yYLG1WZNGFKMHahmWaVXU+RYnkII0wlncReAOooDLq04gY5r75XbBJFSqPP1EZoMf1JoovyOQI7QZUZ1sst3ignCB6yDmMaACfVHbHB+xXFSbWb2YAGgkGQh3hIIcke/wdgVUTWFnE0o3DMSB8+wMn58zGINdcgaS6Mp6QT1vR5+j5SCZwPMRoIkFhwPQVBDjEG3RAFrzvlHzAzqkez3M1zCUwl4WbPhH7HBXt4U0DBIKhjPE6Vp/3eXXN7rOW4ArDGEqdojbOm0o177YqrQJreWa2Jwr+L93ynJoq8o9TMdJDDGBsELYknFlfl+Mhkec+a1pGNibbiiyYib9ptAIEZGRZB1t54ZkbBAUlTvwzocnK+rqKNIKFuIDMcF2JvdsseVv5diYtR0xUUOt921T0c7TyCG9CQhx9y/9Es2jAu+fg88kKo20DnOCkk3nwZPX6Ud35iDDh26kV3B/yRG0LT3sPnn8b24lRcpTkH9fLc8UkL+ZeaTP8lyzrvYKJ9fCBzBnl/OUj9MNU1ykV2gGdAeM6LArpJnQiljZV4109eI6FqU2qFdUH7q2FrqCTzAmBhSskLZ5p2ksgmxvWgE1QyWfXKBp9t15pKUDjzNsMWIYyxOoTKDZu3IqRyOW6JZ52e7QYJfwO1rdNVpN7Wh46c9YYFPh/vd4fCv1HHIxGu23Q3eBNcuWSPixYmumecJ0FpmTMousURQm59XGoOaEMRy+3DT60O15IXyFDxybAjOUIwzlVtNztUh8Ru3s39rnUHu6wmB7z6HynKcEdb5r/5xSi+hbCRMJtVB1wqlNzScN1K1Z6n4dsyVV4S+6LkYkQ01BHWfqLv2hlleHp5vtbSBfAPEdjsxhGXC2W3PEyRuiz/mFGMCFJqwWYafbvrx2RcdBPv+imnITXRpPK5rpZ5Zz9n9lX9cy9Fww7PecRAKWJlsRskfZAq0mY7VJG4ces52qWRzt7S/sdSLSFfhMoN1QXXCjX/MmyPBZJib/yBJ470cvttQdljlf0u/SaSSojs73uL0qW3lgYvvIlvlW+4sWFTDwB7i51Bw230EfhWdb31NQrIC1zOkDtuDvRLdDuj6Tb7B3007dnfUWqLbpz+FVXynwkbFX/3LH9GxgizJCJJbXlFaEBDzVT7k52P2/RQdmsarzWwr+LwrNkLqiOl7Txr+/cg1DSIBV5fhO53XF3K/2f+yM1PQBQ=`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
