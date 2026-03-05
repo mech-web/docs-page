@@ -10,6 +10,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
@@ -23,32 +24,46 @@
     @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --bracket-color: #c19dca;
-  --op-color: #c19dca;
-  --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(264, 54%, 80%);
-  --contrast-color-mid:  hsl(264, 54%, 70%);
-  --contrast-color-low:  hsl(264, 54%, 60%);
+  --bracket-color: hsl(288, 30%, 70%);
+  --op-color: hsl(288, 30%, 70%);
+  --function-name-color: hsl(133, 33%, 80%);
+  --function-bracket-color: hsl(133, 33%, 70%);
+  --literal-color: hsl(210, 78%, 78%);
+  --contrast-color-high: hsl(288, 30%, 80%);
+  --contrast-color-mid:  hsl(288, 30%, 70%);
+  --contrast-color-low:  hsl(288, 30%, 60%);
   --main-color-high: hsl(42, 89%, 80%);
   --main-color-mid:  hsl(42, 89%, 70%);
   --main-color-low:  hsl(42, 89%, 60%);
-  --out-bracket-color: rgb(177, 187, 196);
+  --out-bracket-color: hsl(288, 30%, 85%);
   --sidebar-width: 300px;
-  --text-color: #f2ead9;
+  --text-color-light: hsl(40, 100%, 95%);
+  --text-color: hsl(41, 49%, 90%);
+  --text-color-dark: hsl(41, 49%, 25%);
   --code-border-color: #4d5257;
   --inline-code-border-color: #4d5257;
   --code-background-color: #090d11;
   --code-output-background-color: #020303;
-  --var-name-color: #eddaf1;
+  --var-name-color: hsl(290, 45%, 90%);
   --field-name-color: #efd8aa;
   --kind-annotation-color: #f09fca;
   --kind-annotation-color-dark: #d574a8;
-  --body-background-color: #0d1117;
+  --body-background-color: hsl(216, 28%, 7%);
   --abstract-background-color: #171c26;
-  --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
   --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
+  --h2-underline-color: #343b46;
+  --toc-heading-number-color: rgba(255, 255, 255, 0.55);
+  --title-underline-color: hsl(42, 89%, 70%);
+  --callout-background-color: #1f2533;
+  --warning-color: hsl(20, 100%, 75%);
+  --error-color: hsl(350, 100%, 75%);
+  --info-color: hsl(230, 100%, 75%);
+  --success-color: hsl(130, 100%, 75%);
+  --idea-color: hsl(271, 100%, 75%);
+  --question-color: hsl(191, 100%, 75%);
+  --code-namespace-label-color: #f5a7d3;
 }
 
 html {
@@ -105,13 +120,12 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     overflow-x: hidden;
-    top: 0px;
+    top: 150px;
     margin-left: calc(50% - 350px - 250px - 150px);
     overflow: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */         
     height: calc(100vh - 60px);   
-    margin-top: 60px;  
 }
 
 .mech-program {
@@ -236,6 +250,10 @@ body {
     pointer-events: none;
 }
 
+.mech-toc-sections {
+
+}
+
 .mech-toc h2 {
     line-height: 23px;
 }
@@ -275,7 +293,7 @@ h2.toc::before {
 h3.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h3 {
     line-height: 23px;
@@ -303,7 +321,7 @@ h3.toc::before {
 h4.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h4 {
     line-height: 23px;
@@ -329,7 +347,7 @@ h4.toc::before {
 h5.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h5 {
     line-height: 23px;
@@ -350,6 +368,30 @@ h5.toc::before {
 .mech-toc h5 a:hover {
     color: var(--contrast-color-low);
     text-decoration: none;
+}
+
+.mech-map {
+    color: var(--op-color);
+}
+
+.mech-set {
+    color: var(--op-color);
+}
+
+.mech-set-comprehension {
+    color: var(--op-color);
+}
+
+.mech-set-open {
+    color: var(--bracket-color);
+}
+
+.mech-set-close {
+    color: var(--bracket-color);
+}
+
+.mech-set-bar {
+    color: var(--op-color);
 }
 
 .mech-matrix {
@@ -375,6 +417,26 @@ h5.toc::before {
     padding-left:  6px;
     padding-right: 6px;
     color: var(--op-color);
+}
+
+.mech-variable-assign {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.mech-enum-name {
+    color: var(--kind-annotation-color);
+}
+
+.mech-enum-define {
+    display: inline-flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
+.mech-enum-variant {
+    color: var(--literal-color);
 }
 
 .mech-kind-define-op {
@@ -416,7 +478,6 @@ h5.toc::before {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
     color: var(--text-color);
     letter-spacing: 2px;
     font-size: 1.83rem;
@@ -424,7 +485,20 @@ h5.toc::before {
     text-align: center;
     margin-bottom: 16px;
     margin-left: -100px;
+    position: relative; 
 }
+
+.mech-program h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background: linear-gradient(to right, var(--body-background-color), var(--title-underline-color), var(--title-underline-color), var(--title-underline-color),  var(--body-background-color));
+  border-radius: 2px;
+}
+
 
 .mech-program h2 a {
     color: var(--text-color);
@@ -435,13 +509,12 @@ h5.toc::before {
     width: 850px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
-    color: var(--text-color);
+    border-bottom: 1px solid var(--h2-underline-color);
     font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 80px;
     margin-left: -73px;
 }
 
@@ -455,7 +528,8 @@ h5.toc::before {
     color: var(--text-color);
     font-size: 1.17rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     margin-left: -48px;
 }
@@ -498,7 +572,7 @@ h5.toc {
 }
 
 .mech-variable-mutable {
-    color: #ada594;
+    color: var(--op-color);
 }
 
 .mech-section-element {
@@ -567,7 +641,7 @@ h5.toc {
 .mech-grammar {
     display: block;
     background-color: var(--code-background-color);
-    color: #ada594;
+    color: var(--text-color);
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -576,7 +650,7 @@ h5.toc {
     border: 1px solid var(--code-border-color);
     margin-bottom: 20px;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -603,20 +677,20 @@ h5.toc {
 }
 
 .mech-grammar-identifier {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition a {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: none;
 }
 
 .mech-grammar-definition a:hover {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: underline;
 }
 
@@ -630,7 +704,11 @@ h5.toc {
 
 
 .mech-grammar-terminal {
-    color: #ee6262;
+    color: var(--literal-color);
+}
+
+.mech-grammar-rule {
+    color: var(--op-color);
 }
 
 
@@ -674,6 +752,7 @@ h5.toc {
 .mech-var-name {
     color: var(--var-name-color);
     font-style: bold;
+    white-space: nowrap;
 }
 
 .mech-output-kind {
@@ -694,9 +773,34 @@ h5.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
+    color: var(--op-color);
+}
+
+.mech-grammar-choice-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat1-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat0-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-not-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-optional-op {
+    color: var(--op-color);
 }
 
 .mech-literal {
+}
+
+.mech-matrix .mech-number {
+    text-align: right;
 }
 
 .mech-number {
@@ -725,6 +829,7 @@ code {
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
 }
 
 .mech-inline-mech-code-formatted .mech-code-block {
@@ -765,6 +870,10 @@ code {
     color: var(--op-color);
 }
 
+.mech-not-op {
+    color: var(--op-color);
+}
+
 .mech-op-assign-op {
     padding-left: 6px;
     padding-right: 6px;
@@ -772,24 +881,22 @@ code {
 }
 
 .mech-paragraph {
-    color: #fffbf3;
+    color: var(--text-color-light);
     line-height: 25px;
 }
 
 .mech-paragraph a {
-    color: var(--main-color-high);
+    color: var(--main-color-mid);
     text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
 .mech-paragraph a:hover {
-    color: var(--main-color-low);
-    text-decoration: underline;
+    color: var(--main-color-high);
+    text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
-/*Hover style for this thing: */
-/*mech-program-subtitle toc*/
 .mech-program-subtitle:hover {
     color: var(--contrast-color-low);
     cursor: pointer;
@@ -832,6 +939,14 @@ a.mech-hyperlink:hover .mech-inline-code {
 
 .mech-function-call {
     display: inline-flex;
+}
+
+.mech-function-call .mech-argument-list {
+    color: var(--function-bracket-color);
+}
+
+.mech-function-call .mech-left-paren, .mech-function-call .mech-right-paren {
+    color: var(--function-bracket-color);
 }
 
 .mech-slice {
@@ -898,7 +1013,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-function-name {
-    color: #d8a5e4;
+    color: var(--function-name-color);
 }
 
 .mech-kind-annotation {
@@ -1044,6 +1159,12 @@ a.mech-hyperlink:hover .mech-inline-code {
     color: var(--op-color);
 }
 
+.mech-tuple-destructure {
+    display: flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
 .mech-state-name {
     color: #dbc3a5;
 }
@@ -1076,6 +1197,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-string {
+    white-space: pre;
     color: var(--literal-color);
 }
 
@@ -1340,7 +1462,7 @@ li p {
 .mech-info-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #f18181;
+    border-left: 4px solid var(--info-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1351,21 +1473,17 @@ li p {
 }
 
 .mech-info-block::before {
-    content: "!";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--info-color);
     border-radius: 50%;
-    background-color: #f18181;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-info-block p {
@@ -1374,10 +1492,43 @@ li p {
     font-size: 12pt;
 }
 
+.mech-warning-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--warning-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-warning-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-warning-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-question-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #6ca8ff;
+    border-left: 4px solid var(--question-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1388,21 +1539,17 @@ li p {
 }
 
 .mech-question-block::before {
-    content: "?";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--question-color);
     border-radius: 50%;
-    background-color: #6ca8ff;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-question-block p {
@@ -1411,9 +1558,108 @@ li p {
     font-size: 12pt;
 }
 
+.mech-error-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--error-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-error-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-error-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-success-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--success-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-success-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-success-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-idea-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--idea-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-idea-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--idea-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-idea-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-thematic-break {
     border: 0;
-    border-top: 2px solid #7e8892;
+    border-top: 2px dotted #7e8892;
     margin: 30px 0;
     width: 100%;
     opacity: 0.7;
@@ -1427,6 +1673,27 @@ li p {
 
 .mech-code-block.hidden {
     display: none;
+}
+
+.mech-fenced-mech-block {
+  position: relative;   /* makes this the anchor for absolute positioning */
+}
+
+.mech-code-block-namespace {
+    color: var(--code-namespace-label-color);
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: rgb(13 17 23);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    border: 1px solid var(--code-namespace-label-color);
+}
+
+.mech-code-block-namespace a {
+    color: var(--code-namespace-label-color);
+    text-decoration: none;
 }
 
 .mech-block-output {
@@ -1676,9 +1943,9 @@ h6:hover a {
 }
 
 mark {
-    background-color: var(--main-color-mid);
-    border: 1px solid #ffe4a4;
-    color: #5a4105;
+    background-color: var(--main-color-low);
+    border: 1px solid var(--main-color-high);
+    color:  var(--text-color-dark);
     font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
@@ -1763,6 +2030,10 @@ mark {
 
 .mech-output-value {
     padding-left: 10px;
+}
+
+.mech-matrix-element {
+    text-align: right;
 }
 
 .mech-matrix-outer{
@@ -2106,7 +2377,7 @@ mark {
 
 .mech-strong {
     font-weight: 900;
-    color: #fef2d4;
+    color: var(--text-color);
 }
 
 .mech-diagram {
@@ -2199,7 +2470,60 @@ mark {
 
 .mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
 
+.mech-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin: 2rem 10px 1.25rem;
+  color: var(--contrast-color-low);
+}
 
+/* Links */
+.mech-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--contrast-color-mid);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.mech-breadcrumb a:hover {
+  color: var(--contrast-color-low);
+}
+.mech-breadcrumb-home {
+  margin-top: 1px;
+}
+
+.mech-breadcrumb-home svg {
+  width: 14px; 
+  height: 14px;
+}
+
+/* Separator */
+.mech-breadcrumb-sep {
+  margin: 0 0.25rem;
+  margin-top: -4px;
+  color: var(--contrast-color-low);
+  opacity: 1;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* Current page */
+.mech-breadcrumb-current {
+  color: var(--contrast-color-high);
+}
+
+/* Typography alignment */
+.mech-breadcrumb,
+.mech-breadcrumb a,
+.mech-breadcrumb-current {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, sans-serif;
+}
 
   </style>
 
@@ -2321,7 +2645,16 @@ mark {
     .toggle-button.edge-right:hover {
 
     }
-
+    #footer {
+      padding: 30px;
+      height: 300px;
+      width: 100%;
+      margin-top: 50px;
+      background-color: #06070a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23797979' fill-opacity='0.55'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      /* box shadow parameters are: horizontal offset, vertical offset, blur radius, spread radius, color */
+      box-shadow:inset 0 7px 10px rgba(0,0,0,1);
+    }
     #header {
       display: flex;
       align-items: center;
@@ -2467,9 +2800,10 @@ mark {
     </div>
   </header>
   <div class="container mech-root" mech-interpreter-id=0>
-    <div class="mech-toc"><h1 class="mech-program-title">Mech Project Roadmap</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Project Status</a></h2><h3 id="35767489275533176" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#15795152571954069">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><h3 id="61329090759848425" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49713314479115418">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><h3 id="55685537717792982" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#34154842528075221">Stage 3 - Stable v1.0.0</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Feature Progress</a></h2><h3 id="44263478450807995" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49505093591916037">Data Specification (v0.2)</a></h3><h3 id="25712663114432627" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56782750091861120">Program Specification (v0.3)</a></h3><h3 id="62875713237909470" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47441708185484893">System specification (v0.4)</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Roadmap History</a></h2><h3 id="35470935892475103" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#23479666883314958">Version v0.0.6-alpha (unreleased)</a></h3><h3 id="36927418410308780" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#42012466053622124">Version v0.1.0 (December 2022)</a></h3><h3 id="28089261266067530" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#18904838147519050">Version v0.1.1 (Spring 2023)</a></h3></section></section></div>
+    <div class="mech-toc"><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Project Status</a></h2><h3 id="35767489275533176" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#15795152571954069">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><h3 id="61329090759848425" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49713314479115418">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><h3 id="55685537717792982" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#34154842528075221">Stage 3 - Stable v1.0.0</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Feature Progress</a></h2><h3 id="44263478450807995" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49505093591916037">Data Specification (v0.2)</a></h3><h3 id="25712663114432627" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56782750091861120">Program Specification (v0.3)</a></h3><h3 id="62875713237909470" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47441708185484893">System specification (v0.4)</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Roadmap History</a></h2><h3 id="35470935892475103" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#23479666883314958">Version v0.0.6-alpha (unreleased)</a></h3><h3 id="36927418410308780" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#42012466053622124">Version v0.1.0 (December 2022)</a></h3><h3 id="28089261266067530" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#18904838147519050">Version v0.1.1 (Spring 2023)</a></h3></section></section></div>
     <div class="content" id="left-pane">
-        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Mech Project Roadmap</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Project Status</a></h2><h3 id="15795152571954069" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#15795152571954069">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><p class="mech-paragraph"><span class="mech-text">Conception: started 2014</span></p><p class="mech-paragraph"><span class="mech-text">Implementation: started 2018</span></p><h3 id="49713314479115418" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49713314479115418">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><p class="mech-paragraph"><span class="mech-text">Started: December 2022</span></p><p class="mech-paragraph"><span class="mech-text">Currently: </span><code class="mech-inline-code">v0.2.67</code><span class="mech-text"> (Fall 2025)</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.2</code><span class="mech-text"> data specification    </span><code class="mech-inline-code">Concluding end of 2025</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.3</code><span class="mech-text"> program specification </span><mark class="mech-highlight">Starting 2026</mark></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.4</code><span class="mech-text"> system specification </span><code class="mech-inline-code">TBD</code></p></li></ul><h3 id="34154842528075221" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#34154842528075221">Stage 3 - Stable v1.0.0</a></h3><p class="mech-paragraph"><span class="mech-text">No target release date yet.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Feature Progress</a></h2><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concept</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">proof of concept implementation</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">alpha implementation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">beta implementation</span></p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">feature complete</span></p></li><li data-bullet="🍗" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">deprecated</span></p></li></ul><h3 id="49505093591916037" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49505093591916037">Data Specification (v0.2)</a></h3><div class="mech-info-block"><p class="mech-paragraph"><span class="mech-text">Work on </span><code class="mech-inline-code">v0.2</code><span class="mech-text"> is targeted to conclude by the end of 2025, and will transition into </span><code class="mech-inline-code">v0.3</code><span class="mech-text"> starting in 2026.</span></p></div><p class="mech-paragraph"><span class="mech-text">Now that all </span><code class="mech-inline-code">v0.2</code><span class="mech-text"> work items are at the beta implementation stage, we will prepare to move on to </span><code class="mech-inline-code">v0.3</code><span class="mech-text">. This will mean wrapping up documentation, tests, and any remaining bugs. </span></p><p class="mech-paragraph"><span class="mech-text">As beta features, these are are still not complete and are subject to change in </span><code class="mech-inline-code">v0.3</code><span class="mech-text">.</span></p><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">repl</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">error system</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">value semantics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">mechdown</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">type inference</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new data types</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variety of numerical datatypes</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">scientific numbers</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">imaginary numbers</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">rational numbers</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">strings</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">bools</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new data structures</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">enums</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">option types</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">sets</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">maps</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">atoms</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">records</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tuples</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tables (dataframe)</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">flexible matrix type with fixed and dynamic sizes for homogeneous data</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix builder notation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix slicing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">operator broadcasting</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">logical indexing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variable type and size checking</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">builtin linear algebra tools</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">standard library</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">combinatorics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">compare</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">io</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">math</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">set</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">stats</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">range</span></p></li></ul></ul><h3 id="56782750091861120" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#56782750091861120">Program Specification (v0.3)</a></h3><p class="mech-paragraph"><span class="mech-text">Version </span><code class="mech-inline-code">v0.3</code><span class="mech-text"> incorporates all the features of </span><code class="mech-inline-code">v0.2</code><span class="mech-text">, in addition to the following new features:</span></p><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">synthassign</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">introspection</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">higher order functions</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new types (dec64, currency, email addresses, dates)</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Integrations</span></p></li><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Godot</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Python</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">C/C++</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Rust</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Javascript</span></p></li></ul><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">state Machines</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">automatic differentiation</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">language server</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">physical units with dimension checking</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">file/parameter server</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">time travel debugging</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">machine revamp</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">database revamp</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">self-contained binary executables</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">bytecode interpreter</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">build system</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">user defined functions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tests</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">profiler</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gui</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">live coding</span></p></li></ul><h3 id="47441708185484893" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#47441708185484893">System specification (v0.4)</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gpgpu</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">capability permissions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">distributed programs</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concurrent programming</span></p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Roadmap History</a></h2><h3 id="23479666883314958" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#23479666883314958">Version v0.0.6-alpha (unreleased)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Testing</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines </span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text">HTML</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mouse</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Keyboard</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Canvas Drawing</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> File I/O</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Standard Streams</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Strings</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Number Literals</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> HTTP</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Math</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Stats</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Random</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Time</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Set</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> System</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Input Arguments</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Exit</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mech Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Table</span></p></li></ul></ul><h3 id="42012466053622124" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#42012466053622124">Version v0.1.0 (December 2022)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User defined functions</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Errors</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Distribution</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Paralell operators</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Async blocks</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Units</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Type checking</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Multiple dispatch</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> JIT Block Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Native executables</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> REPL</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Matrix</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> GUI</span></p></li></ul></ul><h3 id="18904838147519050" section="3.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#18904838147519050">Version v0.1.1 (Spring 2023)</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Core</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Automatic differentiation</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Capability system</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> New parser</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Language Server</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Syntax Highlighter</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Autocomplete</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Definition</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Docs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Hover inspector</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Workspace support</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database watcher</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Editor</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Compile programs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database Explorer</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Docs</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech platform references</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User Guide</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Ecosystem</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Architecture</span></p></li></ul></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Machines</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">More gui</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">ai</span></p></li></ul></ul></section></div></div></div>
+      <div id="breadcrumb" class="mech-breadcrumb"></div>
+        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Mech Project Roadmap</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Project Status</a></h2><h3 id="15795152571954069" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#15795152571954069">Stage 1 - Alpha v0.0.1 - v0.0.6</a></h3><p class="mech-paragraph"><span class="mech-text">Conception: started 2014</span></p><p class="mech-paragraph"><span class="mech-text">Implementation: started 2018</span></p><h3 id="49713314479115418" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49713314479115418">Stage 2 - Beta v0.1.0 - v0.4+ (???)</a></h3><p class="mech-paragraph"><span class="mech-text">Started: December 2022</span></p><p class="mech-paragraph"><span class="mech-text">Currently: </span><code class="mech-inline-code">v0.3.0</code><span class="mech-text"> (Spring 2026)</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.2</code><span class="mech-text"> data specification    </span><code class="mech-inline-code">Concluded end of 2025</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.3</code><span class="mech-text"> program specification </span><mark class="mech-highlight">Started 2026</mark></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><code class="mech-inline-code">v0.4</code><span class="mech-text"> system specification </span><code class="mech-inline-code">TBD</code></p></li></ul><h3 id="34154842528075221" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#34154842528075221">Stage 3 - Stable v1.0.0</a></h3><p class="mech-paragraph"><span class="mech-text">No target release date yet.</span></p></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Feature Progress</a></h2><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concept</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">proof of concept implementation</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">alpha implementation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">beta implementation</span></p></li><li data-bullet="🐓" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">feature complete</span></p></li><li data-bullet="🍗" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">deprecated</span></p></li></ul><h3 id="49505093591916037" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49505093591916037">Data Specification (v0.2)</a></h3><p class="mech-paragraph"><span class="mech-text">Now that all </span><code class="mech-inline-code">v0.2</code><span class="mech-text"> work items are at the beta implementation stage, we will prepare to move on to </span><code class="mech-inline-code">v0.3</code><span class="mech-text">. This will mean wrapping up documentation, tests, and any remaining bugs. </span></p><p class="mech-paragraph"><span class="mech-text">As beta features, these are are still not complete and are subject to change in </span><code class="mech-inline-code">v0.3</code><span class="mech-text">.</span></p><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">repl</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">error system</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">value semantics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">mechdown</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">type inference</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new data types</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variety of numerical datatypes</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">scientific numbers</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">imaginary numbers</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">rational numbers</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">strings</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">bools</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new data structures</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">enums</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">option types</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">sets</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">maps</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">atoms</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">records</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tuples</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tables (dataframe)</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">flexible matrix type with fixed and dynamic sizes for homogeneous data</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix builder notation</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix slicing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">operator broadcasting</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">logical indexing</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">variable type and size checking</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">builtin linear algebra tools</span></p></li></ul><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">standard library</span></p></li><ul class="mech-unordered-list"><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">combinatorics</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">compare</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">io</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">math</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">matrix</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">set</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">stats</span></p></li><li data-bullet="🐤" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">range</span></p></li></ul></ul><h3 id="56782750091861120" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#56782750091861120">Program Specification (v0.3)</a></h3><div class="mech-info-block"><p class="mech-paragraph"><span class="mech-text">Work on </span><code class="mech-inline-code">v0.3</code><span class="mech-text"> began in 2026.</span></p></div><p class="mech-paragraph"><span class="mech-text">Version </span><code class="mech-inline-code">v0.3</code><span class="mech-text"> incorporates all the features of </span><code class="mech-inline-code">v0.2</code><span class="mech-text">, in addition to the following new features:</span></p><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">synthassign</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">introspection</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">higher order functions</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">new types (dec64, currency, email addresses, dates)</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">List comprehension</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Integrations</span></p></li><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Godot</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Python</span></p></li><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">C/C++</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Rust</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Javascript</span></p></li></ul><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">mika</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">state Machines</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">automatic differentiation</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">language server</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">physical units with dimension checking</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">file/parameter server</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">time travel debugging</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">machine revamp</span></p></li><li data-bullet="🥚" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">database revamp</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">Set comprehension</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">self-contained binary executables</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">bytecode interpreter</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">build system</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">user defined functions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">tests</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">profiler</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gui</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">live coding</span></p></li></ul><h3 id="47441708185484893" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#47441708185484893">System specification (v0.4)</a></h3><ul class="mech-unordered-list"><li data-bullet="💭" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">gpgpu</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">capability permissions</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">distributed programs</span></p></li><li data-bullet="🐣" class="mech-list-item-emoji"><p class="mech-paragraph"><span class="mech-text">concurrent programming</span></p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Roadmap History</a></h2><h3 id="23479666883314958" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#23479666883314958">Version v0.0.6-alpha (unreleased)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Testing</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines </span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text">HTML</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mouse</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Keyboard</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Canvas Drawing</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> File I/O</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Standard Streams</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Strings</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Number Literals</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> HTTP</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Math</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Stats</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Random</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Time</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Set</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> System</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Input Arguments</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Exit</span></p></li></ul><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Mech Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Table</span></p></li></ul></ul><h3 id="42012466053622124" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#42012466053622124">Version v0.1.0 (December 2022)</a></h3><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User defined functions</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Errors</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Distribution</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Paralell operators</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Async blocks</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Units</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Type checking</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Multiple dispatch</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> JIT Block Compiler</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Native executables</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> REPL</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Machines</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Matrix</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> GUI</span></p></li></ul></ul><h3 id="18904838147519050" section="3.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#18904838147519050">Version v0.1.1 (Spring 2023)</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Core</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Automatic differentiation</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Capability system</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> New parser</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Language Server</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Syntax Highlighter</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Autocomplete</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Definition</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Goto Docs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Hover inspector</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Workspace support</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database watcher</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Editor</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Compile programs</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Database Explorer</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Docs</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mech platform references</span></p></li><ul class="mech-check-list"><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> User Guide</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Ecosystem</span></p></li><li class="mech-check-list-item"><input type="checkbox" checked><p class="mech-paragraph"><span class="mech-text"> Architecture</span></p></li></ul></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Machines</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">More gui</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">ai</span></p></li></ul></ul></section></div></div></div>
     </div>
     <div class="resizer hidden" id="resizer">
       <button class="toggle-button" id="toggle-repl">|</button>
@@ -3148,7 +3482,7 @@ mark {
     let wasm_core;
     async function run() {
       await init();
-      var code = `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`;
+      var code = `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`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
@@ -3180,5 +3514,55 @@ mark {
     }
     run();
   </script>
+
+  <script>
+    function buildBreadcrumb(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const { origin, pathname } = window.location;
+      const parts = pathname.split('/').filter(Boolean);
+
+      // if we are at the root, don't build breadcrumb
+      if (parts.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let pathSoFar = origin;
+      const crumbs = [];
+
+      // Home icon (data URL)
+      crumbs.push(`
+        <a href="/" class="mech-breadcrumb-home" aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </a>
+      `);
+
+      parts.forEach((part, index) => {
+        pathSoFar += `/${part}`;
+
+        const label = part.replace(/\.[^/.]+$/, '');
+        const text = label.charAt(0).toUpperCase() + label.slice(1);
+
+        if (index === parts.length - 1) {
+          crumbs.push(`<span class="mech-breadcrumb-current">${text}</span>`);
+        } else {
+          crumbs.push(`<a href="${pathSoFar}/index.html">${text}</a>`);
+        }
+      });
+
+      container.innerHTML = crumbs.join('<span class="mech-breadcrumb-sep">⟩</span>');
+    }
+
+    buildBreadcrumb('breadcrumb');
+
+
+  </script>
+
+
 </body>
 </html>

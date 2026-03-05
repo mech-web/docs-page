@@ -10,6 +10,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
@@ -23,32 +24,46 @@
     @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --bracket-color: #c19dca;
-  --op-color: #c19dca;
-  --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(264, 54%, 80%);
-  --contrast-color-mid:  hsl(264, 54%, 70%);
-  --contrast-color-low:  hsl(264, 54%, 60%);
+  --bracket-color: hsl(288, 30%, 70%);
+  --op-color: hsl(288, 30%, 70%);
+  --function-name-color: hsl(133, 33%, 80%);
+  --function-bracket-color: hsl(133, 33%, 70%);
+  --literal-color: hsl(210, 78%, 78%);
+  --contrast-color-high: hsl(288, 30%, 80%);
+  --contrast-color-mid:  hsl(288, 30%, 70%);
+  --contrast-color-low:  hsl(288, 30%, 60%);
   --main-color-high: hsl(42, 89%, 80%);
   --main-color-mid:  hsl(42, 89%, 70%);
   --main-color-low:  hsl(42, 89%, 60%);
-  --out-bracket-color: rgb(177, 187, 196);
+  --out-bracket-color: hsl(288, 30%, 85%);
   --sidebar-width: 300px;
-  --text-color: #f2ead9;
+  --text-color-light: hsl(40, 100%, 95%);
+  --text-color: hsl(41, 49%, 90%);
+  --text-color-dark: hsl(41, 49%, 25%);
   --code-border-color: #4d5257;
   --inline-code-border-color: #4d5257;
   --code-background-color: #090d11;
   --code-output-background-color: #020303;
-  --var-name-color: #eddaf1;
+  --var-name-color: hsl(290, 45%, 90%);
   --field-name-color: #efd8aa;
   --kind-annotation-color: #f09fca;
   --kind-annotation-color-dark: #d574a8;
-  --body-background-color: #0d1117;
+  --body-background-color: hsl(216, 28%, 7%);
   --abstract-background-color: #171c26;
-  --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
   --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
+  --h2-underline-color: #343b46;
+  --toc-heading-number-color: rgba(255, 255, 255, 0.55);
+  --title-underline-color: hsl(42, 89%, 70%);
+  --callout-background-color: #1f2533;
+  --warning-color: hsl(20, 100%, 75%);
+  --error-color: hsl(350, 100%, 75%);
+  --info-color: hsl(230, 100%, 75%);
+  --success-color: hsl(130, 100%, 75%);
+  --idea-color: hsl(271, 100%, 75%);
+  --question-color: hsl(191, 100%, 75%);
+  --code-namespace-label-color: #f5a7d3;
 }
 
 html {
@@ -105,13 +120,12 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     overflow-x: hidden;
-    top: 0px;
+    top: 150px;
     margin-left: calc(50% - 350px - 250px - 150px);
     overflow: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */         
     height: calc(100vh - 60px);   
-    margin-top: 60px;  
 }
 
 .mech-program {
@@ -236,6 +250,10 @@ body {
     pointer-events: none;
 }
 
+.mech-toc-sections {
+
+}
+
 .mech-toc h2 {
     line-height: 23px;
 }
@@ -275,7 +293,7 @@ h2.toc::before {
 h3.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h3 {
     line-height: 23px;
@@ -303,7 +321,7 @@ h3.toc::before {
 h4.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h4 {
     line-height: 23px;
@@ -329,7 +347,7 @@ h4.toc::before {
 h5.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h5 {
     line-height: 23px;
@@ -350,6 +368,30 @@ h5.toc::before {
 .mech-toc h5 a:hover {
     color: var(--contrast-color-low);
     text-decoration: none;
+}
+
+.mech-map {
+    color: var(--op-color);
+}
+
+.mech-set {
+    color: var(--op-color);
+}
+
+.mech-set-comprehension {
+    color: var(--op-color);
+}
+
+.mech-set-open {
+    color: var(--bracket-color);
+}
+
+.mech-set-close {
+    color: var(--bracket-color);
+}
+
+.mech-set-bar {
+    color: var(--op-color);
 }
 
 .mech-matrix {
@@ -375,6 +417,26 @@ h5.toc::before {
     padding-left:  6px;
     padding-right: 6px;
     color: var(--op-color);
+}
+
+.mech-variable-assign {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.mech-enum-name {
+    color: var(--kind-annotation-color);
+}
+
+.mech-enum-define {
+    display: inline-flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
+.mech-enum-variant {
+    color: var(--literal-color);
 }
 
 .mech-kind-define-op {
@@ -416,7 +478,6 @@ h5.toc::before {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
     color: var(--text-color);
     letter-spacing: 2px;
     font-size: 1.83rem;
@@ -424,7 +485,20 @@ h5.toc::before {
     text-align: center;
     margin-bottom: 16px;
     margin-left: -100px;
+    position: relative; 
 }
+
+.mech-program h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background: linear-gradient(to right, var(--body-background-color), var(--title-underline-color), var(--title-underline-color), var(--title-underline-color),  var(--body-background-color));
+  border-radius: 2px;
+}
+
 
 .mech-program h2 a {
     color: var(--text-color);
@@ -435,13 +509,12 @@ h5.toc::before {
     width: 850px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
-    color: var(--text-color);
+    border-bottom: 1px solid var(--h2-underline-color);
     font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 80px;
     margin-left: -73px;
 }
 
@@ -455,7 +528,8 @@ h5.toc::before {
     color: var(--text-color);
     font-size: 1.17rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     margin-left: -48px;
 }
@@ -498,7 +572,7 @@ h5.toc {
 }
 
 .mech-variable-mutable {
-    color: #ada594;
+    color: var(--op-color);
 }
 
 .mech-section-element {
@@ -567,7 +641,7 @@ h5.toc {
 .mech-grammar {
     display: block;
     background-color: var(--code-background-color);
-    color: #ada594;
+    color: var(--text-color);
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -576,7 +650,7 @@ h5.toc {
     border: 1px solid var(--code-border-color);
     margin-bottom: 20px;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -603,20 +677,20 @@ h5.toc {
 }
 
 .mech-grammar-identifier {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition a {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: none;
 }
 
 .mech-grammar-definition a:hover {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: underline;
 }
 
@@ -630,7 +704,11 @@ h5.toc {
 
 
 .mech-grammar-terminal {
-    color: #ee6262;
+    color: var(--literal-color);
+}
+
+.mech-grammar-rule {
+    color: var(--op-color);
 }
 
 
@@ -674,6 +752,7 @@ h5.toc {
 .mech-var-name {
     color: var(--var-name-color);
     font-style: bold;
+    white-space: nowrap;
 }
 
 .mech-output-kind {
@@ -694,9 +773,34 @@ h5.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
+    color: var(--op-color);
+}
+
+.mech-grammar-choice-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat1-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat0-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-not-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-optional-op {
+    color: var(--op-color);
 }
 
 .mech-literal {
+}
+
+.mech-matrix .mech-number {
+    text-align: right;
 }
 
 .mech-number {
@@ -725,6 +829,7 @@ code {
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
 }
 
 .mech-inline-mech-code-formatted .mech-code-block {
@@ -765,6 +870,10 @@ code {
     color: var(--op-color);
 }
 
+.mech-not-op {
+    color: var(--op-color);
+}
+
 .mech-op-assign-op {
     padding-left: 6px;
     padding-right: 6px;
@@ -772,24 +881,22 @@ code {
 }
 
 .mech-paragraph {
-    color: #fffbf3;
+    color: var(--text-color-light);
     line-height: 25px;
 }
 
 .mech-paragraph a {
-    color: var(--main-color-high);
+    color: var(--main-color-mid);
     text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
 .mech-paragraph a:hover {
-    color: var(--main-color-low);
-    text-decoration: underline;
+    color: var(--main-color-high);
+    text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
-/*Hover style for this thing: */
-/*mech-program-subtitle toc*/
 .mech-program-subtitle:hover {
     color: var(--contrast-color-low);
     cursor: pointer;
@@ -832,6 +939,14 @@ a.mech-hyperlink:hover .mech-inline-code {
 
 .mech-function-call {
     display: inline-flex;
+}
+
+.mech-function-call .mech-argument-list {
+    color: var(--function-bracket-color);
+}
+
+.mech-function-call .mech-left-paren, .mech-function-call .mech-right-paren {
+    color: var(--function-bracket-color);
 }
 
 .mech-slice {
@@ -898,7 +1013,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-function-name {
-    color: #d8a5e4;
+    color: var(--function-name-color);
 }
 
 .mech-kind-annotation {
@@ -1044,6 +1159,12 @@ a.mech-hyperlink:hover .mech-inline-code {
     color: var(--op-color);
 }
 
+.mech-tuple-destructure {
+    display: flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
 .mech-state-name {
     color: #dbc3a5;
 }
@@ -1076,6 +1197,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-string {
+    white-space: pre;
     color: var(--literal-color);
 }
 
@@ -1340,7 +1462,7 @@ li p {
 .mech-info-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #f18181;
+    border-left: 4px solid var(--info-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1351,21 +1473,17 @@ li p {
 }
 
 .mech-info-block::before {
-    content: "!";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--info-color);
     border-radius: 50%;
-    background-color: #f18181;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-info-block p {
@@ -1374,10 +1492,43 @@ li p {
     font-size: 12pt;
 }
 
+.mech-warning-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--warning-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-warning-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-warning-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-question-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #6ca8ff;
+    border-left: 4px solid var(--question-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1388,21 +1539,17 @@ li p {
 }
 
 .mech-question-block::before {
-    content: "?";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--question-color);
     border-radius: 50%;
-    background-color: #6ca8ff;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-question-block p {
@@ -1411,9 +1558,108 @@ li p {
     font-size: 12pt;
 }
 
+.mech-error-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--error-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-error-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-error-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-success-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--success-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-success-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-success-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-idea-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--idea-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-idea-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--idea-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-idea-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-thematic-break {
     border: 0;
-    border-top: 2px solid #7e8892;
+    border-top: 2px dotted #7e8892;
     margin: 30px 0;
     width: 100%;
     opacity: 0.7;
@@ -1427,6 +1673,27 @@ li p {
 
 .mech-code-block.hidden {
     display: none;
+}
+
+.mech-fenced-mech-block {
+  position: relative;   /* makes this the anchor for absolute positioning */
+}
+
+.mech-code-block-namespace {
+    color: var(--code-namespace-label-color);
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: rgb(13 17 23);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    border: 1px solid var(--code-namespace-label-color);
+}
+
+.mech-code-block-namespace a {
+    color: var(--code-namespace-label-color);
+    text-decoration: none;
 }
 
 .mech-block-output {
@@ -1676,9 +1943,9 @@ h6:hover a {
 }
 
 mark {
-    background-color: var(--main-color-mid);
-    border: 1px solid #ffe4a4;
-    color: #5a4105;
+    background-color: var(--main-color-low);
+    border: 1px solid var(--main-color-high);
+    color:  var(--text-color-dark);
     font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
@@ -1763,6 +2030,10 @@ mark {
 
 .mech-output-value {
     padding-left: 10px;
+}
+
+.mech-matrix-element {
+    text-align: right;
 }
 
 .mech-matrix-outer{
@@ -2106,7 +2377,7 @@ mark {
 
 .mech-strong {
     font-weight: 900;
-    color: #fef2d4;
+    color: var(--text-color);
 }
 
 .mech-diagram {
@@ -2199,7 +2470,60 @@ mark {
 
 .mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
 
+.mech-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin: 2rem 10px 1.25rem;
+  color: var(--contrast-color-low);
+}
 
+/* Links */
+.mech-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--contrast-color-mid);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.mech-breadcrumb a:hover {
+  color: var(--contrast-color-low);
+}
+.mech-breadcrumb-home {
+  margin-top: 1px;
+}
+
+.mech-breadcrumb-home svg {
+  width: 14px; 
+  height: 14px;
+}
+
+/* Separator */
+.mech-breadcrumb-sep {
+  margin: 0 0.25rem;
+  margin-top: -4px;
+  color: var(--contrast-color-low);
+  opacity: 1;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* Current page */
+.mech-breadcrumb-current {
+  color: var(--contrast-color-high);
+}
+
+/* Typography alignment */
+.mech-breadcrumb,
+.mech-breadcrumb a,
+.mech-breadcrumb-current {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, sans-serif;
+}
 
   </style>
 
@@ -2321,7 +2645,16 @@ mark {
     .toggle-button.edge-right:hover {
 
     }
-
+    #footer {
+      padding: 30px;
+      height: 300px;
+      width: 100%;
+      margin-top: 50px;
+      background-color: #06070a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23797979' fill-opacity='0.55'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      /* box shadow parameters are: horizontal offset, vertical offset, blur radius, spread radius, color */
+      box-shadow:inset 0 7px 10px rgba(0,0,0,1);
+    }
     #header {
       display: flex;
       align-items: center;
@@ -2467,15 +2800,16 @@ mark {
     </div>
   </header>
   <div class="container mech-root" mech-interpreter-id=0>
-    <div class="mech-toc"><h1 class="mech-program-title">Language Design</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Introduction</a></h2><h3 id="35767489275533176" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#15795152571954069">Elevator Pitch</a></h3><h3 id="61329090759848425" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49713314479115418">Philosophy</a></h3><h4 id="2844462929817784" section="1.2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#40166034980191823">Languages are fossilized theories of computation</a></h4><h4 id="34459032860759736" section="1.2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50133202151290060">AI</a></h4><h3 id="39799780904070182" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#51309415857615800">Design Goals</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Development philosophy</a></h2><h3 id="44263478450807995" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49505093591916037">Lineage</a></h3></section></section></div>
+    <div class="mech-toc"><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Introduction</a></h2><h3 id="35767489275533176" section="1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#15795152571954069">Elevator Pitch</a></h3><h3 id="61329090759848425" section="1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49713314479115418">Philosophy</a></h3><h4 id="2844462929817784" section="1.2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#40166034980191823">Languages are fossilized theories of computation</a></h4><h4 id="34459032860759736" section="1.2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50133202151290060">AI</a></h4><h3 id="39799780904070182" section="1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#51309415857615800">Design Goals</a></h3></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Development philosophy</a></h2><h3 id="44263478450807995" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49505093591916037">Lineage</a></h3></section></section></div>
     <div class="content" id="left-pane">
+      <div id="breadcrumb" class="mech-breadcrumb"></div>
         <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Language Design</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">This is a collection of random notes. They aren't really organized yet.</span></p><p class="mech-paragraph"><span class="mech-text">Sometimes it feels like there are already too many programming languages out there, but still, the amount of unexplored territory in the programming language design space remains vast. What's more, many of the existing and popular languages out there are clustered around well-explored and researched paradigms, such as imperative programming, object-oriented programming, and functional programming </span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">. New langauges in this space often focus on incremental imprements -- taking what has worked and advancing it one delta. This is a perfectly valid approach, but it often leads to languages that are more of the same, and potentially a local maximum in the design space </span><a href="#47765531206544500" class="mech-footnote-reference">2</a><span class="mech-text">. </span></p><p class="mech-paragraph"><span class="mech-text">Mech is not a language looking to make incremental improvements; we are not trying to make a better C++, Python, or Rust. Instead, we looking back at some of the best ideas from the past that have been overlooked or underexplored, and combining them with modern programming techniques to create a new language that exists orthogonally to many existing langauges.</span></p><p class="mech-paragraph"><span class="mech-text">Today's machines have variety of computational cores ranging from massively-multi-core CPUs, to Graphhical Processing Units (GPUs), to Neural Processing Units (NPUs); asynchronous input devices ranging from keyboards and mice, to touch, pen, and audio; sensors ranging from cameras, to gyroscopes, to LIDAR; form factors ranging from a phone that can fit in your pocket, to a cloud cluster that takes up an entire warehouse; actuators ranging from simple servos, to motors, lights, and even robot arms and legs.</span></p><p class="mech-paragraph"><span class="mech-text">They consume and process vast amounts of data from all kinds of sources, from users themselves, or the myraid sensors equipped to most devices. And with AI, the sum of the entire world's digital knowledge - art, books, movies, music, games is the scope of what these machines aim to process and analyze.</span></p><p class="mech-paragraph"><span class="mech-text">Donald Knuth:</span></p><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"The most important thing in the programming language is the name. A language will not succeed without a good name. I have recently invented a very good name and now I am looking for a suitable language."</span></span></span></span></span></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Introduction</a></h2><h3 id="15795152571954069" section="1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#15795152571954069">Elevator Pitch</a></h3><p class="mech-paragraph"><span class="mech-text">Mech is a language for developing data-drive, reactive systems like animations, games, and robots. </span></p><p class="mech-paragraph"><span class="mech-text">It makes composing, transforming, and distributing data easy, allowing you to focus on the essential complexity of your project.</span></p><p class="mech-paragraph"><span class="mech-text">Let's deconstruct this elevator pitch:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Data-driven</span></strong><span class="mech-text"> - This is to make it clear that Mech is not about writing imperative code that runs from start to finish, but rather about defining how your system should behave in response to changes in data or user input. Data drives a Mech program, not the other way around.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Reactive systems</span></strong><span class="mech-text">: Mech is built for systems that respond to changes in data or user input. It provides a programming model that allows you to define how your system should react to changes in data, making it easy to build interactive applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Animations, games, and robots</span></strong><span class="mech-text">: Mech is particularly well-suited for applications that involve real-time data processing and interaction. It provides a set of tools and libraries that make it easy to build animations, games, and robotic systems.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Composing, transforming, and distributing data</span></strong><span class="mech-text">: Mech provides a rich set of operators that make it easy to compose and transform data. It also provides a distributed programming model that allows you to build systems that can run on multiple devices or machines, making it easy to scale your applications.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Focus on essential complexity</span></strong><span class="mech-text"> - The phrase "essential complexity" is a reference to the famous idea from computer science that there is a difference between the complexity that is inherent to the problem you are trying to solve (essential complexity) and the complexity that is introduced by the tools and techniques you use to solve it (accidental complexity). Mech aims to minimize accidental complexity, allowing you to focus on the essential complexity of your project. This comes from the paper "Out of the Tar Pit" by Peter J. Landin, which discusses the challenges of programming languages and how they can be designed to minimize accidental complexity.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Project</span></strong><span class="mech-text"> - Mech isn't just for programs, it's for any kind of project.</span></p></li></ul><h3 id="49713314479115418" section="1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49713314479115418">Philosophy</a></h3><p class="mech-paragraph"><span class="mech-text">Mech subscribes to a simple philosophy:</span></p><blockquote class="mech-block-quote"><p class="mech-paragraph"><span class="mech-text">"Make simple things simple and complex things possible." - Alan Kay</span></p></blockquote><p class="mech-paragraph"><span class="mech-text">This means that Mech should be easy to use for simple tasks, but also powerful enough to handle complex problems. The language is designed to be expressive and flexible, allowing programmers to work with data in a way that feels natural and intuitive.</span></p><p class="mech-paragraph"><span class="mech-text">Why can't it just be a library? Or a framework? Or a DSL? You are building not just a language but a whole system??? What's next, an Operating System... oh wait, you've done that too.... Holy Temple OS batman!</span></p><p class="mech-paragraph"><span class="mech-text">Solves and HCI problem, not just a semantics problem.</span></p><p class="mech-paragraph"><span class="mech-text">ideas that need implementing and problems that need solving, we could still use more. Ineed, there was a period of time in the mid 70s when the world of programming seemed to be complete unexplored. No one had done programming before, and so there wasn't any expectation or idea of what programming was or could be. </span></p><h4 id="40166034980191823" section="1.2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#40166034980191823">Languages are fossilized theories of computation</a></h4><p class="mech-paragraph"><span class="mech-text">The theory of computation is changing, and old languages can't keep up.</span></p><h4 id="50133202151290060" section="1.2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50133202151290060">AI</a></h4><p class="mech-paragraph"><span class="mech-text">How does mech work well with AI?</span></p><p class="mech-paragraph"><span class="mech-text">Local scope, don't need to look globally to fiture out things.</span></p><p class="mech-paragraph"><span class="mech-text">Typed so that the AI can understand the data and how to manipulate it.</span></p><p class="mech-paragraph"><span class="mech-text">Simple data model that is easy to understand and manipulate.</span></p><p class="mech-paragraph"><span class="mech-text">Advanced version of syntax is better written by AI, makes code that looks like ascii drawings into programs.</span></p><h3 id="51309415857615800" section="1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#51309415857615800">Design Goals</a></h3><p class="mech-paragraph"><span class="mech-text">Some design goals of Mech include:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Working with data should feel like a clay that Mech programmers can shape and mold via the rich set of default operators that are included.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language must be fast, efficient, and scalable. Mech programs should be able to run on a wide range of hardware, from embedded devices to high-performance computing clusters.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The development cycles should be as short as possible to support live programming and rapid prototyping.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Battries should be included for common tasks, such as data visualization, machine learning, and simulation, to make it easy to get started with Mech.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The platform should be extensible and support a wide variety of interfaces beyond text, including graphical interfaces, audio, and VR, pen, and touch.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Programs should be safe and secure, with a focus on preventing common programming errors</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">The language should be learnable by a wide range of people, from beginners to experienced programmers, from students to professionals, and from artists to scientists.</span></p></li></ul></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Development philosophy</a></h2><p class="mech-paragraph"><span class="mech-text">I'm not a very good programmer, there are many people better than me. Also I'm just one person. So the best thing I can do is leverage the work of other smarter people as much as possible.</span></p><h3 id="49505093591916037" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49505093591916037">Lineage</a></h3><p class="mech-paragraph"><span class="mech-text">Mech draws inspiration from a number of other languages and paradigms, including:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Eve</span></strong><span class="mech-text"> - Aside from MATLAB, Eve is the most direct influence on Mech. Eve was a dataflow language and environment focused on reactivity, declarative programming, and live coding. Mech builds on Eve's strengths, such as its spreadsheet-like model and live programming environment.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Rust</span></strong><span class="mech-text"> - The Mech compiler is implemented in Rust, and so it inherits some of Rust's design principles, such as its focus on safety, concurrency, and performance.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Smalltalk</span></strong><span class="mech-text"> - Mech is inspired by Smalltalk's introspective programming model, which allows you to inspect and modify the program's structure and behavior at runtime. Mech also shares Smalltalk's focus on object-oriented programming, in the original sense as a message-passing model for communication between objects.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Logo</span></strong><span class="mech-text"> - Mech shares in Logo's mission of being accessible to beginners, especially kids, and its focus on interactive, visual programming.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Visual Basic 6</span></strong><span class="mech-text"> - The best version of Visual Basic, which was a popular for its GUI for building Windows desktop apps. Mech takes inspiration from VB6's event-driven programming model and its focus on building interactive applications with a GUI.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">ROS</span></strong><span class="mech-text"> - Not a programming language, but a middleware for building robot applications. Mech draws inspiration from ROS's modular architecture, its focus on data-driven design, and its use of a publish-subscribe messaging model for communication between components.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Lucid</span></strong><span class="mech-text"> - The first dataflow programming language, designed for building data-driven programs. Mech is inspired by Lucid's focus on data dependencies, its use of a declarative programming model, and its support for temporal operators.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Excel</span></strong><span class="mech-text"> - The ubiquitous spreadsheet application, which popularized the idea of defining data dependencies and transformations in a tabular format. Mech takes inspiration from Excel's cell-based model, its use of formulas for data transformation, and its focus on interactivity and live updates.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Lua</span></strong><span class="mech-text"> - Mech has many design goals and features similar to Lua, so it might surprise people to know it was </span><em class="mech-em">not</em><span class="mech-text"> a major influence in Mech's design. I think most of what Mech has in common with Lua came from Matlab. That said, lately we have picked up some ideas from Lua tooling that have inspired some Mech tools.</span></p></li></ul><div class="mech-footnote" id="9969322063809408">
         <div class="mech-footnote-id">1:</div>
         <p class="mech-paragraph"><span class="mech-text">If you squit (and not especially hard) C++, Java, Python, Javascript, are all the same programming language.  Jakubovic, Edwards and Petricek have referred to this as a </span><a href="https://tomasp.net/techdims/#footer=index,navigation;left=catalogue,list;top=catalogue,index" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">"Hornets Nest" of programming languages</span></span></a><span class="mech-text">. This is not to say that these languages are not distinct, but rather that they are all variations on a well-studied theme. There is still a lot of unexplored territory in the programming language design space.</span></p>
       </div><div class="mech-footnote" id="47765531206544500">
         <div class="mech-footnote-id">2:</div>
         <p class="mech-paragraph"><span class="mech-text">Alan Kay referred to this situation as "planes of innovation" and described two orthogonal planes: the "pink plane" and the "blue plane". Practitioners making progress on the pink plane are focused on improving known systems and practices, and they can't even recognize the existence of the blue plane. The result being that many improvements that can only be found on the pink plane are not even considered, and the blue plane remains at a local maximum.</span></p>
-      </div></section></div></div></div>
+      </div><p class="mech-paragraph"><span class="mech-text">If AI gets MATLAB wrong:</span></p><p class="mech-paragraph"><span class="mech-text">sum(A, 3)   % error if 2D</span></p><p class="mech-paragraph"><span class="mech-text">You know.</span></p><p class="mech-paragraph"><span class="mech-text">If AI gets K wrong:</span></p><p class="mech-paragraph"><span class="mech-text">+/A</span></p><p class="mech-paragraph"><span class="mech-text">It still returns something — often plausible.</span></p><p class="mech-paragraph"><span class="mech-text">Silent wrongness is poison for statistical generation.</span></p><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> AI-First Language Design</span></p></li></ol><p class="mech-paragraph"><span class="mech-text">One of the central insights in Seymour Papert's 1980 book </span><a href="https://worrydream.com/refs/Papert_1980_-_Mindstorms,_1st_ed.pdf" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mindstorms</span></span></a><span class="mech-text"> is that new technology often requires rethinking old paradigms. Papert, a pioneer in educational computing</span><a href="#9969322063809408" class="mech-footnote-reference">1</a><span class="mech-text">, observed that although computers offered exciting possibilities, they were often used to reinforce outdated methods like drill-and-practice exercises. To unlock their potential, he argued, we needed to rethink how we teach and learn -- not just apply old approaches to new tools. His solution was the Logo programming language, which enabled children as young as five to use computers in ways they never could before. Languages, he showed, can help people access new ways of thinking, no matter their age or background.</span></p><p class="mech-paragraph"><span class="mech-text">Today, with generative AI and large language models, history rhymes. Programmers are now asking AI to generate code in languages designed decades ago, often for paradigms very different from today's challenges. Most widely used programming languages predate the Internet, smartphones, cloud computing, and AI. They have remained relevant through libraries, frameworks, and incremental updates -- but modern computing demands new approaches.</span></p><p class="mech-paragraph"><span class="mech-text">There's a school of thought that believes AI systems will eventually eliminate the need for programming languages altogether, allowing users to simply describe their desired outcomes in natural language, while the LLM will write the machine code directly, skipping the need for an intermediate programming language altogether.</span></p><p class="mech-paragraph"><span class="mech-text">Some ways an AI-first language might be designed.</span></p><p class="mech-paragraph"><span class="mech-text">First let's consider the AI itself.</span></p><p class="mech-paragraph"><span class="mech-text">The interface is text-based, so the language should be text-based. This might seem obvious but we are starting from the ground up, so everything is on the table. Many future of programming systems have been propsoed that are graphical. There migt be room for them still but for now, being text-based first is a clear requirement.</span></p><p class="mech-paragraph"><span class="mech-text">The LLM uses a natural language interface but it accepts unstructured text and also text that can be marked up and that is meaningful to the LLM.</span></p><p class="mech-paragraph"><span class="mech-text">The LLM does </span><em class="mech-em">not</em><span class="mech-text"> have to know the language ahead of time but it benefits from drawing associations between things it </span><em class="mech-em">does</em><span class="mech-text"> know.</span></p><p class="mech-paragraph"><span class="mech-text">AI works through tokenizations, which are not at the character level, but rather at the subword level. This means that the language should be designed to be tokenization-friendly</span></p><p class="mech-paragraph"><span class="mech-text">First of all, the exection context does not matter so much. The source code as a document becomes more valuable because not only does it get compiled into source code, but now it can be read by the LLM and act as a knowledge base for the program itself. This means that the language should be designed to be readable and understandable by both humans and LLMs.</span></p><p class="mech-paragraph"><span class="mech-text">Resurgence of literate programming ideas, where code and documentation are interwoven, making it easier for LLMs to understand the intent behind the code.</span></p><p class="mech-paragraph"><span class="mech-text">Being more explicit is preferred, but we also want to be concise because there's a lot to say and a limited context window.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">function arguments</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">variable names should be expressive</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">locality is important, having things close together that are related</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">types should be explicit but also inferred where possible</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">partial execution and putting the values in the document itself so the LLM can see them and help with reasoning, since it's not a great execution engine.</span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Another school of thought believes taht because AI systems have been so thoroughly trained on existing languages like Python, that future programming langauges will never be able to compete, and therefore language design is frozen.</span></p><p class="mech-paragraph"><span class="mech-text">We disagree on both counts. </span></p><p class="mech-paragraph"><span class="mech-text">To the extent that LLMs are used to write code today, they are writing code in langauges humans invented for their abstraction capabilities. The recent history of programming has been about building higher-level abstractions to make programming easier for humans. Although LLMs have different capabilities when it comes to writing code (they are very fast, for starters), they still need abstractions to reason about complex systems. Natural Langauges are insufficient for logical reasoning LLMs for the same reasons </span></p></section></div></div></div>
     </div>
     <div class="resizer hidden" id="resizer">
       <button class="toggle-button" id="toggle-repl">|</button>
@@ -3154,7 +3488,7 @@ mark {
     let wasm_core;
     async function run() {
       await init();
-      var code = `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`;
+      var code = `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`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
@@ -3186,5 +3520,55 @@ mark {
     }
     run();
   </script>
+
+  <script>
+    function buildBreadcrumb(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const { origin, pathname } = window.location;
+      const parts = pathname.split('/').filter(Boolean);
+
+      // if we are at the root, don't build breadcrumb
+      if (parts.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let pathSoFar = origin;
+      const crumbs = [];
+
+      // Home icon (data URL)
+      crumbs.push(`
+        <a href="/" class="mech-breadcrumb-home" aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </a>
+      `);
+
+      parts.forEach((part, index) => {
+        pathSoFar += `/${part}`;
+
+        const label = part.replace(/\.[^/.]+$/, '');
+        const text = label.charAt(0).toUpperCase() + label.slice(1);
+
+        if (index === parts.length - 1) {
+          crumbs.push(`<span class="mech-breadcrumb-current">${text}</span>`);
+        } else {
+          crumbs.push(`<a href="${pathSoFar}/index.html">${text}</a>`);
+        }
+      });
+
+      container.innerHTML = crumbs.join('<span class="mech-breadcrumb-sep">⟩</span>');
+    }
+
+    buildBreadcrumb('breadcrumb');
+
+
+  </script>
+
+
 </body>
 </html>

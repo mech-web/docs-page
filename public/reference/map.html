@@ -10,11 +10,12 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
 
-  <title>Map</title>
+  <title>map</title>
   <link rel="icon" href="https://gitlab.com/mech-lang/assets/-/raw/main/images/favicon.ico" type="image/x-icon" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -23,32 +24,46 @@
     @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --bracket-color: #c19dca;
-  --op-color: #c19dca;
-  --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(264, 54%, 80%);
-  --contrast-color-mid:  hsl(264, 54%, 70%);
-  --contrast-color-low:  hsl(264, 54%, 60%);
+  --bracket-color: hsl(288, 30%, 70%);
+  --op-color: hsl(288, 30%, 70%);
+  --function-name-color: hsl(133, 33%, 80%);
+  --function-bracket-color: hsl(133, 33%, 70%);
+  --literal-color: hsl(210, 78%, 78%);
+  --contrast-color-high: hsl(288, 30%, 80%);
+  --contrast-color-mid:  hsl(288, 30%, 70%);
+  --contrast-color-low:  hsl(288, 30%, 60%);
   --main-color-high: hsl(42, 89%, 80%);
   --main-color-mid:  hsl(42, 89%, 70%);
   --main-color-low:  hsl(42, 89%, 60%);
-  --out-bracket-color: rgb(177, 187, 196);
+  --out-bracket-color: hsl(288, 30%, 85%);
   --sidebar-width: 300px;
-  --text-color: #f2ead9;
+  --text-color-light: hsl(40, 100%, 95%);
+  --text-color: hsl(41, 49%, 90%);
+  --text-color-dark: hsl(41, 49%, 25%);
   --code-border-color: #4d5257;
   --inline-code-border-color: #4d5257;
   --code-background-color: #090d11;
   --code-output-background-color: #020303;
-  --var-name-color: #eddaf1;
+  --var-name-color: hsl(290, 45%, 90%);
   --field-name-color: #efd8aa;
   --kind-annotation-color: #f09fca;
   --kind-annotation-color-dark: #d574a8;
-  --body-background-color: #0d1117;
+  --body-background-color: hsl(216, 28%, 7%);
   --abstract-background-color: #171c26;
-  --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
   --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
+  --h2-underline-color: #343b46;
+  --toc-heading-number-color: rgba(255, 255, 255, 0.55);
+  --title-underline-color: hsl(42, 89%, 70%);
+  --callout-background-color: #1f2533;
+  --warning-color: hsl(20, 100%, 75%);
+  --error-color: hsl(350, 100%, 75%);
+  --info-color: hsl(230, 100%, 75%);
+  --success-color: hsl(130, 100%, 75%);
+  --idea-color: hsl(271, 100%, 75%);
+  --question-color: hsl(191, 100%, 75%);
+  --code-namespace-label-color: #f5a7d3;
 }
 
 html {
@@ -105,13 +120,12 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     overflow-x: hidden;
-    top: 0px;
+    top: 150px;
     margin-left: calc(50% - 350px - 250px - 150px);
     overflow: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */         
     height: calc(100vh - 60px);   
-    margin-top: 60px;  
 }
 
 .mech-program {
@@ -236,6 +250,10 @@ body {
     pointer-events: none;
 }
 
+.mech-toc-sections {
+
+}
+
 .mech-toc h2 {
     line-height: 23px;
 }
@@ -275,7 +293,7 @@ h2.toc::before {
 h3.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h3 {
     line-height: 23px;
@@ -303,7 +321,7 @@ h3.toc::before {
 h4.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h4 {
     line-height: 23px;
@@ -329,7 +347,7 @@ h4.toc::before {
 h5.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h5 {
     line-height: 23px;
@@ -350,6 +368,30 @@ h5.toc::before {
 .mech-toc h5 a:hover {
     color: var(--contrast-color-low);
     text-decoration: none;
+}
+
+.mech-map {
+    color: var(--op-color);
+}
+
+.mech-set {
+    color: var(--op-color);
+}
+
+.mech-set-comprehension {
+    color: var(--op-color);
+}
+
+.mech-set-open {
+    color: var(--bracket-color);
+}
+
+.mech-set-close {
+    color: var(--bracket-color);
+}
+
+.mech-set-bar {
+    color: var(--op-color);
 }
 
 .mech-matrix {
@@ -375,6 +417,26 @@ h5.toc::before {
     padding-left:  6px;
     padding-right: 6px;
     color: var(--op-color);
+}
+
+.mech-variable-assign {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.mech-enum-name {
+    color: var(--kind-annotation-color);
+}
+
+.mech-enum-define {
+    display: inline-flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
+.mech-enum-variant {
+    color: var(--literal-color);
 }
 
 .mech-kind-define-op {
@@ -416,7 +478,6 @@ h5.toc::before {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
     color: var(--text-color);
     letter-spacing: 2px;
     font-size: 1.83rem;
@@ -424,7 +485,20 @@ h5.toc::before {
     text-align: center;
     margin-bottom: 16px;
     margin-left: -100px;
+    position: relative; 
 }
+
+.mech-program h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background: linear-gradient(to right, var(--body-background-color), var(--title-underline-color), var(--title-underline-color), var(--title-underline-color),  var(--body-background-color));
+  border-radius: 2px;
+}
+
 
 .mech-program h2 a {
     color: var(--text-color);
@@ -435,13 +509,12 @@ h5.toc::before {
     width: 850px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
-    color: var(--text-color);
+    border-bottom: 1px solid var(--h2-underline-color);
     font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 80px;
     margin-left: -73px;
 }
 
@@ -455,7 +528,8 @@ h5.toc::before {
     color: var(--text-color);
     font-size: 1.17rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     margin-left: -48px;
 }
@@ -498,7 +572,7 @@ h5.toc {
 }
 
 .mech-variable-mutable {
-    color: #ada594;
+    color: var(--op-color);
 }
 
 .mech-section-element {
@@ -567,7 +641,7 @@ h5.toc {
 .mech-grammar {
     display: block;
     background-color: var(--code-background-color);
-    color: #ada594;
+    color: var(--text-color);
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -576,7 +650,7 @@ h5.toc {
     border: 1px solid var(--code-border-color);
     margin-bottom: 20px;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -603,20 +677,20 @@ h5.toc {
 }
 
 .mech-grammar-identifier {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition a {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: none;
 }
 
 .mech-grammar-definition a:hover {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: underline;
 }
 
@@ -630,7 +704,11 @@ h5.toc {
 
 
 .mech-grammar-terminal {
-    color: #ee6262;
+    color: var(--literal-color);
+}
+
+.mech-grammar-rule {
+    color: var(--op-color);
 }
 
 
@@ -674,6 +752,7 @@ h5.toc {
 .mech-var-name {
     color: var(--var-name-color);
     font-style: bold;
+    white-space: nowrap;
 }
 
 .mech-output-kind {
@@ -694,9 +773,34 @@ h5.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
+    color: var(--op-color);
+}
+
+.mech-grammar-choice-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat1-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat0-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-not-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-optional-op {
+    color: var(--op-color);
 }
 
 .mech-literal {
+}
+
+.mech-matrix .mech-number {
+    text-align: right;
 }
 
 .mech-number {
@@ -725,6 +829,7 @@ code {
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
 }
 
 .mech-inline-mech-code-formatted .mech-code-block {
@@ -765,6 +870,10 @@ code {
     color: var(--op-color);
 }
 
+.mech-not-op {
+    color: var(--op-color);
+}
+
 .mech-op-assign-op {
     padding-left: 6px;
     padding-right: 6px;
@@ -772,24 +881,22 @@ code {
 }
 
 .mech-paragraph {
-    color: #fffbf3;
+    color: var(--text-color-light);
     line-height: 25px;
 }
 
 .mech-paragraph a {
-    color: var(--main-color-high);
+    color: var(--main-color-mid);
     text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
 .mech-paragraph a:hover {
-    color: var(--main-color-low);
-    text-decoration: underline;
+    color: var(--main-color-high);
+    text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
-/*Hover style for this thing: */
-/*mech-program-subtitle toc*/
 .mech-program-subtitle:hover {
     color: var(--contrast-color-low);
     cursor: pointer;
@@ -832,6 +939,14 @@ a.mech-hyperlink:hover .mech-inline-code {
 
 .mech-function-call {
     display: inline-flex;
+}
+
+.mech-function-call .mech-argument-list {
+    color: var(--function-bracket-color);
+}
+
+.mech-function-call .mech-left-paren, .mech-function-call .mech-right-paren {
+    color: var(--function-bracket-color);
 }
 
 .mech-slice {
@@ -898,7 +1013,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-function-name {
-    color: #d8a5e4;
+    color: var(--function-name-color);
 }
 
 .mech-kind-annotation {
@@ -1044,6 +1159,12 @@ a.mech-hyperlink:hover .mech-inline-code {
     color: var(--op-color);
 }
 
+.mech-tuple-destructure {
+    display: flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
 .mech-state-name {
     color: #dbc3a5;
 }
@@ -1076,6 +1197,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-string {
+    white-space: pre;
     color: var(--literal-color);
 }
 
@@ -1340,7 +1462,7 @@ li p {
 .mech-info-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #f18181;
+    border-left: 4px solid var(--info-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1351,21 +1473,17 @@ li p {
 }
 
 .mech-info-block::before {
-    content: "!";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--info-color);
     border-radius: 50%;
-    background-color: #f18181;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-info-block p {
@@ -1374,10 +1492,43 @@ li p {
     font-size: 12pt;
 }
 
+.mech-warning-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--warning-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-warning-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-warning-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-question-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #6ca8ff;
+    border-left: 4px solid var(--question-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1388,21 +1539,17 @@ li p {
 }
 
 .mech-question-block::before {
-    content: "?";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--question-color);
     border-radius: 50%;
-    background-color: #6ca8ff;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-question-block p {
@@ -1411,9 +1558,108 @@ li p {
     font-size: 12pt;
 }
 
+.mech-error-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--error-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-error-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-error-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-success-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--success-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-success-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-success-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-idea-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--idea-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-idea-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--idea-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-idea-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-thematic-break {
     border: 0;
-    border-top: 2px solid #7e8892;
+    border-top: 2px dotted #7e8892;
     margin: 30px 0;
     width: 100%;
     opacity: 0.7;
@@ -1427,6 +1673,27 @@ li p {
 
 .mech-code-block.hidden {
     display: none;
+}
+
+.mech-fenced-mech-block {
+  position: relative;   /* makes this the anchor for absolute positioning */
+}
+
+.mech-code-block-namespace {
+    color: var(--code-namespace-label-color);
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: rgb(13 17 23);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    border: 1px solid var(--code-namespace-label-color);
+}
+
+.mech-code-block-namespace a {
+    color: var(--code-namespace-label-color);
+    text-decoration: none;
 }
 
 .mech-block-output {
@@ -1676,9 +1943,9 @@ h6:hover a {
 }
 
 mark {
-    background-color: var(--main-color-mid);
-    border: 1px solid #ffe4a4;
-    color: #5a4105;
+    background-color: var(--main-color-low);
+    border: 1px solid var(--main-color-high);
+    color:  var(--text-color-dark);
     font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
@@ -1763,6 +2030,10 @@ mark {
 
 .mech-output-value {
     padding-left: 10px;
+}
+
+.mech-matrix-element {
+    text-align: right;
 }
 
 .mech-matrix-outer{
@@ -2106,7 +2377,7 @@ mark {
 
 .mech-strong {
     font-weight: 900;
-    color: #fef2d4;
+    color: var(--text-color);
 }
 
 .mech-diagram {
@@ -2199,7 +2470,60 @@ mark {
 
 .mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
 
+.mech-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin: 2rem 10px 1.25rem;
+  color: var(--contrast-color-low);
+}
 
+/* Links */
+.mech-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--contrast-color-mid);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.mech-breadcrumb a:hover {
+  color: var(--contrast-color-low);
+}
+.mech-breadcrumb-home {
+  margin-top: 1px;
+}
+
+.mech-breadcrumb-home svg {
+  width: 14px; 
+  height: 14px;
+}
+
+/* Separator */
+.mech-breadcrumb-sep {
+  margin: 0 0.25rem;
+  margin-top: -4px;
+  color: var(--contrast-color-low);
+  opacity: 1;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* Current page */
+.mech-breadcrumb-current {
+  color: var(--contrast-color-high);
+}
+
+/* Typography alignment */
+.mech-breadcrumb,
+.mech-breadcrumb a,
+.mech-breadcrumb-current {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, sans-serif;
+}
 
   </style>
 
@@ -2321,7 +2645,16 @@ mark {
     .toggle-button.edge-right:hover {
 
     }
-
+    #footer {
+      padding: 30px;
+      height: 300px;
+      width: 100%;
+      margin-top: 50px;
+      background-color: #06070a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23797979' fill-opacity='0.55'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      /* box shadow parameters are: horizontal offset, vertical offset, blur radius, spread radius, color */
+      box-shadow:inset 0 7px 10px rgba(0,0,0,1);
+    }
     #header {
       display: flex;
       align-items: center;
@@ -2467,10 +2800,10 @@ mark {
     </div>
   </header>
   <div class="container mech-root" mech-interpreter-id=0>
-    <div class="mech-toc"><h1 class="mech-program-title">Map</h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Syntax</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Kind</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Construction</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Accessing Elements</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Assigning Elements</a></h2></section></section></div>
+    <div class="mech-toc"><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Syntax</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Kind</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Construction</a></h2><h3 id="35470935892475103" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#23479666883314958">Map Literals</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Accessing Elements</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Assigning Elements</a></h2></section></section></div>
     <div class="content" id="left-pane">
-        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Map</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">A </span><code class="mech-inline-code">Map</code><span class="mech-text"> in Mech is an unordered collection of unique keys, each associated with a corresponding value. Maps are useful for representing associative data, such as key-value pairs, dictionaries, or lookup tables.</span></p><p class="mech-paragraph"><span class="mech-text">Unlike matrices, maps do not require homogeneous values, but keys must be unique within the map.</span></p></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Syntax</a></h2><p class="mech-paragraph"><span class="mech-text">You can define maps using curly braces </span><code class="mech-inline-code">{}</code><span class="mech-text"> with a colon </span><code class="mech-inline-code">:</code><span class="mech-text"> to separate keys from values.</span></p><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Examples:</span></strong></p><pre class="mech-code-block">{}                       -- An empty map
-{"a": 1}                 -- A single key-value pair
+      <div id="breadcrumb" class="mech-breadcrumb"></div>
+        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">map</h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><div id="abstract" class="mech-abstract"><p class="mech-paragraph"><span class="mech-text">A </span><code class="mech-inline-code">map</code><span class="mech-text"> is a collection of key-value pairs, where each key is unique and maps to a corresponding value. Maps are useful for storing and retrieving data based on keys.</span></p></div></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Syntax</a></h2><p class="mech-paragraph"><span class="mech-text">You can define maps using curly braces </span><code class="mech-inline-code">{}</code><span class="mech-text"> with a colon </span><code class="mech-inline-code">:</code><span class="mech-text"> to separate keys from values.</span></p><pre class="mech-code-block">{"a": 1}                 -- A single key-value pair
 {"a": 10, "b": 20}       -- Multiple key-value pairs
 {"a": {"b": 2}}          -- Nested maps
 {
@@ -2478,17 +2811,35 @@ mark {
   "b": 20
   "c": 30
 }                        -- Multi-line format
-</pre><p class="mech-paragraph"><span class="mech-text">Evaluates to:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-set"><span class="mech-start-brace">{</span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> An empty map</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A single key-value pair</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multiple key-value pairs</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Nested maps</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"c"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multi-line format</span></p></span></span></pre><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Notes:</span></strong></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Keys are typically strings but may support additional types in future.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Keys must be unique.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Values can be any Mech kind (number, string, bool, matrix, another map, etc).</span></p></li></ul></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Kind</a></h2><p class="mech-paragraph"><span class="mech-text">The kind of a map describes the type of its keys and values:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">u8</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A map from strings to unsigned 8-bit integers</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">u8</span>}</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A nested map</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">T</span>:<span class="mech-kind">U</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A generic map from kind </span><code class="mech-inline-code">T</code><span class="mech-text"> to kind </span><code class="mech-inline-code">U</code></p></span></span></pre><p class="mech-paragraph"><span class="mech-text">If either key or value kinds are dynamic, an underscore </span><code class="mech-inline-code">_</code><span class="mech-text"> is used:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">_</span>:<span class="mech-kind">_</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A fully dynamic map</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">_</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A map with known key kind but unknown value kind</span></p></span></span></pre></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Construction</a></h2><p class="mech-paragraph"><span class="mech-text">Maps can be constructed inline or from other data sources (e.g., parsed JSON, CSV headers, or computed results).</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:0">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"name"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Alice"</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"age"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">You can also dynamically insert or build maps using assignment (see Section 5).</span></p></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Accessing Elements</a></h2><p class="mech-paragraph"><span class="mech-text">Elements in a map are accessed using square brackets </span><code class="mech-inline-code">[]</code><span class="mech-text"> with the key.</span></p><div class="mech-fenced-mech-block">
-          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:33657820057939819">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-slice"><span id="54700430305216652:33657820057939819" class="mech-var-name mech-clickable">m</span><span class="mech-subscript"><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span>}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Returns 10</span></p></span></span></div>
-          <div class="mech-block-output" id="35069114936896765:33657820057939819"></div>
-        </div><p class="mech-paragraph"><span class="mech-text">If the key does not exist, the result is </span><code class="mech-inline-code">none</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">For nested maps, use multiple brackets:</span></p><pre class="mech-code-block">m := {"a": {"b": 2}}
-m{"a"}{"b"}   -- Returns 2
-</pre></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Assigning Elements</a></h2><p class="mech-paragraph"><span class="mech-text">Maps can be modified if they are declared mutable with </span><code class="mech-inline-code">~</code><span class="mech-text">.</span></p><pre class="mech-code-block">~m := {}
-m{"a"} = 42     -- Adds or updates key "a"
-m{"b"} = 17     -- Adds key "b"
-</pre><p class="mech-paragraph"><span class="mech-text">You can also assign to nested keys:</span></p><pre class="mech-code-block">~m := {"config": {}}
-m{"config"}{"theme"} = "dark"
-</pre></section></div></div></div>
+</pre><p class="mech-paragraph"><span class="mech-text">Evaluates to:</span></p><div id="61809939624284071" class="mech-fenced-mech-block">
+          
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A single key-value pair</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multiple key-value pairs</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Nested maps</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"c"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multi-line format</span></p></span></span></div>
+          <div class="mech-block-output" id="55339685493639640:0"></div>
+        </div></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Kind</a></h2><p class="mech-paragraph"><span class="mech-text">The kind of a map describes the type of its keys and values:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">K</span>:<span class="mech-kind">V</span>}</span>&gt;</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Where </span><code class="mech-inline-code">K</code><span class="mech-text"> is the kind of the keys, and </span><code class="mech-inline-code">V</code><span class="mech-text"> is the kind of the values. For example:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">u8</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A map from strings to unsigned 8-bit integers</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">{<span class="mech-kind">string</span>:<span class="mech-kind">u8</span>}</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A nested map</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">u8</span>:<span class="mech-kind">f64</span>}</span>&gt;</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A map from unsigned 8-bit integers to 64-bit floats, can only hold 256 keys</span></p></span></span></pre></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Construction</a></h2><p class="mech-paragraph"><span class="mech-text">Maps can be constructed using map literals.</span></p><h3 id="23479666883314958" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#23479666883314958">Map Literals</a></h3><div id="63581043857499823" class="mech-fenced-mech-block">
+          
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:0">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="28271617253924641:0"></div>
+        </div></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Accessing Elements</a></h2><p class="mech-paragraph"><span class="mech-text">Elements in a map are accessed using square brackets </span><code class="mech-inline-code">[]</code><span class="mech-text"> with the key.</span></p><div id="37671700589180604" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#37671700589180604">ex 4.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:19781518978739476">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-slice"><span id="54700430305216652:19781518978739476" class="mech-var-name mech-clickable">m</span><span class="mech-subscript"><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span>}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Returns 10</span></p></span></span></div>
+          <div class="mech-block-output" id="35069114936896765:19781518978739476"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">If the key does not exist, the result is </span><code class="mech-inline-code">none</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">For nested maps, use multiple brackets:</span></p><div id="26078023583498750" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#26078023583498750">ex 4.2</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:58123442978637573">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-slice"><span id="54700430305216652:58123442978637573" class="mech-var-name mech-clickable">m</span><span class="mech-subscript"><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span>}</span><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span>}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Returns 2</span></p></span></span></div>
+          <div class="mech-block-output" id="30120335930490990:58123442978637573"></div>
+        </div></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Assigning Elements</a></h2><p class="mech-paragraph"><span class="mech-text">Maps can be modified if they are declared mutable with </span><code class="mech-inline-code">~</code><span class="mech-text">.</span></p><div id="22514928951960507" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#22514928951960507">ex 5.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="54700430305216652:46585504411001128">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
+        <span class="mech-target"><span class="mech-slice-ref"><span id="54700430305216652:46585504411001128" class="mech-var-name mech-clickable">m</span><span class="mech-subscript"><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span>}</span></span></span></span>
+        <span class="mech-assign-op">=</span>
+        <span class="mech-expression"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">42</span></span></span></span>
+      </span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Updates key "a"</span></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
+        <span class="mech-target"><span class="mech-slice-ref"><span id="54700430305216652:46585504411001128" class="mech-var-name mech-clickable">m</span><span class="mech-subscript"><span class="mech-brace">{<span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span>}</span></span></span></span>
+        <span class="mech-assign-op">=</span>
+        <span class="mech-expression"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">17</span></span></span></span>
+      </span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Adds key "b"</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="54700430305216652:46585504411001128">m</span></span></span></div>
+          <div class="mech-block-output" id="4892623191816094:46585504411001128"></div>
+        </div></section></div></div></div>
     </div>
     <div class="resizer hidden" id="resizer">
       <button class="toggle-button" id="toggle-repl">|</button>
@@ -3167,7 +3518,7 @@ m{"config"}{"theme"} = "dark"
     let wasm_core;
     async function run() {
       await init();
-      var code = `G2sLAIyTRPnt8//fZvrv+29GgyITfZuFNKst8Nssx6A44RmtlqVZ4qZJmaZIVaRM06TocxIu///cr277ISHJpNMJjdj49973ds775ttwe5htQ/R00VCpRGh8onjqJgmzMe3eQAyf4UDp+QC8lu/DbQBsCkpLT9OcYrBk/d2vmTnh6b/V+lS9H4/W1PQcEgdTJjkVLdEDtb0AKlxlbn2o25AkUS6mrYR+9Z9IHCzR4zLWD8d1l2BYhwR9JcUGiNq2V1RFNCLr40+MeFex2TrYVth/SZkt/kek4enfx/1uTMJ9qRN7ZcXsFTJlnp2z6gYwa60wKaaZwKSxnOTNbs+CZ0/C7bIJMxSAp83PJ9P98NhiyxGUSBuefj64BmGIUiexl0cHu1snKoLLP+wpF+4L1nR24ebcgqeTjLzhVjxVbtENWCNwZ9y+p++r/dhvhCp3EeXdZXfW/Wnd4Xra/rc+H8OXvieM9H8ZnF2oh95SSc1N+4UBpe/sO2ePwkeBql38mjqUuWSMHrC7WlSPojeN9erFkhefryG4t/WfHTwX+lJ8sBpimSzvj8GvY8ngW7zSUh2pjSU1pE6GKNlJkiTJd9K4BaQE/YEns+2p/Ti4gztJYRswOHPX+/x5GO4iJ2AAxPMISRKTFFxFjRJkBdnSTSa10F1qhvZQvpRSplpVJqT9RVUkPekrdSMts3Fu7Rb/jsm7skVOO0vm930R2+yQVlFnn5PrPIa28F1+sfbIEpNNo9C0TKckwQnDTFiJL4pHFltSo2pZlhP5JlnmzrLv2mUhINDoM4eOvCDIyZwtkkIKeFp3K3YadeYRouzVT8KTjpd2o4BjWKFqUkoFWXgtRKTqVVdp7SsXZfHGT/zvB61yHXDKCqcnyg5cRv+LCaYSFUqxLY63ilojcDxdt2yTcLuoxvujXEmWPgp4CB7mVK5wxRLEWKrvf1mrm5YIgzldSNb63bK+v6eGlyf5vSyooz4rbAkyTPuZSVATJOwPZDrowoGXqllWc1Gj4LNKNMUPpq2c/d1StL5fXPnEPTzEQMR6nCTZn5guZdIooCxdVf3QFCztpKgURRRfUOt9LX+VhjTB4AzM9djgZBEDhkkle6xDSYGc8bRNI32X05dLvV+lli8xAtbI6r5eKcoGXLFUvLvDUIQTNnFbNEzeHbZPGAGClAp/C4KAzUogOegHS8Im0qOG0VzqVfQpeGwoy3soNLmDYfw1PpMqRgsP1CFRiFBmae20tpKi7xoKpc3hyMhzPJcWJAEitm0gh6HdeaF+JPF4l40IOVyzQoA0KWT05sRytWmshc/D0pi0dR1cMLBc/u9KuUUs7ggbksUzTACQUECC/YlmWPDedxlzW+ujbU4a1+bJcHWMW7gr5m14gId5pSA4sGjgshA3mfSS6wh0oLvjsHV8IrVYxrhdvdgb15NtRiv3Bm8+CiVCriME4cM1y+/43XVBBkTWtkoPkFghLmhui1Fa5EehUZ26Od7fUwMM2vtqP/0y6Ax6dUfUo6cuD4LBK2ETcyIID0FbHRbCQ7IEGWSH4xpuCHDYmQQiAIbYmsSEn4Bbu4nLa1VK0i3x/+ZfR//++ceREJBXc4wWfXAQHCMEfEfzb0AeYphnzW7wucPCsOJplIfVYS1Djj/X8a6sRveK8OfdqDgv/ij4hm8vhJGuT1Qwq6yt4TuTT8XFxn9hJjn9o+u+8xN+QQ5hNjqWOb/xbxqv6+Ca+6v2rpruAw/GJgd10zozQtRljcuoFwUNNzuaifrCSH9/SaxOX5maVc067aHcBSCNnFtUouAT4O89Ua1ah36kRuYYa7Z+/WMcE0BBQxE3USvPDTaw8UQY6RY5/kdtDMA8Yhv7EHiHbQyYuHjUWgDUGIgB`;
+      var code = `GyoJAByHcSyyzp68RX6k+7VvZmJLgupikiAmH3Kq/yNnEjiTqjKrWqu9vqLTUKiA/rO1RNKkCDQJ2VSYd/IyM7f7BKzKFF95uq4OeIUsgTV9yKbvhJYZm/Ud7OFL6asAxFZQYD+maSMitsQ/Xk8c0X78xJxLj2MXNm+HIQVsqUvKMwF1OAEYDaAQBsVyNB3dEIs2KqitSR9prkhw3ijqpF+x5If2xlcQvLilYdiSf5Isea8AP7b33b68nb7liKMVSZHlx805I8hcxAvVYdXrO9cv3jYZyzwnMRq6RWK6e1+36nY/zjZqJrmfceWy0R16RGKM6FE95sfVwrAYDVO3RWb6h5EeP6a83F9369J1I6b7vnmKh6GZLlOynSYdAWCmq8PUZT6Eerrur1hJ8+3Uzy76u8f2+3yljQMsGcEaNALJZOAj3WjVut7auwPT27GhDZMUcrpMEKDoOejHQT5DsPW3R0pQkq0CgQWQLCMNhhArGUQ3HLgGO1WpJjKoRJ+Cbqd+Yqqm7i5yyPthKkM+BS093lzKx3m6MiVFqZL6L+1IMLN8zmfYY83aRA8HnH3E11qUK7kFup0LllgWsTNouZYescW2fLZr/zC87ohT1dvluI5GfkK+BnNupRupJ/iTVjIqRhukwfXfFgTG9p+doClteru1uUNuZ5Oneh8yWZMnfmukGc3jKgDIsr1WpMAQrxUHYcEmaVWqDtHZXSGFIUJHYqRCN/Rc3HouWWRSQELbsZMAenTYMnYwbA3bFmphNcMOpZBXjYTt4T4VME96OyCLwfC8VtoZgoavBV9kpkXFWkqeEiT7zuX2psJQmDm3Xeb2wgS12KWwKonJ+8aXRXk0BiifClsD02ULx8lQiAL+F2Zm68My3hroY5s9iCOrHO2GDeBQgsKvaSw3Z5MOM8JLaE7z9fQPKDDOhi8qHx1tS5pW3S/9uYrY7Lr2YLhtNq7N6RiFLeSIj5RyWRINGepQxQg1az91rr5n1BktUByARbXiEgBSddMIXHiD8JE9gjzkK1CEEpfU56fcQJtlK108LdPFiqwiPh7uz7xNDooxnBI7zjQlYxhol17Y3E7MHOYGDtOOnZgbnBtmTvZgormRuSUVEPsWCOxKAhEAS+2iJGQJZMiauIRndndRNpUpe/OW6Yu6F1768qFzcUFwEM3VuuzzvKc8lsuH32gp+lenkGqTWBpGxKn2VKcfI0p1pbqVKbXN3r/J2axJR9rGcgpwlZw7soa1FqG7wQLVMLKRo0A+CkSdT+yLWIY8CjomLXehh/KoYntZT2vx54vfDz7b2pA0pzX37Jf9bXRk0CtZi8fm9tPtc4HZLu1MZJTwEA4NSYwHh4YPjehHcGj00JgKhAXiqhA45EHbVx2sQorZlFt39MdcXw9pihj63JkZxwAIKVucCqgegyqDhzMsPNk9yJq1wdQ60HFupo4L2Cg4OYGQ0peoP+re8qzs/9zjVxU=`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
@@ -3199,5 +3550,55 @@ m{"config"}{"theme"} = "dark"
     }
     run();
   </script>
+
+  <script>
+    function buildBreadcrumb(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const { origin, pathname } = window.location;
+      const parts = pathname.split('/').filter(Boolean);
+
+      // if we are at the root, don't build breadcrumb
+      if (parts.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let pathSoFar = origin;
+      const crumbs = [];
+
+      // Home icon (data URL)
+      crumbs.push(`
+        <a href="/" class="mech-breadcrumb-home" aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </a>
+      `);
+
+      parts.forEach((part, index) => {
+        pathSoFar += `/${part}`;
+
+        const label = part.replace(/\.[^/.]+$/, '');
+        const text = label.charAt(0).toUpperCase() + label.slice(1);
+
+        if (index === parts.length - 1) {
+          crumbs.push(`<span class="mech-breadcrumb-current">${text}</span>`);
+        } else {
+          crumbs.push(`<a href="${pathSoFar}/index.html">${text}</a>`);
+        }
+      });
+
+      container.innerHTML = crumbs.join('<span class="mech-breadcrumb-sep">⟩</span>');
+    }
+
+    buildBreadcrumb('breadcrumb');
+
+
+  </script>
+
+
 </body>
 </html>

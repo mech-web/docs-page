@@ -10,6 +10,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
@@ -23,32 +24,46 @@
     @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --bracket-color: #c19dca;
-  --op-color: #c19dca;
-  --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(264, 54%, 80%);
-  --contrast-color-mid:  hsl(264, 54%, 70%);
-  --contrast-color-low:  hsl(264, 54%, 60%);
+  --bracket-color: hsl(288, 30%, 70%);
+  --op-color: hsl(288, 30%, 70%);
+  --function-name-color: hsl(133, 33%, 80%);
+  --function-bracket-color: hsl(133, 33%, 70%);
+  --literal-color: hsl(210, 78%, 78%);
+  --contrast-color-high: hsl(288, 30%, 80%);
+  --contrast-color-mid:  hsl(288, 30%, 70%);
+  --contrast-color-low:  hsl(288, 30%, 60%);
   --main-color-high: hsl(42, 89%, 80%);
   --main-color-mid:  hsl(42, 89%, 70%);
   --main-color-low:  hsl(42, 89%, 60%);
-  --out-bracket-color: rgb(177, 187, 196);
+  --out-bracket-color: hsl(288, 30%, 85%);
   --sidebar-width: 300px;
-  --text-color: #f2ead9;
+  --text-color-light: hsl(40, 100%, 95%);
+  --text-color: hsl(41, 49%, 90%);
+  --text-color-dark: hsl(41, 49%, 25%);
   --code-border-color: #4d5257;
   --inline-code-border-color: #4d5257;
   --code-background-color: #090d11;
   --code-output-background-color: #020303;
-  --var-name-color: #eddaf1;
+  --var-name-color: hsl(290, 45%, 90%);
   --field-name-color: #efd8aa;
   --kind-annotation-color: #f09fca;
   --kind-annotation-color-dark: #d574a8;
-  --body-background-color: #0d1117;
+  --body-background-color: hsl(216, 28%, 7%);
   --abstract-background-color: #171c26;
-  --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
   --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
+  --h2-underline-color: #343b46;
+  --toc-heading-number-color: rgba(255, 255, 255, 0.55);
+  --title-underline-color: hsl(42, 89%, 70%);
+  --callout-background-color: #1f2533;
+  --warning-color: hsl(20, 100%, 75%);
+  --error-color: hsl(350, 100%, 75%);
+  --info-color: hsl(230, 100%, 75%);
+  --success-color: hsl(130, 100%, 75%);
+  --idea-color: hsl(271, 100%, 75%);
+  --question-color: hsl(191, 100%, 75%);
+  --code-namespace-label-color: #f5a7d3;
 }
 
 html {
@@ -105,13 +120,12 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     overflow-x: hidden;
-    top: 0px;
+    top: 150px;
     margin-left: calc(50% - 350px - 250px - 150px);
     overflow: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */         
     height: calc(100vh - 60px);   
-    margin-top: 60px;  
 }
 
 .mech-program {
@@ -236,6 +250,10 @@ body {
     pointer-events: none;
 }
 
+.mech-toc-sections {
+
+}
+
 .mech-toc h2 {
     line-height: 23px;
 }
@@ -275,7 +293,7 @@ h2.toc::before {
 h3.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h3 {
     line-height: 23px;
@@ -303,7 +321,7 @@ h3.toc::before {
 h4.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h4 {
     line-height: 23px;
@@ -329,7 +347,7 @@ h4.toc::before {
 h5.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h5 {
     line-height: 23px;
@@ -350,6 +368,30 @@ h5.toc::before {
 .mech-toc h5 a:hover {
     color: var(--contrast-color-low);
     text-decoration: none;
+}
+
+.mech-map {
+    color: var(--op-color);
+}
+
+.mech-set {
+    color: var(--op-color);
+}
+
+.mech-set-comprehension {
+    color: var(--op-color);
+}
+
+.mech-set-open {
+    color: var(--bracket-color);
+}
+
+.mech-set-close {
+    color: var(--bracket-color);
+}
+
+.mech-set-bar {
+    color: var(--op-color);
 }
 
 .mech-matrix {
@@ -375,6 +417,26 @@ h5.toc::before {
     padding-left:  6px;
     padding-right: 6px;
     color: var(--op-color);
+}
+
+.mech-variable-assign {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.mech-enum-name {
+    color: var(--kind-annotation-color);
+}
+
+.mech-enum-define {
+    display: inline-flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
+.mech-enum-variant {
+    color: var(--literal-color);
 }
 
 .mech-kind-define-op {
@@ -416,7 +478,6 @@ h5.toc::before {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
     color: var(--text-color);
     letter-spacing: 2px;
     font-size: 1.83rem;
@@ -424,7 +485,20 @@ h5.toc::before {
     text-align: center;
     margin-bottom: 16px;
     margin-left: -100px;
+    position: relative; 
 }
+
+.mech-program h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background: linear-gradient(to right, var(--body-background-color), var(--title-underline-color), var(--title-underline-color), var(--title-underline-color),  var(--body-background-color));
+  border-radius: 2px;
+}
+
 
 .mech-program h2 a {
     color: var(--text-color);
@@ -435,13 +509,12 @@ h5.toc::before {
     width: 850px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
-    color: var(--text-color);
+    border-bottom: 1px solid var(--h2-underline-color);
     font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 80px;
     margin-left: -73px;
 }
 
@@ -455,7 +528,8 @@ h5.toc::before {
     color: var(--text-color);
     font-size: 1.17rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     margin-left: -48px;
 }
@@ -498,7 +572,7 @@ h5.toc {
 }
 
 .mech-variable-mutable {
-    color: #ada594;
+    color: var(--op-color);
 }
 
 .mech-section-element {
@@ -567,7 +641,7 @@ h5.toc {
 .mech-grammar {
     display: block;
     background-color: var(--code-background-color);
-    color: #ada594;
+    color: var(--text-color);
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -576,7 +650,7 @@ h5.toc {
     border: 1px solid var(--code-border-color);
     margin-bottom: 20px;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -603,20 +677,20 @@ h5.toc {
 }
 
 .mech-grammar-identifier {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition a {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: none;
 }
 
 .mech-grammar-definition a:hover {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: underline;
 }
 
@@ -630,7 +704,11 @@ h5.toc {
 
 
 .mech-grammar-terminal {
-    color: #ee6262;
+    color: var(--literal-color);
+}
+
+.mech-grammar-rule {
+    color: var(--op-color);
 }
 
 
@@ -674,6 +752,7 @@ h5.toc {
 .mech-var-name {
     color: var(--var-name-color);
     font-style: bold;
+    white-space: nowrap;
 }
 
 .mech-output-kind {
@@ -694,9 +773,34 @@ h5.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
+    color: var(--op-color);
+}
+
+.mech-grammar-choice-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat1-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat0-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-not-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-optional-op {
+    color: var(--op-color);
 }
 
 .mech-literal {
+}
+
+.mech-matrix .mech-number {
+    text-align: right;
 }
 
 .mech-number {
@@ -725,6 +829,7 @@ code {
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
 }
 
 .mech-inline-mech-code-formatted .mech-code-block {
@@ -765,6 +870,10 @@ code {
     color: var(--op-color);
 }
 
+.mech-not-op {
+    color: var(--op-color);
+}
+
 .mech-op-assign-op {
     padding-left: 6px;
     padding-right: 6px;
@@ -772,24 +881,22 @@ code {
 }
 
 .mech-paragraph {
-    color: #fffbf3;
+    color: var(--text-color-light);
     line-height: 25px;
 }
 
 .mech-paragraph a {
-    color: var(--main-color-high);
+    color: var(--main-color-mid);
     text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
 .mech-paragraph a:hover {
-    color: var(--main-color-low);
-    text-decoration: underline;
+    color: var(--main-color-high);
+    text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
-/*Hover style for this thing: */
-/*mech-program-subtitle toc*/
 .mech-program-subtitle:hover {
     color: var(--contrast-color-low);
     cursor: pointer;
@@ -832,6 +939,14 @@ a.mech-hyperlink:hover .mech-inline-code {
 
 .mech-function-call {
     display: inline-flex;
+}
+
+.mech-function-call .mech-argument-list {
+    color: var(--function-bracket-color);
+}
+
+.mech-function-call .mech-left-paren, .mech-function-call .mech-right-paren {
+    color: var(--function-bracket-color);
 }
 
 .mech-slice {
@@ -898,7 +1013,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-function-name {
-    color: #d8a5e4;
+    color: var(--function-name-color);
 }
 
 .mech-kind-annotation {
@@ -1044,6 +1159,12 @@ a.mech-hyperlink:hover .mech-inline-code {
     color: var(--op-color);
 }
 
+.mech-tuple-destructure {
+    display: flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
 .mech-state-name {
     color: #dbc3a5;
 }
@@ -1076,6 +1197,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-string {
+    white-space: pre;
     color: var(--literal-color);
 }
 
@@ -1340,7 +1462,7 @@ li p {
 .mech-info-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #f18181;
+    border-left: 4px solid var(--info-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1351,21 +1473,17 @@ li p {
 }
 
 .mech-info-block::before {
-    content: "!";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--info-color);
     border-radius: 50%;
-    background-color: #f18181;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-info-block p {
@@ -1374,10 +1492,43 @@ li p {
     font-size: 12pt;
 }
 
+.mech-warning-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--warning-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-warning-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-warning-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-question-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #6ca8ff;
+    border-left: 4px solid var(--question-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1388,21 +1539,17 @@ li p {
 }
 
 .mech-question-block::before {
-    content: "?";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--question-color);
     border-radius: 50%;
-    background-color: #6ca8ff;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-question-block p {
@@ -1411,9 +1558,108 @@ li p {
     font-size: 12pt;
 }
 
+.mech-error-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--error-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-error-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-error-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-success-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--success-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-success-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-success-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-idea-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--idea-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-idea-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--idea-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-idea-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-thematic-break {
     border: 0;
-    border-top: 2px solid #7e8892;
+    border-top: 2px dotted #7e8892;
     margin: 30px 0;
     width: 100%;
     opacity: 0.7;
@@ -1427,6 +1673,27 @@ li p {
 
 .mech-code-block.hidden {
     display: none;
+}
+
+.mech-fenced-mech-block {
+  position: relative;   /* makes this the anchor for absolute positioning */
+}
+
+.mech-code-block-namespace {
+    color: var(--code-namespace-label-color);
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: rgb(13 17 23);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    border: 1px solid var(--code-namespace-label-color);
+}
+
+.mech-code-block-namespace a {
+    color: var(--code-namespace-label-color);
+    text-decoration: none;
 }
 
 .mech-block-output {
@@ -1676,9 +1943,9 @@ h6:hover a {
 }
 
 mark {
-    background-color: var(--main-color-mid);
-    border: 1px solid #ffe4a4;
-    color: #5a4105;
+    background-color: var(--main-color-low);
+    border: 1px solid var(--main-color-high);
+    color:  var(--text-color-dark);
     font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
@@ -1763,6 +2030,10 @@ mark {
 
 .mech-output-value {
     padding-left: 10px;
+}
+
+.mech-matrix-element {
+    text-align: right;
 }
 
 .mech-matrix-outer{
@@ -2106,7 +2377,7 @@ mark {
 
 .mech-strong {
     font-weight: 900;
-    color: #fef2d4;
+    color: var(--text-color);
 }
 
 .mech-diagram {
@@ -2199,7 +2470,60 @@ mark {
 
 .mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
 
+.mech-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin: 2rem 10px 1.25rem;
+  color: var(--contrast-color-low);
+}
 
+/* Links */
+.mech-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--contrast-color-mid);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.mech-breadcrumb a:hover {
+  color: var(--contrast-color-low);
+}
+.mech-breadcrumb-home {
+  margin-top: 1px;
+}
+
+.mech-breadcrumb-home svg {
+  width: 14px; 
+  height: 14px;
+}
+
+/* Separator */
+.mech-breadcrumb-sep {
+  margin: 0 0.25rem;
+  margin-top: -4px;
+  color: var(--contrast-color-low);
+  opacity: 1;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* Current page */
+.mech-breadcrumb-current {
+  color: var(--contrast-color-high);
+}
+
+/* Typography alignment */
+.mech-breadcrumb,
+.mech-breadcrumb a,
+.mech-breadcrumb-current {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, sans-serif;
+}
 
   </style>
 
@@ -2321,7 +2645,16 @@ mark {
     .toggle-button.edge-right:hover {
 
     }
-
+    #footer {
+      padding: 30px;
+      height: 300px;
+      width: 100%;
+      margin-top: 50px;
+      background-color: #06070a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23797979' fill-opacity='0.55'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      /* box shadow parameters are: horizontal offset, vertical offset, blur radius, spread radius, color */
+      box-shadow:inset 0 7px 10px rgba(0,0,0,1);
+    }
     #header {
       display: flex;
       align-items: center;
@@ -2467,119 +2800,105 @@ mark {
     </div>
   </header>
   <div class="container mech-root" mech-interpreter-id=0>
-    <div class="mech-toc"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><section class="mech-toc-sections"><section id="14595877968988518" section="22298152192868801" class="mech-program-section toc"></section><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Comments </a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Identifiers</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Kinds </a></h2><h3 id="35470935892475103" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#23479666883314958">Kind Annotations</a></h3><h3 id="36927418410308780" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#42012466053622124">Collections</a></h3><h3 id="28089261266067530" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#18904838147519050">Custom Kinds</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Literals</a></h2><h3 id="37016883445524895" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65206076123395462">Numbers</a></h3><h3 id="9364547735987604" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#40411407624699289">Strings</a></h3><h3 id="9387871960477231" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#7066674767825196">Boolean</a></h3><h3 id="58927224087615904" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#8464548792433990">Atoms</a></h3><h3 id="10334886043987253" section="4.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#25524906972498329">Empty</a></h3></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Variables</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="71523119693619334" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26828514545883822">Collections</a></h2><h3 id="5594889552536140" section="6.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28410637614010402">Vector</a></h3><h3 id="9677189171359809" section="6.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39327486777600331">Matrix</a></h3><h3 id="56528558492354283" section="6.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#59648636585993413">Tuple</a></h3><h3 id="60666729097127312" section="6.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2964762416892097">Record</a></h3><h3 id="50602835700900556" section="6.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#31217186366709795">Table </a></h3><h3 id="27451680446406609" section="6.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#62303346944159378">Set</a></h3><h3 id="49114535596879863" section="6.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44367673702594038">Map</a></h3></section></section></div>
+    <div class="mech-toc"><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Comments </a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Identifiers</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Kinds</a></h2><h3 id="35470935892475103" section="3.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#23479666883314958">Simple Kinds</a></h3><h3 id="36927418410308780" section="3.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#42012466053622124">Compound Kinds</a></h3><h3 id="28089261266067530" section="3.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#18904838147519050">Kind Annotations & Conversion</a></h3><h3 id="30501902131924050" section="3.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#20073975322671971">Custom Kinds & Enums</a></h3></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Data Types</a></h2><h3 id="37016883445524895" section="4.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#65206076123395462">Number</a></h3><h4 id="26572580818431315" section="4.1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#2532858977422362">Floating-Point Literals</a></h4><h4 id="10854438195462507" section="4.1.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22226571562203489">Integer Literals</a></h4><h4 id="60322933319761802" section="4.1.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#35519917541561118">Rational Literals</a></h4><h4 id="41320308526132713" section="4.1.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#46785650364247346">Complex Literals</a></h4><h3 id="36173451736818883" section="4.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50465822233629901">String</a></h3><h4 id="37018073752862770" section="4.2.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#29721349299245559">String Concatenation</a></h4><h4 id="60958142282129140" section="4.2.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#38624393389524285">Conversion to String</a></h4><h3 id="44677596740227741" section="4.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#43392137962299456">Boolean</a></h3><h4 id="71146500323052765" section="4.3.7" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58426389516791840">Logical Operations</a></h4><h4 id="17259143349237431" section="4.3.8" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#68027915394008604">Comparison Operations</a></h4><h4 id="35873074403516169" section="4.3.9" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#42772314793375139">Filtering</a></h4><h3 id="47103431349927398" section="4.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#48439600833811684">Atom</a></h3><h3 id="31206059903398990" section="4.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#17242572754416662">Empty</a></h3></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Variables</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="71523119693619334" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26828514545883822">Data Structures</a></h2><h3 id="5594889552536140" section="6.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28410637614010402">Matrix</a></h3><h4 id="69823090691473513" section="6.1.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#55026336601374806">Broadcast Operations </a></h4><h3 id="28925832567795216" section="6.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#44274143723586084">Tuple</a></h3><h4 id="42339863202974445" section="6.2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#55444183654605482">Element Access</a></h4><h4 id="69006101999909410" section="6.2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#28256810255540976">Destructuring</a></h4><h3 id="50786786560135200" section="6.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#50254158435867188">Record</a></h3><h3 id="36833057286511466" section="6.4" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#22198509321250541">Table </a></h3><h3 id="5479890322552678" section="6.5" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#32283940913766398">Set</a></h3><h3 id="67338202432490119" section="6.6" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#1629430565137050">Map</a></h3></section></section></div>
     <div class="content" id="left-pane">
-        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><div class="mech-program-body"><section id="22298152192868801" section="22298152192868801" class="mech-program-section "><p class="mech-paragraph"><span class="mech-text">Table of Contents:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">1. Comments</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">2. Identifiers</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">3. Kinds </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">4. Literals</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">5. Variables</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">6. Collections</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">7. Functions (todo)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">8. State Machines (todo)</span></p></li></ul></section><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Comments </a></h2><pre class="mech-code-block">-- Single line comment.
+      <div id="breadcrumb" class="mech-breadcrumb"></div>
+        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Learn Mech in Fifteen Minutes                                </h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Comments </a></h2><pre class="mech-code-block">-- Single line comment.
 
 // Also a single line comment.
-</pre><p class="mech-paragraph"><span class="mech-text">Mech does not support multiline comments. Instead, Mech encourages literate programming through a Markdown-esque syntax</span></p><p class="mech-paragraph"><span class="mech-text">called Mechdown, exemplified by this document.</span></p><p class="mech-paragraph"><span class="mech-text">Comments are therefore to be used primarily inside of code blocks.</span></p><p class="mech-paragraph"><span class="mech-text">Comments support formatting, such as bold, underline, links, etc. For example:</span></p><pre class="mech-code-block"> -- **bold** and __underline__ and [links](https://mech-lang.org) are supported in comments.
-</pre></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Identifiers</a></h2><p class="mech-paragraph"><span class="mech-text">Identifiers start with letters or most UTF-8 encoded emoji characters, and can contain alphanumeric, most emojis, </span><code class="mech-inline-code">/</code><span class="mech-text">, </span><code class="mech-inline-code">*</code><span class="mech-text">, </span><code class="mech-inline-code">+</code><span class="mech-text">, </span><code class="mech-inline-code">-</code><span class="mech-text">, and </span><code class="mech-inline-code">^</code><span class="mech-text"> characters.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="38748104894788680:0">Hello-Word</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="5100724901666259:0">io/stdout</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="83317820399133:0">Δx^2</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="28901174789692:0">🤖</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29301228406530344:0">A*</span></span></span></span></span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Note: The preferred identifier case in Mech is kebab-case (words deliniated by dashes). Slashes also allow identifiers to be scoped to a particular namespace. For example, functions in the math machine are prefixed with </span><code class="mech-inline-code">math/</code><span class="mech-text">:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Cosine: </span><code class="mech-inline-code">math/sin</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Sine: </span><code class="mech-inline-code">math/cos</code><span class="mech-text"> </span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Log: </span><code class="mech-inline-code">math/log</code><span class="mech-text"> </span></p></li></ul><p class="mech-paragraph"><span class="mech-text">Mech doesn't support underscores in identifiers.</span></p></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Kinds </a></h2><p class="mech-paragraph"><span class="mech-text">Every variable has an associated "kind" or "datatype". They are indicated with a kind annotation.</span></p><p class="mech-paragraph"><span class="mech-text">Builtin kinds:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">number</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Unsigned intengers: u8, u16, u32, u64, u128</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Signed intengers: i8, i16, i32, i64, i128</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">IEEE 754 Floating Point: f32, f64</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">string</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">bool</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">atom</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">empty</span></p></li></ul><h3 id="23479666883314958" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#23479666883314958">Kind Annotations</a></h3><p class="mech-paragraph"><span class="mech-text">Kinds are indicated with a kind annotation, which is the kind identifier encolsed in </span><code class="mech-inline-code"><></code><span class="mech-text"> e.g.:</span></p><pre class="mech-code-block"><u8>
-</pre><p class="mech-paragraph"><span class="mech-text">Literals can be annotated with a kind:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">32-bit floating point number: </span><code class="mech-inline-code">123.456<f32></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">64-bit floating point number: </span><code class="mech-inline-code">123.456<f64></code></p></li></ul><p class="mech-paragraph"><span class="mech-text">So can identifiers</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Cast </span><code class="mech-inline-code">a</code><span class="mech-text"> to unsigned 64 bit datatype: </span><code class="mech-inline-code">a<u64></code></p></li></ul><h3 id="42012466053622124" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#42012466053622124">Collections</a></h3><p class="mech-paragraph"><span class="mech-text">Multidimensional data can be expressed with teh foloowing collection data structures representing collections of values:</span></p><p class="mech-paragraph"><code class="mech-inline-code">[]</code><span class="mech-text">: vectors, matrices</span></p><p class="mech-paragraph"><code class="mech-inline-code">()</code><span class="mech-text">: tuples</span></p><p class="mech-paragraph"><code class="mech-inline-code">{}</code><span class="mech-text">: sets, maps, records, and tables</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Unsized set of unsigned 8-bit integers: </span><code class="mech-inline-code"><{u8}></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">1x3 vector of strings: </span><code class="mech-inline-code"><[string]:3></code><span class="mech-text"> or </span><code class="mech-inline-code"><[string]:1,3></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">3x1 column vector of bools: </span><code class="mech-inline-code"><[bool]:3,1></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">2x3 matrix of 32-bit floats: </span><code class="mech-inline-code"><[f32]:2,3></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Nx3 matrix of 32-bit floats: </span><code class="mech-inline-code"><[f32]:_,3></code></p></li></ul><h3 id="18904838147519050" section="3.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#18904838147519050">Custom Kinds</a></h3><p class="mech-paragraph"><span class="mech-text">Create a kind that is an alias for </span><code class="mech-inline-code">(u8,bool)</code><span class="mech-text">:</span></p><pre class="mech-code-block"><my-kind> := <(u8,bool)>
-</pre><p class="mech-paragraph"><span class="mech-text">Define a kind that is a matrix with an unspecified number of rows and 3 columns:</span></p><pre class="mech-code-block"><matrix-3d> := <[u8]:_,3>
-</pre><p class="mech-paragraph"><span class="mech-text">This type implies that the matrix can grow in rows, which adds flexibility but impacts performance.</span></p></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Literals</a></h2><p class="mech-paragraph"><span class="mech-text">Supported literals include:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(a) Numbers</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(b) Strings</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(c) Booleans</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(d) Atoms</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(e) Empty</span></p></li></ul><h3 id="65206076123395462" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65206076123395462">Numbers</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Integers: </span><code class="mech-inline-code">1234</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Floats: </span><code class="mech-inline-code">123.456</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Decimal: </span><code class="mech-inline-code">0d1234567890</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Hexadecimal: </span><code class="mech-inline-code">0x1234567890ABCDEF</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Octal: </span><code class="mech-inline-code">0o12345670</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Binary: </span><code class="mech-inline-code">0b100110101</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Scientific: </span><code class="mech-inline-code">123e456</code><span class="mech-text"> or </span><code class="mech-inline-code">123E456</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Rational: </span><code class="mech-inline-code">1/2</code><span class="mech-text"> is the rational number 1 over 2, not 1 divided by 2.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Imaginary: </span><code class="mech-inline-code">1234i</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Complex: </span><code class="mech-inline-code">12.34+5.67i</code></p></li></ul><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><p class="mech-paragraph"><code class="mech-inline-code"><number></code><span class="mech-text"> is a generic, unsized number type. Mech also supports fixed sized numbers e.g.: </span><code class="mech-inline-code"><u8></code><span class="mech-text">, </span><code class="mech-inline-code"><f32></code><span class="mech-text">, </span><code class="mech-inline-code"><i64></code><span class="mech-text"> etc.</span></p><h3 id="40411407624699289" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#40411407624699289">Strings</a></h3><p class="mech-paragraph"><span class="mech-text">Strings are encoded with UTF-8 and support linebreaks.</span></p><pre class="mech-code-block">"Hello World"
+</pre><p class="mech-paragraph"><span class="mech-text">Mech does not support multiline comments. Instead, Mech encourages literate programming through a Markdown-esque syntax called Mechdown, exemplified by this document.</span></p><p class="mech-paragraph"><span class="mech-text">Comments are therefore to be used primarily inside of code blocks.</span></p><p class="mech-paragraph"><span class="mech-text">Comments support paragraph formatting, such as bold, underline, links, etc. For example:</span></p><pre class="mech-code-block"> -- Comments support **bold**,  __underline__, [links](/foo/bar), etc.
+</pre><span class="mech-code-block"><span class="mech-code"><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Comments support </span><strong class="mech-strong"><span class="mech-text">bold</span></strong><span class="mech-text">,  </span><u class="mech-u">underline</u><span class="mech-text">, </span><a href="/foo/bar" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">links</span></span></a><span class="mech-text">, etc.</span></p></span></span></span></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Identifiers</a></h2><p class="mech-paragraph"><span class="mech-text">Identifiers start with letters or most UTF-8 encoded characters, and can contain alphanumeric, most emojis, </span><code class="mech-inline-code">/</code><span class="mech-text">, </span><code class="mech-inline-code">*</code><span class="mech-text">, </span><code class="mech-inline-code">+</code><span class="mech-text">, </span><code class="mech-inline-code">-</code><span class="mech-text">, and </span><code class="mech-inline-code">^</code><span class="mech-text"> characters.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="38748104894788680:0">Hello-Word</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="5100724901666259:0">io/stdout</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="83317820399133:0">Δx^2</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="28901174789692:0">🤖</span></span></span></span></span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29301228406530344:0">A*</span></span></span></span></span></p></li></ul><p class="mech-paragraph"><span class="mech-text">The preferred identifier case in Mech is kebab-case (words deliniated by dashes). Slashes also allow identifiers to be scoped to a particular namespace. </span></p><div class="mech-warning-block"><p class="mech-paragraph"><span class="mech-text">To maintain a consistent style, Mech does not support underscores in identifiers and they will result in a syntax error.</span></p></div></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Kinds</a></h2><p class="mech-paragraph"><span class="mech-text">A kind describes the type of data a value can hold. Every value in Mech has a kind, and kinds themselves are values.</span></p><p class="mech-paragraph"><span class="mech-text">Kinds describe the data type, not mutability, which is a property of the data binding.</span></p><h3 id="23479666883314958" section="3.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#23479666883314958">Simple Kinds</a></h3><p class="mech-paragraph"><span class="mech-text">Kinds are written inside angle brackets </span><code class="mech-inline-code">< ></code><span class="mech-text">. The following kinds represent the built-in data types in a base Mech distribution:</span></p><table class="mech-table"><thead><tr class="mech-table-header"><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text">Category              </span></p></th><th class="mech-table-header-cell left"><p class="mech-paragraph"><span class="mech-text">Examples           </span></p></th></tr></thead><tbody><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Signed Integers</span></strong><span class="mech-text">   </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">i8</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">i16</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">i32</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">i64</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">i128</span>&gt;</span></span></span></span></span></span><span class="mech-text"> </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Unsigned Integers</span></strong><span class="mech-text"> </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">u8</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">u16</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">u32</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">u64</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">u128</span>&gt;</span></span></span></span></span></span><span class="mech-text"> </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Complex Numbers</span></strong><span class="mech-text">   </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">c64</span>&gt;</span></span></span></span></span></span><span class="mech-text">            </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Rational Numbers</span></strong><span class="mech-text">  </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">rs64</span>&gt;</span></span></span></span></span></span><span class="mech-text">           </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Floats</span></strong><span class="mech-text">            </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">f32</span>&gt;</span></span></span></span></span></span><span class="mech-text">, </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">f64</span>&gt;</span></span></span></span></span></span><span class="mech-text">   </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Text</span></strong><span class="mech-text">              </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">string</span>&gt;</span></span></span></span></span></span><span class="mech-text">         </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Logic</span></strong><span class="mech-text">             </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">bool</span>&gt;</span></span></span></span></span></span><span class="mech-text">           </span></p></td></tr><tr class="mech-table-row mech-table-row-odd"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Kind</span></strong><span class="mech-text">              </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind"><span class="mech-kind-annotation">&lt;<span class="mech-kind">kind</span>&gt;</span></span>&gt;</span></span></span></span></span></span><span class="mech-text">         </span></p></td></tr><tr class="mech-table-row mech-table-row-even"><td class="mech-table-cell left"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Empty</span></strong><span class="mech-text">             </span></p></td><td class="mech-table-cell left"><p class="mech-paragraph"><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">_</span>&gt;</span></span></span></span></span></span><span class="mech-text">              </span></p></td></tr></tbody></table><h3 id="42012466053622124" section="3.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#42012466053622124">Compound Kinds</a></h3><p class="mech-paragraph"><span class="mech-text">Kinds compose structurally to describe collections.</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Matrix:</span></strong><span class="mech-text"> </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">T</span>]:<span class="mech-literal"><span class="mech-number">2</span></span>,<span class="mech-literal"><span class="mech-number">3</span></span></span>&gt;</span></span></span></span></span></span><span class="mech-text"> (A 2x3 matrix of </span><code class="mech-inline-code">T</code><span class="mech-text">)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Table:</span></strong><span class="mech-text"> </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">|x&lt;<span class="mech-kind">T</span>&gt;,y&lt;<span class="mech-kind">U</span>&gt;|:<span class="mech-literal"><span class="mech-number">3</span></span></span>&gt;</span></span></span></span></span></span><span class="mech-text"> (A table with columns </span><code class="mech-inline-code">x</code><span class="mech-text"> and </span><code class="mech-inline-code">y</code><span class="mech-text"> of types </span><code class="mech-inline-code">T</code><span class="mech-text"> and </span><code class="mech-inline-code">U</code><span class="mech-text">, and 3 rows)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Tuple:</span></strong><span class="mech-text"> </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">(<span class="mech-kind">T</span>,<span class="mech-kind">U</span>)</span>&gt;</span></span></span></span></span></span><span class="mech-text"> (An ordered pair)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Map:</span></strong><span class="mech-text"> </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">K</span>:<span class="mech-kind">V</span>}</span>&gt;</span></span></span></span></span></span><span class="mech-text"> (Maps </span><code class="mech-inline-code">K</code><span class="mech-text"> to </span><code class="mech-inline-code">V</code><span class="mech-text">)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Set:</span></strong><span class="mech-text"> </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">{<span class="mech-kind">T</span>}</span>&gt;</span></span></span></span></span></span><span class="mech-text"> (A set of unique </span><code class="mech-inline-code">T</code><span class="mech-text"> values)</span></p></li></ul><h3 id="18904838147519050" section="3.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#18904838147519050">Kind Annotations & Conversion</a></h3><p class="mech-paragraph"><span class="mech-text">Annotations constrain variables or cast literals.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">42</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">u8</span>&gt;</span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Literal annotation</span></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="29341039262997047:0">y</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">u8</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Variable constraint</span></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:0">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">6</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> </span><span id="57900556679448428" class="mech-reference">[<a href="#60587742029836564" class="mech-reference-link">1</a>]</span><span class="mech-text">:1,6</span></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="17449779724640709:0">n</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">i32</span>]:<span class="mech-literal"><span class="mech-number">2</span></span>,<span class="mech-literal"><span class="mech-number">3</span></span></span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-var-name mech-clickable" id="54700430305216652:0">m</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Reshapes and converts to 2x3 i32 matrix</span></p></span></span></pre><h3 id="20073975322671971" section="3.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#20073975322671971">Custom Kinds & Enums</a></h3><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Aliases:</span></strong></p><p class="mech-paragraph"><span class="mech-text">You can create aliases for semantic clarity.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-kind-define"><span class="mech-kind-annotation">&lt;<span class="mech-kind">point3</span>&gt;</span><span class="mech-kind-define-op">:=</span><span class="mech-kind-annotation"><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">f64</span>]:<span class="mech-literal"><span class="mech-number">3</span></span></span>&gt;</span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="35513077885151010:0">p</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">point3</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span></pre><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Enums:</span></strong></p><p class="mech-paragraph"><span class="mech-text">Enums define a fixed set of variants using atoms.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-enum-define"><span class="mech-kind-annotation">&lt;<span class="mech-enum-name">color</span>&gt;</span><span class="mech-enum-define-op">:=</span><span class="mech-enum-variants"><span class="mech-enum-variant"><span class="mech-enum-variant"><span class="mech-enum-variant-name">red</span><span class="mech-enum-variant-kind"></span></span></span><span class="mech-enum-variant-sep">|</span><span class="mech-enum-variant"><span class="mech-enum-variant"><span class="mech-enum-variant-name">green</span><span class="mech-enum-variant-kind"></span></span></span><span class="mech-enum-variant-sep">|</span><span class="mech-enum-variant"><span class="mech-enum-variant"><span class="mech-enum-variant-name">blue</span><span class="mech-enum-variant-kind"></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="11352073078396848:0">my-color</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">color</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:color/green</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> a valid color</span></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="23650255610961412:0">other-color</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">color</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:color/yellow</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> error: invalid variant</span></p></span></span></pre></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Data Types</a></h2><h3 id="65206076123395462" section="4.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#65206076123395462">Number</a></h3><p class="mech-paragraph"><span class="mech-text">Numbers in Mech can be classified into the following categories:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Integers</span></strong><span class="mech-text"> - Whole numbers, which can be positive, negative, or zero</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Signed</span></strong><span class="mech-text"> - Can represent both negative and positive values</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/i8.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">i8</code></span></a><span class="mech-text"> - 8-bit signed integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/i16.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">i16</code></span></a><span class="mech-text"> - 16-bit signed integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/i32.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">i32</code></span></a><span class="mech-text"> - 32-bit signed integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/i64.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">i64</code></span></a><span class="mech-text"> - 64-bit signed integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/i128.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">i128</code></span></a><span class="mech-text"> - 128-bit signed integer</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Unsigned</span></strong><span class="mech-text"> - Can only represent zero and positive values</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/u8.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">u8</code></span></a><span class="mech-text"> - 8-bit unsigned integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/u16.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">u16</code></span></a><span class="mech-text"> - 16-bit unsigned integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/u32.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">u32</code></span></a><span class="mech-text"> - 32-bit unsigned integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/u64.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">u64</code></span></a><span class="mech-text"> - 64-bit unsigned integer</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/u128.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">u128</code></span></a><span class="mech-text"> - 128-bit unsigned integer</span></p></li></ul></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Float</span></strong><span class="mech-text"> - Decimal numbers with fractional components</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/f32.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">f32</code></span></a><span class="mech-text"> - 32-bit floating-point number</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/f64.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">f64</code></span></a><span class="mech-text"> - 64-bit floating-point number</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Rational</span></strong><span class="mech-text"> - Numbers represented as fractions of integers</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/r64.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">r64</code></span></a><span class="mech-text"> - 64-bit rational number</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><strong class="mech-strong"><span class="mech-text">Complex</span></strong><span class="mech-text"> - Numbers with real and imaginary components</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/c64.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">c64</code></span></a><span class="mech-text"> - 64-bit complex number</span></p></li></ul></ul><p class="mech-paragraph"><span class="mech-text">Numeric literals can be expressed in various formats:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Floating-point numbers, expressed in standard decimal notation and scientific notation</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Integers, expressed in decimal (base 10), hexadecimal (base 16), octal (base 8), and binary (base 2)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Rational numbers, expressed as fractions </span><code class="mech-inline-code">a/b</code><span class="mech-text">, where </span><code class="mech-inline-code">a</code><span class="mech-text"> is the numerator and </span><code class="mech-inline-code">b</code><span class="mech-text"> is the denominator</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Complex numbers, expressed in the form </span><code class="mech-inline-code">a + bi</code><span class="mech-text"> or </span><code class="mech-inline-code">a + bj</code><span class="mech-text">, where </span><code class="mech-inline-code">a</code><span class="mech-text"> is the real part and </span><code class="mech-inline-code">b</code><span class="mech-text"> is the imaginary part</span></p></li></ul><h4 id="2532858977422362" section="4.1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2532858977422362">Floating-Point Literals</a></h4><p class="mech-paragraph"><span class="mech-text">Floating-point literals are used to represent decimal numbers with fractional components. They are flexible in that they can represent both very large and very small numbers, and also can represent integer values between -1.7e308 and 1.7e308 for </span><code class="mech-inline-code">f64</code><span class="mech-text">, and between -3.4e38 and 3.4e38 for </span><code class="mech-inline-code">f32</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">Floating-point literals are expressed in standard decimal notation or scientific notation:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">42</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> inferred as </span><code class="mech-inline-code">f64</code></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3.14</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0.001</span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2.5e+3.</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1.2e-2.</span></span></span></span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Each value is inferred as </span><code class="mech-inline-code">f64</code><span class="mech-text"> unless otherwise specified. To specify a specific type, floating-point literals can also be suffixed with a specific kind:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">42</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">f32</span>&gt;</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">3.14</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">f32</span>&gt;</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">0.001</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">f64</span>&gt;</span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">2.5e+3.</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">f32</span>&gt;</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-literal"><span class="mech-number">1.2e-2.</span></span><span class="mech-kind-annotation">&lt;<span class="mech-kind">f64</span>&gt;</span></span></span></span></span></span></span></span></pre><h4 id="22226571562203489" section="4.1.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22226571562203489">Integer Literals</a></h4><p class="mech-paragraph"><span class="mech-text">Integer literals can be written in the following formats:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0d42</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> decimal</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0x2ABC</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> hexadecimal</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0o654</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> octal</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0b101010</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> binary</span></p></span></span></pre><p class="mech-paragraph"><span class="mech-text">Decimals without a prefix are inferred as floating-point numbers (</span><code class="mech-inline-code">f64</code><span class="mech-text">), while those with the </span><code class="mech-inline-code">0d</code><span class="mech-text"> prefix are inferred as signed integers (</span><code class="mech-inline-code">i64</code><span class="mech-text">). Each of the other formats are also inferred as </span><code class="mech-inline-code">i64</code><span class="mech-text"> unless otherwise specified. Any integer literal can be suffixed with a specific kind to indicate its type:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">42u8</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> unsigned 8-bit integer</span></p></span></span></pre><p class="mech-paragraph"><span class="mech-text">Decimal literals can be signed or unsigned. Signed literal types include </span><code class="mech-inline-code">i8</code><span class="mech-text">, </span><code class="mech-inline-code">i16</code><span class="mech-text">, </span><code class="mech-inline-code">i32</code><span class="mech-text">, </span><code class="mech-inline-code">i64</code><span class="mech-text">, and </span><code class="mech-inline-code">i128</code><span class="mech-text">. Unsigned literal types include </span><code class="mech-inline-code">u8</code><span class="mech-text">, </span><code class="mech-inline-code">u16</code><span class="mech-text">, </span><code class="mech-inline-code">u32</code><span class="mech-text">, </span><code class="mech-inline-code">u64</code><span class="mech-text">, and </span><code class="mech-inline-code">u128</code><span class="mech-text">.</span></p><h4 id="35519917541561118" section="4.1.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#35519917541561118">Rational Literals</a></h4><p class="mech-paragraph"><span class="mech-text">Rational numbers are used to represent fractions exactly as ratios of two integers. They are expressed in the form </span><code class="mech-inline-code">a/b</code><span class="mech-text">, where </span><code class="mech-inline-code">a</code><span class="mech-text"> is the numerator and </span><code class="mech-inline-code">b</code><span class="mech-text"> is the denominator.</span></p><p class="mech-paragraph"><span class="mech-text">Rational numbers are written as follows:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3/4</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-negate-op">-</span><span class="mech-negate"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5/2</span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">7/7</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A whole number represented as a rational</span></p></span></span></pre><p class="mech-paragraph"><span class="mech-text">Two rational literals can represent the same numeric value but have different representations:</span></p><div id="9712316217759014" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#9712316217759014">ex 4.1.3</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:60939244674861602">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1/2</span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Represents </span><code class="mech-inline-code">0.5</code></p></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="29341039262997047:60939244674861602">y</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2/4</span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Also represents </span><code class="mech-inline-code">0.5</code></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:60939244674861602">x</span></span></span><span class="mech-formula-operator">⩵</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29341039262997047:60939244674861602">y</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Evaluates to </span><code class="mech-inline-code">true</code></p></span></span></div>
+          <div class="mech-block-output" id="64767734869583279:60939244674861602"></div>
+        </div><h4 id="46785650364247346" section="4.1.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#46785650364247346">Complex Literals</a></h4><p class="mech-paragraph"><span class="mech-text">Complex numbers are used to represent numbers with both real and imaginary components. They are expressed in the form </span><code class="mech-inline-code">a + bi</code><span class="mech-text"> or </span><code class="mech-inline-code">a + bj</code><span class="mech-text">, where </span><code class="mech-inline-code">a</code><span class="mech-text"> is the real part and </span><code class="mech-inline-code">b</code><span class="mech-text"> is the imaginary part.</span></p><p class="mech-paragraph"><span class="mech-text">Complex numbers are written as follows:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3+4i</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1+-2i</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">0+1i</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">The imaginary unit can be represented by either </span><code class="mech-inline-code">i</code><span class="mech-text"> or </span><code class="mech-inline-code">j</code><span class="mech-text">. Both representations are equivalent and can be used interchangeably.</span></p><h3 id="50465822233629901" section="4.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50465822233629901">String</a></h3><p class="mech-paragraph"><span class="mech-text">String literals are written using double quotes </span><code class="mech-inline-code">"</code><span class="mech-text">.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">""</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Hello, world!"</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Multi
+Line
+String"</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Unicode: 🤖🦾🦿"</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Strings may contain spaces and punctuation. Whitespace inside a string literal is preserved.</span></p><p class="mech-paragraph"><span class="mech-text">Escape sequences may be used for special characters:</span></p><pre class="mech-code-block">"line 1\nline 2"
+"quote: \""
+"tab\tseparated"
+"backslash: \\"
+</pre><p class="mech-paragraph"><span class="mech-text">When rendered:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"line 1
+line 2"</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"quote: ""</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"tab	separated"</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"backslash: \"</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Raw string literals can be created using triple double quotes </span><code class="mech-inline-code">"""</code><span class="mech-text">. In this form, escape sequences are not processed, and all characters are taken literally, including backslashes and quotes.</span></p><pre class="mech-code-block">"""C:\Users\Name\Documents"""
+"""This is a "raw" \string\ literal."""
+</pre><p class="mech-paragraph"><span class="mech-text">When rendered: </span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"C:\Users\Name\Documents"</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"This is a "raw" \string\ literal."</span></span></span></span></pre><h4 id="29721349299245559" section="4.2.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#29721349299245559">String Concatenation</a></h4><p class="mech-paragraph"><span class="mech-text">Strings can be concatenated using the </span><code class="mech-inline-code">+</code><span class="mech-text"> operator:</span></p><div id="2547136889153459" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#2547136889153459">ex 3.2.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="9678807914030198:751846600597670">first</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Hello"</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="19060891928869561:751846600597670">second</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"World"</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="36844889110147509:751846600597670">greeting</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="9678807914030198:751846600597670">first</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">", "</span></span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="19060891928869561:751846600597670">second</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"!"</span></span></span></span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="62986646143169478:751846600597670"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">String concatentation is broadcast element-wise over matrices of strings:</span></p><div id="10418867449876613" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#10418867449876613">ex 3.2.2</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="21227542269348545:51590775109785863">prefix</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Item"</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="6347563594879148:51590775109785863">letters</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"A"</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"B"</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"C"</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="5998008507162601:51590775109785863">labels</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="21227542269348545:51590775109785863">prefix</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="6347563594879148:51590775109785863">letters</span></span></span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="32760719999140937:51590775109785863"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">If both operands are matrices of strings, they must have compatible dimensions:</span></p><div id="61364262721107091" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#61364262721107091">ex 3.2.3</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="937292207915479:70452163418003494">m1</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"c"</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"d"</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="48008747211860922:70452163418003494">m2</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"1"</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"3"</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"2"</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"4"</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="27720872334341695:70452163418003494">result</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="937292207915479:70452163418003494">m1</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="48008747211860922:70452163418003494">m2</span></span></span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="52727491993454289:70452163418003494"></div>
+        </div><h4 id="38624393389524285" section="4.2.6" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#38624393389524285">Conversion to String</a></h4><p class="mech-paragraph"><span class="mech-text">All values can be converted to strings explicitly.</span></p><div id="41669065117480807" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#41669065117480807">ex 3.3</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:25129332708819913">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">42</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="52046319618926907:25129332708819913">s</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">string</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:25129332708819913">x</span></span></span></span></span></div>
+          <div class="mech-block-output" id="10390520721957693:25129332708819913"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">Use </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">string</span>]</span>&gt;</span></span></span></span></span></span><span class="mech-text"> to create a matrix of strings:</span></p><div id="21241817984292180" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#21241817984292180">ex 3.4</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:33205590547353643">m</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">string</span>]:<span class="mech-literal"><span class="mech-number">2</span></span>,<span class="mech-literal"><span class="mech-number">2</span></span></span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="51757028228633:33205590547353643"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">This converts a </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">f64</span>]:<span class="mech-literal"><span class="mech-number">1</span></span>,<span class="mech-literal"><span class="mech-number">4</span></span></span>&gt;</span></span></span></span></span></span><span class="mech-text"> (row matrix of floats) to a </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-kind-annotation">&lt;<span class="mech-kind">[<span class="mech-kind">string</span>]:<span class="mech-literal"><span class="mech-number">2</span></span>,<span class="mech-literal"><span class="mech-number">2</span></span></span>&gt;</span></span></span></span></span></span><span class="mech-text"> (square matrix of strings).</span></p><h3 id="43392137962299456" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#43392137962299456">Boolean</a></h3><p class="mech-paragraph"><span class="mech-text">Boolean literals are written using the keywords </span><code class="mech-inline-code">true</code><span class="mech-text"> and </span><code class="mech-inline-code">false</code><span class="mech-text">.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Several alterantive forms are also accepted:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">✓</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> true</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">✗</span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> false</span></p></span></span></pre><h4 id="58426389516791840" section="4.3.7" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58426389516791840">Logical Operations</a></h4><p class="mech-paragraph"><span class="mech-text">Boolean values support the following logical operations:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-not-op">¬</span><span class="mech-not"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> false</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span><span class="mech-formula-operator">&&</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> false</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span><span class="mech-formula-operator">||</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> true</span></p></span></span></pre><h4 id="68027915394008604" section="4.3.8" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#68027915394008604">Comparison Operations</a></h4><p class="mech-paragraph"><span class="mech-text">Comparison operators produce boolean results:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span><span class="mech-formula-operator">⩵</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span><span class="mech-formula-operator">≠</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span><span class="mech-formula-operator"><</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span></span></span></span></pre><h4 id="42772314793375139" section="4.3.9" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#42772314793375139">Filtering</a></h4><p class="mech-paragraph"><span class="mech-text">An array of logical values can be used as an index to filter another array:</span></p><div id="28958281459455449" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#28958281459455449">ex 5.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:46585504411001128">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="15661461832360616:46585504411001128">ix</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:46585504411001128">x</span></span></span><span class="mech-formula-operator">></span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-slice"><span id="863861563252387:46585504411001128" class="mech-var-name mech-clickable">x</span><span class="mech-subscript"><span class="mech-bracket">[<span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="15661461832360616:46585504411001128">ix</span></span></span>]</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> selects elements where ix is true</span></p></span></span></div>
+          <div class="mech-block-output" id="16211258061123291:46585504411001128"></div>
+        </div><h3 id="48439600833811684" section="4.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#48439600833811684">Atom</a></h3><p class="mech-paragraph"><span class="mech-text">Atoms are written using a leading colon </span><code class="mech-inline-code">:</code><span class="mech-text"> followed by an identifier:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:foo</span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:help</span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:my-atom</span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:🐦</span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:Δt</span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Atom names may be any valid identifier, including Unicode characters.</span></p><p class="mech-paragraph"><span class="mech-text">Two atoms with the same name are identical:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="55170961230981453:0">a</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:foo</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="44311847522083591:0">b</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-atom"><span class="mech-atom-name">:foo</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="55170961230981453:0">a</span></span></span><span class="mech-formula-operator">⩵</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="44311847522083591:0">b</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> evaluates to </span><span class="mech-inline-mech-code-formatted"><span class="mech-code-block"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span></span></span></p></span></span></pre><h3 id="17242572754416662" section="4.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#17242572754416662">Empty</a></h3><p class="mech-paragraph"><span class="mech-text">An empty value is written using one or more underscores </span><code class="mech-inline-code">_</code><span class="mech-text">:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-empty">_</span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-literal"><span class="mech-empty">___</span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Empty is used to represent missing values in tables and skipped elements in tuple destructuring.</span></p></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Variables</a></h2><p class="mech-paragraph"><span class="mech-text">Variables are created using the </span><code class="mech-inline-code">:=</code><span class="mech-text"> operator:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="863861563252387:0">x</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">123</span></span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">By default, all variables are immutable. To create a mutable variable, prefix the variable name with </span><code class="mech-inline-code">~</code><span class="mech-text">:</span></p><div id="38861926011841932" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#38861926011841932">ex 5.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable">~</span><span class="mech-var-name mech-clickable" id="29341039262997047:46585504411001128">y</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">456</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-assign">
+        <span class="mech-target"><span class="mech-slice-ref"><span id="29341039262997047:46585504411001128" class="mech-var-name mech-clickable">y</span><span class="mech-subscript"></span></span></span>
+        <span class="mech-assign-op">=</span>
+        <span class="mech-expression"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29341039262997047:46585504411001128">y</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span></span></span></span>
+      </span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> valid</span></p></span></span></div>
+          <div class="mech-block-output" id="32806100940983217:46585504411001128"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">Semicolons can be used to write multiple statements on one line:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="55170961230981453:0">a</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">123</span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="44311847522083591:0">b</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">456</span></span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">You can use a kind annotation in the variable declaration to constrain the variable to a specific kind:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="47432400571875225:0">z</span><span class="mech-kind-annotation">&lt;<span class="mech-kind">u8</span>&gt;</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">255</span></span></span></span></span></span></pre></section><section id="41994694464121956" section="41994694464121956" class="mech-program-section "><h2 id="26828514545883822" section="6.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26828514545883822">Data Structures</a></h2><h3 id="28410637614010402" section="6.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28410637614010402">Matrix</a></h3><p class="mech-paragraph"><span class="mech-text">Declare a matrix using square brackets </span><code class="mech-inline-code">[]</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">Use semicolons </span><code class="mech-inline-code">;</code><span class="mech-text"> or newlines to separate rows. </span></p><p class="mech-paragraph"><span class="mech-text">Use commas </span><code class="mech-inline-code">,</code><span class="mech-text"> or spaces to separate columns.</span></p><pre class="mech-code-block">[1,2,3]   -- A row vector (1x3)
+[1 2 3]   -- The same row vector
 
-"Mulitline 
-Strings"
+[1;2;3]   -- A column vector (3x1)
+[1        
+ 2
+ 3]       -- The same column vector
 
-"characters like \" and \\ are escaped with, \\ e.g. \\\""
-</pre><p class="mech-paragraph"><span class="mech-text">Kind: </span></p><pre class="mech-code-block"><string>
-</pre><h3 id="7066674767825196" section="4.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#7066674767825196">Boolean</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">True: </span><code class="mech-inline-code">true</code><span class="mech-text"> or </span><code class="mech-inline-code">✓</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">False: </span><code class="mech-inline-code">false</code><span class="mech-text"> or </span><code class="mech-inline-code">✗</code></p></li></ul><p class="mech-paragraph"><span class="mech-text">Note: </span><code class="mech-inline-code">true</code><span class="mech-text"> and </span><code class="mech-inline-code">false</code><span class="mech-text"> are the only keywords built into the language.</span></p><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block"><bool>
-</pre><h3 id="8464548792433990" section="4.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#8464548792433990">Atoms</a></h3><p class="mech-paragraph"><span class="mech-text">Atoms are used as enum variants and unique keys. They are identifiers prefixed </span></p><p class="mech-paragraph"><span class="mech-text">with a grave. An atom evaluates to iteself and its kind is its identifier.</span></p><pre class="mech-code-block">`A
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block"><`A>
-</pre><h3 id="25524906972498329" section="4.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#25524906972498329">Empty</a></h3><p class="mech-paragraph"><span class="mech-text">Empty is a hole, it represents a value that has not been initialized yet, or a </span></p><p class="mech-paragraph"><span class="mech-text">collection that is empty. Empty's expressed as any number of underscore </span></p><p class="mech-paragraph"><span class="mech-text">characters:</span></p><pre class="mech-code-block">_
-___
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block"><_>
-</pre></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Variables</a></h2><p class="mech-paragraph"><span class="mech-text">Any of the afforementioned datatypes or literals can be assigned to a variable </span></p><p class="mech-paragraph"><span class="mech-text">for reference in other places.</span></p><p class="mech-paragraph"><span class="mech-text">Define a variable x with value 123:</span></p><pre class="mech-code-block">x := 123
-</pre><p class="mech-paragraph"><span class="mech-text">By default, all numbers are f64 for maximum flexibility. For performance, you</span></p><p class="mech-paragraph"><span class="mech-text">can specify a smaller-sized number. For instance, you can create an unsigned </span></p><p class="mech-paragraph"><span class="mech-text">8-bit integer:</span></p><pre class="mech-code-block">y<u8> := 123
-z := 123<u8>
-</pre><p class="mech-paragraph"><span class="mech-text">Semicolons can be used to write multiple statements on one line:</span></p><pre class="mech-code-block">a := 123; b := 456;
-</pre><p class="mech-paragraph"><span class="mech-text">Here are some more examples:</span></p><pre class="mech-code-block">c := [1 2 3]                -- a 1x3 row vector of f64 numbers
-d<[i64]:1,3> := [1 2 3]     -- a 1x3 row vector of i64 numbers
-</pre></section><section id="41994694464121956" section="41994694464121956" class="mech-program-section "><h2 id="26828514545883822" section="6.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26828514545883822">Collections</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Ordered elements, duplicates allowed</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(a) Vector (row/column)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(b) Matrix (N-D)</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(c) Tuple</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Unordered elements, no duplicates</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(d) Record</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(e) Table</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(f) Set</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">(g) Map</span></p></li></ul></ul><h3 id="28410637614010402" section="6.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28410637614010402">Vector</a></h3><p class="mech-paragraph"><span class="mech-text">A matrix is a N-D collection of homogenous datatypes.</span></p><pre class="mech-code-block">- Empty                 []              (0x0)
-- Scalar                [1]             (1x1) 
-- Row Vector            [1 2 3]         (1x3) 
-- Column Vector         [1;2;3]         (3x1) 
-- Also Column           [1              (3x1)
-                         2  
-                         3]
-- Nested                [[1],[2],[3]]   (1x3x1)                                     
-- Transpose             [1 2 3]'        (3x1)
-</pre><p class="mech-paragraph"><span class="mech-text">Kind: </span></p><pre class="mech-code-block">- Dynamic Row vector    <[u8]:1,_>
-- Scalar matrix         <[u8]:1> or <[u8]:1,1>
-- Column vector         <[u8]:5> or <[u8]:5,1>
-- Row vector            <[u8]:1,5>
-</pre><p class="mech-paragraph"><span class="mech-text">Note: Vectors have at least 1 scalar dimension.</span></p><h3 id="39327486777600331" section="6.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#39327486777600331">Matrix</a></h3><pre class="mech-code-block">- Matrix                [1 2; 3 4]       (2x2)
-- Also Matrix           [1 2             (2x2)
-                         3 4]            
-- Transpose             [1 2; 3 4; 5 6]' (2x3)
-</pre><p class="mech-paragraph"><span class="mech-text">Mech supports fancy box drawing tables:</span></p><pre class="mech-code-block">╭───┬───┬───╮
-│ 1 │ 2 │ 3 │
-├───┼───┼───┤
-│ 4 │ 5 │ 6 │
-├───┼───┼───┤
-│ 7 │ 8 │ 9 │
-╰───┴───┴───╯
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block">- Dynamic matrix        <[u8]>
-- 2D Matrix             <[u8]:2,3>
-- 3D Matrix             <[u8]:2,3,4>
-</pre><h3 id="59648636585993413" section="6.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#59648636585993413">Tuple</a></h3><p class="mech-paragraph"><span class="mech-text">A tuple is a collection of values of different data types stored in a single </span></p><p class="mech-paragraph"><span class="mech-text">entity, allowing for the storage and manipulation of multiple values together.</span></p><pre class="mech-code-block">- Empty   ()
-- Single  (1)
-- Multi   (1,1,3)
-- Nested  (1,(2,3))
-- Mixed   (1, true, "Hello")
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block">- Two-tuple of u8 and string    <(u8,string)>
-- Three-tuple of u8s            <(u8,u8,u8)>
-</pre><h3 id="2964762416892097" section="6.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#2964762416892097">Record</a></h3><p class="mech-paragraph"><span class="mech-text">A set of heterogeneously typed fields and their associated data.</span></p><pre class="mech-code-block">- Simple:   { x: 1 y: "a", z: [1 2 3] }
-- Typed:    { x<u8>: 1, y<string>: "a", z<[u8]:3,1>: [1;2;3] }
-- Nested:   { a: {b: 1, c: "hi"}, b: [1;2;3] }
-- Multiline
-</pre><pre class="mech-code-block">{
-    a: {
-        b: 1, 
-        c: "hi"
-    }, 
-    b: [
-        1
-        2
-        3
-    ]
+[1,2;3,4] -- A matrix (2x2)
+[1 2
+ 3 4]     -- The same matrix
+[1 + 2; 3 + 4] -- Elements can be expressions
+</pre><p class="mech-paragraph"><span class="mech-text">By default, all matrices are rank 2, meaning they have rows and columns. Elementes are indexed in a </span><code class="mech-inline-code">[row, column]</code><span class="mech-text"> format.</span></p><p class="mech-paragraph"><span class="mech-text">When parsed and formatted, they look like this:</span></p><div id="60871519214491869" class="mech-fenced-mech-block">
+          
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Row Vector</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-code"><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Column Vector</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-code"><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Matrix</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span><span class="mech-code"><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Vector from expressions</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></div>
+          <div class="mech-block-output" id="41464358948335948:0"></div>
+        </div><h4 id="55026336601374806" section="6.1.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#55026336601374806">Broadcast Operations </a></h4><p class="mech-paragraph"><span class="mech-text">If matrices have the same dimension, standard arithmetic operations are performed element-wise:</span></p><div id="6249293666965856" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#6249293666965856">ex 6.1.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="937292207915479:16586844442548595">m1</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">6</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="48008747211860922:16586844442548595">m2</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">7</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">8</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">11</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">9</span></span></span></span> <span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">12</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="937292207915479:16586844442548595">m1</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="48008747211860922:16586844442548595">m2</span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Adds the two matrices element-wise</span></p></span></span></div>
+          <div class="mech-block-output" id="41548592018517747:16586844442548595"></div>
+        </div><p class="mech-paragraph"><span class="mech-text">If one of the operands is a scalar, it will be added or subtracted from each element of the matrix:</span></p><div id="49443312886039832" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#49443312886039832">ex 6.1.2</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="54700430305216652:63386761334011686">m</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">4</span></span></span></span></div> <div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">5</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="54700430305216652:63386761334011686">m</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Adds 10 to each element of the vector</span></p></span></span></div>
+          <div class="mech-block-output" id="41282313415927095:63386761334011686"></div>
+        </div><h3 id="44274143723586084" section="6.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#44274143723586084">Tuple</a></h3><p class="mech-paragraph"><span class="mech-text">A tuple is a collection of values of different data types stored in a single entity, allowing for the storage and manipulation of multiple values together.</span></p><p class="mech-paragraph"><span class="mech-text">Tuples are defined using parentheses </span><code class="mech-inline-code">()</code><span class="mech-text"> with elements separated by commas.</span></p><pre class="mech-code-block">(1, true)
+("Hello", 42, false)
+(1, ("Hello", false))
+</pre><p class="mech-paragraph"><span class="mech-text">When parsed and rendered, this code will appear as:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span><span class="mech-end-paren">)</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> two-tuple of f64 and bool</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Hello"</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-number">42</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span><span class="mech-end-paren">)</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> three-tuple of string, f64, and bool</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span>,<span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Hello"</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span><span class="mech-end-paren">)</span></span></span></span><span class="mech-end-paren">)</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> nested tuple</span></p></span></span></pre><h4 id="55444183654605482" section="6.2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#55444183654605482">Element Access</a></h4><p class="mech-paragraph"><span class="mech-text">Tuple elements are accessed by their 1-based index using the </span><code class="mech-inline-code">.</code><span class="mech-text"> operator.</span></p><div id="71332007174723839" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#71332007174723839">ex 6.3.1</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="65790625456578469:48446855556179375">q</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span><span class="mech-end-paren">)</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-slice"><span id="65790625456578469:48446855556179375" class="mech-var-name mech-clickable">q</span><span class="mech-subscript">.<span class="mech-dot-int">1</span></span></span></span></span></div>
+          <div class="mech-block-output" id="54008573008644163:48446855556179375"></div>
+        </div><h4 id="28256810255540976" section="6.2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#28256810255540976">Destructuring</a></h4><p class="mech-paragraph"><span class="mech-text">Tuples can be destructured into variables:</span></p><div id="34564234062927639" class="mech-fenced-mech-block">
+          <div class="mech-code-block-namespace"><a href="#34564234062927639">ex 6.3.2</a></div>
+          <div class="mech-code-block"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="55170961230981453:61890158084418219">a</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-tuple"><span class="mech-start-paren">(</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-number">11</span></span></span>,<span class="mech-expression"><span class="mech-literal"><span class="mech-number">12</span></span></span><span class="mech-end-paren">)</span></span></span></span></span></span></span><span class="mech-code"><span class="mech-statement"><span class="mech-tuple-destructure"><span class="mech-tuple-vars">(<span id="863861563252387:61890158084418219" class="mech-var-name mech-clickable">x</span>, <span id="29341039262997047:61890158084418219" class="mech-var-name mech-clickable">y</span>, <span id="47432400571875225:61890158084418219" class="mech-var-name mech-clickable">z</span>)</span><span class="mech-assign-op">:=</span><span class="mech-tuple-expression"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="55170961230981453:61890158084418219">a</span></span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-factor"><span class="mech-term"><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="863861563252387:61890158084418219">x</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="29341039262997047:61890158084418219">y</span></span></span><span class="mech-formula-operator">+</span><span class="mech-factor"><span class="mech-expression"><span class="mech-var-name mech-clickable" id="47432400571875225:61890158084418219">z</span></span></span></span></span></span></span></div>
+          <div class="mech-block-output" id="14400785530199331:61890158084418219"></div>
+        </div><h3 id="50254158435867188" section="6.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#50254158435867188">Record</a></h3><p class="mech-paragraph"><span class="mech-text">Records are written using curly braces </span><code class="mech-inline-code">{}</code><span class="mech-text"> with named fields. Each field is written as </span><code class="mech-inline-code">name: value</code><span class="mech-text"> and fields are separated by commas.</span></p><pre class="mech-code-block">{ x: 1, y: true }
+{ name: "Alice", age: 42, active: true }
+</pre><p class="mech-paragraph"><span class="mech-text">When parsed and rendered, this code will appear as:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">x</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">y</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">name</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Alice"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">age</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">42</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">active</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">Records may be written inline or across multiple lines for readability:</span></p><pre class="mech-code-block">{
+  x: 1.2,
+  y: true,
+  label: "pt1"
 }
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block"><{u8,string}:1,2>
-</pre><h3 id="31217186366709795" section="6.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#31217186366709795">Table </a></h3><p class="mech-paragraph"><span class="mech-text">A table is set of records.</span></p><p class="mech-paragraph"><span class="mech-text">Define a table with two columns -- one named </span><code class="mech-inline-code">x</code><span class="mech-text"> of kind </span><code class="mech-inline-code">f32</code><span class="mech-text">; and the named </span></p><p class="mech-paragraph"><code class="mech-inline-code">y</code><span class="mech-text"> of kind </span><code class="mech-inline-code">u8</code><span class="mech-text">:</span></p><pre class="mech-code-block">{ x<f32>  y<u8> | 
-  1.2     9 
-  1.3     8     }
-</pre><p class="mech-paragraph"><span class="mech-text">They can be written inline:</span></p><pre class="mech-code-block">{ x<f32> y<u8> | 1.2 9; 1.3 8 }
-</pre><p class="mech-paragraph"><span class="mech-text">The </span><code class="mech-inline-code">_</code><span class="mech-text"> kind indicates column elements can be hetergeneous.</span></p><pre class="mech-code-block">{ x<_>   y<_> |
-  1.2    true 
-  "Hi"   8    }
-</pre><p class="mech-paragraph"><span class="mech-text">Elements do not have to be fully filled in:</span></p><pre class="mech-code-block">{ x<u8>  y<string> z<[u8]:3> |
-   _      "a"       [1;2;3] 
-   4      "b"          _    
-   7       _        [7;8;9]  }
-</pre><p class="mech-paragraph"><span class="mech-text">Tables can be fancy too:</span></p><pre class="mech-code-block">╭──────────────────────────────╮
-│ x<u8>   y<string>  z<[u8]:3> │
-├───────┬──────────┬───────────┤
-│   _   │   "a"    │  [1;2;3]  │
-├───────┼──────────┼───────────┤
-│   4   │   "b"    │     _     │
-├───────┼──────────┼───────────┤
-│   7   │    _     │  [7;8;9]  │
-╰───────┴──────────┴───────────╯
-</pre><p class="mech-paragraph"><span class="mech-text">Kind: </span></p><pre class="mech-code-block"><{u8,string,[u8]:3}:3,3>
-</pre><p class="mech-paragraph"><span class="mech-text">Note: Tables are more flexible and expressive than matricies, but are slower.</span></p><h3 id="62303346944159378" section="6.6" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#62303346944159378">Set</a></h3><p class="mech-paragraph"><span class="mech-text">An unordered collection of unique, homogenous elements.</span></p><pre class="mech-code-block">- Empty:     {} or {_}
-- Singleton: {1}
-- Basic:     {1,2,3}
-- Nested:    {{1,2},{3,4}}
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><pre class="mech-code-block"><{u8}:3>
-</pre><h3 id="44367673702594038" section="6.7" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#44367673702594038">Map</a></h3><p class="mech-paragraph"><span class="mech-text">An unordered collection of unique keys associated with a corresponding value.</span></p><pre class="mech-code-block">- Empty:             {_:_}
-- Single element:    {"a":1}
-- Multiple elements: {"a":10, "b":20, "c": 30}
-- Nested:            {"a":{"a":10}}
-- Multiline:
-    { "a" : 10 
-      "b" : 20
-      "c" : 30 }
-</pre><p class="mech-paragraph"><span class="mech-text">Kind:</span></p><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">A map of strings to u8s: </span><code class="mech-inline-code"><{string:u8}></code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">A map of strings to a map of strings to u8: </span><code class="mech-inline-code"><{string:{string:u8}}></code></p></li></ul></section></div></div></div>
+</pre><h3 id="22198509321250541" section="6.4" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#22198509321250541">Table </a></h3><p class="mech-paragraph"><span class="mech-text">Tables are defined using the pipe </span><code class="mech-inline-code">|</code><span class="mech-text"> character. Each column is defined with a name and a kind, which describes the type of data it holds.</span></p><pre class="mech-code-block">| x&ltf32&gt  y&ltbool&gt | 
+|  1.2     true   |
+|  1.3     false  |
+</pre><p class="mech-paragraph"><span class="mech-text">This creates a table with two columns, </span><code class="mech-inline-code">x</code><span class="mech-text"> of kind </span><code class="mech-inline-code">f32</code><span class="mech-text"> and </span><code class="mech-inline-code">y</code><span class="mech-text"> of kind </span><code class="mech-inline-code">bool</code><span class="mech-text">:</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><table class="mech-table"><thead class="mech-table-header"><tr><th class="mech-table-field"><div class="mech-field"><span class="mech-field-name">x</span><span class="mech-field-kind"><span class="mech-kind-annotation">&lt;<span class="mech-kind">f32</span>&gt;</span></span></div></th><th class="mech-table-field"><div class="mech-field"><span class="mech-field-name">y</span><span class="mech-field-kind"><span class="mech-kind-annotation">&lt;<span class="mech-kind">bool</span>&gt;</span></span></div></th></tr></thead><tbody class="mech-table-body"><tr class="mech-table-row"><td class="mech-table-column"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1.2</span></span></span></td> <td class="mech-table-column"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">true</span></span></span></td></tr><tr class="mech-table-row"><td class="mech-table-column"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1.3</span></span></span></td> <td class="mech-table-column"><span class="mech-expression"><span class="mech-literal"><span class="mech-boolean">false</span></span></span></td></tr></tbody></table></span></span></span></pre><p class="mech-paragraph"><span class="mech-text">You can write tables inline as well:</span></p><pre class="mech-code-block">| x&ltf32&gt  y&ltbool&gt | 1.2 true | 1.3 false |
+</pre><h3 id="32283940913766398" section="6.5" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#32283940913766398">Set</a></h3><p class="mech-paragraph"><span class="mech-text">A set is an unordered collection of unique elements. They are defined using curly braces </span><code class="mech-inline-code">{}</code><span class="mech-text">.</span></p><p class="mech-paragraph"><span class="mech-text">Elements are separated by commas </span><code class="mech-inline-code">,</code><span class="mech-text">. Duplicate elements are automatically removed.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-set"><span class="mech-start-brace">{</span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> An empty set</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-set"><span class="mech-start-brace">{</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A set of numbers</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-set"><span class="mech-start-brace">{</span><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-string">"c"</span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A set of strings</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-set"><span class="mech-start-brace">{</span><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span>, <span class="mech-expression"><span class="mech-literal"><span class="mech-number">3</span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Duplicates are removed</span></p></span></span></pre><h3 id="1629430565137050" section="6.6" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#1629430565137050">Map</a></h3><p class="mech-paragraph"><span class="mech-text">You can define maps using curly braces </span><code class="mech-inline-code">{}</code><span class="mech-text"> with a colon </span><code class="mech-inline-code">:</code><span class="mech-text"> to separate keys from values.</span></p><pre class="mech-code-block disabled"><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">1</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> A single key-value pair</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multiple key-value pairs</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">2</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Nested maps</span></p></span></span><span class="mech-code"><span class="mech-expression"><span class="mech-structure"><span class="mech-map"><span class="mech-start-brace">{</span><span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"a"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">10</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"b"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">20</span></span></span></span></span>, <span class="mech-mapping"><span class="mech-key"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"c"</span></span></span></span><span class="mech-colon-op">:</span><span class="mech-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-number">30</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span><span class="mech-comment"><span class="mech-comment-sigil">--</span><p class="mech-paragraph"><span class="mech-text"> Multi-line format</span></p></span></span></pre></section></div></div></div>
     </div>
     <div class="resizer hidden" id="resizer">
       <button class="toggle-button" id="toggle-repl">|</button>
@@ -3258,7 +3577,7 @@ d<[i64]:1,3> := [1 2 3]     -- a 1x3 row vector of i64 numbers
     let wasm_core;
     async function run() {
       await init();
-      var code = `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`;
+      var code = `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`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
@@ -3290,5 +3609,55 @@ d<[i64]:1,3> := [1 2 3]     -- a 1x3 row vector of i64 numbers
     }
     run();
   </script>
+
+  <script>
+    function buildBreadcrumb(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const { origin, pathname } = window.location;
+      const parts = pathname.split('/').filter(Boolean);
+
+      // if we are at the root, don't build breadcrumb
+      if (parts.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let pathSoFar = origin;
+      const crumbs = [];
+
+      // Home icon (data URL)
+      crumbs.push(`
+        <a href="/" class="mech-breadcrumb-home" aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </a>
+      `);
+
+      parts.forEach((part, index) => {
+        pathSoFar += `/${part}`;
+
+        const label = part.replace(/\.[^/.]+$/, '');
+        const text = label.charAt(0).toUpperCase() + label.slice(1);
+
+        if (index === parts.length - 1) {
+          crumbs.push(`<span class="mech-breadcrumb-current">${text}</span>`);
+        } else {
+          crumbs.push(`<a href="${pathSoFar}/index.html">${text}</a>`);
+        }
+      });
+
+      container.innerHTML = crumbs.join('<span class="mech-breadcrumb-sep">⟩</span>');
+    }
+
+    buildBreadcrumb('breadcrumb');
+
+
+  </script>
+
+
 </body>
 </html>

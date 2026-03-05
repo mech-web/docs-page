@@ -10,11 +10,12 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
 
-  <title>Mech Programming Language Documentation</title>
+  <title>Mech Documentation</title>
   <link rel="icon" href="https://gitlab.com/mech-lang/assets/-/raw/main/images/favicon.ico" type="image/x-icon" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -23,32 +24,46 @@
     @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 :root {
-  --bracket-color: #c19dca;
-  --op-color: #c19dca;
-  --literal-color: #9cc7f3;
-  --contrast-color-high: hsl(264, 54%, 80%);
-  --contrast-color-mid:  hsl(264, 54%, 70%);
-  --contrast-color-low:  hsl(264, 54%, 60%);
+  --bracket-color: hsl(288, 30%, 70%);
+  --op-color: hsl(288, 30%, 70%);
+  --function-name-color: hsl(133, 33%, 80%);
+  --function-bracket-color: hsl(133, 33%, 70%);
+  --literal-color: hsl(210, 78%, 78%);
+  --contrast-color-high: hsl(288, 30%, 80%);
+  --contrast-color-mid:  hsl(288, 30%, 70%);
+  --contrast-color-low:  hsl(288, 30%, 60%);
   --main-color-high: hsl(42, 89%, 80%);
   --main-color-mid:  hsl(42, 89%, 70%);
   --main-color-low:  hsl(42, 89%, 60%);
-  --out-bracket-color: rgb(177, 187, 196);
+  --out-bracket-color: hsl(288, 30%, 85%);
   --sidebar-width: 300px;
-  --text-color: #f2ead9;
+  --text-color-light: hsl(40, 100%, 95%);
+  --text-color: hsl(41, 49%, 90%);
+  --text-color-dark: hsl(41, 49%, 25%);
   --code-border-color: #4d5257;
   --inline-code-border-color: #4d5257;
   --code-background-color: #090d11;
   --code-output-background-color: #020303;
-  --var-name-color: #eddaf1;
+  --var-name-color: hsl(290, 45%, 90%);
   --field-name-color: #efd8aa;
   --kind-annotation-color: #f09fca;
   --kind-annotation-color-dark: #d574a8;
-  --body-background-color: #0d1117;
+  --body-background-color: hsl(216, 28%, 7%);
   --abstract-background-color: #171c26;
-  --callout-background-color: #171c26;
   --mechdown-table-odd-row-background-color: hsl(222, 25%, 9%);
   --mechdown-table-even-row-background-color: #171c26;
   --mechdown-table-row-hover-background-color: hsl(222, 25%, 17%);
+  --h2-underline-color: #343b46;
+  --toc-heading-number-color: rgba(255, 255, 255, 0.55);
+  --title-underline-color: hsl(42, 89%, 70%);
+  --callout-background-color: #1f2533;
+  --warning-color: hsl(20, 100%, 75%);
+  --error-color: hsl(350, 100%, 75%);
+  --info-color: hsl(230, 100%, 75%);
+  --success-color: hsl(130, 100%, 75%);
+  --idea-color: hsl(271, 100%, 75%);
+  --question-color: hsl(191, 100%, 75%);
+  --code-namespace-label-color: #f5a7d3;
 }
 
 html {
@@ -105,13 +120,12 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     overflow-x: hidden;
-    top: 0px;
+    top: 150px;
     margin-left: calc(50% - 350px - 250px - 150px);
     overflow: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */         
     height: calc(100vh - 60px);   
-    margin-top: 60px;  
 }
 
 .mech-program {
@@ -236,6 +250,10 @@ body {
     pointer-events: none;
 }
 
+.mech-toc-sections {
+
+}
+
 .mech-toc h2 {
     line-height: 23px;
 }
@@ -275,7 +293,7 @@ h2.toc::before {
 h3.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h3 {
     line-height: 23px;
@@ -303,7 +321,7 @@ h3.toc::before {
 h4.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h4 {
     line-height: 23px;
@@ -329,7 +347,7 @@ h4.toc::before {
 h5.toc::before {
     font-size: 1rem;
     padding-right: 3px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--toc-heading-number-color);
 }
 .mech-toc h5 {
     line-height: 23px;
@@ -350,6 +368,30 @@ h5.toc::before {
 .mech-toc h5 a:hover {
     color: var(--contrast-color-low);
     text-decoration: none;
+}
+
+.mech-map {
+    color: var(--op-color);
+}
+
+.mech-set {
+    color: var(--op-color);
+}
+
+.mech-set-comprehension {
+    color: var(--op-color);
+}
+
+.mech-set-open {
+    color: var(--bracket-color);
+}
+
+.mech-set-close {
+    color: var(--bracket-color);
+}
+
+.mech-set-bar {
+    color: var(--op-color);
 }
 
 .mech-matrix {
@@ -375,6 +417,26 @@ h5.toc::before {
     padding-left:  6px;
     padding-right: 6px;
     color: var(--op-color);
+}
+
+.mech-variable-assign {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.mech-enum-name {
+    color: var(--kind-annotation-color);
+}
+
+.mech-enum-define {
+    display: inline-flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
+.mech-enum-variant {
+    color: var(--literal-color);
 }
 
 .mech-kind-define-op {
@@ -416,7 +478,6 @@ h5.toc::before {
     width: 900px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
     color: var(--text-color);
     letter-spacing: 2px;
     font-size: 1.83rem;
@@ -424,7 +485,20 @@ h5.toc::before {
     text-align: center;
     margin-bottom: 16px;
     margin-left: -100px;
+    position: relative; 
 }
+
+.mech-program h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background: linear-gradient(to right, var(--body-background-color), var(--title-underline-color), var(--title-underline-color), var(--title-underline-color),  var(--body-background-color));
+  border-radius: 2px;
+}
+
 
 .mech-program h2 a {
     color: var(--text-color);
@@ -435,13 +509,12 @@ h5.toc::before {
     width: 850px;
     font-family: 'FiraCodeRegular', monospace;
     padding-bottom: 10px;
-    border-bottom: 3px dashed var(--main-color-low);
-    color: var(--text-color);
+    border-bottom: 1px solid var(--h2-underline-color);
     font-size: 1.33rem;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-top: 80px;
     margin-left: -73px;
 }
 
@@ -455,7 +528,8 @@ h5.toc::before {
     color: var(--text-color);
     font-size: 1.17rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     margin-left: -48px;
 }
@@ -498,7 +572,7 @@ h5.toc {
 }
 
 .mech-variable-mutable {
-    color: #ada594;
+    color: var(--op-color);
 }
 
 .mech-section-element {
@@ -567,7 +641,7 @@ h5.toc {
 .mech-grammar {
     display: block;
     background-color: var(--code-background-color);
-    color: #ada594;
+    color: var(--text-color);
     font-family: 'FiraCodeLight', monospace;
     font-size: 1rem;
     line-height: 18px;
@@ -576,7 +650,7 @@ h5.toc {
     border: 1px solid var(--code-border-color);
     margin-bottom: 20px;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .mech-grammar::-webkit-scrollbar {
@@ -603,20 +677,20 @@ h5.toc {
 }
 
 .mech-grammar-identifier {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition {
-    color: #ccbbc2;
+    color: var(--var-name-color);
 }
 
 .mech-grammar-definition a {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: none;
 }
 
 .mech-grammar-definition a:hover {
-    color: #ccbbc2;
+    color: var(--var-name-color);
     text-decoration: underline;
 }
 
@@ -630,7 +704,11 @@ h5.toc {
 
 
 .mech-grammar-terminal {
-    color: #ee6262;
+    color: var(--literal-color);
+}
+
+.mech-grammar-rule {
+    color: var(--op-color);
 }
 
 
@@ -674,6 +752,7 @@ h5.toc {
 .mech-var-name {
     color: var(--var-name-color);
     font-style: bold;
+    white-space: nowrap;
 }
 
 .mech-output-kind {
@@ -694,9 +773,34 @@ h5.toc {
 
 .mech-grammar-define-op {
     padding-right: 12px;
+    color: var(--op-color);
+}
+
+.mech-grammar-choice-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat1-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-repeat0-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-not-op {
+    color: var(--op-color);
+}
+
+.mech-grammar-optional-op {
+    color: var(--op-color);
 }
 
 .mech-literal {
+}
+
+.mech-matrix .mech-number {
+    text-align: right;
 }
 
 .mech-number {
@@ -725,6 +829,7 @@ code {
     margin: 0px 2px 0px 2px;
     border-radius: 3px;
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
 }
 
 .mech-inline-mech-code-formatted .mech-code-block {
@@ -765,6 +870,10 @@ code {
     color: var(--op-color);
 }
 
+.mech-not-op {
+    color: var(--op-color);
+}
+
 .mech-op-assign-op {
     padding-left: 6px;
     padding-right: 6px;
@@ -772,24 +881,22 @@ code {
 }
 
 .mech-paragraph {
-    color: #fffbf3;
+    color: var(--text-color-light);
     line-height: 25px;
 }
 
 .mech-paragraph a {
-    color: var(--main-color-high);
+    color: var(--main-color-mid);
     text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
 .mech-paragraph a:hover {
-    color: var(--main-color-low);
-    text-decoration: underline;
+    color: var(--main-color-high);
+    text-decoration: underline dotted;
     text-underline-offset: 3px;
 }
 
-/*Hover style for this thing: */
-/*mech-program-subtitle toc*/
 .mech-program-subtitle:hover {
     color: var(--contrast-color-low);
     cursor: pointer;
@@ -832,6 +939,14 @@ a.mech-hyperlink:hover .mech-inline-code {
 
 .mech-function-call {
     display: inline-flex;
+}
+
+.mech-function-call .mech-argument-list {
+    color: var(--function-bracket-color);
+}
+
+.mech-function-call .mech-left-paren, .mech-function-call .mech-right-paren {
+    color: var(--function-bracket-color);
 }
 
 .mech-slice {
@@ -898,7 +1013,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-function-name {
-    color: #d8a5e4;
+    color: var(--function-name-color);
 }
 
 .mech-kind-annotation {
@@ -1044,6 +1159,12 @@ a.mech-hyperlink:hover .mech-inline-code {
     color: var(--op-color);
 }
 
+.mech-tuple-destructure {
+    display: flex;
+    gap: 6px;
+    color: var(--op-color);
+}
+
 .mech-state-name {
     color: #dbc3a5;
 }
@@ -1076,6 +1197,7 @@ a.mech-hyperlink:hover .mech-inline-code {
 }
 
 .mech-string {
+    white-space: pre;
     color: var(--literal-color);
 }
 
@@ -1340,7 +1462,7 @@ li p {
 .mech-info-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #f18181;
+    border-left: 4px solid var(--info-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1351,21 +1473,17 @@ li p {
 }
 
 .mech-info-block::before {
-    content: "!";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--info-color);
     border-radius: 50%;
-    background-color: #f18181;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWluZm8taWNvbiBsdWNpZGUtaW5mbyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMTZ2LTQiLz48cGF0aCBkPSJNMTIgOGguMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-info-block p {
@@ -1374,10 +1492,43 @@ li p {
     font-size: 12pt;
 }
 
+.mech-warning-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--warning-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-warning-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--warning-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0LWljb24gbHVjaWRlLXRyaWFuZ2xlLWFsZXJ0Ij48cGF0aCBkPSJtMjEuNzMgMTgtOC0xNGEyIDIgMCAwIDAtMy40OCAwbC04IDE0QTIgMiAwIDAgMCA0IDIxaDE2YTIgMiAwIDAgMCAxLjczLTMiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-warning-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-question-block {
     width: 80%;
     background-color: var(--callout-background-color);
-    border-left: 4px solid #6ca8ff;
+    border-left: 4px solid var(--question-color);
     padding: 20px 20px 20px 50px;
     margin: 20px auto;
     color: var(--text-color);
@@ -1388,21 +1539,17 @@ li p {
 }
 
 .mech-question-block::before {
-    content: "?";
+    content: " ";
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--question-color);
     border-radius: 50%;
-    background-color: #6ca8ff;
-    color: #1d2227;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 11pt;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrLWljb24gbHVjaWRlLWNpcmNsZS1xdWVzdGlvbi1tYXJrIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik05LjA5IDlhMyAzIDAgMCAxIDUuODMgMWMwIDItMyAzLTMgMyIvPjxwYXRoIGQ9Ik0xMiAxN2guMDEiLz48L3N2Zz4=") center/70% no-repeat;
 }
 
 .mech-question-block p {
@@ -1411,9 +1558,108 @@ li p {
     font-size: 12pt;
 }
 
+.mech-error-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--error-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-error-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24tYWxlcnQtaWNvbiBsdWNpZGUtb2N0YWdvbi1hbGVydCI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xMiA4djQiLz48cGF0aCBkPSJNMTUuMzEyIDJhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZsLTQuNjg4LTQuNjg4QTIgMiAwIDAgMSAyIDE1LjMxMlY4LjY4OGEyIDIgMCAwIDEgLjU4Ni0xLjQxNGw0LjY4OC00LjY4OEEyIDIgMCAwIDEgOC42ODggMnoiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-error-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-success-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--success-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-success-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1jaGVjay1pY29uIGx1Y2lkZS1jaXJjbGUtY2hlY2siPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPjwvc3ZnPg==") center/70% no-repeat;
+}
+
+.mech-success-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.mech-idea-block {
+    width: 80%;
+    background-color: var(--callout-background-color);
+    border-left: 4px solid var(--idea-color);
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: var(--text-color);
+    border-radius: 3px;
+    font-family: 'Georgia', serif;
+    position: relative;
+    font-style: normal;
+}
+
+.mech-idea-block::before {
+    content: " ";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--idea-color);
+    border-radius: 50%;
+    mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpZ2h0YnVsYi1pY29uIGx1Y2lkZS1saWdodGJ1bGIiPjxwYXRoIGQ9Ik0xNSAxNGMuMi0xIC43LTEuNyAxLjUtMi41IDEtLjkgMS41LTIuMiAxLjUtMy41QTYgNiAwIDAgMCA2IDhjMCAxIC4yIDIuMiAxLjUgMy41LjcuNyAxLjMgMS41IDEuNSAyLjUiLz48cGF0aCBkPSJNOSAxOGg2Ii8+PHBhdGggZD0iTTEwIDIyaDQiLz48L3N2Zz4=") center/70% no-repeat;
+}
+
+.mech-idea-block p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
 .mech-thematic-break {
     border: 0;
-    border-top: 2px solid #7e8892;
+    border-top: 2px dotted #7e8892;
     margin: 30px 0;
     width: 100%;
     opacity: 0.7;
@@ -1427,6 +1673,27 @@ li p {
 
 .mech-code-block.hidden {
     display: none;
+}
+
+.mech-fenced-mech-block {
+  position: relative;   /* makes this the anchor for absolute positioning */
+}
+
+.mech-code-block-namespace {
+    color: var(--code-namespace-label-color);
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: rgb(13 17 23);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    border: 1px solid var(--code-namespace-label-color);
+}
+
+.mech-code-block-namespace a {
+    color: var(--code-namespace-label-color);
+    text-decoration: none;
 }
 
 .mech-block-output {
@@ -1676,9 +1943,9 @@ h6:hover a {
 }
 
 mark {
-    background-color: var(--main-color-mid);
-    border: 1px solid #ffe4a4;
-    color: #5a4105;
+    background-color: var(--main-color-low);
+    border: 1px solid var(--main-color-high);
+    color:  var(--text-color-dark);
     font-weight: 400;
     padding: 0.2em 0.4em;
     border-radius: 4px;
@@ -1763,6 +2030,10 @@ mark {
 
 .mech-output-value {
     padding-left: 10px;
+}
+
+.mech-matrix-element {
+    text-align: right;
 }
 
 .mech-matrix-outer{
@@ -2106,7 +2377,7 @@ mark {
 
 .mech-strong {
     font-weight: 900;
-    color: #fef2d4;
+    color: var(--text-color);
 }
 
 .mech-diagram {
@@ -2199,7 +2470,60 @@ mark {
 
 .mermaid .link:nth-child(8) path { fill: #44d627 !important; stroke: #44d627 !important; }  /* Semifinalists */
 
+.mech-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  margin: 2rem 10px 1.25rem;
+  color: var(--contrast-color-low);
+}
 
+/* Links */
+.mech-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--contrast-color-mid);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.mech-breadcrumb a:hover {
+  color: var(--contrast-color-low);
+}
+.mech-breadcrumb-home {
+  margin-top: 1px;
+}
+
+.mech-breadcrumb-home svg {
+  width: 14px; 
+  height: 14px;
+}
+
+/* Separator */
+.mech-breadcrumb-sep {
+  margin: 0 0.25rem;
+  margin-top: -4px;
+  color: var(--contrast-color-low);
+  opacity: 1;
+  font-weight: 900;
+  user-select: none;
+}
+
+/* Current page */
+.mech-breadcrumb-current {
+  color: var(--contrast-color-high);
+}
+
+/* Typography alignment */
+.mech-breadcrumb,
+.mech-breadcrumb a,
+.mech-breadcrumb-current {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, sans-serif;
+}
 
   </style>
 
@@ -2321,7 +2645,16 @@ mark {
     .toggle-button.edge-right:hover {
 
     }
-
+    #footer {
+      padding: 30px;
+      height: 300px;
+      width: 100%;
+      margin-top: 50px;
+      background-color: #06070a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23797979' fill-opacity='0.55'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      /* box shadow parameters are: horizontal offset, vertical offset, blur radius, spread radius, color */
+      box-shadow:inset 0 7px 10px rgba(0,0,0,1);
+    }
     #header {
       display: flex;
       align-items: center;
@@ -2467,9 +2800,10 @@ mark {
     </div>
   </header>
   <div class="container mech-root" mech-interpreter-id=0>
-    <div class="mech-toc"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Getting Started</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Language Reference</a></h2></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Standard Library</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Guides</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Language Design Documents</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="71523119693619334" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26828514545883822">Examples</a></h2></section></section></div>
+    <div class="mech-toc"><section class="mech-toc-sections"><section id="62148755752455977" section="9438622517866986" class="mech-program-section toc"><h2 id="34240521106211779" section="1.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#64696996597075978">Getting Started</a></h2></section><section id="68428689749586615" section="16885191040256091" class="mech-program-section toc"><h2 id="18138157161525304" section="2.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26222977729876424">Platform Reference</a></h2><h3 id="44263478450807995" section="2.1" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#49505093591916037">Data Model</a></h3><h3 id="25712663114432627" section="2.2" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#56782750091861120">Program Model</a></h3><h3 id="62875713237909470" section="2.3" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#47441708185484893">System Model</a></h3></section><section id="35511651157512414" section="40687567824749606" class="mech-program-section toc"><h2 id="70503598624291544" section="3.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#24669159030462258">Mechdown Reference</a></h2></section><section id="6645113166268276" section="21148124512303696" class="mech-program-section toc"><h2 id="21578087965193309" section="4.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#58054068114627774">Standard Library</a></h2></section><section id="70945744559945550" section="36041201538744259" class="mech-program-section toc"><h2 id="6181505871362114" section="5.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#21169210282291409">Guides</a></h2></section><section id="57708879349905966" section="41994694464121956" class="mech-program-section toc"><h2 id="71523119693619334" section="6.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#26828514545883822">Project Design Documents</a></h2></section><section id="5466351771887542" section="33297481345570144" class="mech-program-section toc"><h2 id="36392276657662300" section="7.0" class="mech-program-subtitle toc"><a class="mech-program-subtitle-link toc" href="#39198869339111417">Examples</a></h2></section></section></div>
     <div class="content" id="left-pane">
-        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Mech Programming Language Documentation</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Getting Started</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/introduction.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Introduction</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/install.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Install Mech</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/build-and-run.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Build and Run Mech Programs</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/repl.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mech REPL</span></span></a><span class="mech-text"> </span></p></li></ol></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Language Reference</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Data Model</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/values.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Data, Data Types, and Kinds</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Data Structures</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/enum.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Enum</span></span></a><span class="mech-text"> - defines a set of named constant values </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/map.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Map</span></span></a><span class="mech-text"> - stores key-value pairs for fast lookups. </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/matrix.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Matrix</span></span></a><span class="mech-text"> - 2D array of homogenous values arranged in rows and columns.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/record.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Record</span></span></a><span class="mech-text"> - groups related fields, usually for representing structured data. </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/set.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Set</span></span></a><span class="mech-text"> - unordered collection of unique values </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/table.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Table</span></span></a><span class="mech-text"> - collection of heterogeneous data organized into rows and columns.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/tuple.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Tuple</span></span></a><span class="mech-text"> - fixed-size, ordered grouping of heterogeneous values. </span><code class="mech-inline-code">todo</code></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Statements and Expressions</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/define.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Defining, Assigning, and Accessing Data</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/convert.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Kind Conversion</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/formulas.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Formulas</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/indexing.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Indexing</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/errors.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Error Handling</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="reference/memory.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Memory Management</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> Programming Model </span><code class="mech-inline-code">Coming v0.3</code></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Functions</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">State Machines</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">SynthAssign</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Modules</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Programs</span></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> System Model </span><code class="mech-inline-code">Coming v0.4</code></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Capabilities</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Distributed Computation</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Concurrency and Parallelism</span></p></li></ul><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="reference/mechdown.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mechdown Reference</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ol></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Standard Library</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/assign/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Assign</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/access/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Access</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/combinatorics/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Combinatorics</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/compare/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Compare</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/convert/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Convert</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/io/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Io</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/logic/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Logic</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/math/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Math</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/matrix/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Matrix</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/range/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Range</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/set/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Set</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="stdlib/stats/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Stats</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ul></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Guides</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="guides/mech-in-fifteen-minutes.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mech in Fifteen Minutes</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="guides/tutorials.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Tutorials</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ol></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Language Design Documents</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="design/specification.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Language Specification</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="design/language-design.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Language Design Principles</span></span></a><span class="mech-text">  </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="design/syntax-design.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Syntax Design Notes</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="design/history.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">History</span></span></a><span class="mech-text">  </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="design/ROADMAP.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Roadmap</span></span></a></p></li></ol></section><section id="41994694464121956" section="41994694464121956" class="mech-program-section "><h2 id="26828514545883822" section="6.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26828514545883822">Examples</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="examples/fizzbuzz.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Fizz Buzz</span></span></a><span class="mech-text"> - a classic programming exercise that demonstrates the use of Mech's data model and operators.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="examples/n-body.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">N-Body Simulation</span></span></a><span class="mech-text"> - a simulation of gravitational interactions between multiple bodies.</span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="examples/ekf.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Extended Kalman Filter</span></span></a><span class="mech-text"> - an implementation of the Extended Kalman Filter algorithm for state estimation.</span></p></li></ol><pre class="mech-code-block hidden"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="38553495065089731:0">document/index</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">name</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"docs"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">version</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"v0.2.67"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">authors</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Corey Montella"</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">machine-url</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"https://gitlab.com/mech-lang/mech/docs"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">license</span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Apache-2.0"</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span></pre></section></div></div></div>
+      <div id="breadcrumb" class="mech-breadcrumb"></div>
+        <div class="mech-content"><div class="mech-program"><h1 class="mech-program-title">Mech Documentation</h1><div class="mech-program-body"><section id="9438622517866986" section="9438622517866986" class="mech-program-section "><h2 id="64696996597075978" section="1.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#64696996597075978">Getting Started</a></h2><ol start="1" class="mech-ordered-list"><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/introduction.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Introduction</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/install.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Install Mech</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/build-and-run.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Build and Run Mech Programs</span></span></a></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/repl.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mech REPL</span></span></a><span class="mech-text"> </span></p></li><li class="mech-ol-list-item"><p class="mech-paragraph"><span class="mech-text"> </span><a href="getting-started/first-program.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Your First Mech Program</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ol></section><section id="16885191040256091" section="16885191040256091" class="mech-program-section "><h2 id="26222977729876424" section="2.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26222977729876424">Platform Reference</a></h2><h3 id="49505093591916037" section="2.1" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#49505093591916037">Data Model</a></h3><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/data.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Data Types</span></span></a></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/atom.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">atom</code></span></a><span class="mech-text"> - symbolic constants, often used for tags or enums</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/bool.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">bool</code></span></a><span class="mech-text"> - logical values for true and false</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/empty.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">empty</code></span></a><span class="mech-text"> - represents an absence of value</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/kind.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">kind</code></span></a><span class="mech-text"> - a category of values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/number.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">number</code></span></a><span class="mech-text"> - numeric values, including integers and floating-point numbers</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/string.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">string</code></span></a><span class="mech-text"> - sequence of UTF-8 characters representing text</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Data Structures</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/map.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">map</code></span></a><span class="mech-text"> - stores key-value pairs for fast lookups</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/matrix.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">matrix</code></span></a><span class="mech-text"> - 2D array of homogenous values arranged in rows and columns</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/record.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">record</code></span></a><span class="mech-text"> - groups related fields, usually for representing structured data</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/set.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">set</code></span></a><span class="mech-text"> - unordered collection of unique values</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/table.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">table</code></span></a><span class="mech-text"> - collection of heterogeneous data organized into rows and columns</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/tuple.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><code class="mech-inline-code">tuple</code></span></a><span class="mech-text"> - fixed-size, ordered grouping of heterogeneous values</span></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Statements and Expressions</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/define.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Defining, Assigning, and Accessing Data</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code><span class="mech-text"> - create data and change it</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/convert.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Data Conversion</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code><span class="mech-text"> - convert data from one kind to another</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/broadcasting.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Expression Broadcasting</span></span></a><span class="mech-text"> - apply operations over data structures</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/reference/indexing.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Indexing</span></span></a><span class="mech-text"> - access elements within data structures</span></p></li></ul></ul><h3 id="56782750091861120" section="2.2" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#56782750091861120">Program Model</a></h3><div class="mech-info-block"><p class="mech-paragraph"><span class="mech-text">Coming </span><code class="mech-inline-code">v0.3</code></p></div><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Functions</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Error Handling</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Comprehensions</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">State Machines</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">SynthAssign</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Tests</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Modules</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Programs</span></p></li></ul><h3 id="47441708185484893" section="2.3" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#47441708185484893">System Model</a></h3><div class="mech-info-block"><p class="mech-paragraph"><span class="mech-text">Coming </span><code class="mech-inline-code">v0.4</code></p></div><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Capabilities</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Distributed Computation</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Concurrency and Parallelism</span></p></li></ul></section><section id="40687567824749606" section="40687567824749606" class="mech-program-section "><h2 id="24669159030462258" section="3.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#24669159030462258">Mechdown Reference</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Introduction</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">What is Mechdown? </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Writing Mechdown Documents </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mechdown Syntax Overview </span><code class="mech-inline-code">todo</code></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Mechdown Documents </span><code class="mech-inline-code">todo</code></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Sections and Subsections </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Tables of Contents </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Bredcrumbs </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Document Metadata </span><code class="mech-inline-code">todo</code></p></li></ul><li class="mech-ul-list-item"><p class="mech-paragraph"><span class="mech-text">Document Elements</span></p></li><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/title.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Title</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/paragraph.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Paragraph</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/list.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">List</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/code-block.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Code Block</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/table.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Table</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/image.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Image</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/thematic-break.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Thematic Break</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/equation.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Equation</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/callout-block.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Callout Block</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/mechdown/diagram.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Diagram</span></span></a></p></li></ul></ul></section><section id="21148124512303696" section="21148124512303696" class="mech-program-section "><h2 id="58054068114627774" section="4.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#58054068114627774">Standard Library</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/assign/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Assign</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/access/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Access</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/combinatorics/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Combinatorics</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/compare/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Compare</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/convert/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Convert</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/io/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Io</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/logic/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Logic</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/math/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Math</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/matrix/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Matrix</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/range/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Range</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/set/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Set</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/stats/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Stats</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/stdlib/string/index.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">String</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ul></section><section id="36041201538744259" section="36041201538744259" class="mech-program-section "><h2 id="21169210282291409" section="5.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#21169210282291409">Guides</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/guides/mech-in-fifteen-minutes.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Mech in Fifteen Minutes</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/guides/tutorials.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Tutorials</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li></ul></section><section id="41994694464121956" section="41994694464121956" class="mech-program-section "><h2 id="26828514545883822" section="6.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#26828514545883822">Project Design Documents</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/design/specification.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Platform Specification</span></span></a></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/design/design-principles.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Design Principles</span></span></a><span class="mech-text">  </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/design/syntax-design.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Syntax Design Notes</span></span></a><span class="mech-text"> </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/design/history.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">History</span></span></a><span class="mech-text">  </span><code class="mech-inline-code">todo</code></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/design/ROADMAP.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Roadmap</span></span></a></p></li></ul></section><section id="33297481345570144" section="33297481345570144" class="mech-program-section "><h2 id="39198869339111417" section="7.0" class="mech-program-subtitle "><a class="mech-program-subtitle-link " href="#39198869339111417">Examples</a></h2><ul class="mech-unordered-list"><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/examples/fizzbuzz.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Fizz Buzz</span></span></a><span class="mech-text"> - a classic programming exercise that demonstrates the use of Mech's data model and operators.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/examples/n-body.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">N-Body Simulation</span></span></a><span class="mech-text"> - a simulation of gravitational interactions between multiple bodies.</span></p></li><li class="mech-ul-list-item"><p class="mech-paragraph"><a href="/examples/ekf.html" class="mech-hyperlink"><span class="mech-inline-paragraph"><span class="mech-text">Extended Kalman Filter</span></span></a><span class="mech-text"> - an implementation of the Extended Kalman Filter algorithm for state estimation.</span></p></li></ul><pre class="mech-code-block hidden"><span class="mech-code"><span class="mech-statement"><span class="mech-variable-define"><span class="mech-variable-mutable"></span><span class="mech-var-name mech-clickable" id="38553495065089731:0">document/index</span><span class="mech-variable-assign-op">:=</span><span class="mech-expression"><span class="mech-structure"><span class="mech-record"><span class="mech-start-brace">{</span><span class="mech-binding"><span class="mech-binding-name">name</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"docs"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">version</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"v0.3.0"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">authors</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-structure"><span class="mech-matrix"><span class="mech-bracket start">[</span><div class="mech-matrix-column"><span class="mech-matrix-element"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Corey Montella"</span></span></span></span></div><span class="mech-bracket end">]</span></span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">machine-url</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"https://gitlab.com/mech-lang/mech/docs"</span></span></span></span></span>, <span class="mech-binding"><span class="mech-binding-name">license</span><span class="mech-binding-kind"></span><span class="mech-binding-colon-op">:</span><span class="mech-binding-value"><span class="mech-expression"><span class="mech-literal"><span class="mech-string">"Apache-2.0"</span></span></span></span></span><span class="mech-end-brace">}</span></span></span></span></span></span></span></pre></section></div></div></div>
     </div>
     <div class="resizer hidden" id="resizer">
       <button class="toggle-button" id="toggle-repl">|</button>
@@ -3148,7 +3482,7 @@ mark {
     let wasm_core;
     async function run() {
       await init();
-      var code = `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`;
+      var code = `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`;
       wasm_core = new WasmMech();
       var xhr = new XMLHttpRequest();
       var codeUrl = `/code${window.location.pathname}`;
@@ -3180,5 +3514,55 @@ mark {
     }
     run();
   </script>
+
+  <script>
+    function buildBreadcrumb(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const { origin, pathname } = window.location;
+      const parts = pathname.split('/').filter(Boolean);
+
+      // if we are at the root, don't build breadcrumb
+      if (parts.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let pathSoFar = origin;
+      const crumbs = [];
+
+      // Home icon (data URL)
+      crumbs.push(`
+        <a href="/" class="mech-breadcrumb-home" aria-label="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </a>
+      `);
+
+      parts.forEach((part, index) => {
+        pathSoFar += `/${part}`;
+
+        const label = part.replace(/\.[^/.]+$/, '');
+        const text = label.charAt(0).toUpperCase() + label.slice(1);
+
+        if (index === parts.length - 1) {
+          crumbs.push(`<span class="mech-breadcrumb-current">${text}</span>`);
+        } else {
+          crumbs.push(`<a href="${pathSoFar}/index.html">${text}</a>`);
+        }
+      });
+
+      container.innerHTML = crumbs.join('<span class="mech-breadcrumb-sep">⟩</span>');
+    }
+
+    buildBreadcrumb('breadcrumb');
+
+
+  </script>
+
+
 </body>
 </html>
