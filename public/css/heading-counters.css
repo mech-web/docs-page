@@ -1,0 +1,22 @@
+/*
+ * Top-level headings live inside sibling section wrappers. Increment the
+ * counter on those wrappers so it carries across the full document.
+ */
+@supports selector(section:has(> h2)) {
+  .mech-program-body,
+  .mech-toc-sections {
+    counter-reset: h2;
+  }
+
+  .mech-program-body > .mech-program-section:has(> h2),
+  .mech-toc-sections > .mech-program-section:has(> h2),
+  .mech-toc > .mech-program-section:has(> h2) {
+    counter-increment: h2;
+  }
+
+  .mech-program-body > .mech-program-section > h2::before,
+  .mech-toc-sections > .mech-program-section > h2::before,
+  .mech-toc > .mech-program-section > h2::before {
+    counter-increment: none;
+  }
+}
